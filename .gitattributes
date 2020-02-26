@@ -1,0 +1,4 @@
+* linguist-vendored
+*.hs linguist-vendored=false
+*.java linguist-vendored=false
+*.scala linguist-vendored=false
