@@ -1,0 +1,6 @@
+.stack-work
+dist-*
+target
+*.o
+*.hi
+*.lock

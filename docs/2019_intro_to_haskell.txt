@@ -1,0 +1,3184 @@
+I. Introduction to Haskell
+ A. What's interesting about Haskell?
+------------------------------------------
+     FUNCTIONAL PROGRAMMING
+
+- Models computations as expressions
+- All changing arguments passed explicitly
+  (no implicit global state)
+- Functions as data allows better abstraction
+
+
+ FEATURES FOUND IN OTHER FUNCTIONAL LANGUAGES
+  
+- Data is treated abstractly (as terms)
+- Powerful pattern matching 
+- All functions take just one argument
+  (use tuples to group multiple arguments as one)
+- Powerful library 
+- Order of definition doesn't matter
+
+
+       UNIQUE FEATURES OF HASKELL
+
+- Type-based separation of 
+   computations with effects from 
+   pure expressions
+- I/O actions are data
+- Type classes for static overloading
+- Lazy evaluation is the default
+- Type expressions resemble values
+
+
+------------------------------------------
+  What's the difference between an expression and a statement?
+ B. Haskell platform mechanics
+  1. getting in and out        
+------------------------------------------
+     HASKELL PLATFORM BASICS
+
+Get GHC from www.haskell.org/platform
+
+Use WinGHCi from the Start menu or
+the ghci program from a shell:
+
+$ ghci
+GHCi, version 8.6.5: http://www.haskell.org/ghc/  :? for help
+Prelude> 
+
+
+
+------------------------------------------
+  2. working with files
+------------------------------------------
+	WORKING WITH FILES
+
+ Prelude> :load "Fact.hs"
+ [1 of 1] Compiling Fact             ( Fact.hs, interpreted )
+ Ok, modules loaded: Fact.
+ *Fact> fact
+ 
+II.Fact> fact
+
+<interactive>:3:1:
+    • No instance for (Show (Integer -> Integer))
+        arising from a use of ‘print’
+        (maybe you haven't applied a function to enough arguments?)
+    • In a stmt of an interactive GHCi command: print it
+ *Fact>
+ *Fact> :type fact
+ fact :: Integer -> Integer
+ *Fact> :set +t
+ *Fact> fact 4
+ 24 
+ it :: Integer
+ *Fact> fact 100
+ 93326215443944152681699238856266700490715968264381621468592963895217599993229915
+608941463976156518286253697920827223758251185210916864000000000000000000000000
+ it :: Integer
+ *Fact> :edit Fact.hs
+ *Fact> :reload
+                   
+ *Fact> :type fact
+ fact :: Integer -> Integer
+ *Fact> fact 100
+ 9332621544394415268169923885626670049...
+ Fact> 
+ Fact> :q
+ Leaving GHCi
+------------------------------------------
+------------------------------------------
+
+ $ ghci Fact.hs
+   [...]
+ [1 of 1] Compiling Fact             ( Fact.hs, interpreted )
+ Ok, modules loaded: Fact.
+ *Fact> fact 8
+ 40320
+------------------------------------------
+        How do we get out of the interpreter again?
+  1. literate programs
+------------------------------------------
+		LITERATE SCRIPTS
+
+file Hello.lhs:
+     ==============================
+                HELLO WORLD
+
+     This is the hello world program
+
+     > -- part of a Haskell prog
+     > main = putStrLn "Hello, world!"
+     
+     The blank lines surrounding
+     the program are mandatory.
+
+     This file should have a .lhs
+     suffix.
+     ==============================
+
+$ ghc Hello.lhs
+[1 of 1] Compiling Main             ( Hello.lhs, Hello.o )
+Linking Hello.exe ...
+$ ./Hello
+Hello, world!
+
+$ ghcii Hello.lhs
+...
+Ok, modules loaded: Main.
+Prelude Main> :type main
+main :: IO ()
+Prelude Main> main
+Hello, world!
+Prelude Main> :quit
+------------------------------------------
+III. lexical matters in Haskell (Thompson 3.7, Davie 2.14, appendix C.2-3)
+ A. important and unusual lexical conventions
+------------------------------------------
+IMPORTANT AND UNUSUAL LEXICAL CONVENTIONS
+
+<varid> ::= <small> { <idchar> }
+<conid> ::= <large> { <idchar> }
+<idchar> ::= <small> | <large> | <digit> | '
+<small> ::= <ascSmall> | _
+<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<large> ::= <ascLarge> 
+<ascLarge> ::= A | B | C | D | ... | Z
+<ascSmall> ::= a | b | c | d | ... | z
+
+- Case matters
+
+     identifiers: fact, x y
+     constructors: Rational, Stack
+
+- Layout (white space) matters:
+   (if omit braces and semicolons,
+   following "where", "let", "do", and "of")
+  
+  Example:
+
+	let x = 3
+	    y = 4
+	in x + y
+
+  ==>
+
+	let {x = 3
+	    ;y = 4
+	}in x + y
+
+------------------------------------------
+ B. identifiers and operators (Thompson 1.7, Davie 2.14.2)
+------------------------------------------
+           IDENTIFIERS (NOT INFIX)
+
+can use letters, digits, primes and underscores (_)
+
+CASE MATTERS
+
+varids:
+
+    start with a-z
+
+    examples
+	_, pythag, fac, x, y', x3'n_, aGoodId
+
+
+conids:
+
+    start with A-Z
+
+    Examples:
+       Stack, Rational, Typ'_3
+
+------------------------------------------
+------------------------------------------
+		OPERATORS 
+
+Examples:
+  +, -, !!, ++, ==, /=
+  :, :#
+
+Notes:
+
+  1. Drawn from: !#$%&*+./<=>?@\^|-~:
+     and unicode symbols and punctuation
+
+  2. An operator is a constructor
+      if it starts with :
+
+  3. All operators are infix 
+     except unary negation (-)
+
+  4. Any identifer can be made into
+     an infix operator using backquotes
+
+		3 `div` 4
+
+  5. An infix operator can be used as
+     an identifier when put in parentheses
+
+               (+) 3 4
+------------------------------------------
+IV. programs in Haskell
+ A. modules
+------------------------------------------
+       PROGRAMS ARE MODULES WITH Main
+
+One module, named Main, which exports main
+
+module Main where   --
+
+main :: IO ()
+main = do ...
+
+
+------------------------------------------
+------------------------------------------
+            SIMPLE I/O EXAMPLE
+
+The type of a main program is an IO action
+
+> main :: IO()
+> main = do
+>          putStr "Hello! What is your name? "
+>          name <- getLine
+>          putStrLn ("Hello, " ++ name ++ "!")
+
+------------------------------------------
+ B. IO types
+------------------------------------------
+          IO TYPES
+
+I/O must happen in an action with type:
+
+       IO a
+
+meaning
+
+
+    CAN ONLY DO I/O IN AN IO TYPE CONTEXT
+
+The following are type errors:
+
+       3 + (do {read getLine} :: Integer)
+       3 + (log x) + 7
+          where
+           log x = do
+                     putStrLn x
+                     return x
+
+
+
+------------------------------------------
+ C. Normal program structure
+------------------------------------------
+          PROGRAM STRUCTURE
+
+main :: IO ()
+main = do
+         vals <- inputAct
+         let res = compute vals
+         outputAct res
+
+inputAction :: IO ValType
+...
+
+outputAction :: ResType -> IO ()
+
+------------------------------------------
+------------------------------------------
+            A PICTURE
+
+            |-------------|
+            |             |   
+   ========>|             | =========>
+            |-------------|
+            
+------------------------------------------
+  1. example temperature conversion
+   a. file TempConvertMain.lhs, the main program
+------------------------------------------
+A program is a set of modules, one of which must be called Main
+and export the name "main".
+If a file does not have a module declaration,
+then it is implicitly named "Main", so that is what is done with this file.
+
+> import TemperatureConversion
+> import Control.Exception.Base
+>
+> main :: IO()
+> main = do
+>          catch (loop rcp) bye
+
+The loop function does an IO action forever,
+    until the action throws an exception
+
+> loop :: IO () -> IO ()
+> loop act = do
+>             act
+>             loop act
+
+The bye function takes an IOException, prints "bye!", and returns (),
+
+> bye :: IOException -> IO ()
+> bye _ = do
+>            putStrLn "bye!"
+>            return ()
+
+The rcp function reads a Double, then prints its conversion
+    
+> rcp :: IO ()
+> rcp = do
+>         hSetBuffering stdin  NoBuffering  -- fix buffering
+>         hSetBuffering stdout NoBuffering 
+>         ftemp <- ask
+>         putStrLn ("in degrees C is: " ++ show (convert ftemp))
+
+The ask function obtains a temperature in Farenheit from the user.
+
+> ask :: IO Double
+> ask = do
+>         putStr "Temp. in degrees F? "
+>         temp <- getLine
+>         f <- readIO temp
+>         return f
+
+------------------------------------------
+   b. TemperatureConversion module (where the computations go)
+------------------------------------------
+module TemperatureConversion where
+
+convert :: Double -> Double
+convert f = (f - 32) * (5/9)
+
+------------------------------------------
+V. Built-in types of Haskell
+ A. Fundamental classification of objects
+  1. simple (atomic) types (Thompson 3.1-2, 3.5-6, Davie 2.7)
+------------------------------------------
+	   HASKELL BOOLEANS
+
+Bool
+   Values:
+	+ abstract values: true and false
+	+ printed: True, False
+   Operations:
+	+ constructors: True, False
+	+ functions: &&, ||, not, ==, /=
+        + syntax: if _ then _ else _
+
+
+
+	  HASKELL CHARACTERS
+Char
+   Values:
+	+ abstract values: a, b, c, d, ...
+	+ printed: 'a', 'b', 'c', ...
+   Operations:
+	+ constructors: 'a', 'b', ...,
+         '\n', (toEnum 10), ...
+	+ functions: fromEnum, toEnum, ...
+			==, /=, <, <=, ...
+------------------------------------------
+------------------------------------------
+	   HASKELL INTEGERS
+
+Integer
+   Values:
+	+ abstract values: 0, 1, -1, ...
+	+ printed: 0, 1, -1, ...
+   Operations:
+	+ constructors: 0, 1, -1, 2, -2, 3, ...
+	+ functions: +, -, *, negate,
+		abs, signum,
+		quot, rem, div, mod,
+		==, /=, <, <=, ...
+------------------------------------------
+   a. Type Classes in the Prelude
+------------------------------------------
+  TYPE CLASSES IN THE PRELUDE
+
+  Eq (==, /=)
+
+    Ord (compare, <, <=, >=, >, min, max)
+
+  Enum (succ, pred, toEnum, fromEnum, 
+        enumFrom, enumFromThen, ...)
+
+  Bounded (minBound, maxBound)
+
+  Read (readsPrec, readList)
+  Show (showsPrec, show, showList)
+
+  Num (+, -, *, negate, abs, signum, fromInteger)
+    Real (toRational)
+      Integral (quot, rem, div, mod, quotRem, 
+                divMod, toInteger)
+    Fractional (/, recip, fromRational)
+      Floating (pi, exp, log, sqrt, **, logBase,
+                sin, cos, tan, asin, ...)
+        RealFrac (properFraction, truncate, round, 
+                  ceiling, floor)
+          RealFloat (floatRadix, floatDigits, ...)
+------------------------------------------
+------------------------------------------
+    PRIMITIVE TYPES IN TYPE CLASSES
+
+ Bool is in Eq, Ord, Enum, Read, Show, Bounded
+ Char is in Eq, Ord, Enum, Bounded
+ Int is in Eq, Ord, Num, Real, Integral, Enum, Bounded
+ Integer is in Eq, Ord, Num, Real, Integral, Enum
+ Float is in Eq, Ord, Num, Real, Fractional, Floating, 
+             RealFrac, RealFloat, Enum
+ Double is in Eq, Ord, Num, Real, Fractional, Floating, 
+              RealFrac, RealFloat, Enum
+------------------------------------------
+  2. structured types (Thompson 5, Davie 2.8, 3.11, 2.10)
+------------------------------------------
+        STRUCTURED TYPES
+
+      type    | constructors (or syntax)
+==========================================
+
+
+
+
+
+
+
+------------------------------------------
+   a. pairs, tuples, and unit (Thompson 5.2, Davie 2.10)
+------------------------------------------
+	   TUPLES IN HASKELL
+
+(a,b), (a,b,c), ...,  and ()
+   Values:
+       + abstract values: pairs of a & b,
+		triples of a & b & c, ...
+		an empty tuple
+       + printed: (1,True), (3, 4, 5), ()
+   Operations:
+        + constructor (,), (,,), ...
+	+ fst, snd
+
+
+       EXAMPLE FUNCTIONS OVER TUPLES
+
+> fst :: (a,b) -> a
+> fst (a,_) = a
+
+> snd :: (a,b) -> b
+> snd (_,b) = b
+
+------------------------------------------
+        Why are single-element tuples like (3+4) not in Haskell?
+------------------------------------------
+        CONSTRUCTING TUPLES
+
+Examples:
+   (1,True)
+   (1,2,3)
+   (1,(2,3))
+   (1,(True,2.8))
+   ((1,True),2.8)
+   ()
+   ("zero tuple:",())
+
+
+------------------------------------------
+	What is the type of each?
+   b. functions (Thompson 10)
+------------------------------------------
+           FUNCTIONS
+
+a -> b
+   Values:
+       + abstract values:
+             partial functions from a to b
+   Operations:
+       + constructor: \ var -> expression
+       + syntax:
+           f x y = expression
+               means roughly
+           f = (\x -> (\y -> expession))
+       + functions: (.), flip,
+          curry, uncurry
+
+Examples:
+
+id :: a -> a
+id = \x -> x
+
+(.) :: (b -> c) -> (a -> b) -> (a -> c)
+(f . g) x = f (g x)
+
+flip :: (a -> b -> c) -> b -> a -> c
+flip f x y = f y x
+
+------------------------------------------
+ B. binding, pattern matching, simple functions
+------------------------------------------
+      PATTERN MATCHING AND BINDING
+
+Examples:
+
+ let (x,y,z) = (1,2,3) in x
+
+
+ let (x,y,z) = (1,2,3) in z
+
+
+ let (_,y,_) = (1,2,3) in y
+
+
+ let (a:as) = 1:2:3:[] in a
+
+
+ let (a:as) = [1,2,3] in as
+
+------------------------------------------
+	What's the general rule for this kind of pattern matching?
+------------------------------------------
+    PATTERNS IN FUNCTION DEFINITION
+
+
+Suppose we define
+
+> yodaize (subject, verb, adjective) =
+>     (adjective, subject, verb)
+
+
+Examples
+
+ yodaize ("food", "is", "good")
+
+
+ yodaize ("study", "you", "will")
+
+
+
+Another example:
+
+   Problem: write a function
+            max3 :: Ord a => (a, a, a) -> a
+	    to take the maximum of 3 arguments
+
+
+
+
+
+------------------------------------------
+------------------------------------------
+	FOR YOU TO DO
+
+1. Define functions
+
+	fst3 :: (a, b, c) -> a
+	snd3 :: (a, b, c) -> b
+	thd3 :: (a, b, c) -> c
+
+   such that for all t :: (a, b, c)
+
+	t = (fst3 t, snd3 t, thd3 t)
+
+
+
+
+2. Define a function
+
+	average :: (Float, Float) -> Float
+
+   such that, for example
+
+      average (1.0, 3.0) = 2.0
+      average (3.0, 50.0) = 26.5
+
+------------------------------------------
+        What if we wanted to average more than 2 numbers?
+VI. lists (Thompson 5, Davie 2.8, 3.11)
+------------------------------------------
+	   LISTS IN HASKELL
+
+[a] -- homogeneous lists of a
+   Values:
+       + abstract values: sequences of a's
+       + printed: [], [True], [1,2,3,...]
+   Operations:
+       + constructors: :, []
+              (:) :: a -> [a] -> [a]
+              [] :: [a]
+       + functions: head, tail,
+	  last, init, null, ++,
+	  length, !!, map, take,
+	  drop, reverse, all, any, ...
+       + syntax:
+          [1,2,3] = 1:(2:(3:[])) = 1:2:3:[]
+	  [1 ..] = enumFrom 1
+          [1,3 ..] = enumFromThen 1 3
+          [1 .. 8] = enumFromTo 1 8
+          [1,3 ..8] = enumFromThenTo 1 3 8
+	  [e | e <- [1 ..], even e]
+                  = do e <- [1 ..]
+                       guard (even e)
+                       return e
+------------------------------------------
+------------------------------------------
+         PRAGMATICS OF LISTS
+
+Lists are represented as Haskell terms
+
+   1:(2:(3:[]))
+is
+       :
+      / \
+     1   :
+        / \
+        2  :
+          / \
+         3   []
+
+
+Consequences:
+
+  - in pattern matching, 
+    can only get at head and rest easily
+        let (a:as) = lst
+  - when building a list, 
+    can only add elements at the head
+        0:lst
+
+Pragmatics
+  - (:) executes in constant time and space
+  - pattern matching using (:) is fast
+------------------------------------------
+------------------------------------------
+        PRAGMATICS OF ++
+
+++ concatenates lists
+
+Definition:
+
+(++) :: [a] -> [a] -> [a]
+[] ++ bs = bs
+(a:as) ++ bs = a:(as ++ bs)
+
+Time is 
+
+Space is
+    
+
+------------------------------------------
+     which is more efficient: 0:[1,2,3] or [0]++[1,2,3]?
+ A. Haskell list features as a DSL
+  1. sugars
+------------------------------------------
+        SYNTACTIC SUGARS
+
+Sweeten the language by
+
+
+
+Semantics given by
+
+
+
+Like
+
+
+Examples:
+
+------------------------------------------
+   Is sweeter better?
+   Should you use sugars when programming?
+------------------------------------------
+           LIST SUGARS
+
+data [] a = [] | a : [a]
+
+  [1] desugars to
+
+  [1,2] desugars to
+
+
+
+Note: lists are NOT sets:
+   can have repeats [1,2,1,3] 
+   order matters [1,1,2,3] /= [1,2,1,3]
+------------------------------------------
+   What does [4,0,2,0] desugar to?
+   a. dot dot (..) notation
+------------------------------------------
+          .. SUGARS IN HASKELL
+
+[n .. m]  =
+
+
+
+
+[n, p .. m] = 
+
+
+
+
+
+------------------------------------------
+   b. .. for infinite lists!
+------------------------------------------
+         .. SUGARS FOR INFINITE LISTS
+
+[n ..] = 
+
+
+
+[n, p ..] = 
+
+
+
+
+
+------------------------------------------
+   c. list comprehensions
+    i. mapping
+------------------------------------------
+   MAPPING WITH LIST COMPREHENSIONS
+
+As with sets in math: {2*n | n <- ex}
+
+> ex = [2, 4, 7, 3, 2]
+> integers = [ 1 .. ]
+
+  [ 2 * n | n <- ex]
+    = 
+
+Write:
+   product_by:: [Int] -> Int -> [Int]
+   map :: (a -> b) -> [a] -> [b]
+ using list comprehensions
+
+------------------------------------------
+    What are the differences from set comprehensions in math?
+    ii. filtering
+------------------------------------------
+             FILTERING
+
+-- recall ex = [2, 4, 7, 3, 2]
+[ n | n <- ex, odd n ] = [7, 3]
+
+Write expressions for:
+  list of all odd integers greater than 2
+
+
+
+  all integers divisible by 3
+
+
+
+  squares of all integers divisible by 7
+   and less than 100
+
+
+
+
+Write:
+  filter:: (a -> Bool) -> [a] -> [a]
+
+
+
+------------------------------------------
+    iii. using patterns
+------------------------------------------
+          USING PATTERNS
+
+Write
+addPairs :: [(Integer, Integer)] -> [Integer]
+   which takes a list of pairs
+   and produces a list of their sums
+
+
+
+
+
+
+
+------------------------------------------
+        What kinds of problems can be solved using a list comprehension?
+    iv. nested maps
+------------------------------------------
+           NESTED MAPS
+
+[(a,b) | a <- ex, b <- [1,2]] =
+    [(2,1), (2,2), (4,1), (4,2), (7,1), (7,2),
+     (3,1), (3,2), (2,1), (2,2)]
+
+
+------------------------------------------
+  2. built-in functions, standard Prelude (go quickly or skip)
+   a. zip and unzip
+   b. ++, !!, concat, length, head, last, tail, init
+   c. take, drop
+ B. explicit recursions.
+------------------------------------------
+  STEPS FOR WRITING EXPLICIT RECURSIONS
+
+1. Understand the problem
+ a. What does it do?
+ b. What's the type?
+ c. What are the grammars for the arguments?
+ d. What are examples for each case 
+    in the interesting grammars?
+ e. What are related simpler examples?
+
+2. Write an outline that follows the grammar
+
+3. Fill in the outline using the examples
+    - generalize from the examples
+    - create new examples if needed
+
+4. Use one function per nonterminal 
+
+5. Debug by testing larger and 
+   larger expressions
+------------------------------------------
+  1. recursion over flat lists
+------------------------------------------
+        RECURSION OVER FLAT LISTS
+
+ 
+Example:
+
+  insertWhen :: (a -> Bool) -> a -> [a] -> [a]
+
+such that
+
+  (insertWhen (== "Fred") "Mr." ["Robin","Redbreast","Fred","Follies"])
+        == ["Robin","Redbreast","Mr.","Fred","Follies"] 
+  (insertWhen (== "Fred") "Mr." ["Redbreast","Fred","Follies"])
+        == ["Redbreast","Mr.","Fred","Follies"] 
+  (insertWhen (== "Fred") "Mr." ["Fred","Follies"])
+        == ["Mr.","Fred","Follies"] 
+  (insertWhen (== "Victoria") "Queen" ["Victoria","Victoria","Station"])
+        == ["Queen","Victoria","Queen","Victoria","Station"]
+  (insertWhen (== "Victoria") "Queen" ["Victoria","Station"])
+        == ["Queen","Victoria","Station"]
+  (insertWhen (== "Victoria") "Queen" []) == []
+
+
+
+
+
+  
+------------------------------------------
+   So what will the cases be?
+	how do we get "Queen":"Victoria":"Queen":"Victoria":"Station":[]
+                                       from "Queen":"Victoria":"Station":[]?
+  2. practice
+------------------------------------------
+          FOR YOU TO DO
+
+Write a function
+  len :: [a] -> Integer
+so that:
+
+  len [1,2,3] == 3
+  len [] == 0
+
+
+
+
+
+
+
+Write a function
+   all :: (a -> Bool) -> [a] -> Bool
+so that:
+
+   all even [] = True
+   all even [1,2,3] = False
+   all odd [5,3,1,1,7,13] = True
+
+
+
+
+
+
+
+------------------------------------------
+	what is the base case?
+	take the above example for the inductive case.
+	   what do we want?  what are we given?  how do you get that?
+	so what are the equations?
+  3. more practice
+ C. tail recursion: no pending computation on recursive calls (Davie 3.9)
+  1. example
+------------------------------------------
+	FULL vs. TAIL RECURSION
+
+Fully recursive
+
+> len [] = 0
+> len (x:xs) = 1 + (len xs)
+
+len [5,7,9] == 1 + (len [7,9])
+            == 1 + (1 + (len [9]))
+	    == 1 + (1 + (1 + (len [])))
+	    == 1 + (1 + (1 + (0)))
+	    == 1 + 1 + 1
+	    == 1 + 2
+            == 3
+------------------------------------------
+------------------------------------------
+         WRITING TAIL RECURSIONS
+
+1. Make a helping function with an extra argument
+
+2. Using examples, draw a table 
+   for how you want the arguments to vary
+
+
+
+
+
+
+
+3. Generalize from examples
+
+
+
+
+
+------------------------------------------
+------------------------------------------
+	TAIL RECURSION
+
+def: code for a function f is *tail recursive*
+     (or *iterative*)
+     if on each branch, the last action 
+
+
+
+def: a *pending computation* is
+
+
+
+
+------------------------------------------
+  2. practice
+------------------------------------------
+	   FOR YOU TO DO
+
+Write
+
+   > reverse :: [a] -> [a]
+   > reverse [] = []
+   > reverse (x:xs) = (reverse xs) ++ [x]
+
+tail recursively.
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+	so what is reverse_iter(x:xs,y)?
+  3. when to use tail recursion
+------------------------------------------
+        WHEN TO USE TAIL RECURSION
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+         What are some examples we have seen of need to use tail recursion?
+ D. memory management
+  1. overall memory layout
+      How do we represent the environment and the store in a single
+      address space on a conventional computer?
+------------------------------------------
+      OVERALL MEMORY LAYOUT
+
+            |---------------|
+            |    Code       |
+            |---------------|
+            | Static Data   |
+            | (constants)   |
+            |---------------|
+            |  run-time     |   ~ Environment
+            |  stack of ARs | 
+            |               |
+            |       |       |
+            |       v       |
+            \\\\\\\\\\\\\\\\|
+
+            |\\\\\\\\\\\\\\\|
+            |   (heap)      |   ~ Store
+            |---------------|
+
+------------------------------------------
+  2. activation records (stack organization)
+        Why is an activation record needed for every *call* of a procedure,
+           instead of one for each procedure?
+     How to access the values of local identifiers in the environment?
+---------------------
+	Aho and Ullman's design for Activation Record (using static links):
+
+		     __________________________
+	        RET: |    returned value      |
+       	       	     |    (for functions)     |
+		     |________________________|
+		PAR: |  	              |
+		     |    actual parameters   |
+                     |  		      |
+        	     |________________________|
+       |	DL:  |      dynamic link      |
+       |             |________________________|
+       |        SL:  |	     static link      |
+fixed  |	     |	     (or display)     |
+size   |	     |________________________|
+fields |        IP:  |   saved machine status |	<_________ EP (env pointer)
+       |	     |	 (ip and other regs)  |
+        	     |________________________|
+		VAR: |       local data       |
+		     |	  (storage for vars)  |
+		     |________________________|
+		     |			      |
+	        TEMP:| 	     temporaries      |
+		     |                        |
+                     |\\\\\\\\\\\\\\\\\\\\\\\\\	 <____ SP (stack pointer)
+
+
+---------------------
+        does saved part save information about caller or callee?
+        How would this be used in making a call?
+        How would this be used in a return?
+  3. Last call optimization
+------------------------------------------
+        LAST CALL OPTIMIZATION
+
+def: a language implements the
+     *last call optimization* if
+     it reuses the current AR for the last
+     call made during a function's execution.
+
+
+length' ls = length'iter ls 0
+length'iter [] acc = acc
+length'iter (_:xs) acc = length'iter xs (acc+1)
+
+Tracing this:
+
+length' 1:2:3:[]
+  = length'iter (1:2:3:[]) 0
+
+
+
+
+
+
+
+
+------------------------------------------
+   What is it useful for?
+   Does the semantics already to this?
+   Do C, C++, and Java require this optimization?
+   What does that say about using recursion in these languages?
+VII. data-driven recursion (Thompson 14, Davie sections 3.2, 4.4)
+ A. data declaration in Haskell
+  1. example: the natural numbers
+------------------------------------------
+	DATA-DRIVEN RECURSION or
+         FOLLOW THE GRAMMAR!
+
+Definition of natural numbers:
+
+> data Nat = Zero | Succ Nat deriving (Eq, Show)
+
+To define a function f :: Nat -> t
+define recursively by:
+	f Zero =   ...   -- basis
+	f (Succ n) = ... -- inductive case
+
+Examples:
+
+> toInteger' :: Nat -> Integer
+
+  toInteger' (Succ (Succ Zero)) == 2
+  toInteger' (Succ Zero) == 1
+  toInteger' Zero == 0
+
+
+
+
+
+> plus :: Nat -> Nat -> Nat
+
+  plus Zero (Succ Zero) == Succ Zero
+  plus (Succ Zero) (Succ Zero) == (Succ (Succ Zero)) 
+  plus (Succ (Succ (Succ Zero))) (Succ (Succ Zero))
+    == (Succ (Succ (Succ (Succ (Succ Zero)))))
+
+
+
+
+
+------------------------------------------
+	How does the structure of the program resemble the data declaration?
+	How does the data declaration resemble a grammar?
+------------------------------------------
+	FOR YOU TO DO
+
+ -- data Nat = Zero | Succ Nat deriving (Eq, Show)
+
+  mult :: Nat -> Nat -> Nat
+   such that
+    mult Zero (Succ Zero) == Zero
+    mult (Succ (Succ Zero)) (Succ (Succ (Succ Zero)))
+         == (Succ (Succ (Succ (Succ (Succ (Succ Zero))))))
+
+
+
+
+
+  
+  
+  equal :: Nat -> Nat -> Bool
+    without using (==), but such that (equal n1 n2) == (n1 == n2)
+
+
+
+
+
+
+
+
+------------------------------------------
+	What would isZero :: Nat -> Bool be like?
+ B. structure of data determines structure of code
+------------------------------------------
+    GENERALIZING HOW TO WRITE RECUSIONS
+
+ data NonEmptyList a =
+
+
+Write
+   maxl :: (Ord a) => NonEmptyList a -> a
+such that
+
+
+
+
+
+
+Write 
+   nth :: NonEmptyList a -> Nat -> a
+such that
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+	How would you define a non-empty list in English?
+	can you write this?
+------------------------------------------
+     RECURSION OVER GRAMMARS
+
+> data Exp = BoolLit Bool 
+>            | IntLit Integer
+>            | Sub Exp Exp
+>            | Equal Exp Exp
+>            | If Exp Exp Exp
+>           deriving (Show, Eq)
+>
+> data Value = BV Bool | IV Int | Wrong
+>           deriving (Show, Eq)
+
+Write the following
+
+  eval :: Exp -> Value
+
+such that
+
+  eval (BoolLit True) == (BV True)
+  eval (IntLit 5) == (IV 5)
+  eval (Sub (IntLit 5) (IntLit 4)) == 
+  eval (Equal (BoolLit True) (BoolLit False))
+       == 
+  eval (If (BoolLit True) (IntLit 4) (IntLit 5))
+       ==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+	What are the base cases?
+	Where should there be a recursion?
+	Examples for each recursive case?
+VIII. types in Haskell (Ch 13 in Thompson, Ch 4 in Davie)
+ A. terminology
+------------------------------------------
+    STATIC VS. DYNAMIC TYPE CHECKING
+
+def: a *static* property is one that
+     can be checked 
+
+def: a *dynamic* property must be checked
+     (in general) at runtime
+
+def: a *type error* is a successful use 
+     a function outside of its domain
+
+def: a program is *type safe* if it cannot
+     have a type error at runtime
+
+------------------------------------------
+      When is static type safety checked?
+      What languages have static type checking?
+      What languages have dynamic type checking?
+ B. type operators (Davie 4.1)
+------------------------------------------
+	TYPE NOTATION
+
+Type declarations
+
+	x :: Integer
+	f :: Integer -> Integer
+
+Type operators
+
+	operator	meaning
+	=============================
+	_ -> _		function type
+	(_ , _)		product type
+	[ _ ]		list type
+
+Associativity of calls and function types:
+
+	b f g x     means  (((b f) g) x)
+
+       s -> t -> u  means  s -> (t -> u)
+
+       s->t->u->v   means  s->(t->(u->v))
+------------------------------------------
+	Why do you think the associtivity is different for applications
+		and for function types?
+ C. polymorphic types (Thompson 9.2, Davie 4.2)
+------------------------------------------
+	POLYMORPHIC TYPES
+
+Monomorphic examples:
+
+	Integer
+	[Bool] -> Bool
+	[(Integer, Integer) -> Bool]
+
+Polymorphic examples:
+
+	[i]
+	[b] -> b
+	[(i,i) -> Bool]
+
+
+
+------------------------------------------
+	What are some expressions that have these types?
+	What are some other instances of these types?
+ D. type synonyms (Davie 4.3.1)
+------------------------------------------
+	TYPE SYNONYMS
+
+Examples
+
+> type Nat = Int
+> type TextString = [(Nat, String)]
+
+> type Stack a = [a]
+> type Queue a = [a]
+> type MyQueue a = Queue a
+> type Predicate a = (a -> Bool)
+
+------------------------------------------
+	Do these declarations allow us to pass a (Stack Int)
+		to a function of type [Int] -> Int?
+ E. algebraic types (Thompson 14, Davie 4.4) (just mention)
+------------------------------------------
+   ALGEBRAIC DATATYPES (GRAMMARS)
+
+Can simulate enumerations
+
+> data Font = Roman | Italic | Bold
+
+  data Color = 
+
+  data Boolean = 
+
+
+Can also be used to define recursive
+types, including
+
+
+  data HaskellType = 
+
+
+
+
+
+
+------------------------------------------
+ F. abstract data types (Thompson 15, Davie 4.5, 4.9)
+------------------------------------------
+	ABSTRACT DATA TYPES
+
+-- file Fraction.hs
+
+module Fraction (Fraction, mkFraction,
+                 num, denom, add, sub)
+where
+data Fraction = Integer :/ Integer
+mkFraction _ 0 = error "undefined"
+mkFraction n d = n :/ d
+num (n :/ d) = n
+denom (n :/ d) = d
+add (n1 :/ d1) (n2 :/ d2) =
+     mkFraction (n1 * d2 + n2 * d1)
+                (d1 * d2)
+sub (n1 :/ d1) (n2 :/ d2) =
+     mkFraction (n1 * d2 - n2 * d1)
+                (d1 * d2)
+
+------------------------------------------
+------------------------------------------
+      FREE TYPES VS. TYPES MODULO LAWS
+
+def: a data type is *free* (*algebraic)
+     if
+
+
+
+Examples:
+
+
+
+
+
+def: a data type is *not free* (abstract)
+    if
+
+
+
+Examples:
+
+
+
+------------------------------------------
+	Is it ever worthwhile to hide the representation of a free type?
+ G. overview of type inference (Thompson 13, Davie 4.7)
+------------------------------------------
+	OVERVIEW OF TYPE INFERENCE
+
+Type checking: you declare type,
+	       compiler infers type,
+	       compiler compares
+               compiler checks uses
+                        against declaration
+
+Type inference:
+
+
+
+
+
+In Haskell don't need to declare types
+	(usually)
+
+Example
+
+> mymap f [] = []
+> mymap f (x:xs) = (f x):(mymap f xs)
+
+
+
+
+
+------------------------------------------
+ H. ad hoc polymorphism and type classes (Thompson 12, Davie 4.8)
+------------------------------------------
+	AD HOC POLYMORPHISM
+
+parametric polymorphism:
+
+   map ::       (a -> b) -> [a] -> [b]
+
+
+ad hoc polymorphism
+
+> square :: Num a => a -> a
+> square x = x * x
+
+
+------------------------------------------
+	Why not require that you actually pass the multiplication yourself?
+	What's done in OO programming?
+  1. type classes (Thompson 13.2 and 13.4)
+------------------------------------------
+       TYPE CLASSES IN HASKELL
+
+-- abbreviated Eq type class
+
+class Eq a where
+    (==), (/=) :: a -> a -> Bool
+    x /= y      = not (x==y)
+
+
+-- abbreviated Ord type class
+
+class (Eq a) => Ord a where
+    compare       :: a -> a -> Ordering
+    (<), (<=), (>=), (>) :: a -> a -> Bool
+    max, min             :: a -> a -> a
+
+------------------------------------------
+  2. type class instances (Thompson 13.3)
+------------------------------------------
+      DECLARING TYPE CLASS INSTANCES
+
+> data Prod a b = a :* b
+
+> instance (Eq a, Eq b)
+>                  => Eq (Prod a b) where
+>    (x :* y) == (x' :* y') =
+>      (x == x' && y == y')
+
+
+or you can write:
+
+> data Cartesian a b = a :** b deriving Eq
+
+------------------------------------------
+  3. higher-order type classes
+------------------------------------------
+    HIGHER-ORDER TYPE CLASSES
+
+-- from the Prelude
+
+class Functor f where
+    fmap :: (a -> b) -> (f a -> f b)
+
+instance Functor [] where
+    fmap g []     = []
+    fmap g (x:xs) = g x : fmap g xs
+
+data Maybe a = Nothing | Just a
+            deriving (Eq, Ord, Read, Show)
+
+instance Functor Maybe where
+    fmap g Nothing  = Nothing
+    fmap g (Just x) = Just (g x)
+------------------------------------------
+IX. Closures and Functions (Thompson 9 and 10, Davie 5)
+ A. \ makes functions
+  1. examples:
+------------------------------------------
+   \ MAKES FUNCTIONS (CLOSURES)
+
+Prelude> (\ x -> x) "y"
+
+
+Prelude> ((\ x -> head x) [1,2,3])
+
+
+Prelude> ((\ (x,y) -> 0) (head [], "hmm"))
+
+
+Prelude> ((\ () -> 5))
+
+Prelude> (\ () -> 5)()
+
+------------------------------------------
+  2. normal order evaluation rule
+------------------------------------------
+             AVOIDING CAPTURE
+
+ let head = [4,5] in
+  ((\ x -> (\ head -> head x)) head) tail
+
+
+------------------------------------------
+---------------------------------------------------------
+         FREE AND BOUND OCCURRENCES OF VARIABLES
+              IN THE LAMBDA CALCULUS
+
+> data Expression = IntLit Integer | BoolLit Bool
+>       | Varref Var | Lambda Var Expression
+>       | App Expression Expression
+>       deriving (Eq, Show)
+> type Var = String
+
+> occursFreeIn :: Var -> Expression -> Bool
+> occursFreeIn x (Varref y) =  x == y
+> occursFreeIn x (Lambda y body) =
+>       x /= y && occursFreeIn x body
+> occursFreeIn x (App left right) =
+>       (occursFreeIn x left) || (occursFreeIn x right)
+> occursFreeIn x _ = False
+
+> freeVariables :: Expression -> [Var]
+> freeVariables (Varref y) =  [y]
+> freeVariables (Lambda y body) =
+>      delete y (freeVariables body)
+> freeVariables (App left right) =
+>      (freeVariables left) `union` (freeVariables right)
+> freeVariables _ = []
+
+> occursBoundIn :: Var -> Expression -> Bool
+> occursBoundIn x (Varref y) =  False
+> occursBoundIn x (Lambda y body) =
+>      x == y && occursFreeIn x body
+>      || occursBoundIn x body
+> occursBoundIn x (App left right) =
+>      (occursBoundIn x left) || (occursBoundIn x right)
+> occursBoundIn x _ = False
+
+Some set-like operations on lists needed above
+
+> union :: Eq a => [a] -> [a] -> [a]
+> union [] ys = ys
+> union (x:xs) ys = if x `elem` ys then union xs ys 
+>                                  else x: union xs ys
+> delete :: Eq a => a -> [a] -> [a]
+> delete x ys = filter (x /=) ys
+
+---------------------------------------------------------
+------------------------------------------
+    EXAMPLES OF FREE AND BOUND VARIABLES
+
+f, f1, f2 occur free in:
+
+    f                   (Varref "f")
+
+    (f1 f2)             (App (Varref "f1") (Varref "f2"))
+
+    (\x -> f x)         (Lambda "x" (App (Varref "f") (Varref "x")))
+
+
+b, b1, b2 occur bound in:
+
+    (\b -> b)           (Lambda "b" (Varref "b"))
+
+    (\b1 ->             (Lambda "b1" 
+      (\b2 -> (b1 b2)))   (Lambda "b2" (App (Varref "b1") (Varref "b2))))
+
+
+
+
+
+------------------------------------------
+------------------------------------------
+      NOT EXACTLY OPPOSITES
+
+A particular variable occurrence is either
+free or bound
+
+      (\x -> ((f x) y))      (Lambda "x" (App (App (Varref "f") (Varref "x))
+                                              (Varref "y")))
+
+But the same name may occur both ways!
+
+      ((\x -> x) x)          (App (Lambda "x" (Varref "x")) (Varref "x"))
+
+
+And may not occur at all:
+
+      (\x -> 3)              (Lambda "x" (IntLit 3))
+
+------------------------------------------
+---------------------------------------------------------
+             SUBSTITUTION WITHOUT CAPTURE
+
+> substitute :: Expression -> Var
+>               -> Expression -> Expression
+> substitute new old e@(Varref y) =
+>       if y == old then new else e
+> substitute new old (App left right) =
+>       (App (substitute new old left)
+>            (substitute new old right))
+> substitute new old e@(Lambda y body) =
+>       if y `elem` (old:freeVariables new)
+>       then (substitute new old
+>              (Lambda z (substitute (Varref z) y body)))
+>       else (Lambda y (substitute new old body))
+>          where z = fresh (freeVariables new
+>                           `union` freeVariables body)
+> substitute _ _ e = e
+
+> fresh :: [Var] -> Var
+> fresh names = help 0
+>   where help n = if zn `notElem` names
+>                  then zn
+>                  else help (n+1)
+>            where zn = "z" ++ show n
+
+---------------------------------------------------------
+------------------------------------------
+        EXAMPLES OF SUBSTITUTION
+
+  [3/x]x == 3        substitute (IntLit 3) "x" (Varref "x")  ==  (IntLit 3)
+
+  [3/x](\x -> x)     substitute (IntLit 3) "x" (Lambda "x" (Varref "x"))
+     == (\z0 -> z0)       == (Lambda "z0" (Varref "z0"))
+
+  [lst/head]         substitute (Varref "lst") "head" 
+   (\head ->          (Lambda "head" 
+    (head x))            (App (Varref "head") (Varref "x")))
+   == (\z0 -> (z0 x))     == (Lambda "z0" (App (Varref "z0") (Varref "x")))
+
+------------------------------------------
+------------------------------------------
+         NORMAL ORDER EVALUATION
+           FOR LAMBDA CALCULUS
+
+  ((\ x -> e1) e2)
+=def=
+  [e2/x]e1
+
+examples:
+
+  ((\ z -> z * z + 1) 7)
+ ==
+
+
+  ((\ (x,y) -> x*y + 3) (5,6))
+ ==
+
+
+
+------------------------------------------
+  3. the point: static scoping
+ B. Functions first-class in Haskell
+  1. curried functions
+------------------------------------------
+          CURRIED FUNCTIONS
+
+> cadd = \x -> \y -> x + y
+
+> add2 = (cadd 2)
+
+Prelude> (add2 3)
+
+Prelude> (add2 7)
+
+------------------------------------------
+  2. closures in C
+        can you write a function in C which is a curried addition?
+------------------------------------------
+           CURRYING IN C++?
+
+ #include <iostream>
+ using namespace std;
+ typedef int (*func)(int);
+ 
+ int takes_y(int y) {
+   return(x + y);
+ }
+ 
+ func cadd(int x) {
+   return(&takes_y);
+ }
+ 
+ int main() {
+   cout << (cadd(2))(3) << endl;
+ }
+
+------------------------------------------
+        does this work?
+------------------------------------------
+        CORRECTED C++ PROGRAM
+
+ #include <iostream>
+ using namespace std;
+ typedef int (*func)(int, int);
+ 
+ class closure {
+ public:
+   closure(int x_val, func f_val)
+     : x(x_val), f(f_val)
+   {}
+ 
+   int call(int arg) {
+     return f(x, arg);
+   }
+ 
+ private:
+   const int x;
+   const func f;
+ };
+ 
+ int add(int x, int y) {
+   return x + y;
+ }
+ 
+ closure* cadd(int x) {
+   return new closure(x, add);
+ }
+ 
+ int main() {
+   cout << cadd(2)->call(3) << endl;
+ }
+
+------------------------------------------
+        What in C++ is like a closure?
+  3. gravitational force example
+------------------------------------------
+    PHYSICS FOR FUNCTIONAL PROGRAMMERS
+
+> grav_force_c :: Kg -> Meter -> Kg -> N
+> grav_force_c m1 r m2 =
+>         if r == 0.0
+>         then 0.0
+>         else (big_G * m1 * m2)
+>              / (square r)
+
+Type synonyms and other defs used above
+
+> type Kg = Float
+> type Meter = Float
+> type N = Float
+> type N_x_m2_per_kg2 = Float
+
+> big_G :: N_x_m2_per_kg2
+> big_G = 6.670e-11
+
+> square :: Float -> Float
+> square r = r * r
+
+------------------------------------------
+------------------------------------------
+  TYPES OF CURRIED FUNCTION APPLICATIONS
+
+
+      EXPRESSION               TYPE
+
+grav_force_c     :: Kg -> Meter -> Kg -> N
+
+         5.96E24 :: Kg
+
+grav_force_c 5.96E24 ::
+
+                     6.0E6 :: Meter
+
+grav_force_c 5.96E24 6.0E6 ::
+
+                           68.0 :: Kg
+
+grav_force_c 5.96E24 6.0E6 68.0 ::
+
+------------------------------------------
+  4. tool makers
+   a. folding
+------------------------------------------
+        ABSTRACTING A COMMON PATTERN
+
+> sum :: Num a => [a] -> a
+> sum [] = 0
+> sum (x:xs) = x + sum xs
+
+> product :: Num a => [a] -> a
+> product [] = 1
+> product (x:xs) = x * product xs
+
+
+
+
+
+
+
+
+
+------------------------------------------
+        What are the parts specific to computing the sum?  the product?
+------------------------------------------
+           USES OF FOLDR
+
+concat :: [[a]] -> [a]
+concat = foldr (++) []
+
+
+            FOR YOU TO DO
+
+Using foldr, write functions
+
+and, or        :: [Bool] -> Bool
+
+such that
+ and [] = True
+ and (b:bs) = b && and bs
+ or [] = False
+ or (b:bs) = b || or bs
+
+
+
+
+
+------------------------------------------
+   b. abstraction on a different data type
+------------------------------------------
+           FOR YOU TO DO
+
+> data Tree a = Lf
+>             | Br (a, Tree a, Tree a)
+>               deriving (Eq, Show)
+
+Generalize:
+
+> preorder :: Tree a -> [a]
+> preorder Lf = []
+> preorder (Br(v,t1,t2)) =
+>    [v] ++ preorder t1 ++ preorder t2
+
+> inc :: Num a => Tree a -> Tree a
+> inc Lf = Lf
+> inc (Br(v,t1,t2)) =
+>    Br(v + fromInteger 1, inc t1, inc t2)
+
+
+
+
+------------------------------------------
+   c. combinators
+------------------------------------------
+    COMBINATORS (WITH HISTORICAL NAMES)
+
+> b f g x = f(g x)
+> w f x = ((f x) x)
+
+> twice = (w b)
+> by2 x = 2 * x
+
+Example:
+   ((twice by2) 7)
+
+
+
+
+
+
+
+
+
+------------------------------------------
+------------------------------------------
+      ENOUGH FOR COMPUTING! (almost)
+
+> i x = x
+> k c x = c
+> s f g x = ((f x) (g x))
+
+
+
+        FOR YOU TO DO
+
+What is:
+
+        k 3 5
+
+        s k k 3
+
+------------------------------------------
+------------------------------------------
+        FIXPOINT COMBINATOR
+
+> fix :: ((a -> b) -> (a -> b))
+>        -> (a -> b)
+> fix f x = f (fix f) x
+
+> fact :: (Integer -> Integer)
+>         -> (Integer -> Integer)
+> fact f n =
+>   if n == 0 then 1 else n * f(n-1)
+> factorial = fix fact
+
+Prelude> factorial 3
+
+
+
+
+
+------------------------------------------
+ C. functions are the ultimate
+  1. can be used to implement "infinite" data strucutures
+  2. can be used to implement arbitrary control structures.
+X. quiz (just for fun, not graded)
+ A. Given the following definitions
+ B. Given the following.
+ C. Given the following.
+XI. Higher-Order Programming
+------------------------------------------
+  def: the *order* of a function f is 
+          1+(maximum order of f's arguments),
+       where the order of a non-function argument is 0.
+
+  def: A function is *higher-order* if its order is greater than 1.
+
+Examples:
+
+> map' :: (a -> b) -> [a] -> [b]
+> map' _ [] = []
+> map' f (x:xs) = f x : map' f xs
+
+> foldr' :: (a -> b -> b) -> b -> [a] -> b
+> foldr' op z [] = z
+> foldr' op z (x:xs) = x `op` (foldr' op z xs) 
+
+------------------------------------------
+ A. Basic Operations (3.6.1)
+   What are the 4 basic operations of higher-order programming?
+------------------------------------------
+   4 KINDS OF HIGHER-ORDER PROGRAMMING
+
+1. procedural abstraction: converting expressions to functions
+    (Liskov & Guttag's abstraction by parameterization)
+
+2. genericity: passing functions as arguments
+    (abstracting out expressions, not just data)
+
+3. instantiation: returning function values as results
+    (creation of new functions)
+
+4. embedding: putting functions in data structures
+
+------------------------------------------
+  1. procedural abstraction
+    How can you make an expression e into a function?
+    Suppose we want two variants of a function that are similar,
+       but differ a bit?
+  2. genericity
+   a. for tail recursion
+------------------------------------------
+     ABSTRACTION OF TAIL RECURSION
+
+Consider
+
+> sumFromTo i j = sumFromToIter (j,0)
+>    where sumFromToIter (j,r) =
+>            if i > j then r else sumFromToIter (j-1,r+j)
+
+> sqrt x = sqrtIter 1.0
+>    where sqrtIter guess =
+>            if goodEnough guess then guess
+>            else sqrtIter (improve guess)
+>          goodEnough guess = abs(guess*guess - x) < 0.0001
+>          improve guess = (guess+(x/guess))/2.0
+
+What do the ...Iter functions have in common?
+
+
+How do they differ?
+
+
+
+Can we make the differences arguments?
+
+
+
+
+
+
+
+
+
+
+
+    
+------------------------------------------
+  3. instantiation (currying)
+------------------------------------------
+ INSTANTIATION or RULES THAT PRODUCE RULES
+
+Aka:
+ factories, generators, curried functions
+
+Examples:
+
+> makeSort :: (a -> a -> Bool) -> [a] -> [a]
+> makeSort comp = (\ls -> qsort comp ls)
+> qsort _ [] = []
+> qsort comp (x:xs) = (qsort comp less) ++ [x] 
+>                     ++ (qsort comp greater)
+>      where less = [y | y <- xs, y `comp` x]
+>            greater = [y | y <- xs, not (y `comp` x)]
+
+Use of makeSort:
+
+> sortGT = makeSort ((>) :: Integer -> Integer -> Bool)
+
+  sortGT list1
+  sortGT list2
+  ...
+------------------------------------------
+------------------------------------------
+        AN EXAMPLE: COMPOSE
+
+Write the function compose such that:
+
+  ((compose head tail) [1,2,3])
+        == head (tail [1,2,3])
+	== head [2,3]
+	== 2
+
+   ((compose not null) [])
+	== not (null [])
+	== False
+
+How to write this:
+
+
+
+
+
+
+
+
+------------------------------------------
+------------------------------------------
+        SUMMARY OF STEPS FOR 
+   MAKING A HIGHER-ORDER FUNCTION
+
+ 1. Starting from examples, name the roles
+ 2. Generalize the result expression,
+    using role names, write it down
+ 3. Wrap lambda (\ -> ) declarations around it,
+    corresponding to the arguments
+
+------------------------------------------
+------------------------------------------
+	   FOR YOU TO DO
+
+Write a function twice
+
+  twice :: (a -> a) -> a -> a
+
+Examples:
+
+   (twice not) True
+	== not (not True)
+	== True
+   (twice (+1)) 3
+	== (+1) ((+1) 3)
+	== 5
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+  4. embedding
+------------------------------------------
+            EMBEDDING
+
+Putting closures in data is useful for:
+
+  - explicit lazy evaluation
+
+  - objects = records of operations
+
+  - classes, functions that return objects
+
+  - manipulating actions as data
+      (e.g., in testing)
+
+------------------------------------------
+------------------------------------------
+         EXAMPLE: INFINITE SEQUENCES
+
+Write the following functions to implement (Seq a)
+
+repeating :: (Num a) => a -> (Seq a)
+generate :: (Num a) => (Integer -> a) -> (Seq a)
+nth :: (Num a) => Integer -> (Seq a) -> a
+add :: (Num a) => (Seq a) -> (Seq a) -> (Seq a)
+
+For example:
+
+ones = (repeating 1)
+
+halves = generate (\n -> 1.0/(2.0^(fromInteger n)))
+
+(nth halves 0) ~=~ 1.0
+(nth halves 1) ~=~ 0.5
+(nth halves 2) ~=~ 0.25
+(nth halves 3) ~=~ 0.125
+(nth halves 30) ~=~ 9.313225746154785e-10
+
+------------------------------------------
+    How can we represent something infinite in a computer?
+XII. Name binding and scope (could be a homework instead)
+ A. syntactic sugars
+------------------------------------------
+       SYNTACTIC SUGAR
+
+def: a *syntactic sugar* is an abstraction
+     of a syntactic form
+
+Examples: for loops in C, C++
+
+
+
+Advantages:
+  - Sweeter language for programmers
+  - Semantics of complex sugars 
+      can be explained by translation
+  - Can simplify compilers + documentation
+  - Can let compiler generate better code
+  - good for capturing user patterns
+
+------------------------------------------
+        What other examples of syntactic sugars do you know?
+ B. pattern matching in function defs is sugar for case (Davie pp. 29 and 190)
+	How could one define the semantics of Haskell function defs
+		with complex features like guards and pattern matching?
+  1. function definition
+------------------------------------------
+	FUNCTION DEFINITION SUGARS
+
+Syntax to define functions more succinctly
+
+> fact 0         = 1
+> fact n | n > 0 = n * fact(n-1)
+
+> while test f x
+>           | b = while test f (f x)
+>           | otherwise = x
+>               where b = test x
+
+> quotient(i,j) = lastq
+>   where (lasti,lastq)  =
+>           (while notdone xform (i,0))
+>         notdone (i,q) = (i >= j)
+>         xform (i,q) = (i-j,q+1)
+
+Problem: what does this all mean?
+------------------------------------------
+	What features are being used?
+------------------------------------------
+     FUNCTION DEFINITIONS WITH
+       PATTERNS AND GUARDS
+
+Example:
+
+     fact 0         = 1
+     fact n | n > 0 = n * fact(n-1)
+==>
+
+
+  
+
+
+------------------------------------------
+------------------------------------------
+   PATTERN GUARDS SUGAR FOR IF (D 2.7.1)
+
+Guard desugaring:
+
+        <p> | <g>1 = <e>1
+            | <g>2 = <e>2
+	    ...
+            | <g>n = <e>n
+	    where { <decls> }
+
+  ==>
+
+    
+
+
+
+	    FOR YOU TO DO
+
+Desugar: 
+
+     while test f x
+           | b = while test f (f x)
+           | otherwise = x
+                where b = test x
+
+
+
+
+------------------------------------------
+------------------------------------------
+	SYNTACTIC SUGAR FOR IF
+
+	if <e>1 then <e>2 else <e>3
+   ==>
+	case <e>1 of
+		True -> <e>2
+		False -> <e>3
+
+
+------------------------------------------
+------------------------------------------
+   MULTIPLE BINDING IS SUGAR FOR CASE
+
+Function binding form:
+
+	<id> <p>11 ... <p>1n = <match>1
+	...
+	<id> <p>m1 ... <p>mn = <match>m
+==>
+
+
+
+
+
+
+
+		FOR YOU TO DO
+
+desugar the following
+
+> name 0 = "zero"
+> name 1 = "one"
+> name n = "many"
+
+------------------------------------------
+------------------------------------------
+   FUNCTION DEFINITION SUGAR FOR LAMBDA
+
+       <id> x1 ... xn = E
+==>
+
+
+
+
+Example:
+
+      compose (f,g) x = f (g x)
+
+==>
+
+
+------------------------------------------
+------------------------------------------
+     GETTING PATTERNS OUT OF LAMBDAS
+
+  ucompose (f,g) x = f (g x)
+
+==>
+  ucompose = \ (f,g) -> \ x -> f (g x)
+
+==>
+ 
+
+
+------------------------------------------
+ C. Naming and Scoping in the core of Haskell
+  1. Haskell's core
+------------------------------------------
+       THE CORE OF HASKELL
+
+Patterns in top-level declarations 
+boil down to single name declartions
+of the form
+ 
+   x = e
+
+Functions delcaration sugars boil down to
+declarations of the form
+
+   f = (\ x -> e)
+
+Pattern matching boils down to 
+case expressions of the form
+
+    case x of <p>1 -> <e>1
+              <p>2 -> <e>2
+
+Thus declaration of identifiers occurs in
+   - top-level declarations
+         x = <e>
+   - lambda expressions 
+         (\ x -> <e>)
+   - case expressions 
+          case v of <p>1 -> <e>1
+                    <p>2 -> <e>2
+
+------------------------------------------
+  2. simultaneous binding, lexical scope (Davie 2.4)
+------------------------------------------
+      SCOPE FOR DECLARATIONS AND  LET
+
+
+> x = u + v
+> y = u - v
+> (u,v) = (4,5)
+
+
+
+ let x1 = u1 + v
+     y1 = u1 - v
+     u1 = 4
+     v1 = 5
+ in [x1,y1,u1,v1]
+
+
+
+------------------------------------------
+	What will that expression's value be?
+------------------------------------------
+           DESUGARING OF LET
+      (dynamic behavior, not typing)
+
+> -- fix point operator, for use below
+> fix :: (a -> a) -> a
+> fix f = f (fix f)
+
+	let <p>1 = <e>1
+		...
+            <p>n = <e>n
+	in <e>0
+  ==>
+	let (~<p>1, ..., ~<p>n) =
+		(<e>1, ..., <e>n) in <e>0
+
+
+	let <p> = <e>1 in <e>0
+  ==>
+        let <p> = fix (\ ~<p> -> <e>1) in <e>0
+
+	let <p> = <e>1 in <e>0
+	   -- if no <var> in <p> occurs
+	   -- free in <e>1
+  ==>
+	
+
+------------------------------------------
+------------------------------------------
+            EXAMPLE
+
+ let x1 = u1 + v1
+     y1 = u1 - v1
+     u1 = 4
+     v1 = 5
+ in [x1,y1,u1,v1]
+
+==> 
+   let (~x1,~y1,~u1,~v1) = (u1+v1,u1-v1,4,5) 
+   in [x1,y1,u1,v1]
+
+==>
+   let (~x1,~y1,~u1,~v1) = fix (\ ~(~x1,~y1,~u1,~v1) -> (u1+v1,u1-v1,4,5)) 
+   in [x1,y1,u1,v1]
+------------------------------------------
+  3. Scoping as a basic concept
+------------------------------------------
+            DECLARATIONS
+
+def: In the core of Haskell
+an identifier <varid> is declared by:
+
+  1. a top-level definition of the form
+
+       <pat> = <exp>
+
+     e.g., x is declared in:
+
+            x = 3
+
+  2. the identifiers in the <pat>
+     of a case expressions
+
+       <pattern> -> <exp> 
+
+      e.g., x is declared in:
+
+          case z of
+            (x,_) -> x+2
+            _ -> undefined
+
+  3. the formal parameter of a lambda expression
+      of form 
+  
+        \ <varid> -> <exp>
+
+      e.g., x is declared in
+
+        \ x -> x+2
+
+
+In (2) and (3), the *region* where
+such a declaration of a <varid> may be referred 
+to by uses of that <varid> is the body <exp>
+------------------------------------------
+    What other declaration sites are there in the sugared part of Haskell?
+------------------------------------------
+          STATIC SCOPING
+
+def: In *static scoping*,
+     each identifier, x
+
+
+
+
+def: In *dynamic scoping*,
+     each identifier, x,
+
+
+
+
+Example:
+
+  let x = 1
+      f = (\ y -> x+y)
+  in let x = 2
+     in f 10
+
+------------------------------------------
+     What does the example give with each kind of scoping?
+------------------------------------------
+       PICTURE WITH DYNAMIC SCOPING
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------
+     In the example, does it matter if x=2 occurs after the
+     declaration of f?
+     What is the meaning of the function
+            let x = 4020
+            in (\ y -> x+y)
+        with dynamic scoping?
+     What kind of scoping is in C, C++, and Java?  The Unix shell?
+------------------------------------------
+    TYPE CHECKING AND DYNAMIC SCOPING
+
+Consider
+     let x = 4020
+         f = (\y -> x - y)
+     in let x = True
+        in f 5000
+
+What happens in dynamic scoping?
+
+
+
+
+
+
+
+
+       
+------------------------------------------
+    Can static type checking be done in a language with dynamic scoping?
+------------------------------------------
+       THE FUNARG PROBLEM
+
+Consider
+
+      let add = (\x -> (\y -> x + y))
+      in let add3 = add 3
+         in add3 2
+
+What happens in dynamic scoping?
+
+
+
+
+
+
+
+
+
+------------------------------------------
+     So why do we need closures in static scoping?
+------------------------------------------
+       USES FOR DYNAMIC SCOPING
+
+There are still uses for dynamic scoping:
+
+  1. In operating system shells (like Unix)
+
+       $ export PRINTER=lw1
+       $ print file1 file2
+       $ # ... some other stuff...
+       $ print file3
+
+     Avoids passing lots of configuration information
+
+  2. Exception handlers
+
+      try { o.m(); } catch (Exception e) { ...}
+
+      The handlers are found by a dynamic search up the stack
+       this is dynamic scoping!
+------------------------------------------
+------------------------------------------
+            MORAL
+
+Dynamic scoping is bad!
+   - unknown bindings for free varaibles
+        ==> can't do static type checking
+   - funarg problem
+        ==> can't use currying
+
+Dynamic scoping is easy to get by accident
+   - have to use closures to prevent it
+
+Although it has some uses
+   DON'T GET DYNAMIC SCOPING BY ACCIDENT!
+
+------------------------------------------
+    i. Free and bound identifier occurrences (review, so go fast)
+------------------------------------------
+       FREE AND BOUND IDENTIFIER USES
+
+
+
+def: an identifier x *occurs free*
+    in an expression <exp> iff
+
+
+
+
+def: an identifier x *occurs bound*
+     in an expresssion <exp> iff <exp> contains
+     a use of x that refers to
+     a declaration of x within <exp>.
+
+
+  (\ y -> x+y) z
+
+
+  (\ x -> (\ x -> z x)) f g
+
+
+------------------------------------------
+        in the first expression, what does x refer to?
+------------------------------------------
+            EXAMPLES
+
+ f, f1 occur free in:
+         f
+
+         (f f1)
+
+         (\ b -> f)
+
+         case f1 of
+             (_:bs) -> 1 + f bs
+             otherwise -> 0
+
+ b, b1 occur bound in:
+         (\b -> f b)
+
+         case z of
+            (b:b1) -> rev b1 ++ [b]
+            [] -> []
+
+ There can be a mix:
+
+                 (\ b -> b)  f
+                         ^   ^
+                   bound-/   \-free
+              occurrence       occurrence
+
+ The same identifier can occur both ways:
+
+            (\ n -> n) n
+                    ^  ^
+              bound-/  \-free
+         occurrence      occurrence
+
+ Identifiers that are free in a subexpression
+ may be bound in a larger expression
+
+   (\ f -> (\ b -> b f)) length)
+
+ Identifiers must be used to be bound
+
+   fst (x,y) = x
+
+   tail x:xs = xs
+
+------------------------------------------
+        So if x occurs free in an expression,
+                does that mean it doesn't occur bound?
+------------------------------------------
+                FOR YOU TO DO
+
+What are the (a) free, and
+             (b) bound identifiers in ...
+
+(\ x -> (\ y -> x))
+
+
+(g (tail x))
+
+
+(\ x -> (g (tail x)))
+
+
+(\ g -> (\ x -> (g (tail x))))
+
+
+
+------------------------------------------
+        Can an identifier that is free in an expression refer to a
+        particular defined value?
+  4. formalization of free and bound variable occurrences
+------------------------------------------
+         CORE HASKELL EXPRESSIONS
+
+data Expr
+  = Var	  Id           -- x
+  | Lit   Literal      -- 1, True, ...
+  | App   Expr Arg     -- f x
+  | Lam   Id Expr      -- \ x -> e
+  | Let   Bind Expr    -- let x = e1 in e
+  | Case  Expr [Alt]   -- case e of alts
+  | Typed Expr TypeExpr -- e :: t
+  deriving (Eq, Show)
+
+type Arg = Expr
+type Alt = (AltCon, [Id], Expr) -- C x -> e
+
+data AltCon = DataAlt DataCon   -- C
+  | LitAlt  Literal             -- 0, 1, ...
+  | DEFAULT                     -- _
+     deriving (Eq, Show)
+
+data Bind = NonRec Id Expr      -- x = e
+  | Rec [(Id, Expr)]            -- { x1=e1;x2=e2; ...}
+     deriving (Eq, Show)
+
+type Id = OccName
+type OccName = String -- in GHC this tracks a namespace also
+
+-- The following don't follow GHC, and are much simplified
+data Literal =
+   LitInteger Integer    -- 7
+ | LitInt Int            -- 0
+ | LitBool Bool          -- True and False
+ | LitChar Char          -- 'c'
+ | LitFloat Rational     -- 5%3
+ | LitDouble Rational    -- 314%100
+ | LitList [Literal]     -- [], [1,2,3]
+ | LitTuple [Literal]    -- (5,True)
+ deriving (Eq, Show)
+
+data TypeExpr =
+    TName Id               -- Stack or a
+  | TForall Id TypeExpr    -- forall a . te
+  | TApp TypeExpr TypeExpr -- Stack Int
+  | TInteger               -- Integer
+  | TInt                   -- Int
+  | TBool                  -- Bool
+  | TChar                  -- Char
+  | TFloat                 -- Float
+  | TDouble                -- Double
+  | TList TypeExpr         -- [Int]
+  | TTuple [TypeExpr]      -- (Int,Bool)
+  deriving (Eq, Show)
+
+data DataCon = ConName Id  -- C
+  deriving (Eq, Show)
+
+------------------------------------------
+------------------------------------------
+      FREE VARIABLE OCCURRENCES
+
+-- fv gives the free variable identifiers,
+-- including type identifiers
+fv :: Expr -> Set Id
+fv (Var x) = singleton x
+fv (Lit _) = empty
+fv (App f a) = (fv f) `union` (fv a)
+fv (Lam x e) = 
+
+fv (Let (NonRec x e1) e) =
+     (fv e1) `union` ((fv e) `minus` (singleton x))
+fv (Let (Rec defs) e) = 
+     (unionAll (map fv exps) `union` (fv e))
+                  `minus` (fromList ids)
+     where ids = map fst defs
+           exps = map snd defs
+fv (Case e alts) = 
+   (fv e) `union` (unionAll (map fvAlt alts))
+fv (Typed e te) = 
+   (fv e) `union` (fvTypeExpr te)
+
+fvAlt :: Alt -> Set Id
+fvAlt (ac, declids, e) = 
+
+
+
+fvAltCon :: AltCon -> Set Id
+fvAltCon (DataAlt (ConName c)) = singleton c
+fvAltCon _ = empty
+
+fvTypeExpr :: TypeExpr -> Set Id
+fvTypeExpr (TName t) = singleton t
+fvTypeExpr (TForall t te) = 
+    (fvTypeExpr te) `minus` (singleton t)
+fvTypeExpr (TApp te1 te2) = 
+    (fvTypeExpr te1) `union` (fvTypeExpr te2)
+fvTypeExpr (TList te) = (fvTypeExpr te)
+fvTypeExpr (TTuple tes) = 
+    unionAll (map fvTypeExpr tes)
+fvTypeExpr _ = empty     -- base types
+
+------------------------------------------
+------------------------------------------
+         BOUND VARIABLE OCCURRENCES
+
+-- bv gives the bound variable identifiers,
+-- including type identifiers
+bv :: Expr -> Set Id
+bv (Var x) = 
+bv (Lit _) = 
+bv (App f a) = 
+bv (Lam x e) = 
+bv (Let (NonRec x e1) e) =
+     
+
+bv (Let (Rec defs) e) = 
+
+
+
+bv (Case e alts) = 
+
+bv (Typed e te) = 
+
+
+bvAlt :: Alt -> Set Id
+bvAlt (ac, declids, e) = 
+
+
+
+bvAltCon :: AltCon -> Set Id
+bvAltCon (DataAlt (ConName c)) = 
+bvAltCon _ = 
+
+bvTypeExpr :: TypeExpr -> Set Id
+bvTypeExpr (TName t) = 
+bvTypeExpr (TForall t te) = 
+    
+bvTypeExpr (TApp te1 te2) = 
+    
+bvTypeExpr (TList te) = 
+bvTypeExpr (TTuple tes) = 
+
+bvTypeExpr _ =              -- base types
+
+------------------------------------------
+  How would you generalize these to more complex expressions?
+ D. modules
+   Why does a langauge need to allow users to control the global namespace?
+  1. exports
+------------------------------------------
+            MODULE EXPORTS
+
+modules define scopes
+
+exports lists:
+
+ module <modid> (<export>1, ..., <export>n) where
+   <body>
+
+<export> ::= <named-thing>
+           | module <modid>
+
+<named-thing> ::= <qvar> | <qtycon> | <qtycls>
+
+<qtycon> ::= <typeid>   -- only that name
+           | <typeid>(<c>1, ..., <c>n)
+               -- only the named constructors/fields
+           | <typeid>(..)
+               -- all constrs/fields
+
+<c> ::= <var> | <con>
+
+<qtycls>  -- similar to <qtycon> for classes
+------------------------------------------
+     Why list the constructors/fields exported and not export them all?
+------------------------------------------
+          EXAMPLE
+
+module Fraction (Fraction, mkFraction,
+                 num, denom, add, sub)
+where
+data Fraction = Integer :/ Integer
+
+mkFraction _ 0 = error "..."
+mkFraction n d = n :/ d
+
+num (n :/ d) = n
+
+denom (n :/ d) = d
+
+(n1 :/ d1) `add` (n2 :/ d2) =
+     mkFraction (n1 * d2 + n2 * d1)
+                (d1 * d2)
+
+(n1 :/ d1) `sub` (n2 :/ d2) =
+     mkFraction (n1 * d2 - n2 * d1)
+                (d1 * d2)
+
+instance Eq Fraction where
+  f1 == f2 = (num f1) * (denom f2) == (num f2) * (denom f1)
+
+instance Show Fraction where
+  show f = (show (num f)) ++ "/" ++ (show (denom f))
+
+instance Ord Fraction where
+  compare f1 f2 = compare (n*d) 0
+                  where n = num diff
+                        d = denom diff
+                        diff = f1 `sub` f2
+
+instance Num Fraction where
+  fromInteger n = (mkFraction n 1)
+  f1 + f2 = f1 `add` f2
+  f1 - f2 = f1 `sub` f2
+  f1 * f2 = (mkFraction ((num f1)*(num f2)) ((denom f1)*(denom f2)))
+  signum f = case compare f 0 of
+               GT -> (mkFraction 1 1)
+               EQ -> (mkFraction 0 1)
+               LT -> (mkFraction (-1) 1)
+  abs f = if f >= 0 then f else f * (mkFraction (-1) 1)
+
+------------------------------------------
+  2. imports
+    Why would a module want to import only part of another module?
+------------------------------------------
+             MODULE IMPORTS
+
+module <modid> <exports> where <body>
+
+<body> ::= <impdecls> <topdecls> 
+<impdecls> ::= <impdel>*
+<impdecl> ::= import <modid> <impspec>
+
+<impsepc> ::= ( <import>* )
+            | hiding ( <import>* )
+
+<import> ::= <named-thing>
+------------------------------------------
+------------------------------------------
+            EXAMPLES OF IMPORTS
+
+module MapWithFoldr where
+import Prelude hiding(map)
+
+map f = foldr (\x res -> f x :res) []
+------------------------------------------
+XIII. monads (Thompson 18)
+ A. introductory examples
+  1. the Maybe type
+---------------------------------------------------------
+       DEALING WITH MAYBE
+
+ data Maybe a =  Nothing | Just a
+                  deriving (Eq, Ord, Read, Show)
+
+Database example:
+
+ doQuery :: Query -> DB -> Maybe Record
+
+To do a sequence of queries:
+
+  r :: Maybe Record
+  r = case doQuery q1 db of
+       Nothing -> Nothing
+       Just r1 -> case doQuery (q2 r1) db of
+                    Nothing -> Nothing
+                    Just r2 -> case doQuery (q3 r2) db of
+                                 Nothing -> Nothing
+                                 Just r3 -> ...
+
+How to abstract from this pattern?
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------
+        how can we abstract from this pattern?
+  2. state
+------------------------------------------
+             STATE
+
+E.g., in database, in pure style:
+
+  addRec, delRec :: Record -> DB -> (Bool, DB)
+
+But programming is awkward:
+
+  newDB :: DB -> (Bool, DB)
+  newDB db = let (bool1,db1) = addRec rec1 db
+                 (bool2,db2) = addRec rec2 db1
+                 (bool3,db3) = delRec rec3 db2
+                 in (bool1 && bool2 && bool3, db3)
+
+so make a combinator:
+
+> thenST :: (s -> (a,s)) -> (a -> (s -> (b,s))) -> (s -> (b,s))
+> st `thenST` f = \s -> let (v,s') = st s
+>                       in f v s'
+
+> returnST :: a -> (s -> (a,s))
+> returnST a = \s -> (a,s)
+
+so can write:
+
+  newDB :: DB -> (Bool,DB)
+  newDB = addRec rec1 `thenST` \bool1 -> 
+          addRec rec2 `thenST` \bool2 ->
+          delRec rec3 `thenST` \bool3 ->
+          returnST (bool1 && bool2 && bool3)
+
+------------------------------------------
+     See how this is threading the state through the computation?
+  3. changes to interpreters
+------------------------------------------
+   A PROBLEM WITH FUNCTIONAL PROGRAMMING
+
+Initial interpreter:
+
+   eval :: Exp -> Env Val
+               -> Val
+
+   ... let v = (eval e env) ...
+
+To add a store, change the type:
+
+   eval :: Exp -> Env Val
+               -> Store -> (Val, Store)
+
+   ... let (v,s) = (eval e env store) ...
+------------------------------------------
+        Can we generalize this into a type class so we won't even have to
+                change the name of the combinators?
+  4. summary
+ B. definition and examples
+------------------------------------------
+                MONADS
+
+class Monad m where
+    return :: a -> m a
+    (>>=)  :: m a -> (a -> m b) -> m b
+    (>>)   :: m a -> m b -> m b
+    fail   :: String -> m a
+    p >> q  = p >>= \_ -> q
+    fail s  = error s
+
+instance Monad Maybe where
+    Just x  >>= k  =  k x
+    Nothing >>= k  =  Nothing
+    return         =  Just
+    fail s         = Nothing
+---------------------------------------------------------
+------------------------------------------
+        LISTS AS MONADS
+
+instance Monad [ ] where
+    []     >>= f  = []
+    (x:xs) >>= f  = f x ++ (xs >>= f)
+    return x      = [x]
+    fail s        = []
+
+------------------------------------------
+        What is >>= like that we have seen?
+        What is [] >>= (\x -> [x+1]) ?
+        What is return 2 >>= (\x -> [x+1]) ?
+        What is [2,3,4] >>= (\x -> [x+1]) ?
+        What is [3] >> [4,5] ?
+        What is [3,9] >> [4,5]?
+ C. specification (laws)
+------------------------------------------
+           MONAD LAWS
+
+For a monad m, 
+ \forall x::a, k,h::(a -> m b), o::m a
+
+  (return x) >>= k 
+            =  k x
+
+  (o >>= return)
+            = o
+
+  o >>= (\x -> (k x) >>= h)
+            = (o >>= \x -> (k x)) >>= h
+------------------------------------------
+        Do these work for Maybe?
+ D. sugars
+------------------------------------------
+               MONAD SUGARS
+
+<exp> ::= do <stmts> 
+<stmts> ::= <exp>
+            [ <stmts> ]
+          | <pat> <- <exp>
+            <stmts>
+          | let <decllist>
+            in <stmts>
+
+                SEMANTICS
+
+do e = e
+do {e; stmts}      = e >> do stmts
+do {p <- e; stmts} = e >>= \p -> do stmts
+do {let decllist in stmts}
+  = let decllist in do stmts
+------------------------------------------
+------------------------------------------
+       EXAMPLE OF MONADIC PROGRAMMING
+
+sequence    :: Monad m => [m a] -> m [a]
+sequence []     = return []
+sequence (c:cs) = do x  <- c
+		     xs <- sequence cs
+		     return (x:xs)
+
+  sequence [Just 3, Just 4]
+=   { by def. of sequence}
+  do x <- Just 3
+     xs <- sequence [Just 4]
+     return (x:xs)
+=   { by def. do, twice }
+  Just 3 >>= \x ->
+  sequence [Just 4] >>= \xs ->
+  return (x:xs)
+=   { by def. of >>= for Maybe monad }
+  ((\x -> ...) 3)
+=   { by beta rule }
+  sequence [Just 4] >>= \xs ->
+  return (3:xs)) 
+=   { by def. of sequence }
+  (do x <- Just 4
+      xs <- sequence []
+      return (x:xs))
+   >>= (\xs -> return (3:xs))
+=   { by def. of do, twice }
+  (Just 4 >>= \x ->
+   sequence [] >>= \xs ->
+   return (x:xs))
+   >>= (\xs -> return (3:xs))
+=   { by def. of >>= for Maybe monad }
+  (sequence [] >>= \xs ->
+   return (4:xs))
+   >>= (\xs -> return (3:xs))
+=   { by def. of sequence }
+  (return [] >>= \xs ->
+   return (4:xs))
+   >>= (\xs -> return (3:xs))
+=   { by equation return a >> k = k a }
+  (return (4:[]))
+   >>= (\xs -> return (3:xs))
+=   { by equation return a >> k = k a }
+  return (3:4:[]))
+=   { by def. of return for Maybe monad }
+  Just [3,4]
+------------------------------------------
+        What is sequence [Just 3, Nothing, Just 5]?
+ E. monadic Input/Output
+------------------------------------------
+          MONADIC INPUT/OUTPUT
+
+data IO a -- IO actions returning an a
+
+instance Monad IO where
+     (>>=)  = primbindIO
+     return = primretIO
+
+
+> putStrLn  :: String -> IO ()
+> putStrLn s = do putStr s
+>  		  putChar '\n'
+
+> getLine :: IO String
+> getLine =
+>    do c <- getChar
+>       if c=='\n' then return ""
+>		   else do cs <- getLine
+>			   return (c:cs)
+
+------------------------------------------
+------------------------------------------
+           HOW DOES I/O HAPPEN?
+
+Prelude> getLine >>= putStrLn     
+abc
+abc
+ :: IO ()
+Prelude> do {s <- getLine; putStrLn s}
+a line of input
+a line of input
+ :: IO ()
+
+------------------------------------------
+ F. The monad trap
+------------------------------------------
+            THE MONAD TRAP
+
+class Monad m where
+    return :: a -> m a
+    (>>=)  :: m a -> (a -> m b) -> m b
+    (>>)   :: m a -> m b -> m b
+    fail   :: String -> m a
+
+Do the operations of the class Monad 
+allow us to write a function of type
+
+     m a -> a   ?
+
+------------------------------------------
+        Can one write a function of type IO Int -> Int  ?
+ G. example

@@ -1,0 +1,1 @@
+Source: https://www-ps.informatik.uni-kiel.de/~sebf/haskellIn3hours.pdf

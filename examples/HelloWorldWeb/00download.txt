@@ -1,0 +1,1 @@
+Source: https://knative.dev/community/samples/serving/helloworld-haskell/

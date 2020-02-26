@@ -1,0 +1,1 @@
+Source: http://www.eecs.ucf.edu/~leavens/COP4020/meeting-outlines/haskell.txt
