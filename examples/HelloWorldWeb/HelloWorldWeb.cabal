@@ -5,7 +5,7 @@ version:             0.1.0.0
 synopsis:            Simple Hello web application
 -- description:
 -- bug-reports:
-license:             MIT License
+license:             MIT
 -- license-file:        LICENSE
 author:              Stéphane Micheloud
 maintainer:          stephane.micheloud@gmail.com

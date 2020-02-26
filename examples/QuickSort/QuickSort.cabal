@@ -5,16 +5,16 @@ version:             0.1.0.0
 synopsis:            Different implementations of the Quicksort algorihtm.
 -- description:
 -- bug-reports:
-license:             MIT License
+license:             MIT
 -- license-file:        LICENSE
 author:              Stéphane Micheloud
 maintainer:          stephane.micheloud@gmail.com
 -- copyright:
 category:            Numeric
 
-tested-with:         GHC == { 8.8.2 }
 build-type:          Simple
 -- extra-source-files:  CHANGELOG.md
+tested-with:         GHC == { 8.8.2 }
 
 executable QuickSort
   build-depends:       base >=4.13 && <4.14

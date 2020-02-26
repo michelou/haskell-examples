@@ -1,0 +1,8 @@
+*.exe
+*.hi
+*.ho
+
+*.log
+
+archives/
+*_LOCAL/
