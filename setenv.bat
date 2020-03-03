@@ -125,11 +125,19 @@ if not exist "%_GHC_HOME%\bin\ghc.exe" (
     set _EXITCODE=1
     goto :eof
 )
+set __HLINT_PATH=
+if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "__HLINT_PATH=;%_GHC_HOME%\hlint\bin"
+) else ( echo %_WARNING_LABEL% HLint tool not installed 1>&2
+)
+set __HPACK_PATH=
+if exist "%_GHC_HOME%\hpack\bin\hpack.exe" ( set "__HPACK_PATH=;%_GHC_HOME%\hpack\bin"
+) else ( echo %_WARNING_LABEL% HPack tool not installed 1>&2
+)
 set __STACK_PATH=
 if exist "%_GHC_HOME%\stack\stack.exe" ( set "__STACK_PATH=;%_GHC_HOME%\stack"
 ) else ( echo %_WARNING_LABEL% Stack tool not installed 1>&2
 )
-set "_GHC_PATH=;%_GHC_HOME%\bin%__STACK_PATH%"
+set "_GHC_PATH=;%_GHC_HOME%\bin%__HLINT_PATH%%__HPACK_PATH%%__STACK_PATH%"
 goto :eof
 
 rem output parameter(s): _GIT_HOME, _GIT_PATH
@@ -194,6 +202,16 @@ where /q haddock.exe
 if %ERRORLEVEL%==0 (
     for /f "tokens=1,2,3,*" %%i in ('haddock.exe --version ^| findstr version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% haddock %%~k"
     set __WHERE_ARGS=%__WHERE_ARGS% haddock.exe
+)
+where /q hlint.exe
+if %ERRORLEVEL%==0 (
+    for /f "tokens=1,2,*" %%i in ('hlint.exe --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hlint %%~j"
+    set __WHERE_ARGS=%__WHERE_ARGS% hlint.exe
+)
+where /q hpack.exe
+if %ERRORLEVEL%==0 (
+    for /f "tokens=1,2,*" %%i in ('hpack.exe --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% hpack.exe
 )
 where /q pandoc.exe
 if %ERRORLEVEL%==0 (

@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalSqueak][graalsqueak_examples], [Kotlin][kotlin_examples] and [LLVM][llvm_examples] are other topics we are currently investigating.
+[Dotty][dotty_examples], [GraalSqueak][graalsqueak_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples] and [Node.js][nodejs_examples] are other topics we are currently investigating.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -20,7 +20,10 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
+- [Git 2.25][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 2.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
+- [hpack 0.33][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
+- [Stack 2.1][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
@@ -28,16 +31,18 @@ Optionally one may also install the following software:
 For instance our development environment looks as follows (*February 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\ghc-8.8.2\        <i>( 2.4 GB)</i>
-C:\opt\ghc-8.8.2\stack\  <i>(64.3 GB)</i>
-C:\opt\hlint-2.2.11\     <i>(74.5 MB)</i>
+C:\opt\ghc-8.8.3\        <i>(  2.4 GB)</i>
+C:\opt\ghc-8.8.3\hlint\  <i>( 74.5 MB)</i>
+C:\opt\ghc-8.8.3\hpack\  <i>( 45.0 MB)</i>
+C:\opt\ghc-8.8.3\stack\  <i>( 64.3 GB)</i>
+C:\opt\Git-2.25.1\       <i>(269.1 MB)</i>
 </pre>
 
 <!--
 > **:mag_right:** GHC features two backends: the default native code generator (option `-fasm`) and the LLVM (version 7) code generator (option `-fllvm`). The C code generator is deprecated since GHC 7.0.
 -->
 
-> **:mag_right:** [Git for Windows][git_releases] provides a BASH emulation used to run [**`git`**][git_cli] from the command line (as well as over 250 Unix commands like [**`awk`**][man1_awk], [**`diff`**][man1_diff], [**`file`**][man1_file], [**`grep`**][man1_grep], [**`more`**][man1_more], [**`mv`**][man1_mv], [**`rmdir`**][man1_rmdir], [**`sed`**][man1_sed] and [**`wc`**][man1_wc]).
+> **:mag_right:** [Git for Windows][git_downloads] provides a BASH emulation used to run [**`git`**][git_cli] from the command line (as well as over 250 Unix commands like [**`awk`**][man1_awk], [**`diff`**][man1_diff], [**`file`**][man1_file], [**`grep`**][man1_grep], [**`more`**][man1_more], [**`mv`**][man1_mv], [**`rmdir`**][man1_rmdir], [**`sed`**][man1_sed] and [**`wc`**][man1_wc]).
 
 ## <span id="structure">Directory structure</span>
 
@@ -117,12 +122,12 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; setenv</b>
 Tool versions:
-   cabal 3.0.0.0, ghc version 8.8.2, stack 2.1.3,
-   haddock 2.23.0, pandoc 2.9.2,
+   cabal 3.0.0.0, ghc version 8.8.3, stack 2.1.3,
+   haddock 2.23.0, hlint v2.2.11, hpack 0.33.0,
    git 2.25.1.windows.1, diff 3.7
 
 <b>&gt; where stack</b>
-C:\opt\ghc-8.8.2\stack\stack.exe
+C:\opt\ghc-8.8.3\stack\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -130,15 +135,16 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; setenv -verbose</b>
 Tool versions:
-   cabal 3.0.0.0, ghc version 8.8.2, stack 2.1.3,
-   haddock 2.23.0, pandoc 2.9.2,
+   cabal 3.0.0.0, ghc version 8.8.3, stack 2.1.3,
+   haddock 2.23.0, hlint v2.2.11, hpack 0.33.0,
    git 2.25.1.windows.1, diff 3.7
 Tool paths:
-   C:\opt\ghc-8.8.2\bin\cabal.exe
-   C:\opt\ghc-8.8.2\bin\ghc.exe
-   C:\opt\ghc-8.8.2\stack\stack.exe
-   C:\opt\ghc-8.8.2\bin\haddock.exe
-   %APPDATA%\cabal\bin\pandoc.exe
+   C:\opt\ghc-8.8.3\bin\cabal.exe
+   C:\opt\ghc-8.8.3\bin\ghc.exe
+   C:\opt\ghc-8.8.3\stack\stack.exe
+   C:\opt\ghc-8.8.3\bin\haddock.exe
+   C:\opt\ghc-8.8.3\hlint\bin\hlint.exe
+   C:\opt\ghc-8.8.3\hpack\bin\hpack.exe
    C:\opt\Git-2.25.1\bin\git.exe
    C:\opt\Git-2.25.1\mingw64\bin\git.exe
    C:\opt\Git-2.25.1\usr\bin\diff.exe
@@ -146,10 +152,10 @@ Tool paths:
 
 ## <span id="footnotes">Footnotes</span>
 
-<a name="footnote_01">[1]</a> ***hlint installation*** [↩](#anchor_01)
+<a name="footnote_01">[1]</a> ***Hackage installation*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
-We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install package <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a>; see  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
+We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </p>
 
 
@@ -160,7 +166,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.0.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  6 MB)</i>
-<a href="">ghc-8.8.2-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
+<a href="">ghc-8.8.3-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.25.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.1.3-windows-x86_64.zip</a>                    <i>( 14 MB)</i>
 </pre>
 
@@ -177,16 +184,19 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_userguide]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
-[git_releases]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.25.0.txt
+[git_downloads]: https://git-scm.com/download/win
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.25.1.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
+[graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.2/
-[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.2/docs/html/users_guide/8.8.2-notes.html
+[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.3/
+[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.3/docs/html/users_guide/8.8.3-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-2.2.11/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
+[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
+[hpack_downloads]: https://hackage.haskell.org/package/hpack
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [man1_awk]: https://www.linux.org/docs/man1/awk.html
@@ -198,6 +208,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_rmdir]: https://www.linux.org/docs/man1/rmdir.html
 [man1_sed]: https://www.linux.org/docs/man1/sed.html
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
+[nodejs_examples]: https://github.com/michelou/nodejs-examples
+[stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
+[stack_downloads]: https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [unix_opt]: https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

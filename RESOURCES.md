@@ -10,10 +10,12 @@
 
 ## Articles
 
+- [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
 - [GHC Parser][ghc_parser]
 [Simple and robust layout rules for parsing programming language code][article_abela]
+- [Cleaning Up Our Projects with Hpack!][article_hpack], July 17, 2017.
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
-- [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015
+- [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
 
 ## Books
 
@@ -24,6 +26,7 @@
 
 ## Tutorials
 
+- [Haskell at Work][tuto_haskell_at_work], January 2019.
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
@@ -36,6 +39,8 @@
 <!-- link refs -->
 
 [article_abela]: http://www.cse.chalmers.se/~abela/master/layout-parsing.html
+[article_doig]: https://medium.com/@dogwith1eye/setting-up-haskell-in-vs-code-with-stack-and-the-ide-engine-81d49eda3ecf
+[article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
@@ -48,3 +53,4 @@
 [learn_you_haskell]: http://learnyouahaskell.com/chapters
 [parconc_book]: https://simonmar.github.io/pages/pcph.html
 [parconc_examples]: https://github.com/simonmar/parconc-examples
+[tuto_haskell_at_work]: https://haskell-at-work.com/
