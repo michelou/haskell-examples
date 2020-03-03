@@ -1,8 +1,8 @@
 *.exe
 *.hi
 *.ho
-
+*.lock
 *.log
+*.prof
 
-archives/
 *_LOCAL/

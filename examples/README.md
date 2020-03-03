@@ -8,19 +8,15 @@
   </tr>
 </table>
 
-We can build/run each example in directory [**`examples\`**](.) using [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli] or [**`stack`**][stack_userguide] as an alternative to the **`build`** batch command.
-
 In the following we explain in more detail the build tools available in the [**`Factorial\`**](Factorial/) example (and also in other examples from directory [**`examples\`**](./)):
 
-<pre style="font-size:80%;">
-<b>&gt; cd</b>
-H:\examples\Factorial
-</pre>
-
-## Factorial
+## <span id="factorial">Factorial</span>
 
 The directory structure of project `Factorial` looks as follows:
 <pre style="font-size:80%;">
+<b>&gt; cd</b>
+H:\examples\Factorial
+&nbsp;
 <b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
 |   .hlint.yaml
@@ -33,52 +29,84 @@ The directory structure of project `Factorial` looks as follows:
         Main.hs
 </pre>
 
+We can build/run each example in directory [**`examples\`**](.) using [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli] or [**`stack`**][stack_userguide] as an alternative to the **`build`** batch command.
+
+### <span id="factorial_cabal">***Cabal build/run***</span>
+
 Command `cabal run all` builds and execute the Haskell application:
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
-C:\opt\ghc-8.8.2\bin\cabal.exe
+C:\opt\ghc-8.8.3\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.8.2 -O1
+Build profile: -w ghc-8.8.3 -O1
 In order, the following will be built (use -v for more details):
  - Factorial-0.1.0.0 (exe:Factorial) (first run)
 Configuring executable 'Factorial' for Factorial-0.1.0.0..
 Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
 Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.2\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
-Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.2\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
+Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
 factorialProd(5)=120
 </pre>
+
+### <span id="factorial_stack">***Stack build/run***</span>
 
 Command `stack run` builds and executes the Haskell application:
 <pre style="font-size:80%;">
 $ where stack
-C:\opt\ghc-8.8.2\stack\stack.exe
+C:\opt\ghc-8.8.3\stack\stack.exe
 &nbsp;
-<b>&gt; stack run</b>
-Stack has not been tested with GHC versions above 8.6, and using 8.8.2, this may fail
-Stack has not been tested with Cabal versions above 2.4, but version 3.0.1.0 was found, this may fail
-Building all executables for `Factorial' once. After a successful build of all of them, only specified executables will be rebuilt.
-Factorial> configure (exe)
-Configuring Factorial-0.1.0.0...
-Factorial> build (exe)
-Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
-Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main
-Linking .stack-work\dist\29cc6475\build\Factorial\Factorial.exe ...
-Factorial> copy/register
-Installing executable Factorial in H:\examples\Factorial\.stack-work\install\95d34d36\bin
+<b>&gt; stack --silent run</b>
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-Command `build clean run` builds and executes the Haskell application:
+We use the following two commands to build a profile-version of the project and execute the profile-instrumented Haskell application:
+
+<pre style="font-size:80%;">
+<b>&gt; stack build --profile</b>
+&nbsp;
+<b>&gt; stack exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
+factorialRec(5) =120
+factorialRec2(5)=120
+factorialFold(5)=120
+factorialProd(5)=120
+</pre>
+
+Profiling results are stored in file `Factorial.prof`:
+
+<pre style="font-size:80%;">
+<b>&gt; more Factorial.prof</b>
+        Tue Mar 03 22:21 2020 Time and Allocation Profiling Report  (Final)
+&nbsp;
+           Factorial.exe +RTS -p -RTS
+
+        total time  =        0.00 secs   (0 ticks @ 1000 us, 1 processor)
+        total alloc =      56,488 bytes  (excludes profiling overheads)
+
+COST CENTRE MODULE           SRC                         %time %alloc
+&nbsp;
+main        Main             app\Main.hs:(33,1)-(39,13)    0.0   36.0
+CAF         GHC.IO.Handle.FD &lt;entire-module&gt;               0.0   61.5
+&nbsp;
+                                                                                        individual      inherited
+COST CENTRE      MODULE                   SRC                        no.     entries  %time %alloc   %time %alloc
+&nbsp;
+MAIN             MAIN                     &lt;built-in&gt;                 125          0    0.0    0.9     0.0  100.0
+ CAF             GHC.IO.Handle.Text       &lt;entire-module&gt;            176          0    0.0    0.1     0.0    0.1
+ [..]
+</pre>
+
+### <span id="factorial_batch">***Batch build/run***</span>
+
+Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
 <b>&gt; where build</b>
 H:\examples\Factorial\build.bat
@@ -90,7 +118,7 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-Command `build -debug clean run` also displays the internally executed commands:
+Command [`build -debug clean run`](Factorial/build.bat) also displays the internally executed commands:
 <pre style="font-size:80%;">
 <b>&gt; build -debug clean run</b>
 [build] _CLEAN=1 _COMPILE=1 _DOC=0 _RUN=1 _VERBOSE=0
@@ -135,8 +163,8 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [github_markdown]: https://github.github.com/gfm/
 [graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.2/
-[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.2/docs/html/users_guide/8.8.2-notes.html
+[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.3/
+[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.3/docs/html/users_guide/8.8.3-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-2.2.11/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [kotlin_examples]: https://github.com/michelou/kotlin-examples

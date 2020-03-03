@@ -236,6 +236,8 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     rem if %_DEBUG%==1 echo %_DEBUG_LABEL% where %__WHERE_ARGS%
     echo Tool paths: 1>&2
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
+    echo Environment variables: 1>&2
+    if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
 )
 goto :eof
 
@@ -245,6 +247,7 @@ rem ## Cleanups
 :end
 endlocal & (
     if not defined HASKELL_HOME set HASKELL_HOME=%_GHC_HOME%
+    for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
     set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%"
     call :print_env %_VERBOSE%
     if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
