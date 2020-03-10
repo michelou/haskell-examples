@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell Logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/">Haskell project</a>.
   </td>
   </tr>
@@ -134,8 +134,9 @@ factorialProd(5)=120
 [build] _EXITCODE=0
 </pre>
 
-## <span id="footnotes">Footnotes</span>
 <!--
+## <span id="footnotes">Footnotes</span>
+
 <a name="footnote_01">[1]</a> ***hlint installation*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
@@ -145,42 +146,20 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
 
 [apache_maven_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
-[article_abela]: http://www.cse.chalmers.se/~abela/master/layout-parsing.html
 [cabal]: https://www.haskell.org/cabal/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
-[git_cli]: https://git-scm.com/docs/git
-[git_releases]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.25.0.txt
-[github_markdown]: https://github.github.com/gfm/
 [graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.3/
-[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.3/docs/html/users_guide/8.8.3-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-2.2.11/changelog
-[hlint_downloads]: https://hackage.haskell.org/package/hlint
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
-[man1_awk]: https://www.linux.org/docs/man1/awk.html
-[man1_diff]: https://www.linux.org/docs/man1/diff.html
-[man1_file]: https://www.linux.org/docs/man1/file.html
-[man1_grep]: https://www.linux.org/docs/man1/grep.html
-[man1_more]: https://www.linux.org/docs/man1/more.html
-[man1_mv]: https://www.linux.org/docs/man1/mv.html
-[man1_rmdir]: https://www.linux.org/docs/man1/rmdir.html
-[man1_sed]: https://www.linux.org/docs/man1/sed.html
-[man1_wc]: https://www.linux.org/docs/man1/wc.html
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
-[unix_opt]: https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting
-[windows_limitation]: https://support.microsoft.com/en-gb/help/830473/command-prompt-cmd-exe-command-line-string-limitation
-[windows_subst]: https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/subst
-[zip_archive]: https://www.howtogeek.com/178146/htg-explains-everything-you-need-to-know-about-zipped-files/

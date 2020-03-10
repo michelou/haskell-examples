@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell Logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This repository gathers <a href="https://www.haskell.org/">Haskell</a> examples coming from various websites and books.<br/>
   It also includes several <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting">batch files</a> for experimenting with <a href="https://www.haskell.org/">Haskell</a> on the <b>Microsoft Windows</b> platform.
   </td>
@@ -28,13 +28,13 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*February 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*March 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.8.3\        <i>(  2.4 GB)</i>
 C:\opt\ghc-8.8.3\hlint\  <i>( 74.5 MB)</i>
 C:\opt\ghc-8.8.3\hpack\  <i>( 45.0 MB)</i>
-C:\opt\ghc-8.8.3\stack\  <i>( 64.3 GB)</i>
+C:\opt\ghc-8.8.3\stack\  <i>( 64.3 MB)</i>
 C:\opt\Git-2.25.1\       <i>(269.1 MB)</i>
 </pre>
 
@@ -73,7 +73,7 @@ We also define a virtual drive **`H:`** in our working environment in order to r
 > <b>&gt; subst H: %USERPROFILE%\workspace\haskell-examples</b>
 > </pre>
 
-In the next section we give a brief description of the batch files present in this project.
+In the next section we give a brief description of the [batch files][windows_batch_file] present in this project.
 
 ## <span id="commands">Batch commands</span>
 
@@ -168,12 +168,12 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.0.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  6 MB)</i>
 <a href="">ghc-8.8.3-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.25.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.1.3-windows-x86_64.zip</a>                    <i>( 14 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.1.3-windows-x86_64.zip</a>                    <i>( 14 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -210,7 +210,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
-[stack_downloads]: https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows
+[stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [unix_opt]: https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

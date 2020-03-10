@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell Logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/">Haskell</a> libraries and programs, on the Windows platform.
   </td>
   </tr>
@@ -30,9 +30,9 @@ Optionally one may also install the following software:
 For instance our development environment looks as follows (*February 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\ghc-8.8.3\        <i>( 2.4 GB)</i>
+C:\opt\ghc-8.8.3\        <i>(  2.4 GB)</i>
 C:\opt\ghc-8.8.3\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.8.3\hlint-2.2.11-xx\)</i>
-C:\opt\ghc-8.8.3\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.8.3\hlint-2.2.11-xx\)</i>
+C:\opt\ghc-8.8.3\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.8.3\hpack-0.33.0-xx\)</i>
 C:\opt\ghc-8.8.3\stack\  <i>( 64.3 MB)</i>
 C:\opt\Git-2.25.1\       <i>(269.1 MB)</i>
 </pre>
@@ -100,16 +100,16 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 <a name="footnote_02">[2]</a> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
 <p style="margin:0 0 1em 20px;">
-We resume here the difference between a <code>stack.yaml</code> file and a <code>.cabal</code> file as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a>. 
+Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows: 
 <ul>
-<li><a href="https://www.haskell.org/cabal/">Cabal</a> is a build system, which is used by Stack. Cabal defines the concept of a <i>package</i> (eg. name, version, 0 or more executables, etc.).</li>
-<li><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a> is a build tool that works on top of the Cabal build system, and defines a new concept called a <i>project</i> (eg. GHC options, etc.)</li>
+<li><a href="https://www.haskell.org/cabal/">Cabal</a> is a build system, which is used by <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>. Cabal defines the concept of a <i>package</i> (eg. name, version, 0 or more executables, etc.).</li>
+<li><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a> is a build tool that works <i>on top</i> of the <a href="https://www.haskell.org/cabal/">Cabal</a> build system, and defines a new concept called a <i>project</i> (eg. GHC options, etc.)</li>
 </ul>
 </p>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
