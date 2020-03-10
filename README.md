@@ -126,7 +126,8 @@ Tool versions:
    haddock 2.23.0, hlint v2.2.11, hpack 0.33.0,
    git 2.25.1.windows.1, diff 3.7
 
-<b>&gt; where stack</b>
+<b>&gt; where hlint stack</b>
+C:\opt\ghc-8.8.3\hlint\bin\hlint.exe
 C:\opt\ghc-8.8.3\stack\stack.exe
 </pre>
 
@@ -155,7 +156,7 @@ Tool paths:
 <a name="footnote_01">[1]</a> ***Hackage installation*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
-We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
+We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </p>
 
 
@@ -166,7 +167,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.0.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  6 MB)</i>
-<a href="">ghc-8.8.3-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
+<a href="https://downloads.haskell.org/~ghc/8.8.3/">ghc-8.8.3-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.25.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.1.3-windows-x86_64.zip</a>                    <i>( 14 MB)</i>
 </pre>
