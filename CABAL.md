@@ -14,12 +14,12 @@
 
 This project relies on the following external software for the **Microsoft Windows** plaform:
 
-- [Cabal 3][cabal_downloads] ([*changelog*][cabal_changelog])
+- [Cabal 3.2][cabal_downloads] ([*changelog*][cabal_changelog])
 - [Haskell 8][haskell_downloads] ([*release notes*][haskell_relnotes])
 
 Optionally one may also install the following software:
 
-- [Git 2.25][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 2.2][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.33][hpack_downloads] ([*changelog*][hpack_changelog])
 - [Stack 2.1][stack_downloads] ([*changelog*][stack_changelog])
@@ -27,25 +27,25 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*February 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
+For instance our development environment looks as follows (*April 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\ghc-8.8.3\        <i>(  2.4 GB)</i>
-C:\opt\ghc-8.8.3\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.8.3\hlint-2.2.11-xx\)</i>
-C:\opt\ghc-8.8.3\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.8.3\hpack-0.33.0-xx\)</i>
-C:\opt\ghc-8.8.3\stack\  <i>( 64.3 MB)</i>
-C:\opt\Git-2.25.1\       <i>(269.1 MB)</i>
+C:\opt\ghc-8.10.1\        <i>(  2.4 GB)</i>
+C:\opt\ghc-8.10.1\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hlint-2.2.11-xx\)</i>
+C:\opt\ghc-8.10.1\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.33.0-xx\)</i>
+C:\opt\ghc-8.10.1\stack\  <i>( 64.3 MB)</i>
+C:\opt\Git-2.26.0\        <i>(269.1 MB)</i>
 </pre>
 
-## <span id="cabal">Cabal installation</span>
+## <span id="cabal"><code>cabal</code> installation</span>
 
 For Windows users, a precompiled program
 is provided (`cabal.exe`). Download the [Zip archive][cabal_downloads] and put it somewhere on your `%PATH%`
-(in our case `C:\opt\ghc-8.8.3\bin\`).
+(in our case `C:\opt\ghc-8.10.1\bin\`).
 
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
-C:\opt\ghc-8.8.3\bin\cabal.exe
+C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal update</b>
 Config file path source is default config file.
@@ -55,12 +55,14 @@ Writing default configuration to
 Downloading the latest package list from hackage.haskell.org
 </pre>
 
-## <span id="hlint">hlint installation</span>
+## <span id="hlint"><code>hlint</code> installation</span>
+
+We install [`hlint`][hlint_downloads] manually on Windows.
 
 <pre style="font-size:80%;">
 <b>&gt; cabal install hlint</b>
 Resolving dependencies...
-Build profile: -w ghc-8.8.3 -O1
+Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - base-compat-0.11.1 (lib) (requires download & build)
 [...]
@@ -76,13 +78,13 @@ Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
 
-Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.8.3\hlint\`):
+Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hlint\`):
 
 <pre style="font-size:80%;">
 <b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.8.3\hlint-2.2.11-066eefed7da269917dff3557d14ff051b3b1d4d4\bin\hlint.exe
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-2.2.11-066eefed7da269917dff3557d14ff051b3b1d4d4\bin\hlint.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.8.3\hlint-2.2.11-066eefed7da269917dff3557d14ff051b3b1d4d4 c:\opt\ghc-8.8.3\hlint</b>
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-2.2.11-066eefed7da269917dff3557d14ff051b3b1d4d4 c:\opt\ghc-8.10.1\hlint</b>
 12 file(s) copied
 </pre>
 
@@ -94,8 +96,8 @@ Since the last installation step fails on Windows, we search for the path to the
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
-<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.0.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  6 MB)</i>
-<a href="">ghc-8.8.3-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
+<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
+<a href="">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(377 MB)</i>
 </pre>
 
 <a name="footnote_02">[2]</a> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
@@ -109,7 +111,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -121,13 +123,13 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.25.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.8.3/
-[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.8.3/docs/html/users_guide/8.8.3-notes.html
+[haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
+[haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-2.2.11/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog

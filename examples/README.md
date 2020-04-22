@@ -33,7 +33,7 @@ We can build/run each example in directory [**`examples\`**](.) using [**`cabal`
 
 ### <span id="factorial_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and execute the Haskell application:
+Command `cabal run all` builds and execute the [Haskell] application:
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
 C:\opt\ghc-8.8.3\bin\cabal.exe
@@ -56,10 +56,10 @@ factorialProd(5)=120
 
 ### <span id="factorial_stack">***Stack build/run***</span>
 
-Command `stack run` builds and executes the Haskell application:
+Command `stack run` builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
-$ where stack
-C:\opt\ghc-8.8.3\stack\stack.exe
+<b>&gt; where stack</b>
+C:\opt\ghc-8.10.1\stack\stack.exe
 &nbsp;
 <b>&gt; stack --silent run</b>
 factorialRec(5) =120
@@ -68,7 +68,7 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-We use the following two commands to build a profile-version of the project and execute the profile-instrumented Haskell application:
+We use the following two commands to build a profile-version of the project and execute the profile-instrumented [Haskell] application:
 
 <pre style="font-size:80%;">
 <b>&gt; stack build --profile</b>
@@ -118,6 +118,13 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
+> **:mag_right:** Command `build` accepts one or more subcommands while `cabal` and `stack` accept only one. Thus the following command lines produce the same result:
+> <pre style="font-size:80%;">
+> <b>&gt; build clean run</b>
+> <b>&gt; cabal clean && cabal run all</b>
+> <b>&gt; stack clean && stack run</b>
+> </pre>
+
 Command [`build -debug clean run`](Factorial/build.bat) also displays the internally executed commands:
 <pre style="font-size:80%;">
 <b>&gt; build -debug clean run</b>
@@ -146,7 +153,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

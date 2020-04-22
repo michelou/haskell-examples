@@ -20,6 +20,12 @@
 ## Books
 
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013<br/>(on GitHub: [parconc-examples][parconc_examples])
+
+## News
+
+- [Haskell Weekly][haskell_weekly]
+
+
 ## Projects
 
 - [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland].
@@ -33,7 +39,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -44,6 +50,7 @@
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
+[haskell_weekly]: https://haskellweekly.news/newsletter.html
 [kowainik_github]: https://kowainik.github.io/
 [kowainik_relude]: https://kowainik.github.io/projects/relude
 [kowainik_summoner]: https://kowainik.github.io/projects/summoner
