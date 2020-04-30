@@ -15,26 +15,26 @@
 This project relies on the following external software for the **Microsoft Windows** plaform:
 
 - [Cabal 3.2][cabal_downloads] ([*changelog*][cabal_changelog])
-- [Haskell 8][haskell_downloads] ([*release notes*][haskell_relnotes])
+- [Haskell 8.10][haskell_downloads] ([*release notes*][haskell_relnotes])
 
 Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 2.2][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.33][hpack_downloads] ([*changelog*][hpack_changelog])
-- [Stack 2.1][stack_downloads] ([*changelog*][stack_changelog])
+- [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*April 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
+For instance our development environment looks as follows (*May 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(  2.4 GB)</i>
 C:\opt\ghc-8.10.1\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hlint-2.2.11-xx\)</i>
 C:\opt\ghc-8.10.1\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.33.0-xx\)</i>
 C:\opt\ghc-8.10.1\stack\  <i>( 64.3 MB)</i>
-C:\opt\Git-2.26.0\        <i>(269.1 MB)</i>
+C:\opt\Git-2.26.2\        <i>(269.1 MB)</i>
 </pre>
 
 ## <span id="cabal"><code>cabal</code> installation</span>
@@ -64,7 +64,7 @@ We install [`hlint`][hlint_downloads] manually on Windows.
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
- - base-compat-0.11.1 (lib) (requires download & build)
+ - alex-3.2.5 (exe:alex) (requires download & build)
 [...]
 Starting     hlint-2.2.11 (lib)
 Building     hlint-2.2.11 (lib)
@@ -111,7 +111,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -123,7 +123,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples

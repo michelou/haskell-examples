@@ -8,7 +8,9 @@
   </tr>
 </table>
 
-In the following we explain in more detail the build tools available in the [**`Factorial\`**](Factorial/) example (and also in other examples from directory [**`examples\`**](./)):
+We can build/run each example in directory [**`examples\`**](.) using [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli] or [**`stack`**][stack_userguide] as an alternative to the **`build`** batch command.
+
+In the following we present the usage of the build tools available in the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort):
 
 ## <span id="factorial">Factorial</span>
 
@@ -21,33 +23,31 @@ H:\examples\Factorial
 |   .gitignore
 |   .hlint.yaml
 |   build.bat
-|   Factorial.cabal
+|   <a href="./Factorial/Factorial.cabal">Factorial.cabal</a>
 |   stack.yaml
 |   Setup.hs
 |
 \---app
-        Main.hs
+        <a href="./Factorial/app/Main.hs">Main.hs</a>
 </pre>
-
-We can build/run each example in directory [**`examples\`**](.) using [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli] or [**`stack`**][stack_userguide] as an alternative to the **`build`** batch command.
 
 ### <span id="factorial_cabal">***Cabal build/run***</span>
 
 Command `cabal run all` builds and execute the [Haskell] application:
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
-C:\opt\ghc-8.8.3\bin\cabal.exe
+C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.8.3 -O1
+Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - Factorial-0.1.0.0 (exe:Factorial) (first run)
 Configuring executable 'Factorial' for Factorial-0.1.0.0..
 Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
 Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
-Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.8.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
+Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -141,6 +141,71 @@ factorialProd(5)=120
 [build] _EXITCODE=0
 </pre>
 
+## <span id="quicksort">QuickSort</span>
+
+The directory structure of project `QuickSort` looks as follows:
+<pre style="font-size:80%;">
+<b>&gt; cd</b>
+H:\examples\QuickSort
+&nbsp;
+<b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
+|   .gitignore
+|   build.bat
+|   QuickSort.cabal
+|   Setup.hs
+|   stack.yaml
+|   stack.yaml.lock
+|
+\---app
+        <a href="./QuickSort/app/Main.hs">Main.hs</a>
+</pre>
+
+### <span id="quicksort_stack">***Stack build/run***</span>
+
+Command `cabal run all` builds and execute the [Haskell] application:
+<pre style="font-size:80%;">
+<b>&gt; where cabal</b>
+C:\opt\ghc-8.10.1\bin\cabal.exe
+&nbsp;
+<b>&gt; cabal run all</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.1 -O1
+In order, the following will be built (use -v for more details):
+ - QuickSort-0.1.0.0 (exe:QuickSort) (first run)
+Configuring executable 'QuickSort' for QuickSort-0.1.0.0..
+Preprocessing executable 'QuickSort' for QuickSort-0.1.0.0..
+Building executable 'QuickSort' for QuickSort-0.1.0.0..
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
+Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
+input list       : [8,4,0,3,1,23,11,18]
+sorted(filter)   : [0,1,3,4,8,11,18,23]
+sorted(list comp): [0,1,3,4,8,11,18,23]
+</pre>
+
+Command `stack run` builds and executes the [Haskell] application:
+<pre style="font-size:80%;">
+<b>&gt; where stack</b>
+C:\opt\ghc-8.10.1\stack\stack.exe
+&nbsp;
+<b>&gt; stack --silent run</b>
+input list       : [8,4,0,3,1,23,11,18]
+sorted(filter)   : [0,1,3,4,8,11,18,23]
+sorted(list comp): [0,1,3,4,8,11,18,23]
+</pre>
+
+### <span id="quicksort_batch">***Batch build/run***</span>
+
+Command [`build clean run`](QuickSort/build.bat) builds and executes the [Haskell] application:
+<pre style="font-size:80%;">
+<b>&gt; where build</b>
+H:\examples\QuickSort\build.bat
+&nbsp;
+<b>&gt; build clean run</b>
+input list       : [8,4,0,3,1,23,11,18]
+sorted(filter)   : [0,1,3,4,8,11,18,23]
+sorted(list comp): [0,1,3,4,8,11,18,23]
+</pre>
+
 <!--
 ## <span id="footnotes">Footnotes</span>
 
@@ -153,7 +218,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
