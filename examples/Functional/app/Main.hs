@@ -12,15 +12,16 @@ filter1 p (x:xs)
     | otherwise = filter1 p xs
 
 map1 :: (a -> b) -> [a] -> [b]
-map1 f [] = []
+map1 _ [] = []
 map1 f (x:xs) = f x : map1 f xs
 
+-- |Program entry point.
+main :: IO ()
 main = do
-    let xs = [1, 3, 5, 7, 9]
-    putStr "input list: "
-    print xs
-    putStr "map(*2)   : "
-    --print (map (\x -> 2 * x) xs)
-    print (map1 (*2) xs)
-    putStr "filter(<5): "
-    print (filter1 (<5) xs)
+    let xs = [1, 3, 5, 7, 9] :: [Int]
+    putStr ("             xs: " ++ (show xs) ++ "\n") ;
+    putStr ("map     (*2) xs: " ++ (show (map (\x -> 2 * x) xs)) ++ "\n") ;
+    putStr ("map1    (*2) xs: " ++ (show (map1 (*2) xs)) ++ "\n") ;
+    putStr ("filter  (<5) xs: " ++ (show (filter (<5) xs)) ++ "\n") ;
+    putStr ("filter1 (<5) xs: " ++ (show (filter1 (<5) xs)) ++ "\n") ;
+    return ()

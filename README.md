@@ -21,7 +21,7 @@ This project relies on the following external software for the **Microsoft Windo
 Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 2.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
+- [hlint 3.0][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.33][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
@@ -32,7 +32,7 @@ For instance our development environment looks as follows (*May 2020*) <sup id="
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(2.4 GB)</i>
-C:\opt\ghc-8.10.1\hlint\  <i>( 74 MB)</i>
+C:\opt\ghc-8.10.1\hlint\  <i>( 66 MB)</i>
 C:\opt\ghc-8.10.1\hpack\  <i>( 45 MB)</i>
 C:\opt\ghc-8.10.1\stack\  <i>( 64 MB)</i>
 C:\opt\Git-2.26.2\        <i>(271 MB)</i>
@@ -195,7 +195,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-2.2.11/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.0.4/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack

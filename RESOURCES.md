@@ -17,6 +17,9 @@
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
 
+## Blogs
+
+- [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 ## Books
 
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013<br/>(on GitHub: [parconc-examples][parconc_examples])
