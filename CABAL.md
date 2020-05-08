@@ -20,7 +20,7 @@ This project relies on the following external software for the **Microsoft Windo
 Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 3.0][hlint_downloads] ([*changelog*][hlint_changelog])
+- [hlint 3.1][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.33][hpack_downloads] ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
@@ -31,7 +31,7 @@ For instance our development environment looks as follows (*May 2020*) <sup id="
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(  2.4 GB)</i>
-C:\opt\ghc-8.10.1\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hlint-2.2.11-xx\)</i>
+C:\opt\ghc-8.10.1\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-xx\)</i>
 C:\opt\ghc-8.10.1\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.33.0-xx\)</i>
 C:\opt\ghc-8.10.1\stack\  <i>( 64.3 MB)</i>
 C:\opt\Git-2.26.2\        <i>(269.1 MB)</i>
@@ -66,14 +66,14 @@ Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - ghc-lib-parser-ex-8.10.0.5 (lib) (requires download & build)
 [...]
-Starting     hlint-3.0.4 (lib)
-Building     hlint-3.0.4 (lib)
-Installing   hlint-3.0.4 (lib)
-Completed    hlint-3.0.4 (lib)
-Starting     hlint-3.0.4 (exe:hlint)
-Building     hlint-3.0.4 (exe:hlint)
-Installing   hlint-3.0.4 (exe:hlint)
-Completed    hlint-3.0.4 (exe:hlint)
+Starting     hlint-3.1 (lib)
+Building     hlint-3.1 (lib)
+Installing   hlint-3.1 (lib)
+Completed    hlint-3.1 (lib)
+Starting     hlint-3.1 (exe:hlint)
+Building     hlint-3.1 (exe:hlint)
+Installing   hlint-3.1 (exe:hlint)
+Completed    hlint-3.1 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -83,7 +83,7 @@ cabal: Symlinking feature not available on Windows
 > <b>&gt; cabal list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.0.4
+>     Default available version: 3.1
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -94,9 +94,9 @@ Since the last installation step fails on Windows, we search for the path to the
 
 <pre style="font-size:80%;">
 <b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.0.4-5aa62de26b42339815c4800764ae004b020598e4\bin\hlint.exe
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-dd0b7763c65ca91df4e385c30acfa0fc395accdb\bin\hlint.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.0.4-5aa62de26b42339815c4800764ae004b020598e4 c:\opt\ghc-8.10.1\hlint</b>
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-dd0b7763c65ca91df4e385c30acfa0fc395accdb c:\opt\ghc-8.10.1\hlint</b>
 12 file(s) copied
 &nbsp;
 <b>&gt; where hlint</b>
@@ -112,7 +112,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz</a>          <i>(377 MB)</i>
+<a href="https://downloads.haskell.org/~ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz</a>          <i>(377 MB)</i>
+<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 <a name="footnote_02">[2]</a> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
@@ -145,7 +146,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.0.4/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack

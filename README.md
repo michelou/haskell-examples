@@ -123,7 +123,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; setenv</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v2.2.11, hpack 0.33.0,
+   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
    git 2.26.2.windows.1, diff 3.7
 
 <b>&gt; where hlint hpack stack</b>
@@ -138,7 +138,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; setenv -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v2.2.11, hpack 0.33.0,
+   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
    git 2.26.2.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.1\bin\cabal.exe
