@@ -246,7 +246,7 @@ goto :eof
 
 :end
 endlocal & (
-    if not defined HASKELL_HOME set HASKELL_HOME=%_GHC_HOME%
+    if not defined GHC_HOME set GHC_HOME=%_GHC_HOME%
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
     set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%"
     call :print_env %_VERBOSE%

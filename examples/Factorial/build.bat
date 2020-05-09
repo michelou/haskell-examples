@@ -176,10 +176,22 @@ set __SOURCE_FILES=
 for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %_HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory !_DOCS_DIR:%_ROOT_DIR%=! 1>&2
+set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
+if not exist "%__HTML_LIBS_DIR%" (
+    echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
+    set _EXITCODE=1
+	goto :eof
 )
-call %_HADDOCK_CMD% %_HADDOCK_OPTS% %__SOURCE_FILES%
+set __HADDOCK_OPTS=%_HADDOCK_OPTS%
+@rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
+for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) do (
+    for %%x in (%%f) do set __PARENT_DIR=%%~dpx
+    set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
+)
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
+) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory 1>&2 !_DOCS_DIR:%_ROOT_DIR%=! 1>&2
+)
+call %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof
