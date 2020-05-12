@@ -8,7 +8,7 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalSqueak][graalsqueak_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples] and [Node.js][nodejs_examples] are other topics we are currently investigating.
+[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently investigating.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -141,7 +141,6 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [git_downloads]: https://git-scm.com/download/win
 [git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
 [github_markdown]: https://github.github.com/gfm/
-[graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
@@ -155,6 +154,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows
+[trufflesqueak_examples]: https://github.com/michelou/trufflesqueak-examples
 [unix_opt]: http://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting
 [windows_limitation]: https://support.microsoft.com/en-gb/help/830473/command-prompt-cmd-exe-command-line-string-limitation

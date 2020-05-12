@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell Logo"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/">Haskell project</a>.
   </td>
   </tr>
@@ -160,7 +160,7 @@ H:\examples\QuickSort
         <a href="./QuickSort/app/Main.hs">Main.hs</a>
 </pre>
 
-### <span id="quicksort_stack">***Stack build/run***</span>
+### <span id="quicksort_cabal">***Cabal build/run***</span>
 
 Command `cabal run all` builds and execute the [Haskell] application:
 <pre style="font-size:80%;">
@@ -181,6 +181,8 @@ input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
 </pre>
+
+### <span id="quicksort_stack">***Stack build/run***</span>
 
 Command `stack run` builds and executes the [Haskell] application:
 <pre style="font-size:80%;">

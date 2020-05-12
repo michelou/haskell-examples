@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalSqueak][graalsqueak_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples] and [Node.js][nodejs_examples] are other topics we are currently investigating.
+[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently investigating.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -21,7 +21,7 @@ This project relies on the following external software for the **Microsoft Windo
 Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 3.0][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
+- [hlint 3.1][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.33][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
@@ -189,13 +189,12 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [git_downloads]: https://git-scm.com/download/win
 [git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
 [github_markdown]: https://github.github.com/gfm/
-[graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.0.4/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
@@ -214,6 +213,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/#v231
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
+[trufflesqueak_examples]: https://github.com/michelou/trufflesqueak-examples
 [unix_opt]: https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting
 [windows_limitation]: https://support.microsoft.com/en-gb/help/830473/command-prompt-cmd-exe-command-line-string-limitation

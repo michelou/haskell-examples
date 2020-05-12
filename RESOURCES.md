@@ -19,15 +19,18 @@
 
 ## Blogs
 
+- [Haskell for impatient Scala developer: Getting into speed](https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html), February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
+
 ## Books
 
-- [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013<br/>(on GitHub: [parconc-examples][parconc_examples])
+- [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br>(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)
+- [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/>(on GitHub: [parconc-examples][parconc_examples])
+- [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.
 
 ## News
 
 - [Haskell Weekly][haskell_weekly]
-
 
 ## Projects
 
@@ -52,6 +55,8 @@
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
+[book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
+[book_real_world]: http://book.realworldhaskell.org/
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [haskell_weekly]: https://haskellweekly.news/newsletter.html
 [kowainik_github]: https://kowainik.github.io/
