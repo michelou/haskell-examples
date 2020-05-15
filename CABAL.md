@@ -21,7 +21,7 @@ Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 3.1][hlint_downloads] ([*changelog*][hlint_changelog])
-- [hpack 0.33][hpack_downloads] ([*changelog*][hpack_changelog])
+- [hpack 0.34][hpack_downloads] ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
@@ -39,8 +39,7 @@ C:\opt\Git-2.26.2\        <i>(269.1 MB)</i>
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
-For Windows users, a precompiled program
-is provided (`cabal.exe`). Download the [Zip archive][cabal_downloads] and put it somewhere on your `%PATH%`
+Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the `cabal.exe` executable somewhere on the `%PATH%`
 (in our case `C:\opt\ghc-8.10.1\bin\`).
 
 <pre style="font-size:80%;">
@@ -57,7 +56,7 @@ Downloading the latest package list from hackage.haskell.org
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
-We install [`hlint`][hlint_downloads] manually on Windows.
+We install [`hlint`][hlint_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
 <b>&gt; cabal install hlint</b>
@@ -66,16 +65,29 @@ Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - ghc-lib-parser-ex-8.10.0.5 (lib) (requires download & build)
 [...]
-Starting     hlint-3.1 (lib)
-Building     hlint-3.1 (lib)
-Installing   hlint-3.1 (lib)
-Completed    hlint-3.1 (lib)
-Starting     hlint-3.1 (exe:hlint)
-Building     hlint-3.1 (exe:hlint)
-Installing   hlint-3.1 (exe:hlint)
-Completed    hlint-3.1 (exe:hlint)
+Starting     hlint-3.1.1 (lib)
+Building     hlint-3.1.1 (lib)
+Installing   hlint-3.1.1 (lib)
+Completed    hlint-3.1.1 (lib)
+Starting     hlint-3.1.1 (exe:hlint)
+Building     hlint-3.1.1 (exe:hlint)
+Installing   hlint-3.1.1 (exe:hlint)
+Completed    hlint-3.1.1 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
+</pre>
+
+Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hlint\`):
+
+<pre style="font-size:80%;">
+<b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.1-fa001d095e2bc126e6c21809163f733c6c90ab18\bin\hlint.exe
+&nbsp;
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.1-fa001d095e2bc126e6c21809163f733c6c90ab18 c:\opt\ghc-8.10.1\hlint</b>
+12 file(s) copied
+&nbsp;
+<b>&gt; where hlint</b>
+C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 </pre>
 
 > **:mag_right:** We can check the latest available version of package `hlint` with command `cabal list hlint`:
@@ -83,25 +95,60 @@ cabal: Symlinking feature not available on Windows
 > <b>&gt; cabal list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.1
+>     Default available version: 3.1.1
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
 > [..]
 > </pre>
 
-Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hlint\`):
+## <span id="hpack"><code>hpack</code> installation</span>
+
+Similarly we install [`hpack`][hpack_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
-<b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-dd0b7763c65ca91df4e385c30acfa0fc395accdb\bin\hlint.exe
-&nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-dd0b7763c65ca91df4e385c30acfa0fc395accdb c:\opt\ghc-8.10.1\hlint</b>
-12 file(s) copied
-&nbsp;
-<b>&gt; where hlint</b>
-C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
+<b>&gt; cabal install hlpack</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.1 -O1
+In order, the following will be built (use -v for more details):
+ - cabal-doctest-1.0.8 (lib) (requires build)
+[...]
+Starting     hpack-0.34.1 (lib)
+Building     hpack-0.34.1 (lib)
+Installing   hpack-0.34.1 (lib)
+Completed    hpack-0.34.1 (lib)
+Starting     hpack-0.34.1 (exe:hpack)
+Building     hpack-0.34.1 (exe:hpack)
+Installing   hpack-0.34.1 (exe:hpack)
+Completed    hpack-0.34.1 (exe:hpack)
+Symlinking 'hlint.exe'
+cabal: Symlinking feature not available on Windows
 </pre>
+
+Since the last installation step fails on Windows, we search for the path to the `hpack` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hpack\`):
+
+<pre style="font-size:80%;">
+<b>&gt; where /r  %APPDATA%\cabal hpack.exe</b>
+%APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.1-f68688feb83b5293acf1f7e59f01ab5e8e700938\bin\hpack.exe
+&nbsp;
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.1-f68688feb83b5293acf1f7e59f01ab5e8e700938 c:\opt\ghc-8.10.1\hpack</b>
+3 file(s) copied
+&nbsp;
+<b>&gt; where hpack</b>
+C:\opt\ghc-8.10.1\hlint\bin\hpack.exe
+</pre>
+
+> **:mag_right:** We can check the latest available version of package `hpack` with command `cabal list hpack`:
+> <pre style="font-size:80%;">
+> <b>&gt; cabal list hlpack</b>
+> * hpack
+>     Synopsis: A modern format for Haskell packages
+>     Default available version: 0.34.1
+>     Installed versions: [ Not installed ]
+>     Homepage: https://github.com/sol/hpack#readme
+>     License:  MIT
+> [..]
+> </pre>
 
 ## <span id="footnotes">Footnotes</span>
 
@@ -145,9 +192,9 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.1/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
+[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples

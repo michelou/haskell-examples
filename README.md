@@ -22,7 +22,7 @@ Optionally one may also install the following software:
 
 - [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 3.1][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
-- [hpack 0.33][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
+- [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
@@ -123,7 +123,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; setenv</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
+   haddock 2.24.0, hlint v3.1.1, hpack 0.34.1,
    git 2.26.2.windows.1, diff 3.7
 
 <b>&gt; where hlint hpack stack</b>
@@ -138,7 +138,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; setenv -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
+   haddock 2.24.0, hlint v3.1.1, hpack 0.34.1,
    git 2.26.2.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.1\bin\cabal.exe
@@ -170,7 +170,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(377 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.26.2-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                  <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
@@ -194,9 +194,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.1/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
+[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
