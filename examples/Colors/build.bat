@@ -3,8 +3,8 @@ setlocal enabledelayedexpansion
 
 set _DEBUG=0
 
-rem ##########################################################################
-rem ## Environment setup
+@rem #########################################################################
+@rem ## Environment setup
 
 set _BASENAME=%~n0
 
@@ -18,8 +18,8 @@ if not %_EXITCODE%==0 goto end
 call :args %*
 if not %_EXITCODE%==0 goto end
 
-rem ##########################################################################
-rem ## Main
+@rem #########################################################################
+@rem ## Main
 
 if %_HELP%==1 (
     call :help
@@ -43,14 +43,14 @@ if %_RUN%==1 (
 )
 goto end
 
-rem ##########################################################################
-rem ## Subroutine
+@rem #########################################################################
+@rem ## Subroutine
 
-rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
-rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
+@rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
+@rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
 :env
-rem ANSI colors in standard Windows 10 shell
-rem see https://gist.github.com/mlocati/#file-win10colors-cmd
+@rem ANSI colors in standard Windows 10 shell
+@rem see https://gist.github.com/mlocati/#file-win10colors-cmd
 set _DEBUG_LABEL=[46m[%_BASENAME%][0m
 set _ERROR_LABEL=[91mError[0m:
 set _WARNING_LABEL=[93mWarning[0m:
@@ -64,15 +64,15 @@ set _MAIN_NAME=Main
 set "_EXE_FILE=%_TARGET_DIR%\%_MAIN_NAME%.exe"
 
 set _GHC_CMD=ghc.exe
-rem option "-hidir <dir>" redirects all generated interface files into <dir>
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=-Wall -Werror -o "%_EXE_FILE%" -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
 set _HADDOCK_OPTS=--odir="%_DOCS_DIR%" --html --title=%_MAIN_NAME% --package-name=Main
 goto :eof
 
-rem input parameter: %*
-rem output parameter(s): _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
+@rem input parameter: %*
+@rem output parameter(s): _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
 :args
 set _CLEAN=0
 set _COMPILE=0
@@ -90,7 +90,7 @@ if not defined __ARG (
     goto args_done
 )
 if "%__ARG:~0,1%"=="-" (
-    rem option
+    @rem option
     if /i "%__ARG%"=="-debug" ( set _DEBUG=1
     ) else if /i "%__ARG%"=="-help" ( set _HELP=1
     ) else if /i "%__ARG%"=="-timer" ( set _TIMER=1
@@ -101,8 +101,7 @@ if "%__ARG:~0,1%"=="-" (
         goto args_done
    )
 ) else (
-    rem subcommand
-    set /a __N+=1
+    @rem subcommand
     if /i "%__ARG%"=="clean" ( set _CLEAN=1
     ) else if /i "%__ARG%"=="compile" ( set _COMPILE=1
     ) else if /i "%__ARG%"=="doc" ( set _DOC=1
@@ -113,6 +112,7 @@ if "%__ARG:~0,1%"=="-" (
         set _EXITCODE=1
         goto args_done
     )
+    set /a __N+=1
 )
 shift
 goto :args_loop
@@ -201,7 +201,7 @@ if not %ERRORLEVEL%==0 (
 )
 goto :eof
 
-rem output parameter: _DURATION
+@rem output parameter: _DURATION
 :duration
 set __START=%~1
 set __END=%~2
@@ -209,8 +209,8 @@ set __END=%~2
 for /f "delims=" %%i in ('powershell -c "$interval = New-TimeSpan -Start '%__START%' -End '%__END%'; Write-Host $interval"') do set _DURATION=%%i
 goto :eof
 
-rem ##########################################################################
-rem ## Cleanups
+@rem #########################################################################
+@rem ## Cleanups
 
 :end
 if %_TIMER%==1 (

@@ -47,8 +47,6 @@ goto end
 set _DEBUG_LABEL=[46m[%_BASENAME%][0m
 set _ERROR_LABEL=[91mError[0m:
 set _WARNING_LABEL=[93mWarning[0m:
-
-@rem for %%f in ("%ProgramFiles%") do set _PROGRAM_FILES=%%~sf
 goto :eof
 
 @rem input parameter: %*
@@ -110,7 +108,7 @@ if defined __GHC_CMD (
     @rem keep _GHC_PATH undefined since executable already in path
     goto :eof
 ) else if defined HASKELL_HOME (
-    set _GHC_HOME=%HASKELL_HOME%
+    set "_GHC_HOME=%HASKELL_HOME%"
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable HASKELL_HOME 1>&2
 ) else (
     set __PATH=C:\opt
@@ -170,10 +168,6 @@ if not exist "%_GIT_HOME%\bin\git.exe" (
     set _EXITCODE=1
     goto :eof
 )
-@rem path name of installation directory may contain spaces
-for /f "delims=" %%f in ("%_GIT_HOME%") do set _GIT_HOME=%%~sf
-if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Git installation directory %_GIT_HOME% 1>&2
-
 set "_GIT_PATH=;%_GIT_HOME%\bin;%_GIT_HOME%\mingw64\bin;%_GIT_HOME%\usr\bin"
 goto :eof
 

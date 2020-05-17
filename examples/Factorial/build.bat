@@ -3,8 +3,8 @@ setlocal enabledelayedexpansion
 
 set _DEBUG=0
 
-rem ##########################################################################
-rem ## Environment setup
+@rem #########################################################################
+@rem ## Environment setup
 
 set _BASENAME=%~n0
 
@@ -18,8 +18,8 @@ if not %_EXITCODE%==0 goto end
 call :args %*
 if not %_EXITCODE%==0 goto end
 
-rem ##########################################################################
-rem ## Main
+@rem #########################################################################
+@rem ## Main
 
 if %_HELP%==1 (
     call :help
@@ -43,14 +43,14 @@ if %_RUN%==1 (
 )
 goto end
 
-rem ##########################################################################
-rem ## Subroutine
+@rem #########################################################################
+@rem ## Subroutine
 
-rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
-rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
+@rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
+@rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
 :env
-rem ANSI colors in standard Windows 10 shell
-rem see https://gist.github.com/mlocati/#file-win10colors-cmd
+@rem ANSI colors in standard Windows 10 shell
+@rem see https://gist.github.com/mlocati/#file-win10colors-cmd
 set _DEBUG_LABEL=[46m[%_BASENAME%][0m
 set _ERROR_LABEL=[91mError[0m:
 set _WARNING_LABEL=[93mWarning[0m:
@@ -162,7 +162,7 @@ for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_GHC_CMD% %_GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile Haskell source files 1>&2
 )
-call %_GHC_CMD% %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
+call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof
@@ -191,7 +191,7 @@ for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) d
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory 1>&2 !_DOCS_DIR:%_ROOT_DIR%=! 1>&2
 )
-call %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES%
+call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof

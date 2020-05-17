@@ -8,9 +8,9 @@
   </tr>
 </table>
 
-We can build/run each example in directory [**`examples\`**](.) using [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli] or [**`stack`**][stack_userguide] as an alternative to the **`build`** batch command.
+We can build/run examples from directory [**`examples\`**](.) using either [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli], [**`stack`**][stack_userguide] or the **`build`** batch command.
 
-In the following we present the usage of the build tools available in the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort):
+In the following we look at the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort):
 
 ## <span id="factorial">Factorial</span>
 
@@ -22,9 +22,9 @@ H:\examples\Factorial
 <b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
 |   .hlint.yaml
-|   build.bat
+|   <a href="./Factorial/build.bat">build.bat</a>
 |   <a href="./Factorial/Factorial.cabal">Factorial.cabal</a>
-|   stack.yaml
+|   <a href="./Factorial/stack.yaml">stack.yaml</a>
 |   Setup.hs
 |
 \---app
@@ -33,7 +33,7 @@ H:\examples\Factorial
 
 ### <span id="factorial_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and execute the [Haskell] application:
+Command `cabal run all` builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
@@ -54,9 +54,23 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
+### <span id="factorial_maven">***Maven build/run***</span>
+
+Command `mvn -q compile run` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+
+<pre style="font-size:80%;">
+<b>&gt; mvn -q clean compile exec:exec</b>
+[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
+Linking target/Main.exe ...
+factorialRec(5) =120
+factorialRec2(5)=120
+factorialFold(5)=120
+factorialProd(5)=120
+</pre>
+
 ### <span id="factorial_stack">***Stack build/run***</span>
 
-Command `stack run` builds and executes the [Haskell] application:
+Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; where stack</b>
 C:\opt\ghc-8.10.1\stack\stack.exe
@@ -68,41 +82,38 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-We use the following two commands to build a profile-version of the project and execute the profile-instrumented [Haskell] application:
-
-<pre style="font-size:80%;">
-<b>&gt; stack build --profile</b>
-&nbsp;
-<b>&gt; stack exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
-factorialRec(5) =120
-factorialRec2(5)=120
-factorialFold(5)=120
-factorialProd(5)=120
-</pre>
-
-Profiling results are stored in file `Factorial.prof`:
-
-<pre style="font-size:80%;">
-<b>&gt; more Factorial.prof</b>
-        Tue Mar 03 22:21 2020 Time and Allocation Profiling Report  (Final)
-&nbsp;
-           Factorial.exe +RTS -p -RTS
-
-        total time  =        0.00 secs   (0 ticks @ 1000 us, 1 processor)
-        total alloc =      56,488 bytes  (excludes profiling overheads)
-
-COST CENTRE MODULE           SRC                         %time %alloc
-&nbsp;
-main        Main             app\Main.hs:(33,1)-(39,13)    0.0   36.0
-CAF         GHC.IO.Handle.FD &lt;entire-module&gt;               0.0   61.5
-&nbsp;
-                                                                                        individual      inherited
-COST CENTRE      MODULE                   SRC                        no.     entries  %time %alloc   %time %alloc
-&nbsp;
-MAIN             MAIN                     &lt;built-in&gt;                 125          0    0.0    0.9     0.0  100.0
- CAF             GHC.IO.Handle.Text       &lt;entire-module&gt;            176          0    0.0    0.1     0.0    0.1
- [..]
-</pre>
+> **:mag_right:** We can build a profile-version of the project and execute the profile-instrumented [Haskell] application as follows:
+> <pre style="font-size:80%;">
+> <b>&gt; stack build --profile</b>
+> &nbsp;
+> <b>&gt; stack exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
+> factorialRec(5) =120
+> factorialRec2(5)=120
+> factorialFold(5)=120
+> factorialProd(5)=120
+> </pre>
+> Profiling results are stored in file `Factorial.prof`:
+> <pre style="font-size:80%;">
+> <b>&gt; more Factorial.prof</b>
+>         Tue Mar 03 22:21 2020 Time and Allocation Profiling Report  (Final)
+> &nbsp;
+>            Factorial.exe +RTS -p -RTS
+> &nbsp;
+>         total time  =        0.00 secs   (0 ticks @ 1000 us, 1 processor)
+>         total alloc =      56,488 bytes  (excludes profiling overheads)
+> &nbsp;
+> COST CENTRE MODULE           SRC                         %time %alloc
+> &nbsp;
+> main        Main             app\Main.hs:(33,1)-(39,13)    0.0   36.0
+> CAF         GHC.IO.Handle.FD &lt;entire-module&gt;               0.0   61.5
+> &nbsp;
+>                                                                                       individual      inherited
+> COST CENTRE      MODULE                   SRC                        no.     entries  %time %alloc   %time %alloc
+> &nbsp;
+> MAIN             MAIN                     &lt;built-in&gt;                 125          0    0.0    0.9     0.0  100.0
+>  CAF             GHC.IO.Handle.Text       &lt;entire-module&gt;            176          0    0.0    0.1     0.0    0.1
+> [..]
+> </pre>
 
 ### <span id="factorial_batch">***Batch build/run***</span>
 
@@ -150,11 +161,10 @@ H:\examples\QuickSort
 &nbsp;
 <b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
-|   build.bat
-|   QuickSort.cabal
+|   <a href="./QuickSort/build.bat">build.bat</a>
+|   <a href="./QuickSort/QuickSort.cabal">QuickSort.cabal</a>
 |   Setup.hs
-|   stack.yaml
-|   stack.yaml.lock
+|   <a href="./QuickSort/stack.yaml">stack.yaml</a>
 |
 \---app
         <a href="./QuickSort/app/Main.hs">Main.hs</a>
