@@ -107,7 +107,7 @@ C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 Similarly we install [`hpack`][hpack_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
-<b>&gt; cabal install hlpack</b>
+<b>&gt; cabal install hpack</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
@@ -121,7 +121,7 @@ Starting     hpack-0.34.1 (exe:hpack)
 Building     hpack-0.34.1 (exe:hpack)
 Installing   hpack-0.34.1 (exe:hpack)
 Completed    hpack-0.34.1 (exe:hpack)
-Symlinking 'hlint.exe'
+Symlinking 'hpack.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
 
@@ -140,7 +140,7 @@ C:\opt\ghc-8.10.1\hlint\bin\hpack.exe
 
 > **:mag_right:** We can check the latest available version of package `hpack` with command `cabal list hpack`:
 > <pre style="font-size:80%;">
-> <b>&gt; cabal list hlpack</b>
+> <b>&gt; cabal list hpack</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
 >     Default available version: 0.34.1

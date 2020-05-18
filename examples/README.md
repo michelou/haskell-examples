@@ -10,7 +10,7 @@
 
 We can build/run examples from directory [**`examples\`**](.) using either [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli], [**`stack`**][stack_userguide] or the **`build`** batch command.
 
-In the following we look at the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort):
+In the following we look at the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
 
 ## <span id="factorial">Factorial</span>
 
@@ -21,10 +21,10 @@ H:\examples\Factorial
 &nbsp;
 <b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
-|   .hlint.yaml
-|   <a href="./Factorial/build.bat">build.bat</a>
-|   <a href="./Factorial/Factorial.cabal">Factorial.cabal</a>
-|   <a href="./Factorial/stack.yaml">stack.yaml</a>
+|   <a href="Factorial/.hlint.yaml">.hlint.yaml</a>
+|   <a href="Factorial/build.bat">build.bat</a>
+|   <a href="Factorial/Factorial.cabal">Factorial.cabal</a>
+|   <a href="Factorial/stack.yaml">stack.yaml</a>
 |   Setup.hs
 |
 \---app
@@ -129,9 +129,10 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-> **:mag_right:** Command `build` accepts one or more subcommands while `cabal` and `stack` accept only one. Thus the following command lines produce the same result:
+> **:mag_right:** Commands `build` and `mvn` accept one or more subcommands while `cabal` and `stack` accept only one. For instance the following command lines produce the same result:
 > <pre style="font-size:80%;">
 > <b>&gt; build clean run</b>
+> <b>&gt; mvn clean compile exec:exec</b>
 > <b>&gt; cabal clean && cabal run all</b>
 > <b>&gt; stack clean && stack run</b>
 > </pre>
@@ -172,7 +173,8 @@ H:\examples\QuickSort
 
 ### <span id="quicksort_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and execute the [Haskell] application:
+Command `cabal run all` builds and execute the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
+
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
@@ -194,7 +196,8 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 ### <span id="quicksort_stack">***Stack build/run***</span>
 
-Command `stack run` builds and executes the [Haskell] application:
+Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
+
 <pre style="font-size:80%;">
 <b>&gt; where stack</b>
 C:\opt\ghc-8.10.1\stack\stack.exe
