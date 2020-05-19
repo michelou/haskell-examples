@@ -51,7 +51,9 @@ This project is organized as follows:
 <pre style="font-size:80%;">
 docs\
 examples\{HelloWorld, ..}
+<a href="CABAL.md">CABAL.md</a>
 README.md
+<a href="RESOURCES.md">RESOURCES.md</a>
 setenv.bat
 </pre>
 
@@ -59,7 +61,9 @@ where
 
 - directory [**`docs\`**](docs/) contains [Haskell] related papers/articles.
 - directory [**`examples\`**](examples/) contains [Haskell] examples grabbed from various websites (see file [**`examples\README.md`**](examples/README.md)).
+- file [**`CABAL.md`**](CABAL.md) gathers usage information about the Cabal tool.
 - file [**`README.md`**](README.md) is the [Markdown][github_markdown] document for this page.
+- file [**`RESOURCES.md`**](RESOURCES.md) gathers Haskell related informations.
 - file [**`setenv.bat`**](setenv.bat) is the batch command for setting up our environment.
 
 <!--
@@ -159,7 +163,6 @@ Tool paths:
 <p style="margin:0 0 1em 20px;">
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </p>
-
 
 <a name="footnote_02">[2]</a> ***Downloads*** [↩](#anchor_02)
 

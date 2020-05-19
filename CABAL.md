@@ -8,34 +8,6 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently investigating.
-
-## <span id="proj_deps">Project dependencies</span>
-
-This project relies on the following external software for the **Microsoft Windows** plaform:
-
-- [Cabal 3.2][cabal_downloads] ([*changelog*][cabal_changelog])
-- [Haskell 8.10][haskell_downloads] ([*release notes*][haskell_relnotes])
-
-Optionally one may also install the following software:
-
-- [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 3.1][hlint_downloads] ([*changelog*][hlint_changelog])
-- [hpack 0.34][hpack_downloads] ([*changelog*][hpack_changelog])
-- [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
-
-> **&#9755;** ***Installation policy***<br/>
-> When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
-
-For instance our development environment looks as follows (*May 2020*) <sup id="anchor_01">[[1]](#footnote_01)</sup>:
-
-<pre style="font-size:80%;">
-C:\opt\ghc-8.10.1\        <i>(  2.4 GB)</i>
-C:\opt\ghc-8.10.1\hlint\  <i>( 74.5 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1-xx\)</i>
-C:\opt\ghc-8.10.1\hpack\  <i>( 45.0 MB)</i> <i>(copied from %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.33.0-xx\)</i>
-C:\opt\ghc-8.10.1\stack\  <i>( 64.3 MB)</i>
-C:\opt\Git-2.26.2\        <i>(269.1 MB)</i>
-</pre>
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
@@ -56,7 +28,7 @@ Downloading the latest package list from hackage.haskell.org
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
-We install [`hlint`][hlint_downloads] in two steps on Windows.
+[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] code. We install [`hlint`][hlint_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
 <b>&gt; cabal install hlint</b>
@@ -104,7 +76,7 @@ C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 
 ## <span id="hpack"><code>hpack</code> installation</span>
 
-Similarly we install [`hpack`][hpack_downloads] in two steps on Windows.
+[Hpack][hpack_readme] is a format for Haskell packages. Similarly to `hlint` we install [`hpack`][hpack_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
 <b>&gt; cabal install hpack</b>
@@ -194,8 +166,10 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.1/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.1#readme
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
+[hpack_readme]: https://github.com/sol/hpack#readme
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
