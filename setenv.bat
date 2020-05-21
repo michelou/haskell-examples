@@ -8,10 +8,8 @@ set _DEBUG=0
 @rem ## Environment setup
 
 set _BASENAME=%~n0
-
 set _EXITCODE=0
-
-for %%f in ("%~dp0") do set "_ROOT_DIR=%%~sf"
+set "_ROOT_DIR=%~dp0"
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -103,8 +101,8 @@ set __GHC_CMD=
 for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
 if defined __GHC_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Haskell executable found in PATH 1>&2
-    for %%i in ("%__GHC_CMD%") do set __GHC_BIN_DIR=%%~dpsi
-    for %%f in ("!__GHC_BIN_DIR!..") do set _GHC_HOME=%%~sf
+    for %%i in ("%__GHC_CMD%") do set "__GHC_BIN_DIR=%%~dpi"
+    for %%f in ("!__GHC_BIN_DIR!..") do set "_GHC_HOME=%%~dpf"
     @rem keep _GHC_PATH undefined since executable already in path
     goto :eof
 ) else if defined HASKELL_HOME (
@@ -154,7 +152,7 @@ if defined __GIT_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable GIT_HOME 1>&2
 ) else (
     set __PATH=C:\opt
-    if exist "!__PATH!\Git\" ( set _GIT_HOME=!__PATH!\Git
+    if exist "!__PATH!\Git\" ( set "_GIT_HOME=!__PATH!\Git"
     ) else (
         for /f %%f in ('dir /ad /b "!__PATH!\Git*" 2^>NUL') do set "_GIT_HOME=!__PATH!\%%f"
         if not defined _GIT_HOME (
@@ -240,7 +238,7 @@ goto :eof
 
 :end
 endlocal & (
-    if not defined GHC_HOME set GHC_HOME=%_GHC_HOME%
+    if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
     set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%"
     call :print_env %_VERBOSE%

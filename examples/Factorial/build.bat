@@ -7,10 +7,8 @@ set _DEBUG=0
 @rem ## Environment setup
 
 set _BASENAME=%~n0
-
 set _EXITCODE=0
-
-for %%f in ("%~dp0") do set "_ROOT_DIR=%%~f"
+set "_ROOT_DIR=%~dp0"
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -64,7 +62,7 @@ set _MAIN_NAME=Main
 set "_EXE_FILE=%_TARGET_DIR%\%_MAIN_NAME%.exe"
 
 set _GHC_CMD=ghc.exe
-rem option "-hidir <dir>" redirects all generated interface files into <dir>
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=-Wall -Werror -o "%_EXE_FILE%" -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
@@ -141,11 +139,17 @@ echo     run         execute the generated program
 goto :eof
 
 :clean
-if not exist "%_TARGET_DIR%\" goto :eof
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% rmdir /s /q "%_TARGET_DIR%" 1>&2
-) else if %_VERBOSE%==1 ( echo Remove directory %_TARGET_DIR% 1>&2
+call :rmdir "%_TARGET_DIR%"
+goto :eof
+
+@rem input parameter(s): %1=directory path
+:rmdir
+set "__DIR=%~1"
+if not exist "%__DIR%\" goto :eof
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% rmdir /s /q "%__DIR%" 1>&2
+) else if %_VERBOSE%==1 ( echo Delete directory !__DIR:%_ROOT_DIR%=! 1>&2
 )
-rmdir /s /q "%_TARGET_DIR%"
+rmdir /s /q "%__DIR%"
 if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
@@ -185,7 +189,7 @@ if not exist "%__HTML_LIBS_DIR%" (
 set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
 for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) do (
-    for %%x in (%%f) do set __PARENT_DIR=%%~dpx
+    for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
@@ -204,7 +208,7 @@ if not exist "%_EXE_FILE%" (
 	goto :eof
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_EXE_FILE% 1>&2
-) else if %_VERBOSE%==1 ( echo Execute Haskell program !_EXE_FILE:%_ROOT_DIR%=! 1>&2
+) else if %_VERBOSE%==1 ( echo Execute Haskell program "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
 call "%_EXE_FILE%"
 if not %ERRORLEVEL%==0 (
