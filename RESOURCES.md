@@ -8,7 +8,7 @@
   </tr>
 </table>
 
-## Articles
+## <span id="articles">Articles</span>
 
 - [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
 - [GHC Parser][ghc_parser]
@@ -17,31 +17,35 @@
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
 
-## Blogs
+## <span id="blogs">Blogs</span>
 
 - [Haskell for impatient Scala developer: Getting into speed](https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html), February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 
-## Books
+## <span id="books">Books</span>
 
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br>(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/>(on GitHub: [parconc-examples][parconc_examples])
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.
 
-## News
+## <span id="news">News</span>
 
 - [Haskell Weekly][haskell_weekly]
 
-## Projects
+## <span id="projects">Projects</span>
 
 - [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland].
 
-## Tutorials
+## <span id="tutorials">Tutorials</span>
 
 - [Haskell at Work][tuto_haskell_at_work], January 2019.
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
+
+## <span id="videos">Videos</span>
+
+- [Haskell taketh away: limiting side effects for parallel programming][video_newton], June 2017.
 
 ***
 
@@ -69,3 +73,4 @@
 [parconc_book]: https://simonmar.github.io/pages/pcph.html
 [parconc_examples]: https://github.com/simonmar/parconc-examples
 [tuto_haskell_at_work]: https://haskell-at-work.com/
+[video_newton]: https://youtu.be/lC5UWG5N8oY

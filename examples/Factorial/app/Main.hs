@@ -28,7 +28,7 @@ factorialFold n = foldl(*) 1 [1..n]
 factorialProd :: Integer -> Integer
 factorialProd n = product [1..n]
 
--- |Program entry point which prints out results from calls to the above functions.
+-- |Program entry point.
 main :: IO ()
 main = do
     let x = 5

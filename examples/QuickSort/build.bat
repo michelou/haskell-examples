@@ -3,14 +3,11 @@ setlocal enabledelayedexpansion
 
 set _DEBUG=0
 
-rem ##########################################################################
-rem ## Environment setup
-
-set _BASENAME=%~n0
+@rem #########################################################################
+@rem ## Environment setup
 
 set _EXITCODE=0
-
-for %%f in ("%~dp0") do set "_ROOT_DIR=%%~f"
+set "_ROOT_DIR=%~dp0"
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -18,8 +15,8 @@ if not %_EXITCODE%==0 goto end
 call :args %*
 if not %_EXITCODE%==0 goto end
 
-rem ##########################################################################
-rem ## Main
+@rem #########################################################################
+@rem ## Main
 
 if %_HELP%==1 (
     call :help
@@ -43,14 +40,16 @@ if %_RUN%==1 (
 )
 goto end
 
-rem ##########################################################################
-rem ## Subroutine
+@rem #########################################################################
+@rem ## Subroutine
 
-rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
-rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
+@rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
+@rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
 :env
-rem ANSI colors in standard Windows 10 shell
-rem see https://gist.github.com/mlocati/#file-win10colors-cmd
+set _BASENAME=%~n0
+
+@rem ANSI colors in standard Windows 10 shell
+@rem see https://gist.github.com/mlocati/#file-win10colors-cmd
 set _DEBUG_LABEL=[46m[%_BASENAME%][0m
 set _ERROR_LABEL=[91mError[0m:
 set _WARNING_LABEL=[93mWarning[0m:
@@ -64,7 +63,7 @@ set _MAIN_NAME=Main
 set "_EXE_FILE=%_TARGET_DIR%\%_MAIN_NAME%.exe"
 
 set _GHC_CMD=ghc.exe
-rem option "-hidir <dir>" redirects all generated interface files into <dir>
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=-Wall -Werror -o "%_EXE_FILE%" -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
@@ -141,11 +140,17 @@ echo     run         execute the generated program
 goto :eof
 
 :clean
-if not exist "%_TARGET_DIR%\" goto :eof
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% rmdir /s /q "%_TARGET_DIR%" 1>&2
-) else if %_VERBOSE%==1 ( echo Remove directory %_TARGET_DIR% 1>&2
+call :rmdir "%_TARGET_DIR%"
+goto :eof
+
+@rem input parameter(s): %1=directory path
+:rmdir
+set "__DIR=%~1"
+if not exist "%__DIR%\" goto :eof
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% rmdir /s /q "%__DIR%" 1>&2
+) else if %_VERBOSE%==1 ( echo Delete directory !__DIR:%_ROOT_DIR%=! 1>&2
 )
-rmdir /s /q "%_TARGET_DIR%"
+rmdir /s /q "%__DIR%"
 if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
@@ -228,7 +233,7 @@ goto :eof
 if %_TIMER%==1 (
     for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
-    echo Elapsed time: !_DURATION! 1>&2
+    echo Total elapsed time: !_DURATION! 1>&2
 )
 if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
 exit /b %_EXITCODE%
