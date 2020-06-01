@@ -7,7 +7,6 @@ set _DEBUG=0
 @rem #########################################################################
 @rem ## Environment setup
 
-set _BASENAME=%~n0
 set _EXITCODE=0
 set "_ROOT_DIR=%~dp0"
 
@@ -24,6 +23,7 @@ if %_HELP%==1 (
     call :help
     exit /b !_EXITCODE!
 )
+
 set _GHC_PATH=
 set _GIT_PATH=
 
@@ -40,6 +40,8 @@ goto end
 
 @rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
 :env
+set _BASENAME=%~n0
+
 @rem ANSI colors in standard Windows 10 shell
 @rem see https://gist.github.com/mlocati/#file-win10colors-cmd
 set _DEBUG_LABEL=[46m[%_BASENAME%][0m
@@ -229,6 +231,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     echo Tool paths: 1>&2
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
     echo Environment variables: 1>&2
+    if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
     if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
 )
 goto :eof

@@ -12,6 +12,9 @@ set "_ROOT_DIR=%~dp0"
 call :env
 if not %_EXITCODE%==0 goto end
 
+call :props
+if not %_EXITCODE%==0 goto end
+
 call :args %*
 if not %_EXITCODE%==0 goto end
 
@@ -59,15 +62,38 @@ set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_DOCS_DIR=%_TARGET_DIR%\docs"
 
-set _MAIN_NAME=Main
-set "_EXE_FILE=%_TARGET_DIR%\%_MAIN_NAME%.exe"
-
 set _GHC_CMD=ghc.exe
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-Wall -Werror -o "%_EXE_FILE%" -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
+set _GHC_OPTS=-Wall -Werror -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
-set _HADDOCK_OPTS=--odir="%_DOCS_DIR%" --html --title=%_MAIN_NAME% --package-name=Main
+set _HADDOCK_OPTS=--odir="%_DOCS_DIR%" --html
+goto :eof
+
+@rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
+:props
+set __PACKAGE_NAME=HelloWorld
+set __PACKAGE_VERSION=0.0.1
+set __PACKAGE_SYNOPSIS=Haskell Example
+
+for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
+if exist "%__CABAL_FILE%" (
+    for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
+        for /f "delims= " %%n in ("%%i") do set __NAME=%%n
+        set __VALUE=%%j
+        if not "!__NAME:~0,2!"=="--" (
+            @rem trim value
+            for /f "tokens=*" %%v in ("!__VALUE!") do set __VALUE=%%v
+            set _!__NAME!=!__VALUE!
+        )
+    )
+    if defined _name set __PACKAGE_NAME=!_name!
+    if defined _synopsis set __PACKAGE_SYNOPSIS=!_name!
+    if defined _version set __PACKAGE_VERSION=!_version!
+)
+set "_EXE_FILE=%_TARGET_DIR%\%__PACKAGE_NAME%.exe"
+set _GHC_OPTS=%_GHC_OPTS% -o "%_EXE_FILE%"
+set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%__PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
 @rem input parameter: %*
