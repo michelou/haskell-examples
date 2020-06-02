@@ -72,9 +72,10 @@ goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
-set __PACKAGE_NAME=Factorial
+set __PACKAGE_NAME=Functional
 set __PACKAGE_VERSION=0.0.1
 set __PACKAGE_SYNOPSIS=Haskell Example
+set __GHC_OPTIONS=-Wall -Werror
 
 for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
@@ -90,9 +91,10 @@ if exist "%__CABAL_FILE%" (
     if defined _name set __PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_name!
     if defined _version set __PACKAGE_VERSION=!_version!
+    if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%__PACKAGE_NAME%.exe"
-set _GHC_OPTS=%_GHC_OPTS% -o "%_EXE_FILE%"
+set _GHC_OPTS=%_GHC_OPTS% %__GHC_OPTIONS% -o "%_EXE_FILE%"
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%__PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 

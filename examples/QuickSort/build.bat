@@ -64,10 +64,10 @@ set "_DOCS_DIR=%_TARGET_DIR%\docs"
 
 set _GHC_CMD=ghc.exe
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-Wall -Werror -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
+set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
-set _HADDOCK_OPTS=--odir="%_DOCS_DIR%" --html
+set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
 goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
@@ -75,24 +75,25 @@ goto :eof
 set __PACKAGE_NAME=QuickSort
 set __PACKAGE_VERSION=0.0.1
 set __PACKAGE_SYNOPSIS=Haskell Example
+set __GHC_OPTIONS=-Wall -Werror
 
 for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         for /f "delims= " %%n in ("%%i") do set __NAME=%%n
-        set __VALUE=%%j
         if not "!__NAME:~0,2!"=="--" (
             @rem trim value
-            for /f "tokens=*" %%v in ("!__VALUE!") do set __VALUE=%%v
-            set _!__NAME!=!__VALUE!
+            for /f "tokens=*" %%v in ("%%j") do set __VALUE=%%v
+            set "_!__NAME:-=_!=!__VALUE!"
         )
     )
     if defined _name set __PACKAGE_NAME=!_name!
-    if defined _synopsis set __PACKAGE_SYNOPSIS=!_name!
+    if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
+    if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%__PACKAGE_NAME%.exe"
-set _GHC_OPTS=%_GHC_OPTS% -o "%_EXE_FILE%"
+set _GHC_OPTS=%_GHC_OPTS% %__GHC_OPTIONS% -o "%_EXE_FILE%"
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%__PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
@@ -211,7 +212,7 @@ set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
 set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
@@ -231,10 +232,11 @@ goto :eof
 
 :run_native
 if not exist "%_EXE_FILE%" (
+    echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_EXE_FILE% 1>&2
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_EXE_FILE%" 1>&2
 ) else if %_VERBOSE%==1 ( echo Execute Haskell program "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
 call "%_EXE_FILE%"
