@@ -64,10 +64,10 @@ set "_DOCS_DIR=%_TARGET_DIR%\docs"
 
 set _GHC_CMD=ghc.exe
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-Wall -Werror -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
+set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
-set _HADDOCK_OPTS=--odir="%_DOCS_DIR%" --html
+set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
 goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
@@ -81,15 +81,15 @@ for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         for /f "delims= " %%n in ("%%i") do set __NAME=%%n
-        set __VALUE=%%j
+        @rem line comments start with "--"
         if not "!__NAME:~0,2!"=="--" (
             @rem trim value
-            for /f "tokens=*" %%v in ("!__VALUE!") do set __VALUE=%%v
-            set _!__NAME!=!__VALUE!
+            for /f "tokens=*" %%v in ("%%j") do set __VALUE=%%v
+            set "_!__NAME:-=_!=!__VALUE!"
         )
     )
     if defined _name set __PACKAGE_NAME=!_name!
-    if defined _synopsis set __PACKAGE_SYNOPSIS=!_name!
+    if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
     if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
@@ -176,7 +176,7 @@ goto :eof
 set "__DIR=%~1"
 if not exist "%__DIR%\" goto :eof
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% rmdir /s /q "%__DIR%" 1>&2
-) else if %_VERBOSE%==1 ( echo Delete directory !__DIR:%_ROOT_DIR%=! 1>&2
+) else if %_VERBOSE%==1 ( echo Delete directory "!__DIR:%_ROOT_DIR%=!" 1>&2
 )
 rmdir /s /q "%__DIR%"
 if not %ERRORLEVEL%==0 (
@@ -213,7 +213,7 @@ set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
 set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
@@ -221,8 +221,8 @@ for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) d
     for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory 1>&2 !_DOCS_DIR:%_ROOT_DIR%=! 1>&2
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
+) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
@@ -233,10 +233,11 @@ goto :eof
 
 :run_native
 if not exist "%_EXE_FILE%" (
+    echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_EXE_FILE% 1>&2
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_EXE_FILE%" 1>&2
 ) else if %_VERBOSE%==1 ( echo Execute Haskell program "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
 call "%_EXE_FILE%"

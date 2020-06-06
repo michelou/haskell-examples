@@ -1,13 +1,13 @@
 @echo off
 setlocal enabledelayedexpansion
 
+@rem only for interactive debugging !
 set _DEBUG=0
 
 @rem #########################################################################
 @rem ## Environment setup
 
 set _EXITCODE=0
-set "_ROOT_DIR=%~dp0"
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -50,6 +50,7 @@ goto end
 @rem                    _SOURCE_FILES, MAIN_CLASS, _EXE_FILE
 :env
 set _BASENAME=%~n0
+set "_ROOT_DIR=%~dp0"
 
 @rem ANSI colors in standard Windows 10 shell
 @rem see https://gist.github.com/mlocati/#file-win10colors-cmd
@@ -81,6 +82,7 @@ for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         for /f "delims= " %%n in ("%%i") do set __NAME=%%n
+        @rem line comments start with "--"
         if not "!__NAME:~0,2!"=="--" (
             @rem trim value
             for /f "tokens=*" %%v in ("%%j") do set __VALUE=%%v
@@ -191,7 +193,7 @@ set __SOURCE_FILES=
 for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_GHC_CMD% %_GHC_OPTS% %__SOURCE_FILES% 1>&2
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile Haskell source files 1>&2
 )
 call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
@@ -232,7 +234,7 @@ goto :eof
 
 :run_native
 if not exist "%_EXE_FILE%" (
-    echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>
+    echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -258,7 +260,7 @@ goto :eof
 @rem ## Cleanups
 
 :end
-if %_EXITCODE%==0 if %_TIMER%==1 (
+if %_TIMER%==1 (
     for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
     echo Total elapsed time: !_DURATION! 1>&2

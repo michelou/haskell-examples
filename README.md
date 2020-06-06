@@ -20,7 +20,7 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
-- [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.27][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 3.1][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
@@ -28,14 +28,14 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*May 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*June 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(2.4 GB)</i>
 C:\opt\ghc-8.10.1\hlint\  <i>( 66 MB)</i>
 C:\opt\ghc-8.10.1\hpack\  <i>( 45 MB)</i>
 C:\opt\ghc-8.10.1\stack\  <i>( 64 MB)</i>
-C:\opt\Git-2.26.2\        <i>(271 MB)</i>
+C:\opt\Git-2.27.0\        <i>(271 MB)</i>
 </pre>
 
 <!--
@@ -54,7 +54,7 @@ examples\{HelloWorld, ..}
 <a href="CABAL.md">CABAL.md</a>
 README.md
 <a href="RESOURCES.md">RESOURCES.md</a>
-setenv.bat
+<a href="setenv.bat">setenv.bat</a>
 </pre>
 
 where
@@ -124,11 +124,11 @@ We distinguish different sets of batch commands:
 Command [**`setenv`**](setenv.bat) is executed once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
 
 <pre style="font-size:80%;">
-<b>&gt; setenv</b>
+<b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1.1, hpack 0.34.1,
-   git 2.26.2.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.1.4, hpack 0.34.1,
+   git 2.27.0.windows.1, diff 3.7
 
 <b>&gt; where hlint hpack stack</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
@@ -139,11 +139,11 @@ C:\opt\ghc-8.10.1\stack\stack.exe
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
 
 <pre style="font-size:80%;">
-<b>&gt; setenv -verbose</b>
+<b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1.1, hpack 0.34.1,
-   git 2.26.2.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.1.4, hpack 0.34.1,
+   git 2.27.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.1\bin\cabal.exe
    C:\opt\ghc-8.10.1\bin\ghc.exe
@@ -151,9 +151,9 @@ Tool paths:
    C:\opt\ghc-8.10.1\bin\haddock.exe
    C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
    C:\opt\ghc-8.10.1\hpack\bin\hpack.exe
-   C:\opt\Git-2.26.2\bin\git.exe
-   C:\opt\Git-2.26.2\mingw64\bin\git.exe
-   C:\opt\Git-2.26.2\usr\bin\diff.exe
+   C:\opt\Git-2.27.0\bin\git.exe
+   C:\opt\Git-2.27.0\mingw64\bin\git.exe
+   C:\opt\Git-2.27.0\usr\bin\diff.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -172,13 +172,13 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(377 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.26.2-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.27.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -190,14 +190,14 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghc_userguide]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.27.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.1/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.4/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack

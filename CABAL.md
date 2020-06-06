@@ -37,14 +37,14 @@ Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - ghc-lib-parser-ex-8.10.0.5 (lib) (requires download & build)
 [...]
-Starting     hlint-3.1.1 (lib)
-Building     hlint-3.1.1 (lib)
-Installing   hlint-3.1.1 (lib)
-Completed    hlint-3.1.1 (lib)
-Starting     hlint-3.1.1 (exe:hlint)
-Building     hlint-3.1.1 (exe:hlint)
-Installing   hlint-3.1.1 (exe:hlint)
-Completed    hlint-3.1.1 (exe:hlint)
+Starting     hlint-3.1.4 (lib)
+Building     hlint-3.1.4 (lib)
+Installing   hlint-3.1.4 (lib)
+Completed    hlint-3.1.4 (lib)
+Starting     hlint-3.1.4 (exe:hlint)
+Building     hlint-3.1.4 (exe:hlint)
+Installing   hlint-3.1.4 (exe:hlint)
+Completed    hlint-3.1.4 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -53,13 +53,16 @@ Since the last installation step fails on Windows, we search for the path to the
 
 <pre style="font-size:80%;">
 <b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.1-fa001d095e2bc126e6c21809163f733c6c90ab18\bin\hlint.exe
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.4-26c927f181ac907eed243ee781eb54759bcbf473\bin\hlint.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.1-fa001d095e2bc126e6c21809163f733c6c90ab18 c:\opt\ghc-8.10.1\hlint</b>
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.4-26c927f181ac907eed243ee781eb54759bcbf473 c:\opt\ghc-8.10.1\hlint</b>
 12 file(s) copied
 &nbsp;
 <b>&gt; where hlint</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
+&nbsp;
+<b>&gt; hlint --version</b>
+HLint v3.1.4, (C) Neil Mitchell 2006-2020
 </pre>
 
 > **:mag_right:** We can check the latest available version of package `hlint` with command `cabal list hlint`:
@@ -67,7 +70,7 @@ C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 > <b>&gt; cabal list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.1.1
+>     Default available version: 3.1.4
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -146,7 +149,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -164,9 +167,9 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.1/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.4/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.1#readme
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.4#readme
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
