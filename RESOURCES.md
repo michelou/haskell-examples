@@ -21,6 +21,7 @@
 
 - [Haskell for impatient Scala developer: Getting into speed](https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html), February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
+- Build a CPU: [Part 1](https://yager.io/CPU/CPU2.html), October 2017, and [Part 2](https://yager.io/CPU/CPU2.html), April 2018.
 
 ## <span id="books">Books</span>
 
@@ -42,6 +43,7 @@
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
+- [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html.)
 
 ## <span id="videos">Videos</span>
 

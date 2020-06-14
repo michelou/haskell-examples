@@ -97,7 +97,6 @@ We distinguish different sets of batch commands:
        help        display this help message
    </pre>
 
-
 2. [**`examples\*\build.bat`**](examples/dotty-example-project/build.bat) - Each example can be built/run using the [**`build`**](examples/dotty-example-project/build.bat) command.<br/>
 
     <pre style="font-size:80%;">
@@ -195,11 +194,11 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
+[haskell_downloads]: https://downloads.haskell.org/~ghc/latest/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.4/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
+[hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
