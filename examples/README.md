@@ -8,9 +8,9 @@
   </tr>
 </table>
 
-We can build/run examples from directory [**`examples\`**](.) using either [**`cabal`**][cabal], [**`mvn`**][apache_maven_cli], [**`stack`**][stack_userguide] or the **`build`** batch command.
+We can build/run examples from directory [**`examples\`**](.) using either [**`cabal`**][cabal], [**`stack`**][stack_userguide], [**`mvn`**][apache_maven_cli] or our **`build`** batch command.
 
-In the following we look at the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
+In the following we present the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
 
 ## <span id="factorial">Factorial</span>
 
@@ -54,20 +54,6 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-### <span id="factorial_maven">***Maven build/run***</span>
-
-Command `mvn -q compile run` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
-
-<pre style="font-size:80%;">
-<b>&gt; mvn -q clean compile exec:exec</b>
-[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
-Linking target/Main.exe ...
-factorialRec(5) =120
-factorialRec2(5)=120
-factorialFold(5)=120
-factorialProd(5)=120
-</pre>
-
 ### <span id="factorial_stack">***Stack build/run***</span>
 
 Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
@@ -76,6 +62,20 @@ Command `stack run` builds and executes the [Haskell] application (configuration
 C:\opt\ghc-8.10.1\stack\stack.exe
 &nbsp;
 <b>&gt; stack --silent run</b>
+factorialRec(5) =120
+factorialRec2(5)=120
+factorialFold(5)=120
+factorialProd(5)=120
+</pre>
+
+### <span id="factorial_maven">***Maven build/run***</span>
+
+Command `mvn -q compile run` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+
+<pre style="font-size:80%;">
+<b>&gt; mvn -q clean compile exec:exec</b>
+[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
+Linking target/Main.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -173,7 +173,7 @@ H:\examples\QuickSort
 
 ### <span id="quicksort_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and execute the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
+Command `cabal run all` builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
 
 <pre style="font-size:80%;">
 <b>&gt; where cabal</b>

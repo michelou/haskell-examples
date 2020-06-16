@@ -2,8 +2,8 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers <a href="https://www.haskell.org/">Haskell</a> related resources.
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> related resources.
   </td>
   </tr>
 </table>
@@ -12,7 +12,8 @@
 
 - [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
 - [GHC Parser][ghc_parser]
-[Simple and robust layout rules for parsing programming language code][article_abela]
+[Simple and robust layout rules for parsing programming language code][article_abela].
+- [Enable All The Warnings][article_tagher] by Max Tagher, August 9, 2018.
 - [Cleaning Up Our Projects with Hpack!][article_hpack], July 17, 2017.
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
@@ -43,7 +44,8 @@
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
-- [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html.)
+- [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html).
+- [Wise Man's Hasekll](https://andre.tips/wmh/).
 
 ## <span id="videos">Videos</span>
 
@@ -51,7 +53,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/Jun 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -61,6 +63,7 @@
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
+[article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser

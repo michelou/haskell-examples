@@ -51,6 +51,7 @@ This project is organized as follows:
 <pre style="font-size:80%;">
 docs\
 examples\{HelloWorld, ..}
+parconc-examples\
 <a href="CABAL.md">CABAL.md</a>
 README.md
 <a href="RESOURCES.md">RESOURCES.md</a>
@@ -61,6 +62,7 @@ where
 
 - directory [**`docs\`**](docs/) contains [Haskell] related papers/articles.
 - directory [**`examples\`**](examples/) contains [Haskell] examples grabbed from various websites (see file [**`examples\README.md`**](examples/README.md)).
+- directory [**`parconc-examples`**](parconc-examples/) contains [Haskell] examples from Simon Marlow's [book][book_parconc] (see file [**`parconc-examples\README.md`**](parconc-examples/README.md)).
 - file [**`CABAL.md`**](CABAL.md) gathers usage information about the Cabal tool.
 - file [**`README.md`**](README.md) is the [Markdown][github_markdown] document for this page.
 - file [**`RESOURCES.md`**](RESOURCES.md) gathers Haskell related informations.
@@ -86,7 +88,7 @@ We distinguish different sets of batch commands:
 1. [**`setenv.bat`**](setenv.bat) - This batch command makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt (see section [**Project dependencies**](#proj_deps)).
 
    <pre style="font-size:80%;">
-   <b>&gt; setenv help</b>
+   <b>&gt; <a href="./setenv.bat">setenv</a> help</b>
    Usage: setenv { &lt;option&gt; | &lt;subcommand&gt; }
    &nbsp;
      Options:
@@ -97,10 +99,10 @@ We distinguish different sets of batch commands:
        help        display this help message
    </pre>
 
-2. [**`examples\*\build.bat`**](examples/dotty-example-project/build.bat) - Each example can be built/run using the [**`build`**](examples/dotty-example-project/build.bat) command.<br/>
+2. [**`examples\*\build.bat`**](examples/Factorial/build.bat) - Each example can be built/run using the [**`build`**](examples/Factorial/build.bat) command.<br/>
 
     <pre style="font-size:80%;">
-    <b>&gt; build</b>
+    <b>&gt; <a href="examples/Factorial/build.bat">build</a></b>
     Usage: build { &lt;option&gt; | &lt;subcommand&gt; }
     &nbsp;
     Options:
@@ -182,6 +184,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 <!-- link refs -->
 
+[book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/

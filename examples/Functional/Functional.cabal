@@ -1,5 +1,4 @@
 cabal-version:       3.0
--- Cabal version 3.0 is not supported by stack 2.1.3
 
 name:                Functional
 version:             0.1.0.0
@@ -18,7 +17,7 @@ build-type:          Simple
 tested-with:         GHC >= 8.8.2
 
 executable Functional
-  build-depends:       base >=4.13 && <4.14
+  build-depends:       base >= 4.13 && < 4.15
   default-language:    Haskell2010
   ghc-options:         -Wall -Werror
   -- hs-source-dirs:

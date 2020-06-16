@@ -19,7 +19,7 @@
     </dependencies>
 
     <properties>
-        <exeName>Main.exe</exeName>
+        <exeName>Colors.exe</exeName>
         <srcDirectory>app</srcDirectory>
         <outDirectory>target</outDirectory>
         <genDirectory>${outDirectory}/gen</genDirectory>
@@ -74,6 +74,12 @@
                     <arguments>
                         <argument></argument>
                     </arguments>
+                    <!--
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                    <environmentVariables>
+                        <LANG>en_US</LANG>
+                    </environmentVariables>
+                    -->
                 </configuration>
             </plugin>
         </plugins>
