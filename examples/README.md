@@ -3,14 +3,22 @@
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/">Haskell project</a>.
+  <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/" rel="external">Haskell project</a>.
   </td>
   </tr>
 </table>
 
-We can build/run examples from directory [**`examples\`**](.) using either [**`cabal`**][cabal], [**`stack`**][stack_userguide], [**`mvn`**][apache_maven_cli] or our **`build`** batch command.
-
 In the following we present the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
+
+Build tools rely on one or more configuration files to achieve their tasks. In our case we created the following configuration files for example [**`Factorial`**](#factorial):
+
+| Build tool                    | Configuration file                       | Parent file                |
+|-------------------------------|------------------------------------------|----------------------------|
+| **`build`**                   | **`build.properties`**                   | n.a.                       |
+| [**`cabal`**][cabal_cli]      | [**`build.gradle`**](Factorial/Factorial.cabal) | n.a.                |
+| [**`mvn`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
+| [**`stack`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
+
 
 ## <span id="factorial">Factorial</span>
 
@@ -215,7 +223,7 @@ Command [`build clean run`](QuickSort/build.bat) builds and executes the [Haskel
 <b>&gt; where build</b>
 H:\examples\QuickSort\build.bat
 &nbsp;
-<b>&gt; build clean run</b>
+<b>&gt; <a href="QuickSort/build.bat">build</a> clean run</b>
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
@@ -233,7 +241,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -241,6 +249,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [apache_maven_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
 [cabal]: https://www.haskell.org/cabal/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
+[cabal_cli]: https://cabal.readthedocs.io/en/stable/intro.html
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
@@ -248,5 +257,6 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [haskell]: https://www.haskell.org
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
+[stack_cli]: https://docs.haskellstack.org/en/stable/build_command/
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

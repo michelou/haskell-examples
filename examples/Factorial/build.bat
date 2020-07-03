@@ -60,14 +60,14 @@ set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 set "_APP_DIR=%_ROOT_DIR%app"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
-set "_DOCS_DIR=%_TARGET_DIR%\docs"
+set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
 
 set _GHC_CMD=ghc.exe
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set _HADDOCK_CMD=haddock.exe
-set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 goto :eof
 
 :env_colors
@@ -193,7 +193,7 @@ goto :args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
-if %_DEBUG%==1 echo %_DEBUG_LABEL% _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% _VERBOSE=%_VERBOSE%
+if %_DEBUG%==1 echo %_DEBUG_LABEL% _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
 
@@ -246,11 +246,13 @@ goto :eof
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
 set __SOURCE_FILES=
+set __N=0
 for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
+    set /a __N+=1
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Compile Haskell source files 1>&2
+) else if %_VERBOSE%==1 ( echo Compile %__N% Haskell source files 1>&2
 )
 call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
@@ -260,12 +262,8 @@ if not %ERRORLEVEL%==0 (
 goto :eof
 
 :doc
-if not exist "%_DOCS_DIR%" mkdir "%_DOCS_DIR%"
+if not exist "%_TARGET_DOCS_DIR%" mkdir "%_TARGET_DOCS_DIR%"
 
-set __SOURCE_FILES=
-for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
-    set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
-)
 set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
@@ -277,6 +275,10 @@ set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) do (
     for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
+)
+set __SOURCE_FILES=
+for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
+    set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
@@ -299,7 +301,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_EXE_FILE%" 1>&2
 )
 call "%_EXE_FILE%"
 if not %ERRORLEVEL%==0 (
-   echo %_ERROR_LABEL% Program executable not found ^(!_EXE_FILE:%_ROOT_DIR%=!^) 1>&2
+   echo %_ERROR_LABEL% Program executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
    set _EXITCODE=1
    goto :eof
 )

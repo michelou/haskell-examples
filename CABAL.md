@@ -37,14 +37,14 @@ Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - ghc-lib-parser-ex-8.10.0.5 (lib) (requires download & build)
 [...]
-Starting     hlint-3.1.4 (lib)
-Building     hlint-3.1.4 (lib)
-Installing   hlint-3.1.4 (lib)
-Completed    hlint-3.1.4 (lib)
-Starting     hlint-3.1.4 (exe:hlint)
-Building     hlint-3.1.4 (exe:hlint)
-Installing   hlint-3.1.4 (exe:hlint)
-Completed    hlint-3.1.4 (exe:hlint)
+Starting     hlint-3.1.6 (lib)
+Building     hlint-3.1.6 (lib)
+Installing   hlint-3.1.6 (lib)
+Completed    hlint-3.1.6 (lib)
+Starting     hlint-3.1.6 (exe:hlint)
+Building     hlint-3.1.6 (exe:hlint)
+Installing   hlint-3.1.6 (exe:hlint)
+Completed    hlint-3.1.6 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -53,24 +53,29 @@ Since the last installation step fails on Windows, we search for the path to the
 
 <pre style="font-size:80%;">
 <b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.4-26c927f181ac907eed243ee781eb54759bcbf473\bin\hlint.exe
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.6-f06361eb905029f73db0cbcdf47cccf70c1923f8\bin\hlint.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.4-26c927f181ac907eed243ee781eb54759bcbf473 c:\opt\ghc-8.10.1\hlint</b>
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.6-f06361eb905029f73db0cbcdf47cccf70c1923f8 c:\opt\ghc-8.10.1\hlint</b>
 12 file(s) copied
 &nbsp;
 <b>&gt; where hlint</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 &nbsp;
 <b>&gt; hlint --version</b>
-HLint v3.1.4, (C) Neil Mitchell 2006-2020
+HLint v3.1.6, (C) Neil Mitchell 2006-2020
 </pre>
 
-> **:mag_right:** We can check the latest available version of package `hlint` with command `cabal list hlint`:
+> **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
 > <pre style="font-size:80%;">
+> <b>&gt; cabal update</b>
+> Downloading the latest package list from hackage.haskell.org
+> To revert to previous state run:
+>    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
+> &nbsp;
 > <b>&gt; cabal list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.1.4
+>     Default available version: 3.1.6
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -88,14 +93,14 @@ Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
  - cabal-doctest-1.0.8 (lib) (requires build)
 [...]
-Starting     hpack-0.34.1 (lib)
-Building     hpack-0.34.1 (lib)
-Installing   hpack-0.34.1 (lib)
-Completed    hpack-0.34.1 (lib)
-Starting     hpack-0.34.1 (exe:hpack)
-Building     hpack-0.34.1 (exe:hpack)
-Installing   hpack-0.34.1 (exe:hpack)
-Completed    hpack-0.34.1 (exe:hpack)
+Starting     hpack-0.34.2 (lib)
+Building     hpack-0.34.2 (lib)
+Installing   hpack-0.34.2 (lib)
+Completed    hpack-0.34.2 (lib)
+Starting     hpack-0.34.2 (exe:hpack)
+Building     hpack-0.34.2 (exe:hpack)
+Installing   hpack-0.34.2 (exe:hpack)
+Completed    hpack-0.34.2 (exe:hpack)
 Symlinking 'hpack.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -104,21 +109,29 @@ Since the last installation step fails on Windows, we search for the path to the
 
 <pre style="font-size:80%;">
 <b>&gt; where /r  %APPDATA%\cabal hpack.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.1-f68688feb83b5293acf1f7e59f01ab5e8e700938\bin\hpack.exe
+%APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.2-05861d321aba5e1328256640dbeca4392c796f6c\bin\hpack.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.1-f68688feb83b5293acf1f7e59f01ab5e8e700938 c:\opt\ghc-8.10.1\hpack</b>
+<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.2-05861d321aba5e1328256640dbeca4392c796f6c c:\opt\ghc-8.10.1\hpack</b>
 3 file(s) copied
 &nbsp;
 <b>&gt; where hpack</b>
 C:\opt\ghc-8.10.1\hlint\bin\hpack.exe
+&nbsp;
+<b>&gt; hpack --version</b>
+hpack version 0.34.2
 </pre>
 
-> **:mag_right:** We can check the latest available version of package `hpack` with command `cabal list hpack`:
+> **:mag_right:** Command **`cabal list hpack`** shows the latest available version of package `hpack` (*do not* forget **`cabal update`**) :
 > <pre style="font-size:80%;">
+> <b>&gt; cabal update</b>
+> Downloading the latest package list from hackage.haskell.org
+> To revert to previous state run:
+>    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
+> &nbsp;
 > <b>&gt; cabal list hpack</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
->     Default available version: 0.34.1
+>     Default available version: 0.34.2
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/sol/hpack#readme
 >     License:  MIT
@@ -149,7 +162,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -167,9 +180,9 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.4/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.6/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.4#readme
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.6#readme
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme

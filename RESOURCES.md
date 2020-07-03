@@ -30,6 +30,10 @@
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/>(on GitHub: [parconc-examples][parconc_examples])
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.
 
+## <span id="courses">Courses</span>
+
+- [Funcitonal and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
+
 ## <span id="news">News</span>
 
 - [Haskell Weekly][haskell_weekly]
@@ -53,7 +57,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
