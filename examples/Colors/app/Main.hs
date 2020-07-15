@@ -15,5 +15,4 @@ main = do
         color <- getLine
         return color)
     putStrLn "The colors that you associate with 1, 2, 3 and 4 are: "
-    _ <- mapM putStrLn colors
-    return ()
+    mapM_ putStrLn colors

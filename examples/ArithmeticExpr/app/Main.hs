@@ -23,7 +23,7 @@ evalOp Divide = div
 
 eval :: Expr -> Integer
 eval (Lit i)        = i
-eval (Bin op e1 e2) = (evalOp op) (eval e1) (eval e2)
+eval (Bin op e1 e2) = evalOp op (eval e1) (eval e2)
 
 data Error a = Exception String | Result a
 
