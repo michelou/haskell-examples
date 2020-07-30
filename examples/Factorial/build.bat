@@ -77,6 +77,7 @@ goto :eof
 set _CLEAN=0
 set _COMPILE=0
 set _DOC=0
+set _DOCVIEW=0
 set _HELP=0
 set _RUN=0
 set _TARGET=native
@@ -105,6 +106,7 @@ if "%__ARG:~0,1%"=="-" (
     if /i "%__ARG%"=="clean" ( set _CLEAN=1
     ) else if /i "%__ARG%"=="compile" ( set _COMPILE=1
     ) else if /i "%__ARG%"=="doc" ( set _DOC=1
+    ) else if /i "%__ARG%"=="docview" ( set _DOC=1& set _DOCVIEW=1
     ) else if /i "%__ARG%"=="help" ( set _HELP=1
     ) else if /i "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
     ) else (
@@ -136,6 +138,7 @@ echo   Subcommands:
 echo     clean       delete generated files
 echo     compile     generate program executable
 echo     doc         generate HTML documentation
+echo     docview     generate and open HTML documentation
 echo     help        display this help message
 echo     run         execute the generated program
 goto :eof
@@ -180,12 +183,12 @@ set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
 set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
 for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) do (
-    for %%x in (%%f) do set __PARENT_DIR=%%~dpx
+    for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
@@ -193,15 +196,21 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_F
 )
 call %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
-   set _EXITCODE=1
-   goto :eof
+    set _EXITCODE=1
+    goto :eof
+)
+if %_DOCVIEW%==1 if exist "%_DOCS_DIR%\index.html" (
+    if %_DEBUG%==1 ( echo %_DEBUG_LABEL% start "" "%_DOCS_DIR%\index.html" 1>&2
+	) else if %_VERBOSE%==1 ( echo Open the generated HTML pages in default browser 1>&2
+	)
+    start "" "%_DOCS_DIR%\index.html"
 )
 goto :eof
 
 :run_native
 if not exist "%_EXE_FILE%" (
     set _EXITCODE=1
-	goto :eof
+    goto :eof
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_EXE_FILE% 1>&2
 ) else if %_VERBOSE%==1 ( echo Execute Haskell program !_EXE_FILE:%_ROOT_DIR%=! 1>&2
