@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>haskell.examples</groupId>
+    <artifactId>Functional</artifactId>
+    <version>1.0</version>
+
+    <parent>
+        <groupId>haskell.examples</groupId>
+        <artifactId>haskell-examples</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <!-- see parent pom.xml -->
+    </dependencies>
+
+    <properties>
+        <exeName>Main.exe</exeName>
+        <srcDirectory>app</srcDirectory>
+        <outDirectory>target</outDirectory>
+        <genDirectory>${outDirectory}/gen</genDirectory>
+    </properties>
+
+    <build>
+        <sourceDirectory>${srcDirectory}</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>app</directory>
+            </resource>
+        </resources>
+        <outputDirectory>${outDirectory}</outputDirectory>
+        <plugins>
+            <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec.maven.version}</version>
+                <executions>
+                    <execution>
+                        <id>ghc-compile</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <executable>${ghc.cmd}</executable>
+                            <arguments>
+                                <argument>-Wall</argument>
+                                <argument>-Werror</argument>
+                                <argument>-o</argument>
+                                <argument>${outDirectory}/${exeName}</argument>
+                                <argument>-hidir</argument>
+                                <argument>${genDirectory}</argument>
+                                <argument>-odir</argument>
+                                <argument>${genDirectory}</argument>
+                                <argument>${srcDirectory}/Main.hs</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>ghc-exec</id>
+                        <phase>exec</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>${outDirectory}/${exeName}</executable>
+                    <arguments>
+                        <argument></argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

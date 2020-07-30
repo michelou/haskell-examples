@@ -1,0 +1,3 @@
+Source: https://takenobu-hs.github.io/downloads/haskell_ghc_illustrated.pdf
+GitHub: https://github.com/takenobu-hs/haskell-ghc-illustrated
+

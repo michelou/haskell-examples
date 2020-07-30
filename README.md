@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalSqueak][graalsqueak_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples] and [Node.js][nodejs_examples] are other topics we are currently investigating.
+[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently investigating.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -20,22 +20,22 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
-- [Git 2.26][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 3.0][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
-- [hpack 0.33][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
+- [Git 2.27][git_downloads] ([*release notes*][git_relnotes])
+- [hlint 3.1][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
+- [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*May 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*July 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(2.4 GB)</i>
 C:\opt\ghc-8.10.1\hlint\  <i>( 66 MB)</i>
 C:\opt\ghc-8.10.1\hpack\  <i>( 45 MB)</i>
 C:\opt\ghc-8.10.1\stack\  <i>( 64 MB)</i>
-C:\opt\Git-2.26.2\        <i>(271 MB)</i>
+C:\opt\Git-2.27.0\        <i>(271 MB)</i>
 </pre>
 
 <!--
@@ -51,15 +51,21 @@ This project is organized as follows:
 <pre style="font-size:80%;">
 docs\
 examples\{HelloWorld, ..}
+parconc-examples\
+<a href="CABAL.md">CABAL.md</a>
 README.md
-setenv.bat
+<a href="RESOURCES.md">RESOURCES.md</a>
+<a href="setenv.bat">setenv.bat</a>
 </pre>
 
 where
 
 - directory [**`docs\`**](docs/) contains [Haskell] related papers/articles.
 - directory [**`examples\`**](examples/) contains [Haskell] examples grabbed from various websites (see file [**`examples\README.md`**](examples/README.md)).
+- directory [**`parconc-examples`**](parconc-examples/) contains [Haskell] examples from Simon Marlow's [book][book_parconc] (see file [**`parconc-examples\README.md`**](parconc-examples/README.md)).
+- file [**`CABAL.md`**](CABAL.md) gathers usage information about the Cabal tool.
 - file [**`README.md`**](README.md) is the [Markdown][github_markdown] document for this page.
+- file [**`RESOURCES.md`**](RESOURCES.md) gathers Haskell related informations.
 - file [**`setenv.bat`**](setenv.bat) is the batch command for setting up our environment.
 
 <!--
@@ -82,7 +88,7 @@ We distinguish different sets of batch commands:
 1. [**`setenv.bat`**](setenv.bat) - This batch command makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt (see section [**Project dependencies**](#proj_deps)).
 
    <pre style="font-size:80%;">
-   <b>&gt; setenv help</b>
+   <b>&gt; <a href="./setenv.bat">setenv</a> help</b>
    Usage: setenv { &lt;option&gt; | &lt;subcommand&gt; }
    &nbsp;
      Options:
@@ -93,11 +99,10 @@ We distinguish different sets of batch commands:
        help        display this help message
    </pre>
 
-
-2. [**`examples\*\build.bat`**](examples/dotty-example-project/build.bat) - Each example can be built/run using the [**`build`**](examples/dotty-example-project/build.bat) command.<br/>
+2. [**`examples\*\build.bat`**](examples/Factorial/build.bat) - Each example can be built/run using the [**`build`**](examples/Factorial/build.bat) command.<br/>
 
     <pre style="font-size:80%;">
-    <b>&gt; build</b>
+    <b>&gt; <a href="examples/Factorial/build.bat">build</a></b>
     Usage: build { &lt;option&gt; | &lt;subcommand&gt; }
     &nbsp;
     Options:
@@ -120,11 +125,11 @@ We distinguish different sets of batch commands:
 Command [**`setenv`**](setenv.bat) is executed once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
 
 <pre style="font-size:80%;">
-<b>&gt; setenv</b>
+<b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
-   git 2.26.2.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.1.6, hpack 0.34.2,
+   git 2.27.0.windows.1, diff 3.7
 
 <b>&gt; where hlint hpack stack</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
@@ -135,11 +140,11 @@ C:\opt\ghc-8.10.1\stack\stack.exe
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
 
 <pre style="font-size:80%;">
-<b>&gt; setenv -verbose</b>
+<b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1, hpack 0.33.0,
-   git 2.26.2.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.1.6, hpack 0.34.2,
+   git 2.27.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.1\bin\cabal.exe
    C:\opt\ghc-8.10.1\bin\ghc.exe
@@ -147,9 +152,9 @@ Tool paths:
    C:\opt\ghc-8.10.1\bin\haddock.exe
    C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
    C:\opt\ghc-8.10.1\hpack\bin\hpack.exe
-   C:\opt\Git-2.26.2\bin\git.exe
-   C:\opt\Git-2.26.2\mingw64\bin\git.exe
-   C:\opt\Git-2.26.2\usr\bin\diff.exe
+   C:\opt\Git-2.27.0\bin\git.exe
+   C:\opt\Git-2.27.0\mingw64\bin\git.exe
+   C:\opt\Git-2.27.0\usr\bin\diff.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -160,7 +165,6 @@ Tool paths:
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </p>
 
-
 <a name="footnote_02">[2]</a> ***Downloads*** [↩](#anchor_02)
 
 <p style="margin:0 0 1em 20px;">
@@ -169,17 +173,18 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(377 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.26.2-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                  <i>( 15 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.27.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
 
+[book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
@@ -187,17 +192,16 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghc_userguide]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.27.0.txt
 [github_markdown]: https://github.github.com/gfm/
-[graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
+[haskell_downloads]: https://downloads.haskell.org/~ghc/latest/
 [haskell_relnotes]: https://downloads.haskell.org/ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.0.4/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.33.0/changelog
+[hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
@@ -214,6 +218,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/#v231
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
+[trufflesqueak_examples]: https://github.com/michelou/trufflesqueak-examples
 [unix_opt]: https://tldp.org/LDP/Linux-Filesystem-Hierarchy/html/opt.html
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting
 [windows_limitation]: https://support.microsoft.com/en-gb/help/830473/command-prompt-cmd-exe-command-line-string-limitation

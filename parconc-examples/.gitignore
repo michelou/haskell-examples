@@ -1,0 +1,8 @@
+*.exe
+*.hi
+*.ho
+*.lock
+*.log
+*.prof
+
+lib/

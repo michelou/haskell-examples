@@ -7,7 +7,11 @@ module Main (main) where
 
 import Control.Monad -- forM, mapM
 
+<<<<<<< HEAD
 -| Program entry point.
+=======
+-- |Program entry point.
+>>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
 main :: IO ()
 main = do
     colors <- forM [1 :: Int, 2, 3, 4] (\i -> do
@@ -15,5 +19,4 @@ main = do
         color <- getLine
         return color)
     putStrLn "The colors that you associate with 1, 2, 3 and 4 are: "
-    _ <- mapM putStrLn colors
-    return ()
+    mapM_ putStrLn colors

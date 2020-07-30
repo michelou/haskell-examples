@@ -28,12 +28,16 @@ factorialFold n = foldl(*) 1 [1..n]
 factorialProd :: Integer -> Integer
 factorialProd n = product [1..n]
 
+<<<<<<< HEAD
 -- | Program entry point.
+=======
+-- |Program entry point.
+>>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
 main :: IO ()
 main = do
     let x = 5
-    putStrLn ("factorialRec(" ++ (show x) ++ ") =" ++ (show (factorialRec x))) ;
-    putStrLn ("factorialRec2(" ++ (show x) ++ ")=" ++ (show (factorialRec2 x))) ;
-    putStrLn ("factorialFold(" ++ (show x) ++ ")=" ++ (show (factorialFold x))) ;
-    putStrLn ("factorialProd(" ++ (show x) ++ ")=" ++ (show (factorialProd x))) ;
+    putStrLn ("factorialRec(" ++ show x ++ ") =" ++ show (factorialRec x)) ;
+    putStrLn ("factorialRec2(" ++ show x ++ ")=" ++ show (factorialRec2 x)) ;
+    putStrLn ("factorialFold(" ++ show x ++ ")=" ++ show (factorialFold x)) ;
+    putStrLn ("factorialProd(" ++ show x ++ ")=" ++ show (factorialProd x)) ;
     return ()

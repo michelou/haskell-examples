@@ -6,3 +6,4 @@
 *.prof
 
 *_LOCAL/
+.hash
