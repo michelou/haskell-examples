@@ -130,7 +130,7 @@ Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskel
 <b>&gt; where build</b>
 H:\examples\Factorial\build.bat
 &nbsp;
-<b>&gt; build clean run</b>
+<b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -139,7 +139,7 @@ factorialProd(5)=120
 
 > **:mag_right:** Commands `build` and `mvn` accept one or more subcommands while `cabal` and `stack` accept only one. For instance the following command lines produce the same result:
 > <pre style="font-size:80%;">
-> <b>&gt; build clean run</b>
+> <b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
 > <b>&gt; mvn clean compile exec:exec</b>
 > <b>&gt; cabal clean && cabal run all</b>
 > <b>&gt; stack clean && stack run</b>
@@ -147,7 +147,7 @@ factorialProd(5)=120
 
 Command [`build -debug clean run`](Factorial/build.bat) also displays the internally executed commands:
 <pre style="font-size:80%;">
-<b>&gt; build -debug clean run</b>
+<b>&gt; <a href="Factorial/build.bat">build</a> -debug clean run</b>
 [build] _CLEAN=1 _COMPILE=1 _DOC=0 _RUN=1 _VERBOSE=0
 [build] rmdir /s /q "H:\examples\Factorial\target"
 [build] ghc.exe -Wall -Werror -o "H:\examples\Factorial\target\Main.exe" -hidir "H:\examples\Factorial\target\gen" -odir "H:\examples\Factorial\target\gen"  "H:\examples\Factorial\app\Main.hs"
@@ -241,7 +241,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

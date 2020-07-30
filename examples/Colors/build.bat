@@ -64,9 +64,9 @@ set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 set "_SOURCE_DIR=%_ROOT_DIR%app"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
-set "_DOCS_DIR=%_TARGET_DIR%\docs"
+set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
 
-if not exist "%GHC_HOME%\" (
+if not exist "%GHC_HOME%\bin\ghc.exe" (
     echo %_ERROR_LABEL% GHC installation not found 1>&2
     set _EXITCODE=1
     goto :eof
@@ -76,7 +76,7 @@ set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
 set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set "_HLINT_CMD=%GHC_HOME%\hlint\bin\hlint.exe"
 set _HLINT_OPTS=--color=auto
@@ -177,17 +177,10 @@ if not defined __ARG (
 )
 if "%__ARG:~0,1%"=="-" (
     @rem option
-<<<<<<< HEAD
-    if /i "%__ARG%"=="-debug" ( set _DEBUG=1
-    ) else if /i "%__ARG%"=="-help" ( set _HELP=1
-    ) else if /i "%__ARG%"=="-timer" ( set _TIMER=1
-    ) else if /i "%__ARG%"=="-verbose" ( set _VERBOSE=1
-=======
     if "%__ARG%"=="-debug" ( set _DEBUG=1
     ) else if "%__ARG%"=="-help" ( set _HELP=1
     ) else if "%__ARG%"=="-timer" ( set _TIMER=1
     ) else if "%__ARG%"=="-verbose" ( set _VERBOSE=1
->>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
     ) else (
         echo %_ERROR_LABEL% Unknown option %__ARG% 1>&2
         set _EXITCODE=1
@@ -195,20 +188,12 @@ if "%__ARG:~0,1%"=="-" (
    )
 ) else (
     @rem subcommand
-<<<<<<< HEAD
-    if /i "%__ARG%"=="clean" ( set _CLEAN=1
-    ) else if /i "%__ARG%"=="compile" ( set _COMPILE=1
-    ) else if /i "%__ARG%"=="doc" ( set _DOC=1
-    ) else if /i "%__ARG%"=="help" ( set _HELP=1
-    ) else if /i "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
-=======
     if "%__ARG%"=="clean" ( set _CLEAN=1
     ) else if "%__ARG%"=="compile" ( set _COMPILE=1
     ) else if "%__ARG%"=="doc" ( set _DOC=1
     ) else if "%__ARG%"=="help" ( set _HELP=1
     ) else if "%__ARG%"=="lint" ( set _LINT=1
     ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
->>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -225,6 +210,7 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
+	echo %_DEBUG_LABEL% Variables  : GHC_HOME=%GHC_HOME% 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -359,7 +345,7 @@ if %__DATE1% gtr %__DATE2% ( set _NEWER=1
 goto :eof
 
 :doc
-if not exist "%_DOCS_DIR%" mkdir "%_DOCS_DIR%"
+if not exist "%_TARGET_DOCS_DIR%" mkdir "%_TARGET_DOCS_DIR%"
 
 set __SOURCE_FILES=
 for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
@@ -369,11 +355,7 @@ set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
-<<<<<<< HEAD
-	goto :eof
-=======
     goto :eof
->>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
 )
 set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
@@ -381,17 +363,10 @@ for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) d
     for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
 )
-<<<<<<< HEAD
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory 1>&2 !_DOCS_DIR:%_ROOT_DIR%=! 1>&2
-)
-call %_HADDOCK_CMD% %__HADDOCK_OPTS% %__SOURCE_FILES%
-=======
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
->>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
 if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof

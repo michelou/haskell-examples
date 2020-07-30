@@ -7,11 +7,7 @@ module Main (main) where
 
 import Control.Monad -- forM, mapM
 
-<<<<<<< HEAD
--| Program entry point.
-=======
--- |Program entry point.
->>>>>>> b2ef63c3dc3c051d1076d1df2506a0fac20aaca0
+-- | Program entry point.
 main :: IO ()
 main = do
     colors <- forM [1 :: Int, 2, 3, 4] (\i -> do
