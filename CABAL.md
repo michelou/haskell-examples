@@ -3,7 +3,7 @@
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/">Haskell</a> libraries and programs, on the Windows platform.
+  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on the Windows platform.
   </td>
   </tr>
 </table>
@@ -162,7 +162,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -172,13 +172,10 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
-[git_cli]: https://git-scm.com/docs/git
-[git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.26.2.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/~ghc/8.10.1/
+[haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.6/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint

@@ -14,10 +14,10 @@ Build tools rely on one or more configuration files to achieve their tasks. In o
 
 | Build tool                    | Configuration file                       | Parent file                |
 |-------------------------------|------------------------------------------|----------------------------|
-| **`build`**                   | **`build.properties`**                   | n.a.                       |
-| [**`cabal`**][cabal_cli]      | [**`build.gradle`**](Factorial/Factorial.cabal) | n.a.                |
-| [**`mvn`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
-| [**`stack`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
+| **`build.bat`**                   | **`build.properties`**                   | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [**`build.gradle`**](Factorial/Factorial.cabal) | n.a.                |
+| [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
+| [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
 
 
 ## <span id="factorial">Factorial</span>
@@ -27,7 +27,7 @@ The directory structure of project `Factorial` looks as follows:
 <b>&gt; cd</b>
 H:\examples\Factorial
 &nbsp;
-<b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
 |   <a href="Factorial/.hlint.yaml">.hlint.yaml</a>
 |   <a href="Factorial/build.bat">build.bat</a>
@@ -43,7 +43,7 @@ H:\examples\Factorial
 
 Command `cabal run all` builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
-<b>&gt; where cabal</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
@@ -66,10 +66,10 @@ factorialProd(5)=120
 
 Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
-<b>&gt; where stack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
 C:\opt\ghc-8.10.1\stack\stack.exe
 &nbsp;
-<b>&gt; stack --silent run</b>
+<b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -127,7 +127,7 @@ factorialProd(5)=120
 
 Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
-<b>&gt; where build</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> build</b>
 H:\examples\Factorial\build.bat
 &nbsp;
 <b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
@@ -168,7 +168,7 @@ The directory structure of project `QuickSort` looks as follows:
 <b>&gt; cd</b>
 H:\examples\QuickSort
 &nbsp;
-<b>&gt; tree /a /f . | findstr /v "^[A-Z]"</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | findstr /v "^[A-Z]"</b>
 |   .gitignore
 |   <a href="./QuickSort/build.bat">build.bat</a>
 |   <a href="./QuickSort/QuickSort.cabal">QuickSort.cabal</a>
@@ -184,7 +184,7 @@ H:\examples\QuickSort
 Command `cabal run all` builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
 
 <pre style="font-size:80%;">
-<b>&gt; where cabal</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
@@ -207,7 +207,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
 
 <pre style="font-size:80%;">
-<b>&gt; where stack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
 C:\opt\ghc-8.10.1\stack\stack.exe
 &nbsp;
 <b>&gt; stack --silent run</b>
@@ -220,7 +220,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 Command [`build clean run`](QuickSort/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
-<b>&gt; where build</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> build</b>
 H:\examples\QuickSort\build.bat
 &nbsp;
 <b>&gt; <a href="QuickSort/build.bat">build</a> clean run</b>

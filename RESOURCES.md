@@ -26,9 +26,10 @@
 
 ## <span id="books">Books</span>
 
-- [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br>(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)
-- [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/>(on GitHub: [parconc-examples][parconc_examples])
-- [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.
+- [Haskell from the Very Beginning][book_very_beginning], by John Whitington, Coherent Press 2019.<br/><span style="font-size:80%;">(ISBN 978-0957671133)</span>
+- [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br><span style="font-size:80%;">(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)</span>
+- [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
+- [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
 
 ## <span id="courses">Courses</span>
 
@@ -57,7 +58,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -68,6 +69,7 @@
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+[book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
