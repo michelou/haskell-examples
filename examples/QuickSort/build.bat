@@ -66,7 +66,7 @@ set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
 
-if not exist "%GHC_HOME%\" (
+if not exist "%GHC_HOME%\bin\ghc.exe" (
     echo %_ERROR_LABEL% GHC installation not found 1>&2
     set _EXITCODE=1
     goto :eof
@@ -210,6 +210,7 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Variables  : GHC_HOME=%GHC_HOME% 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -296,6 +297,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1
 )
 call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
+   echo %_ERROR_LABEL% Failed to compile %__N% Haskell source files 1>&2
    set _EXITCODE=1
    goto :eof
 )

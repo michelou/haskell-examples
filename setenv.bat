@@ -25,11 +25,20 @@ if %_HELP%==1 (
 
 set _GHC_PATH=
 set _GIT_PATH=
+set _MAVEN_PATH=
 
 call :ghc
 if not %_EXITCODE%==0 goto end
 
 call :git
+if not %_EXITCODE%==0 goto end
+
+@rem %1=vendor, %2=version
+@rem eg. "" (Oracle), bellsoft, corretto, bellsoft, openj9, redhat, sapmachine, zulu
+call :jdk "" 11
+if not %_EXITCODE%==0 goto end
+
+call :maven
 if not %_EXITCODE%==0 goto end
 
 goto end
@@ -154,8 +163,8 @@ if not defined __ARG goto args_done
 
 if "%__ARG:~0,1%"=="-" (
     @rem option
-    if /i "%__ARG%"=="-debug" ( set _DEBUG=1
-    ) else if /i "%__ARG%"=="-verbose" ( set _VERBOSE=1
+    if "%__ARG%"=="-debug" ( set _DEBUG=1
+    ) else if "%__ARG%"=="-verbose" ( set _VERBOSE=1
     ) else (
         echo %_ERROR_LABEL% Unknown option %__ARG% 1>&2
         set _EXITCODE=1
@@ -163,7 +172,7 @@ if "%__ARG:~0,1%"=="-" (
     )
 ) else (
     @rem subcommand
-    if /i "%__ARG%"=="help" ( set _HELP=1
+    if "%__ARG%"=="help" ( set _HELP=1
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -213,7 +222,7 @@ for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
 if defined __GHC_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Haskell executable found in PATH 1>&2
     for %%i in ("%__GHC_CMD%") do set "__GHC_BIN_DIR=%%~dpi"
-    for %%f in ("!__GHC_BIN_DIR!..") do set "_GHC_HOME=%%~dpf"
+    for %%f in ("!__GHC_BIN_DIR!\.") do set "_GHC_HOME=%%~dpf"
     @rem keep _GHC_PATH undefined since executable already in path
     goto :eof
 ) else if defined HASKELL_HOME (
@@ -280,6 +289,96 @@ if not exist "%_GIT_HOME%\bin\git.exe" (
 set "_GIT_PATH=;%_GIT_HOME%\bin;%_GIT_HOME%\mingw64\bin;%_GIT_HOME%\usr\bin"
 goto :eof
 
+@rem input parameter: %1=vendor %1^=required version
+@rem output parameter(s): _JDK_HOME
+:jdk
+set _JDK_HOME=
+
+set __VENDOR=%~1
+set __VERSION=%~2
+if not defined __VENDOR ( set __JDK_NAME=jdk-%__VERSION%
+) else ( set __JDK_NAME=jdk-%__VENDOR%-%__VERSION%
+)
+set __JAVAC_CMD=
+for /f %%f in ('where javac.exe 2^>NUL') do set "__JAVAC_CMD=%%f"
+if defined __JAVAC_CMD (
+    call :jdk_version "%__JAVAC_CMD%"
+    if !_JDK_VERSION!==%__VERSION% (
+        for %%i in ("%__JAVAC_CMD%") do set "__BIN_DIR=%%~dpi"
+        for %%f in ("%__BIN_DIR%") do set "_JDK_HOME=%%~dpf"
+    ) else (
+        echo %_ERROR_LABEL% Required JDK installation not found ^(%__JDK_NAME%^) 1>&2
+        set _EXITCODE=1
+        goto :eof
+    )
+)
+if defined JDK_HOME (
+    set "_JDK_HOME=%JDK_HOME%"
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable JDK_HOME 1>&2
+) else (
+    set _PATH=C:\opt
+    for /f "delims=" %%f in ('dir /ad /b "!_PATH!\%__JDK_NAME%*" 2^>NUL') do set "_JDK_HOME=!_PATH!\%%f"
+    if not defined _JDK_HOME (
+        set "_PATH=%ProgramFiles%\Java"
+        for /f %%f in ('dir /ad /b "!_PATH!\%__JDK_NAME%*" 2^>NUL') do set "_JDK_HOME=!_PATH!\%%f"
+    )
+    if defined _JDK_HOME (
+        if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Java SDK installation directory !_JDK_HOME! 1>&2
+    )
+)
+if not exist "%_JDK_HOME%\bin\javac.exe" (
+    echo %_ERROR_LABEL% Executable javac.exe not found ^(%_JDK_HOME%^) 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+goto :eof
+
+@rem input parameter(s): %1=javac file path
+@rem output parameter(s): _JDK_VERSION
+:jdk_version
+set "__JAVAC_CMD=%~1"
+if not exist "%__JAVAC_CMD%" (
+    echo %_ERROR_LABEL% Command javac.exe not found ^("%__JAVAC_CMD%"^) 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+set __JAVAC_VERSION=
+for /f "usebackq tokens=1,*" %%i in (`"%__JAVAC_CMD%" -version 2^>^&1`) do set __JAVAC_VERSION=%%j
+if "!__JAVAC_VERSION:~0,2!"=="14" ( set _JDK_VERSION=14
+) else if "!__JAVAC_VERSION:~0,2!"=="11" ( set _JDK_VERSION=11
+) else if "!__JAVAC_VERSION:~0,3!"=="1.8" ( set _JDK_VERSION=8
+) else if "!__JAVAC_VERSION:~0,3!"=="1.7" ( set _JDK_VERSION=7
+) else (
+    set _JDK_VERSION=
+    echo %_ERROR_LABEL% Unsupported JDK version %__JAVAC_VERSION% 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+goto :eof
+
+@rem output parameter(s): _MAVEN_PATH
+:maven
+where /q mvn.cmd
+if %ERRORLEVEL%==0 goto :eof
+
+if defined MAVEN_HOME (
+    set "_MAVEN_HOME=%MAVEN_HOME%"
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable MAVEN_HOME 1>&2
+) else (
+    set _PATH=C:\opt
+    for /f %%f in ('dir /ad /b "!_PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!_PATH!\%%f"
+    if defined _MAVEN_HOME (
+        if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Maven installation directory !_MAVEN_HOME! 1>&2
+    )
+)
+if not exist "%_MAVEN_HOME%\bin\mvn.cmd" (
+    echo %_ERROR_LABEL% Maven executable not found ^(%_MAVEN_HOME%^) 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+set "_MAVEN_PATH=;%_MAVEN_HOME%\bin"
+goto :eof
+
 :print_env
 set __VERBOSE=%1
 set "__VERSIONS_LINE1=  "
@@ -341,6 +440,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
     echo Environment variables: 1>&2
     if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
+    if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
     if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
 )
 goto :eof
@@ -351,8 +451,10 @@ goto :eof
 :end
 endlocal & (
     if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
+    @rem Variable JAVA_HOME must be defined for Maven
+    if not defined JAVA_HOME set "JAVA_HOME=%_JAVA_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%"
+    set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%%_MAVEN_PATH%"
     call :print_env %_VERBOSE%
     if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
     for /f "delims==" %%i in ('set ^| findstr /b "_"') do set %%i=

@@ -45,6 +45,10 @@ if %_RUN%==1 (
     call :run_%_TARGET%
     if not !_EXITCODE!==0 goto end
 )
+if %_TEST%==1 (
+    call :test
+    if not !_EXITCODE!==0 goto end
+)
 goto end
 
 @rem #########################################################################
@@ -62,6 +66,7 @@ set _ERROR_LABEL=%_STRONG_FG_RED%Error%_RESET%:
 set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 
 set "_SOURCE_DIR=%_ROOT_DIR%app"
+set "_TEST_DIR=%_ROOT_DIR%test"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
@@ -79,7 +84,6 @@ set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set "_HLINT_CMD=%GHC_HOME%\hlint\bin\hlint.exe"
-set _HLINT_OPTS=--color=auto
 goto :eof
 
 :env_colors
@@ -167,6 +171,7 @@ set _LINT=0
 set _RUN=0
 set _TARGET=native
 set _TIMER=0
+set _TEST=0
 set _VERBOSE=0
 set __N=0
 :args_loop
@@ -194,6 +199,7 @@ if "%__ARG:~0,1%"=="-" (
     ) else if "%__ARG%"=="help" ( set _HELP=1
     ) else if "%__ARG%"=="lint" ( set _LINT=1
     ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
+    ) else if "%__ARG%"=="test" ( set _COMPILE=1& set _TEST=1
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -209,7 +215,7 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 )
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
-    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
 	echo %_DEBUG_LABEL% Variables  : GHC_HOME=%GHC_HOME% 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
@@ -241,6 +247,7 @@ echo     %__BEG_O%doc%__END%         generate HTML documentation
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
 echo     %__BEG_O%run%__END%         execute the generated program
+echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
 echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
@@ -267,13 +274,13 @@ goto :eof
 :lint
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
-if %_DEBUG%==1 ( set __LINT_OPTS=%_HLINT_OPTS%
-) else ( set __LINT_OPTS=%_HLINT_OPTS% "--report=%_TARGET_DIR%\report.html"
-)
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__LINT_OPTS% "%_SOURCE_DIR%" 1>&2
+set __HLINT_OPTS=--color=auto
+if %_DEBUG%==0 set __HLINT_OPTS=%__HLINT_OPTS% "--report=%_TARGET_DIR%\report.html"
+
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" 1>&2
 ) else if %_VERBOSE%==1 ( echo Analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
 )
-call "%_HLINT_CMD%" %__LINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
+call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
@@ -318,8 +325,8 @@ for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop
 call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
 set _COMPILE_REQUIRED=%_NEWER%
 if %_DEBUG%==1 (
-    echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% "%__TARGET_FILE%" 1>&2
-    echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% "%__PATH%" 1>&2
+    echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% Target : "%__TARGET_FILE%" 1>&2
+    echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% Sources: "%__PATH%" 1>&2
     echo %_DEBUG_LABEL% _COMPILE_REQUIRED=%_COMPILE_REQUIRED% 1>&2
 ) else if %_VERBOSE%==1 if %_COMPILE_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
     echo No compilation needed ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
@@ -388,6 +395,10 @@ if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof
 )
+goto :eof
+
+:test
+echo %_WARNING_LABEL% Not yet implemented 1>&2
 goto :eof
 
 @rem output parameter: _DURATION

@@ -3,7 +3,7 @@
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on the Windows platform.
+  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/" rel="external">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on the Windows platform.
   </td>
   </tr>
 </table>
@@ -18,7 +18,7 @@ Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mi
 <b>&gt; where cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
-<b>&gt; cabal update</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 Config file path source is default config file.
 Config file %APPDATA%\cabal\config not found.
 Writing default configuration to
@@ -31,7 +31,7 @@ Downloading the latest package list from hackage.haskell.org
 [HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] code. We install [`hlint`][hlint_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
-<b>&gt; cabal install hlint</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
@@ -67,12 +67,12 @@ HLint v3.1.6, (C) Neil Mitchell 2006-2020
 
 > **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
 > <pre style="font-size:80%;">
-> <b>&gt; cabal update</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
 >    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
 > &nbsp;
-> <b>&gt; cabal list hlint</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
 >     Default available version: 3.1.6
@@ -87,7 +87,7 @@ HLint v3.1.6, (C) Neil Mitchell 2006-2020
 [Hpack][hpack_readme] is a format for Haskell packages. Similarly to `hlint` we install [`hpack`][hpack_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
-<b>&gt; cabal install hpack</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
@@ -123,12 +123,12 @@ hpack version 0.34.2
 
 > **:mag_right:** Command **`cabal list hpack`** shows the latest available version of package `hpack` (*do not* forget **`cabal update`**) :
 > <pre style="font-size:80%;">
-> <b>&gt; cabal update</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
 >    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
 > &nbsp;
-> <b>&gt; cabal list hpack</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
 >     Default available version: 0.34.2
@@ -137,6 +137,31 @@ hpack version 0.34.2
 >     License:  MIT
 > [..]
 > </pre>
+
+
+## <span id="hunit"><code>HUnit</code> installation</span>
+
+<pre style="font-size:80%;">
+<b>&gt; cabal install --lib HUnit</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.1 -O1
+In order, the following will be built (use -v for more details):
+ - call-stack-0.2.0 (lib) (requires download & build)
+ - HUnit-1.6.0.0 (lib) (requires download & build)
+Downloading  call-stack-0.2.0
+Downloaded   call-stack-0.2.0
+Downloading  HUnit-1.6.0.0
+Starting     call-stack-0.2.0 (lib)
+Downloaded   HUnit-1.6.0.0
+Building     call-stack-0.2.0 (lib)
+Installing   call-stack-0.2.0 (lib)
+Completed    call-stack-0.2.0 (lib)
+Starting     HUnit-1.6.0.0 (lib)
+Building     HUnit-1.6.0.0 (lib)
+Installing   HUnit-1.6.0.0 (lib)
+Completed    HUnit-1.6.0.0 (lib)
+</pre>
+
 
 ## <span id="footnotes">Footnotes</span>
 
