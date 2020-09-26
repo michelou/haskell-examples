@@ -61,13 +61,18 @@ set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_DOCS_DIR=%_TARGET_DIR%\docs"
 
-set _GHC_CMD=ghc.exe
+if not exist "%GHC_HOME%\bin\ghc.exe" (
+    echo %_ERROR_LABEL% GHC installation not found 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
 @rem https://mpickering.github.io/ghc-docs/build-html/users_guide/using-warnings.html
 set _GHC_WARNINGS=-Wall -Wincomplete-uni-patterns
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=%_GHC_WARNINGS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
-set _HADDOCK_CMD=haddock.exe
+set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
 
 set _TAR_CMD=tar.exe
@@ -211,13 +216,13 @@ if not defined __ARG (
 )
 if "%__ARG:~0,1%"=="-" (
     @rem option
-    if /i "%__ARG%"=="-debug" ( set _DEBUG=1
-    ) else if /i "%__ARG%"=="-help" ( set _HELP=1
-    ) else if /i "%__ARG:~0,6%"=="-exec:" (
+    if "%__ARG%"=="-debug" ( set _DEBUG=1
+    ) else if "%__ARG%"=="-help" ( set _HELP=1
+    ) else if "%__ARG:~0,6%"=="-exec:" (
         call :set_exec "!__ARG:~6!"
         if not !_EXITCODE!== 0 goto args_done
-    ) else if /i "%__ARG%"=="-timer" ( set _TIMER=1
-    ) else if /i "%__ARG%"=="-verbose" ( set _VERBOSE=1
+    ) else if "%__ARG%"=="-timer" ( set _TIMER=1
+    ) else if "%__ARG%"=="-verbose" ( set _VERBOSE=1
     ) else (
         echo %_ERROR_LABEL% Unknown option %__ARG% 1>&2
         set _EXITCODE=1
@@ -225,11 +230,11 @@ if "%__ARG:~0,1%"=="-" (
    )
 ) else (
     @rem subcommand
-    if /i "%__ARG%"=="clean" ( set _CLEAN=1
-    ) else if /i "%__ARG%"=="compile" ( set _COMPILE=1
-    ) else if /i "%__ARG%"=="doc" ( set _DOC=1
-    ) else if /i "%__ARG%"=="help" ( set _HELP=1
-    ) else if /i "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
+    if "%__ARG%"=="clean" ( set _CLEAN=1
+    ) else if "%__ARG%"=="compile" ( set _COMPILE=1
+    ) else if "%__ARG%"=="doc" ( set _DOC=1
+    ) else if "%__ARG%"=="help" ( set _HELP=1
+    ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -243,7 +248,11 @@ goto :args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
-if %_DEBUG%==1 echo %_DEBUG_LABEL% _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _EXEC=%_EXEC% _RUN=%_RUN% _VERBOSE=%_VERBOSE%
+if %_DEBUG%==1 (
+    echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
+    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Variables  : _EXEC=%_EXEC% 1>&2
+)
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
 
@@ -263,7 +272,7 @@ echo Usage: %__BEG_O%%_BASENAME% { ^<option^> ^| ^<subcommand^> }%__END%
 echo.
 echo   %__BEG_P%Options:%__END%
 echo     %__BEG_O%-debug%__END%        show commands executed by this script
-echo     %__BEG_O%-exec:^<exec^>%__END%  define Cabal executable ^(default: %_EXEC_DEFAULT%^)
+echo     %__BEG_O%-exec:^<exec^>%__END%  define Cabal executable ^(default: %__BEG_O%%_EXEC_DEFAULT%%__END%^)
 echo     %__BEG_O%-timer%__END%        display total elapsed time
 echo     %__BEG_O%-verbose%__END%      display progress messages
 echo.
@@ -333,7 +342,7 @@ set __GHC_OPTS=%_GHC_OPTS% !_EXECUTABLE[%__N%][ghc-options]! -i"%_INCLUDES%" -X!
 if %_DEBUG%==1 set __GHC_OPTS=%__GHC_OPTS% -Rghc-timing
 
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Compile Haskell source files 1>&2
+) else if %_VERBOSE%==1 ( echo Compile Haskell source files to directory "!_TARGET_DIR=%_ROOT_DIR%=!" 1>&2
 )
 call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
@@ -344,18 +353,21 @@ goto :eof
 
 @rem output parameter: _INCLUDES
 :includes
+@rem http://hackage.haskell.org/package/monad-par
 set __PACKAGE_NAME=monad-par-0.3.5
 call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
 if not %_EXITCODE%==0 goto :eof
 
 set "_INCLUDES=%_ROOT_DIR%lib\%__PACKAGE_NAME%"
 
+@rem http://hackage.haskell.org/package/parallel
 set __PACKAGE_NAME=parallel-3.2.2.0
 call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
 if not %_EXITCODE%==0 goto :eof
 
 set "_INCLUDES=%_INCLUDES%:%_ROOT_DIR%lib\%__PACKAGE_NAME%"
 
+@rem http://hackage.haskell.org/package/timeit
 set __PACKAGE_NAME=timeit-2.0
 call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
 if not %_EXITCODE%==0 goto :eof

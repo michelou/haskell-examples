@@ -11,11 +11,11 @@
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
-Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the `cabal.exe` executable somewhere on the `%PATH%`
+Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the **`cabal.exe`** executable somewhere on the `%PATH%`
 (in our case `C:\opt\ghc-8.10.1\bin\`).
 
 <pre style="font-size:80%;">
-<b>&gt; where cabal</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.1\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
@@ -35,16 +35,16 @@ Downloading the latest package list from hackage.haskell.org
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
- - ghc-lib-parser-ex-8.10.0.5 (lib) (requires download & build)
+ - extra-1.7.8 (lib) (requires download & build)
 [...]
-Starting     hlint-3.1.6 (lib)
-Building     hlint-3.1.6 (lib)
-Installing   hlint-3.1.6 (lib)
-Completed    hlint-3.1.6 (lib)
-Starting     hlint-3.1.6 (exe:hlint)
-Building     hlint-3.1.6 (exe:hlint)
-Installing   hlint-3.1.6 (exe:hlint)
-Completed    hlint-3.1.6 (exe:hlint)
+Starting     hlint-3.2 (lib)
+Building     hlint-3.2 (lib)
+Installing   hlint-3.2 (lib)
+Completed    hlint-3.2 (lib)
+Starting     hlint-3.2 (exe:hlint)
+Building     hlint-3.2 (exe:hlint)
+Installing   hlint-3.2 (exe:hlint)
+Completed    hlint-3.2 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -52,17 +52,17 @@ cabal: Symlinking feature not available on Windows
 Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hlint\`):
 
 <pre style="font-size:80%;">
-<b>&gt; where /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.6-f06361eb905029f73db0cbcdf47cccf70c1923f8\bin\hlint.exe
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hlint.exe</b>
+%APPDATA%\cabal\store\ghc-8.10.1\hlint-3.2-e208861bbff2944162a48ddbe2d46a9db91f1e15\bin\hlint.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.1.6-f06361eb905029f73db0cbcdf47cccf70c1923f8 c:\opt\ghc-8.10.1\hlint</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hlint-3.2-e208861bbff2944162a48ddbe2d46a9db91f1e15 c:\opt\ghc-8.10.1\hlint</b>
 12 file(s) copied
 &nbsp;
-<b>&gt; where hlint</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 &nbsp;
-<b>&gt; hlint --version</b>
-HLint v3.1.6, (C) Neil Mitchell 2006-2020
+<b>&gt; <a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
+HLint v3.2, (C) Neil Mitchell 2006-2020
 </pre>
 
 > **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
@@ -108,16 +108,16 @@ cabal: Symlinking feature not available on Windows
 Since the last installation step fails on Windows, we search for the path to the `hpack` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.1\hpack\`):
 
 <pre style="font-size:80%;">
-<b>&gt; where /r  %APPDATA%\cabal hpack.exe</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hpack.exe</b>
 %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.2-05861d321aba5e1328256640dbeca4392c796f6c\bin\hpack.exe
 &nbsp;
-<b>&gt; xcopy /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.2-05861d321aba5e1328256640dbeca4392c796f6c c:\opt\ghc-8.10.1\hpack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.1\hpack-0.34.2-05861d321aba5e1328256640dbeca4392c796f6c c:\opt\ghc-8.10.1\hpack</b>
 3 file(s) copied
 &nbsp;
-<b>&gt; where hpack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hpack</b>
 C:\opt\ghc-8.10.1\hlint\bin\hpack.exe
 &nbsp;
-<b>&gt; hpack --version</b>
+<b>&gt; <a href="https://hackage.haskell.org/package/hpack">hpack</a> --version</b>
 hpack version 0.34.2
 </pre>
 
@@ -142,7 +142,7 @@ hpack version 0.34.2
 ## <span id="hunit"><code>HUnit</code> installation</span>
 
 <pre style="font-size:80%;">
-<b>&gt; cabal install --lib HUnit</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.1 -O1
 In order, the following will be built (use -v for more details):
@@ -165,7 +165,7 @@ Completed    HUnit-1.6.0.0 (lib)
 
 ## <span id="footnotes">Footnotes</span>
 
-<a name="footnote_01">[1]</a> ***Downloads*** [↩](#anchor_01)
+<b name="footnote_01">[1]</b> ***Downloads*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
@@ -173,10 +173,11 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz</a>          <i>(377 MB)</i>
-<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.3.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
-<a name="footnote_02">[2]</a> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
+<b name="footnote_02">[2]</b> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
+
 <p style="margin:0 0 1em 20px;">
 Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows: 
 <ul>
@@ -187,7 +188,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/September 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

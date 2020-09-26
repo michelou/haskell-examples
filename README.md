@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently investigating.
+[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -21,14 +21,14 @@ This project relies on the following external software for the **Microsoft Windo
 Optionally one may also install the following software:
 
 - [Git 2.28][git_downloads] ([*release notes*][git_relnotes])
-- [hlint 3.1][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
+- [hlint 3.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.3][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*August 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*September 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.1\        <i>(2.4 GB)</i>
@@ -120,18 +120,18 @@ We distinguish different sets of batch commands:
 
 ## <span id="usage">Usage examples</span>
 
-#### `setenv.bat`
+### `setenv.bat`
 
 Command [**`setenv`**](setenv.bat) is executed once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1.6, hpack 0.34.2,
+   cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.3,
+   haddock 2.24.0, hlint v3.2, hpack 0.34.2,
    git 2.28.0.windows.1, diff 3.7
 
-<b>&gt; where hlint hpack stack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 C:\opt\ghc-8.10.1\hlint\bin\hlint.exe
 C:\opt\ghc-8.10.1\hpack\bin\hpack.exe
 C:\opt\ghc-8.10.1\stack\stack.exe
@@ -142,8 +142,8 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.1,
-   haddock 2.24.0, hlint v3.1.6, hpack 0.34.2,
+   cabal 3.2.0.0, ghc version 8.10.1, stack 2.3.3,
+   haddock 2.24.0, hlint v3.2, hpack 0.34.2,
    git 2.28.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.1\bin\cabal.exe
@@ -174,12 +174,12 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.1/">ghc-8.10.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(377 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.28.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.3.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/September 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

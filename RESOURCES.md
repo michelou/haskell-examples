@@ -10,6 +10,7 @@
 
 ## <span id="articles">Articles</span>
 
+- [My thoughts on Haskell in 2020][article_sampellegrini] by Marco Sampelligrini, December 26, 2019.
 - [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
 - [GHC Parser][ghc_parser]
 [Simple and robust layout rules for parsing programming language code][article_abela].
@@ -33,7 +34,7 @@
 
 ## <span id="courses">Courses</span>
 
-- [Funcitonal and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
+- [Functional and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
 
 ## <span id="news">News</span>
 
@@ -58,7 +59,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/September 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -67,6 +68,7 @@
 [article_doig]: https://medium.com/@dogwith1eye/setting-up-haskell-in-vs-code-with-stack-and-the-ide-engine-81d49eda3ecf
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
+[article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
