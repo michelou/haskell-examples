@@ -81,7 +81,7 @@ factorialProd(5)=120
 Command `mvn -q compile run` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
-<b>&gt; mvn -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 factorialRec(5) =120
@@ -94,7 +94,7 @@ factorialProd(5)=120
 > <pre style="font-size:80%;">
 > <b>&gt; stack build --profile</b>
 > &nbsp;
-> <b>&gt; stack exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
+> <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
 > factorialRec(5) =120
 > factorialRec2(5)=120
 > factorialFold(5)=120
@@ -102,7 +102,7 @@ factorialProd(5)=120
 > </pre>
 > Profiling results are stored in file `Factorial.prof`:
 > <pre style="font-size:80%;">
-> <b>&gt; more Factorial.prof</b>
+> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/more">more</a> Factorial.prof</b>
 >         Tue Mar 03 22:21 2020 Time and Allocation Profiling Report  (Final)
 > &nbsp;
 >            Factorial.exe +RTS -p -RTS
@@ -140,7 +140,7 @@ factorialProd(5)=120
 > **:mag_right:** Commands `build` and `mvn` accept one or more subcommands while `cabal` and `stack` accept only one. For instance the following command lines produce the same result:
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
-> <b>&gt; mvn clean compile exec:exec</b>
+> <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> clean compile exec:exec</b>
 > <b>&gt; cabal clean && cabal run all</b>
 > <b>&gt; stack clean && stack run</b>
 > </pre>
@@ -165,7 +165,7 @@ factorialProd(5)=120
 
 The directory structure of project `QuickSort` looks as follows:
 <pre style="font-size:80%;">
-<b>&gt; cd</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cd">cd</a></b>
 H:\examples\QuickSort
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | findstr /v "^[A-Z]"</b>
@@ -241,7 +241,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -21,7 +21,7 @@
 
 ## <span id="blogs">Blogs</span>
 
-- [Haskell for impatient Scala developer: Getting into speed](https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html), February 8, 2020.
+- [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - Build a CPU: [Part 1](https://yager.io/CPU/CPU2.html), October 2017, and [Part 2](https://yager.io/CPU/CPU2.html), April 2018.
 
@@ -59,7 +59,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/September 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -71,6 +71,7 @@
 [article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+[blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/

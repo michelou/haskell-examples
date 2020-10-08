@@ -188,7 +188,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/September 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -203,10 +203,10 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.1/docs/html/users_guide/8.10.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.1.6/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hlint_readme]: https://hackage.haskell.org/package/hlint-3.1.6#readme
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.1/changelog
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.2#readme
+[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.2/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
