@@ -66,7 +66,6 @@ set _ERROR_LABEL=%_STRONG_FG_RED%Error%_RESET%:
 set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 
 set "_SOURCE_DIR=%_ROOT_DIR%app"
-set "_TEST_DIR=%_ROOT_DIR%test"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
@@ -83,7 +82,10 @@ set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
-set "_HLINT_CMD=%GHC_HOME%\hlint\bin\hlint.exe"
+set _HLINT_CMD=
+if exist "%HLINT_HOME%\bin\hlint.exe" (
+    set "_HLINT_CMD=%HLINT_HOME%\bin\hlint.exe"
+)
 goto :eof
 
 :env_colors
@@ -135,11 +137,12 @@ goto :eof
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
 for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
-set __PACKAGE_VERSION=0.0.1
+set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 set __GHC_OPTIONS=-Wall -Werror
 
-for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
+set __CABAL_FILE=
+for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         set __NAME=
@@ -216,11 +219,15 @@ goto :args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
+if %_LINT%==1 if not defined _HLINT_CMD (
+    echo %_WARNING_LABEL% Hlint tool not found ^(disable subcommand 'lint'^) 1>&2
+    set _LINT=0
+)
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
-	echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" HLINT_HOME="%HLINT_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -247,7 +254,7 @@ echo.
 echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%clean%__END%       delete generated files
 echo     %__BEG_O%compile%__END%     generate program executable
-echo     %__BEG_O%doc%__END%         generate HTML documentation
+echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
 echo     %__BEG_O%run%__END%         execute the generated program
@@ -317,7 +324,7 @@ goto :eof
 @rem input parameter: 1=target file 2=path (wildcards accepted)
 @rem output parameter: _COMPILE_REQUIRED
 :compile_required
-set __TARGET_FILE=%~1
+set "__TARGET_FILE=%~1"
 set __PATH=%~2
 
 set __TARGET_TIMESTAMP=00000000000000
@@ -377,7 +384,7 @@ for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
@@ -385,11 +392,11 @@ if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
 )
-if %_DOCVIEW%==1 if exist "%_DOCS_DIR%\index.html" (
-    if %_DEBUG%==1 ( echo %_DEBUG_LABEL% start "" "%_DOCS_DIR%\index.html" 1>&2
+if %_DOCVIEW%==1 if exist "%_TARGET_DOCS_DIR%\index.html" (
+    if %_DEBUG%==1 ( echo %_DEBUG_LABEL% start "" "%_TARGET_DOCS_DIR%\index.html" 1>&2
 	) else if %_VERBOSE%==1 ( echo Open the generated HTML pages in default browser 1>&2
 	)
-    start "" "%_DOCS_DIR%\index.html"
+    start "" "%_TARGET_DOCS_DIR%\index.html"
 )
 goto :eof
 
@@ -411,7 +418,7 @@ if not %ERRORLEVEL%==0 (
 goto :eof
 
 :test
-echo %_WARNING_LABEL% Not yet implemented 1>&2
+echo %_WARNING_LABEL% Test not yet implemented 1>&2
 goto :eof
 
 @rem output parameter: _DURATION

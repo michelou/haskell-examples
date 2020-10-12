@@ -78,8 +78,10 @@ set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
 
-set "_HLINT_CMD=%GHC_HOME%\hlint\bin\hlint.exe"
-set _HLINT_OPTS=--color=auto
+set _HLINT_CMD=
+if exist "%HLINT_HOME%\bin\hlint.exe" (
+    set "_HLINT_CMD=%HLINT_HOME%\bin\hlint.exe"
+)
 goto :eof
 
 :env_colors
@@ -138,9 +140,11 @@ set __GHC_OPTIONS=-Wall -Werror
 for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
+        set __NAME=
+        set __VALUE=
         for /f "delims= " %%n in ("%%i") do set __NAME=%%n
         @rem line comments start with "--"
-        if not "!__NAME:~0,2!"=="--" (
+        if defined __NAME if not "!__NAME:~0,2!"=="--" (
             @rem trim value
             for /f "tokens=*" %%v in ("%%j") do set __VALUE=%%v
             set "_!__NAME:-=_!=!__VALUE!"
@@ -162,10 +166,12 @@ goto :eof
 set _CLEAN=0
 set _COMPILE=0
 set _DOC=0
+set _DOCVIEW=0
 set _HELP=0
 set _LINT=0
 set _RUN=0
 set _TARGET=native
+set _TEST=0
 set _TIMER=0
 set _VERBOSE=0
 set __N=0
@@ -191,9 +197,11 @@ if "%__ARG:~0,1%"=="-" (
     if "%__ARG%"=="clean" ( set _CLEAN=1
     ) else if "%__ARG%"=="compile" ( set _COMPILE=1
     ) else if "%__ARG%"=="doc" ( set _DOC=1
+    ) else if "%__ARG%"=="docview" ( set _DOC=1& set _DOCVIEW=1
     ) else if "%__ARG%"=="help" ( set _HELP=1
     ) else if "%__ARG%"=="lint" ( set _LINT=1
     ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
+    ) else if "%__ARG%"=="test" ( set _COMPILE=1& set _TEST=1
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -208,8 +216,10 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
 if %_DEBUG%==1 (
+    echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" HLINT_HOME="%HLINT_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof

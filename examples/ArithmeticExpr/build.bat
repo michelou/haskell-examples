@@ -34,7 +34,7 @@ if %_LINT%==1 (
     if not !_EXITCODE!==0 goto end
 )
 if %_COMPILE%==1 (
-    call :compile_%_TARGET%
+    call :compile
     if not !_EXITCODE!==0 goto end
 )
 if %_DOC%==1 (
@@ -42,7 +42,11 @@ if %_DOC%==1 (
     if not !_EXITCODE!==0 goto end
 )
 if %_RUN%==1 (
-    call :run_%_TARGET%
+    call :run
+    if not !_EXITCODE!==0 goto end
+)
+if %_TEST%==1 (
+    call :test
     if not !_EXITCODE!==0 goto end
 )
 goto end
@@ -78,7 +82,10 @@ set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
-set "_HLINT_CMD=%GHC_HOME%\hlint\bin\hlint.exe"
+set _HLINT_CMD=
+if exist "%HLINT_HOME%\bin\hlint.exe" (
+    set "_HLINT_CMD=%HLINT_HOME%\bin\hlint.exe"
+)
 goto :eof
 
 :env_colors
@@ -130,11 +137,12 @@ goto :eof
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
 for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
-set __PACKAGE_VERSION=0.0.1
+set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 set __GHC_OPTIONS=-Wall -Werror
 
-for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
+set __CABAL_FILE=
+for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         set __NAME=
@@ -197,6 +205,7 @@ if "%__ARG:~0,1%"=="-" (
     ) else if "%__ARG%"=="help" ( set _HELP=1
     ) else if "%__ARG%"=="lint" ( set _LINT=1
     ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
+    ) else if "%__ARG%"=="test" ( set _COMPILE=1& set _TEST=1
     ) else (
         echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
         set _EXITCODE=1
@@ -210,11 +219,15 @@ goto :args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
+if %_LINT%==1 if not defined _HLINT_CMD (
+    echo %_WARNING_LABEL% Hlint tool not found ^(disable subcommand 'lint'^) 1>&2
+    set _LINT=0
+)
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
-    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" HLINT_HOME="%HLINT_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -241,10 +254,11 @@ echo.
 echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%clean%__END%       delete generated files
 echo     %__BEG_O%compile%__END%     generate program executable
-echo     %__BEG_O%doc%__END%         generate HTML documentation
+echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
 echo     %__BEG_O%run%__END%         execute the generated program
+echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
 echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
@@ -284,7 +298,7 @@ if not %ERRORLEVEL%==0 (
 )
 goto :eof
 
-:compile_native
+:compile
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
 call :compile_required "%_EXE_FILE%" "%_SOURCE_DIR%\*.hs"
@@ -386,7 +400,7 @@ if %_DOCVIEW%==1 if exist "%_TARGET_DOCS_DIR%\index.html" (
 )
 goto :eof
 
-:run_native
+:run
 if not exist "%_EXE_FILE%" (
     echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
     set _EXITCODE=1
@@ -401,6 +415,10 @@ if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
 )
+goto :eof
+
+:test
+echo %_WARNING_LABEL% Test not yet implemented 1>&2
 goto :eof
 
 @rem output parameter: _DURATION

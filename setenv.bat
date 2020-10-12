@@ -23,7 +23,6 @@ if %_HELP%==1 (
     exit /b !_EXITCODE!
 )
 
-set _GHC_PATH=
 set _GIT_PATH=
 set _MAVEN_PATH=
 
@@ -212,10 +211,12 @@ echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
-@rem output parameter(s): _GHC_HOME, _GHC_PATH
+@rem output parameter(s): _GHC_HOME, _HLINT_HOME, _HPACK_HOME, _STACK_HOME
 :ghc
 set _GHC_HOME=
-set _GHC_PATH=
+set _HLINT_HOME=
+set _HPACK_HOME=
+set _STACK_HOME=
 
 set __GHC_CMD=
 for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
@@ -223,7 +224,6 @@ if defined __GHC_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Haskell executable found in PATH 1>&2
     for %%i in ("%__GHC_CMD%") do set "__GHC_BIN_DIR=%%~dpi"
     for %%f in ("!__GHC_BIN_DIR!\.") do set "_GHC_HOME=%%~dpf"
-    @rem keep _GHC_PATH undefined since executable already in path
     goto :eof
 ) else if defined HASKELL_HOME (
     set "_GHC_HOME=%HASKELL_HOME%"
@@ -241,19 +241,15 @@ if not exist "%_GHC_HOME%\bin\ghc.exe" (
     set _EXITCODE=1
     goto :eof
 )
-set __HLINT_PATH=
-if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "__HLINT_PATH=;%_GHC_HOME%\hlint\bin"
+if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "_HLINT_HOME=%_GHC_HOME%\hlint"
 ) else ( echo %_WARNING_LABEL% HLint tool not installed 1>&2
 )
-set __HPACK_PATH=
-if exist "%_GHC_HOME%\hpack\bin\hpack.exe" ( set "__HPACK_PATH=;%_GHC_HOME%\hpack\bin"
+if exist "%_GHC_HOME%\hpack\bin\hpack.exe" ( set "_HPACK_HOME=%_GHC_HOME%\hpack"
 ) else ( echo %_WARNING_LABEL% HPack tool not installed 1>&2
 )
-set __STACK_PATH=
-if exist "%_GHC_HOME%\stack\stack.exe" ( set "__STACK_PATH=;%_GHC_HOME%\stack"
+if exist "%_GHC_HOME%\stack\stack.exe" ( set "_STACK_HOME=%_GHC_HOME%\stack"
 ) else ( echo %_WARNING_LABEL% Stack tool not installed 1>&2
 )
-set "_GHC_PATH=;%_GHC_HOME%\bin%__HLINT_PATH%%__HPACK_PATH%%__STACK_PATH%"
 goto :eof
 
 @rem output parameter(s): _GIT_HOME, _GIT_PATH
@@ -395,25 +391,25 @@ if %ERRORLEVEL%==0 (
     for /f "delims=, tokens=1,*" %%i in ('ghc.exe --version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% ghc%%~j,"
     set __WHERE_ARGS=%__WHERE_ARGS% ghc.exe
 )
-where /q stack.exe
+where /q "%STACK_HOME%:stack.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('stack.exe --version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% stack %%~j"
-    set __WHERE_ARGS=%__WHERE_ARGS% stack.exe
+    for /f "tokens=1,2,*" %%i in ('"%STACK_HOME%\stack.exe" --version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% stack %%~j"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%STACK_HOME%:stack.exe"
 )
-where /q haddock.exe
+where /q "%GHC_HOME%\bin:haddock.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,3,*" %%i in ('haddock.exe --version ^| findstr version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% haddock %%~k"
-    set __WHERE_ARGS=%__WHERE_ARGS% haddock.exe
+    for /f "tokens=1,2,3,*" %%i in ('"%GHC_HOME%\bin\haddock.exe" --version ^| findstr version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% haddock %%~k"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%GHC_HOME%\bin:haddock.exe"
 )
-where /q hlint.exe
+where /q "%HLINT_HOME%\bin:hlint.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('hlint.exe --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hlint %%~j"
-    set __WHERE_ARGS=%__WHERE_ARGS% hlint.exe
+    for /f "tokens=1,2,*" %%i in ('"%HLINT_HOME%\bin\hlint.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hlint %%~j"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%HLINT_HOME%\bin:hlint.exe"
 )
-where /q hpack.exe
+where /q "%HPACK_HOME%\bin:hpack.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('hpack.exe --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% hpack.exe
+    for /f "tokens=1,2,*" %%i in ('"%HPACK_HOME%\bin\hpack.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%HPACK_HOME%\bin:hpack.exe"
 )
 where /q pandoc.exe
 if %ERRORLEVEL%==0 (
@@ -440,7 +436,10 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
     echo Environment variables: 1>&2
     if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
+    if defined HLINT_HOME echo    HLINT_HOME=%HLINT_HOME% 1>&2
+    if defined HPACK_HOME echo    HPACK_HOME=%HPACK_HOME% 1>&2
     if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
+    if defined STACK_HOME echo    STACK_HOME=%STACK_HOME% 1>&2
     if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
 )
 goto :eof
@@ -451,10 +450,13 @@ goto :eof
 :end
 endlocal & (
     if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
+    if not defined HLINT_HOME set "HLINT_HOME=%_HLINT_HOME%"
+    if not defined HPACK_HOME set "HPACK_HOME=%_HPACK_HOME%"
     @rem Variable JAVA_HOME must be defined for Maven
     if not defined JAVA_HOME set "JAVA_HOME=%_JAVA_HOME%"
+    if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%%_GHC_PATH%%_GIT_PATH%%_MAVEN_PATH%"
+    set "PATH=%PATH%%_GIT_PATH%%_MAVEN_PATH%"
     call :print_env %_VERBOSE%
     if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
     for /f "delims==" %%i in ('set ^| findstr /b "_"') do set %%i=

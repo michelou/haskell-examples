@@ -5,8 +5,10 @@ Stability  : demo
 -}
 module Main (main) where
 
+-- |Symbolic arithmetic operators
 data Op   = Plus | Minus | Times | Divide
 
+-- |Simple arithmetic expressions
 data Expr = Lit Integer
           | Bin Op Expr Expr
 
@@ -41,6 +43,7 @@ instance Show (Error a) where
     show (Result _) = show (1 :: Integer)
     -- show (Result a) = show a -- No instance for (Show a) arising from a use of `show'
 
+-- |Program entry point
 main :: IO ()
 main = do
     let exprString = "8 - 2 * 5 = "
