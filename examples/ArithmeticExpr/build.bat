@@ -261,7 +261,12 @@ echo     %__BEG_O%run%__END%         execute the generated program
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
-echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
+echo   %__BEG_P%Other build tools:%__END%
+echo     %__BEG_O%^> cabal clean ^& cabal run all%__END%
+echo     %__BEG_O%^> stack clean ^& stack run%__END%
+echo.
+echo   %__BEG_P%Notes:%__END%
+echo     %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
 goto :eof
 
 :clean

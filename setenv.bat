@@ -211,8 +211,9 @@ echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
-@rem output parameter(s): _GHC_HOME, _HLINT_HOME, _HPACK_HOME, _STACK_HOME
+@rem output parameter(s): _CABAL_DIR, _GHC_HOME, _HLINT_HOME, _HPACK_HOME, _STACK_HOME
 :ghc
+set _CABAL_DIR=
 set _GHC_HOME=
 set _HLINT_HOME=
 set _HPACK_HOME=
@@ -240,6 +241,9 @@ if not exist "%_GHC_HOME%\bin\ghc.exe" (
     echo %_ERROR_LABEL% Executable ghc.exe not found ^(%_GHC_HOME%^) 1>&2
     set _EXITCODE=1
     goto :eof
+)
+if exist "%_GHC_HOME%\bin\cabal.exe" ( set "_CABAL_DIR=%_GHC_HOME%\bin"
+) else ( echo %_WARNING_LABEL% Cabal tool not installed 1>&2
 )
 if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "_HLINT_HOME=%_GHC_HOME%\hlint"
 ) else ( echo %_WARNING_LABEL% HLint tool not installed 1>&2
@@ -361,8 +365,8 @@ if defined MAVEN_HOME (
     set "_MAVEN_HOME=%MAVEN_HOME%"
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable MAVEN_HOME 1>&2
 ) else (
-    set _PATH=C:\opt
-    for /f %%f in ('dir /ad /b "!_PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!_PATH!\%%f"
+    set __PATH=C:\opt
+    for /f %%f in ('dir /ad /b "!__PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!__PATH!\%%f"
     if defined _MAVEN_HOME (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Maven installation directory !_MAVEN_HOME! 1>&2
     )
@@ -381,15 +385,15 @@ set "__VERSIONS_LINE1=  "
 set "__VERSIONS_LINE2=  "
 set "__VERSIONS_LINE3=  "
 set __WHERE_ARGS=
-where /q cabal.exe
+where /q "%CABAL_DIR%:cabal.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('cabal.exe --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% cabal.exe
+    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\cabal.exe" --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%:cabal.exe"
 )
-where /q ghc.exe
+where /q "%GHC_HOME%\bin:ghc.exe"
 if %ERRORLEVEL%==0 (
-    for /f "delims=, tokens=1,*" %%i in ('ghc.exe --version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% ghc%%~j,"
-    set __WHERE_ARGS=%__WHERE_ARGS% ghc.exe
+    for /f "delims=, tokens=1,*" %%i in ('"%GHC_HOME%\bin\ghc.exe" --version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% ghc%%~j,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%GHC_HOME%\bin:ghc.exe"
 )
 where /q "%STACK_HOME%:stack.exe"
 if %ERRORLEVEL%==0 (
@@ -435,6 +439,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     echo Tool paths: 1>&2
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
     echo Environment variables: 1>&2
+    if defined CABAL_DIR echo    CABAL_DIR=%CABAL_DIR% 1>&2
     if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
     if defined HLINT_HOME echo    HLINT_HOME=%HLINT_HOME% 1>&2
     if defined HPACK_HOME echo    HPACK_HOME=%HPACK_HOME% 1>&2
@@ -449,6 +454,7 @@ goto :eof
 
 :end
 endlocal & (
+    if not defined CABAL_DIR set "CABAL_DIR=%_CABAL_DIR%"
     if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
     if not defined HLINT_HOME set "HLINT_HOME=%_HLINT_HOME%"
     if not defined HPACK_HOME set "HPACK_HOME=%_HPACK_HOME%"
@@ -456,7 +462,7 @@ endlocal & (
     if not defined JAVA_HOME set "JAVA_HOME=%_JAVA_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%%_GIT_PATH%%_MAVEN_PATH%"
+    set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
     call :print_env %_VERBOSE%
     if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
     for /f "delims==" %%i in ('set ^| findstr /b "_"') do set %%i=
