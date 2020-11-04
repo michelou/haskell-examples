@@ -28,14 +28,14 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*October 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*November 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.2\        <i>(2.4 GB)</i>
 C:\opt\ghc-8.10.2\hlint\  <i>( 66 MB)</i>
 C:\opt\ghc-8.10.2\hpack\  <i>( 45 MB)</i>
 C:\opt\ghc-8.10.2\stack\  <i>( 64 MB)</i>
-C:\opt\Git-2.29.1\        <i>(290 MB)</i>
+C:\opt\Git-2.29.2\        <i>(290 MB)</i>
 </pre>
 
 <!--
@@ -129,7 +129,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.2, stack 2.5.1,
    haddock 2.24.0, hlint v3.2, hpack 0.34.2,
-   git 2.29.1.windows.1, diff 3.7
+   git 2.29.2.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 C:\opt\ghc-8.10.2\hlint\bin\hlint.exe
@@ -144,7 +144,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.2, stack 2.5.1,
    haddock 2.24.0, hlint v3.2, hpack 0.34.2,
-   git 2.29.1.windows.1, diff 3.7
+   git 2.29.2.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.2\bin\cabal.exe
    C:\opt\ghc-8.10.2\bin\ghc.exe
@@ -152,9 +152,9 @@ Tool paths:
    C:\opt\ghc-8.10.2\bin\haddock.exe
    C:\opt\ghc-8.10.2\hlint\bin\hlint.exe
    C:\opt\ghc-8.10.2\hpack\bin\hpack.exe
-   C:\opt\Git-2.29.1\bin\git.exe
-   C:\opt\Git-2.29.1\mingw64\bin\git.exe
-   C:\opt\Git-2.29.1\usr\bin\diff.exe
+   C:\opt\Git-2.29.2\bin\git.exe
+   C:\opt\Git-2.29.2\mingw64\bin\git.exe
+   C:\opt\Git-2.29.2\usr\bin\diff.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -173,13 +173,13 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.2/">ghc-8.10.2-x86_64-unknown-mingw32.tar.xz </a>         <i>(377 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.29.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.29.2-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.5.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/November 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -192,7 +192,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.29.1.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.29.2.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
