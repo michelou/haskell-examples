@@ -286,8 +286,9 @@ if not exist "%_GHC_HOME%\bin\ghc.exe" (
     set _EXITCODE=1
     goto :eof
 )
-if exist "%_GHC_HOME%\bin\cabal.exe" ( set "_CABAL_DIR=%_GHC_HOME%\bin"
-) else ( echo %_WARNING_LABEL% Cabal tool not installed 1>&2
+set "_CABAL_DIR=%APPDATA%\cabal"
+if not exist "%_GHC_HOME%\bin\cabal.exe" (
+    echo %_WARNING_LABEL% Cabal tool not installed 1>&2
 )
 if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "_HLINT_HOME=%_GHC_HOME%\hlint"
 ) else ( echo %_WARNING_LABEL% HLint tool not installed 1>&2

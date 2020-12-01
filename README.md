@@ -2,14 +2,14 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">This repository gathers <a href="https://www.haskell.org/">Haskell</a> examples coming from various websites and books.<br/>
-  It also includes several <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting">batch files</a> for experimenting with <a href="https://www.haskell.org/">Haskell</a> on the <b>Microsoft Windows</b> platform.
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0;vertical-align:text-top;">This repository gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> examples coming from various websites and books.<br/>
+  It also includes several <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting" rel="external">batch files</a> for experimenting with <a href="https://www.haskell.org/" rel="external">Haskell</a> on the <b>Microsoft Windows</b> platform.
   </td>
   </tr>
 </table>
 
-[Dotty][dotty_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
+[GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][dotty_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -28,7 +28,7 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*November 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
+For instance our development environment looks as follows (*December 2020*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\ghc-8.10.2\        <i>(2.4 GB)</i>
@@ -128,7 +128,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.2, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2, hpack 0.34.2,
+   haddock 2.24.0, hlint v3.2.3, hpack 0.34.2,
    git 2.29.2.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
@@ -143,7 +143,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.2, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2, hpack 0.34.2,
+   haddock 2.24.0, hlint v3.2.3, hpack 0.34.2,
    git 2.29.2.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.2\bin\cabal.exe
@@ -179,7 +179,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/" rel="external">Cabal</a>, a system for building and packaging <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on the Windows platform.
   </td>
   </tr>
@@ -24,7 +24,29 @@ Config file %APPDATA%\cabal\config not found.
 Writing default configuration to
 %APPDATA%\cabal\config
 Downloading the latest package list from hackage.haskell.org
+
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
+C:\Users\%USERNAME%\AppData\Roaming\cabal
 </pre>
+
+> **:mag_right:** The `CABAL_DIR` variable defines where the `cabal` command will install the software packages.
+> <pre style="font-size:80%;">
+> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\</b>
+> ghc-8.10.1
+> ghc-8.10.2
+> ghc-8.8.2
+> ghc-8.8.3
+> </pre>
+> For version GHC 8.10.2, installed packages whose name starts with letter `h` are:
+> <pre style="font-size:80%;">
+> &gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.2\package.db\h*
+> hashable-1.3.0.0-888600114d690b6153edb33d3467f96c7cd97d96.conf
+> hlint-3.2.3-d7172161c8778cdb8949fd386e24f39db08f1cf7.conf
+> hourglass-0.2.12-61c3d4ea491703b57482efc3db8440157eafa9c3.conf
+> hscolour-1.24.4-effcf6ff24121f239e540cfbd2a4785f1aa70d1a.conf
+> http-types-0.12.3-f7e9b559cd281d518cf026f01931780dc851d7cc.conf
+> HUnit-1.6.1.0-fb7cac34b35f4a58b36ea4bb1014fb123ef1492b.conf
+> </pre>
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
@@ -35,16 +57,17 @@ Downloading the latest package list from hackage.haskell.org
 Resolving dependencies...
 Build profile: -w ghc-8.10.2 -O1
 In order, the following will be built (use -v for more details):
- - extra-1.7.8 (lib) (requires download & build)
+ - base-compat-0.11.2 (lib) (requires download & build)
+ - base-orphans-0.8.3 (lib) (requires download & build)
 [...]
-Starting     hlint-3.2 (lib)
-Building     hlint-3.2 (lib)
-Installing   hlint-3.2 (lib)
-Completed    hlint-3.2 (lib)
-Starting     hlint-3.2 (exe:hlint)
-Building     hlint-3.2 (exe:hlint)
-Installing   hlint-3.2 (exe:hlint)
-Completed    hlint-3.2 (exe:hlint)
+Starting     hlint-3.2.3 (lib)
+Building     hlint-3.2.3 (lib)
+Installing   hlint-3.2.3 (lib)
+Completed    hlint-3.2.3 (lib)
+Starting     hlint-3.2.3 (exe:hlint)
+Building     hlint-3.2.3 (exe:hlint)
+Installing   hlint-3.2.3 (exe:hlint)
+Completed    hlint-3.2.3 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -58,11 +81,11 @@ Since the last installation step fails on Windows, we search for the path to the
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.2\hlint-3.2-e208861bbff2944162a48ddbe2d46a9db91f1e15 c:\opt\ghc-8.10.2\hlint</b>
 12 file(s) copied
 &nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HLINT_HOME% hlint</b>
 C:\opt\ghc-8.10.2\hlint\bin\hlint.exe
 &nbsp;
-<b>&gt; <a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
-HLint v3.2, (C) Neil Mitchell 2006-2020
+<b>&gt; C:\opt\ghc-8.10.2\hlint\bin\<a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
+HLint v3.2.3, (C) Neil Mitchell 2006-2020
 </pre>
 
 > **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
@@ -156,10 +179,10 @@ Downloaded   HUnit-1.6.0.0
 Building     call-stack-0.2.0 (lib)
 Installing   call-stack-0.2.0 (lib)
 Completed    call-stack-0.2.0 (lib)
-Starting     HUnit-1.6.0.0 (lib)
-Building     HUnit-1.6.0.0 (lib)
-Installing   HUnit-1.6.0.0 (lib)
-Completed    HUnit-1.6.0.0 (lib)
+Starting     HUnit-1.6.1.0 (lib)
+Building     HUnit-1.6.1.0 (lib)
+Installing   HUnit-1.6.1.0 (lib)
+Completed    HUnit-1.6.1.0 (lib)
 </pre>
 
 
@@ -188,7 +211,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2020* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -203,7 +226,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/8.10.2/docs/html/users_guide/8.10.2-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2/changelog
+[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2.3/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hlint_readme]: https://hackage.haskell.org/package/hlint-3.2#readme
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.2/changelog
