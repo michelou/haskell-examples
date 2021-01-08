@@ -44,18 +44,18 @@ H:\examples\Factorial
 Command `cabal run all` builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.1\bin\cabal.exe
+C:\opt\ghc-8.10.3\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.1 -O1
+Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
  - Factorial-0.1.0.0 (exe:Factorial) (first run)
 Configuring executable 'Factorial' for Factorial-0.1.0.0..
 Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
 Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
-Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
+Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.3\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -67,7 +67,7 @@ factorialProd(5)=120
 Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
-C:\opt\ghc-8.10.1\stack\stack.exe
+C:\opt\ghc-8.10.3\stack\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
@@ -185,18 +185,18 @@ Command `cabal run all` builds and executes the [Haskell] application (configura
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.1\bin\cabal.exe
+C:\opt\ghc-8.10.3\bin\cabal.exe
 &nbsp;
 <b>&gt; cabal run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.1 -O1
+Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
  - QuickSort-0.1.0.0 (exe:QuickSort) (first run)
 Configuring executable 'QuickSort' for QuickSort-0.1.0.0..
 Preprocessing executable 'QuickSort' for QuickSort-0.1.0.0..
 Building executable 'QuickSort' for QuickSort-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
-Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.3\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
+Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.3\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
@@ -208,7 +208,7 @@ Command `stack run` builds and executes the [Haskell] application (configuration
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\ghc-8.10.1\stack\stack.exe
+C:\opt\ghc-8.10.3\stack\stack.exe
 &nbsp;
 <b>&gt; stack --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
@@ -241,7 +241,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/December 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

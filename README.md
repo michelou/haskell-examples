@@ -20,7 +20,7 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
-- [Git 2.29][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.30][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 3.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
 - [Stack 2.5][stack_downloads] ([*changelog*][stack_changelog])
