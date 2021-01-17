@@ -62,7 +62,7 @@ set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_DOCS_DIR=%_TARGET_DIR%\docs"
 
 if not exist "%GHC_HOME%\bin\ghc.exe" (
-    echo %_ERROR_LABEL% GHC installation not found 1>&2
+    echo %_ERROR_LABEL% GHC executable not found 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -72,6 +72,11 @@ set _GHC_WARNINGS=-Wall -Wincomplete-uni-patterns
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=%_GHC_WARNINGS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
+if not exist "%GHC_HOME%\bin\haddock.exe" (
+    echo %_ERROR_LABEL% Haddock executable not found 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
 
@@ -342,7 +347,7 @@ set __GHC_OPTS=%_GHC_OPTS% !_EXECUTABLE[%__N%][ghc-options]! -i"%_INCLUDES%" -X!
 if %_DEBUG%==1 set __GHC_OPTS=%__GHC_OPTS% -Rghc-timing
 
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Compile Haskell source files to directory "!_TARGET_DIR=%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Compile Haskell source files to directory "!_TARGET_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (

@@ -10,7 +10,7 @@
 
 In the following we present the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
 
-Build tools rely on one or more configuration files to achieve their tasks. In our case we created the following configuration files for example [**`Factorial`**](#factorial):
+We can build/run code examples in directory [`examples`](./) in several ways. For instance we have the following configuration files for example [**`Factorial`**](#factorial):
 
 | Build tool                    | Configuration file                           | Parent file                |
 |-------------------------------|----------------------------------------------|----------------------------|
@@ -78,7 +78,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_maven">***Maven build/run***</span>
 
-Command `mvn -q compile run` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
@@ -211,6 +211,19 @@ Command `stack run` builds and executes the [Haskell] application (configuration
 C:\opt\ghc-8.10.3\stack\stack.exe
 &nbsp;
 <b>&gt; stack --silent run</b>
+input list       : [8,4,0,3,1,23,11,18]
+sorted(filter)   : [0,1,3,4,8,11,18,23]
+sorted(list comp): [0,1,3,4,8,11,18,23]
+</pre>
+
+### <span id="quicksort_maven">***Maven build/run***</span>
+
+Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./QuickSort/pom.xml))
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
+Linking target/Main.exe ...
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]

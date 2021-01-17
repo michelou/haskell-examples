@@ -25,13 +25,14 @@
 - [Making the most of Cabal][blog_lau], June 6, 2020.
 - [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
+- [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
 - Build a CPU: [Part 1](https://yager.io/CPU/CPU2.html), October 2017, and [Part 2](https://yager.io/CPU/CPU2.html), April 2018.
 
 ## <span id="books">Books</span>
 
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, Coherent Press 2019.<br/><span style="font-size:80%;">(ISBN 978-0957671133)</span>
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br><span style="font-size:80%;">(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)</span>
-- [Get Programming with Hashkell][book_get_programming], by Will Kurt, Manning 2018.<br/><span style="font-size:80%;">(ISBN 978-1617293764)</span>
+- [Get Programming with Haskell][book_get_programming], by Will Kurt, Manning 2018.<br/><span style="font-size:80%;">(ISBN 978-1617293764)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
 
@@ -49,6 +50,7 @@
 
 ## <span id="tutorials">Tutorials</span>
 
+- [Monday Morning Haskell][tuto_mmhaskell].
 - [Haskell at Work][tuto_haskell_at_work], January 2019.
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
@@ -75,6 +77,7 @@
 [article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+[blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
@@ -93,4 +96,5 @@
 [parconc_book]: https://simonmar.github.io/pages/pcph.html
 [parconc_examples]: https://github.com/simonmar/parconc-examples
 [tuto_haskell_at_work]: https://haskell-at-work.com/
+[tuto_mmhaskell]: https://mmhaskell.com/
 [video_newton]: https://youtu.be/lC5UWG5N8oY

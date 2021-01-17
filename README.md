@@ -23,6 +23,7 @@ Optionally one may also install the following software:
 - [Git 2.30][git_downloads] ([*release notes*][git_relnotes])
 - [hlint 3.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
+- [ormolu 0.1][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.5][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
@@ -31,11 +32,12 @@ Optionally one may also install the following software:
 For instance our development environment looks as follows (*January 2021*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\ghc-8.10.3\        <i>(2.4 GB)</i>
-C:\opt\ghc-8.10.3\hlint\  <i>( 66 MB)</i>
-C:\opt\ghc-8.10.3\hpack\  <i>( 45 MB)</i>
-C:\opt\ghc-8.10.3\stack\  <i>( 64 MB)</i>
-C:\opt\Git-2.30.0\        <i>(290 MB)</i>
+C:\opt\ghc-8.10.3\                 <i>(2.4 GB)</i>
+C:\opt\ghc-8.10.3\hlint-3.2.7\     <i>( 68 MB)</i>
+C:\opt\ghc-8.10.3\hpack-0.34.3\    <i>( 49 MB)</i>
+C:\opt\ghc-8.10.3\ormolu-0.1.4.1\  <i>( 58 MB)</i>
+C:\opt\ghc-8.10.3\stack-2.5.1\     <i>( 70 MB)</i>
+C:\opt\Git-2.30.0\                 <i>(290 MB)</i>
 </pre>
 
 <!--
@@ -128,7 +130,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.3, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.3, hpack 0.34.2,
+   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, ormolu 0.1.4.1,
    git 2.30.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
@@ -143,15 +145,16 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.3, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.3, hpack 0.34.2,
+   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, ormolu 0.1.4.1,
    git 2.30.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.3\bin\cabal.exe
    C:\opt\ghc-8.10.3\bin\ghc.exe
-   C:\opt\ghc-8.10.3\stack\stack.exe
+   C:\opt\ghc-8.10.3\stack-2.5.1\stack.exe
    C:\opt\ghc-8.10.3\bin\haddock.exe
-   C:\opt\ghc-8.10.3\hlint\bin\hlint.exe
-   C:\opt\ghc-8.10.3\hpack\bin\hpack.exe
+   C:\opt\ghc-8.10.3\hlint-3.2.7\bin\hlint.exe
+   C:\opt\ghc-8.10.3\hpack-0.34.3\bin\hpack.exe
+   C:\opt\ghc-8.10.3\ormolu-0.1.4.1\bin\ormolu.exe
    C:\opt\Git-2.30.0\bin\git.exe
    C:\opt\Git-2.30.0\mingw64\bin\git.exe
    C:\opt\Git-2.30.0\usr\bin\diff.exe
@@ -215,7 +218,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_sed]: https://www.linux.org/docs/man1/sed.html
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
-[stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/#v231
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.1.4.1/changelog
+[ormolu_downloads]: https://hackage.haskell.org/package/ormolu
+[stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [trufflesqueak_examples]: https://github.com/michelou/trufflesqueak-examples

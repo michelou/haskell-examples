@@ -201,7 +201,7 @@ set __DRIVE_NAME=%~1
 set "__GIVEN_PATH=%~2"
 
 if not "%__DRIVE_NAME:~-1%"==":" set __DRIVE_NAME=%__DRIVE_NAME%:
-if "%__DRIVE_NAME%"=="%__GIVEN_PATH:~0,2%" goto :eof
+if /i "%__DRIVE_NAME%"=="%__GIVEN_PATH:~0,2%" goto :eof
 
 if "%__GIVEN_PATH:~-1%"=="\" set "__GIVEN_PATH=%__GIVEN_PATH:~0,-1%"
 if not exist "%__GIVEN_PATH%" (
@@ -288,17 +288,31 @@ if not exist "%_GHC_HOME%\bin\ghc.exe" (
 )
 set "_CABAL_DIR=%APPDATA%\cabal"
 if not exist "%_GHC_HOME%\bin\cabal.exe" (
-    echo %_WARNING_LABEL% Cabal tool not installed 1>&2
+    echo %_WARNING_LABEL% Cabal executable not installed 1>&2
 )
-if exist "%_GHC_HOME%\hlint\bin\hlint.exe" ( set "_HLINT_HOME=%_GHC_HOME%\hlint"
-) else ( echo %_WARNING_LABEL% HLint tool not installed 1>&2
+set _HLINT_HOME=
+for /f %%f in ('dir /b "%_GHC_HOME%\hlint-*"') do (
+    set "_HLINT_HOME=%_GHC_HOME%\%%f"
 )
-if exist "%_GHC_HOME%\hpack\bin\hpack.exe" ( set "_HPACK_HOME=%_GHC_HOME%\hpack"
-) else ( echo %_WARNING_LABEL% HPack tool not installed 1>&2
+if not defined _HLINT_HOME echo %_WARNING_LABEL% HLint tool not installed 1>&2
+
+set _HPACK_HOME=
+for /f %%f in ('dir /b "%_GHC_HOME%\hpack-*"') do (
+    set "_HPACK_HOME=%_GHC_HOME%\%%f"
 )
-if exist "%_GHC_HOME%\stack\stack.exe" ( set "_STACK_HOME=%_GHC_HOME%\stack"
-) else ( echo %_WARNING_LABEL% Stack tool not installed 1>&2
+if not defined _HPACK_HOME echo %_WARNING_LABEL% HPack tool not installed 1>&2
+
+set _ORMOLU_HOME=
+for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*"') do (
+    set "_ORMOLU_HOME=%_GHC_HOME%\%%f"
 )
+if not defined _ORMOLU_HOME echo %_WARNING_LABEL% ormolu tool not installed 1>&2
+
+set _STACK_HOME=
+for /f %%f in ('dir /b "%_GHC_HOME%\stack-*"') do (
+    set "_STACK_HOME=%_GHC_HOME%\%%f"
+)
+if not defined _STACK_HOME echo %_WARNING_LABEL% Stack tool not installed 1>&2
 goto :eof
 
 @rem output parameter(s): _GIT_HOME, _GIT_PATH
@@ -336,6 +350,7 @@ goto :eof
 
 @rem input parameter: %1=vendor %1^=required version
 @rem output parameter(s): _JDK_HOME
+@rem Note: JAVA_HOME is required for Maven
 :jdk
 set _JDK_HOME=
 
@@ -430,10 +445,10 @@ set "__VERSIONS_LINE1=  "
 set "__VERSIONS_LINE2=  "
 set "__VERSIONS_LINE3=  "
 set __WHERE_ARGS=
-where /q "%CABAL_DIR%:cabal.exe"
+where /q "%GHC_HOME%\bin:cabal.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\cabal.exe" --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%:cabal.exe"
+    for /f "tokens=1,2,*" %%i in ('"%GHC_HOME%\bin\cabal.exe" --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%GHC_HOME%\bin:cabal.exe"
 )
 where /q "%GHC_HOME%\bin:ghc.exe"
 if %ERRORLEVEL%==0 (
@@ -460,10 +475,10 @@ if %ERRORLEVEL%==0 (
     for /f "tokens=1,2,*" %%i in ('"%HPACK_HOME%\bin\hpack.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
     set __WHERE_ARGS=%__WHERE_ARGS% "%HPACK_HOME%\bin:hpack.exe"
 )
-where /q pandoc.exe
+where /q "%ORMOLU_HOME%\bin:ormolu.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,*" %%i in ('pandoc.exe --version ^| findstr /b pandoc') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% pandoc %%~j,"
-    set __WHERE_ARGS=%__WHERE_ARGS% pandoc.exe
+    for /f "tokens=1,2,*" %%i in ('"%ORMOLU_HOME%\bin\ormolu.exe" --version ^| findstr /b ormolu') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% ormolu %%~j,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%ORMOLU_HOME%\bin:ormolu.exe"
 )
 where /q git.exe
 if %ERRORLEVEL%==0 (
@@ -489,6 +504,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     if defined HLINT_HOME echo    HLINT_HOME=%HLINT_HOME% 1>&2
     if defined HPACK_HOME echo    HPACK_HOME=%HPACK_HOME% 1>&2
     if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
+    if defined ORMOLU_HOME echo    ORMOLU_HOME=%ORMOLU_HOME% 1>&2
     if defined STACK_HOME echo    STACK_HOME=%STACK_HOME% 1>&2
     if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
 )
@@ -505,6 +521,7 @@ endlocal & (
     if not defined HPACK_HOME set "HPACK_HOME=%_HPACK_HOME%"
     @rem Variable JAVA_HOME must be defined for Maven
     if not defined JAVA_HOME set "JAVA_HOME=%_JAVA_HOME%"
+    if not defined ORMOLU_HOME set "ORMOLU_HOME=%_ORMOLU_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
     set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"

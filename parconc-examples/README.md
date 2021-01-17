@@ -7,15 +7,27 @@
   </tr>
 </table>
 
-We can build/run examples from directory [**`parconc-examples\`**](.) using either [**`cabal`**][cabal_userguide], [**`stack`**][stack_userguide], [**`mvn`**][apache_maven_cli] or our **`build`** batch command.
-
 In the following we present the two examples [**`rpar`**](#rpar) and [**`strat`**](#strat).
 
 > **:mag_right:** The source archive with the original code examples is available from repository [simonmar/parconc-examples][simonmar_repo] on [GitHub](https://github.com/) (see also the original [README.md][simonmar_readme]).
 
+We can build/run code examples in directory [**`parconc-examples\`**](./) in several ways. For instance we have the following configuration files for example [**`rpar`**](#rpar):
+
+| Build tool                    | Configuration file                           | Parent file                |
+|-------------------------------|----------------------------------------------|----------------------------|
+| [**`build.bat`**](./build.bat) | **`build.properties`**              | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [**`Factorial.cabal`**](./parconc-examples.cabal) | n.a.             |
+| [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](./pom.xml)       | [**`pom.xml`**](./pom.xml) |
+| [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](./stack.yaml) | n.a.                       |
+
+
 ## <span id="rpar"><code>rpar</code></span>
 
 ### <span id="rpar_cabal">***Cabal build/run***</span>
+
+<pre style="font-size:80%;">
+
+</pre>
 
 ### <span id="rpar_stack">***Stack build/run***</span>
 
@@ -59,7 +71,9 @@ time: 3.76s
 Command [`build -debug clean run`](./build.bat) also displays the internally executed commands:
 <pre style="font-size:80%;">
 <b>&gt; <a href="./build.bat">build</a> -debug clean run</b>
-[build] _CLEAN=1 _COMPILE=1 _DOC=0 _EXEC=rpar _RUN=1 _VERBOSE=0
+[build] Options    : _TIMER=0 _VERBOSE=0
+[build] Subcommands: _CLEAN=1 _COMPILE=1 _DOC=0 _RUN=1
+[build] Variables  : _EXEC=rpar
 [build] rmdir /s /q "H:\parconc-examples\target"
 [build] "ghc.exe" -Wall -Wincomplete-uni-patterns -hidir "H:\parconc-examples\target\gen" -odir "H:\parconc-examples\target\gen" -threaded -i"H:\parconc-examples\lib\monad-par-0.3.5:H:\parconc-examples\lib\parallel-3.2.2.0:H:\parconc-examples\lib\timeit-2.0" -XHaskell2010 -o "H:\parconc-examples\target\rpar.exe" -Rghc-timing H:\parconc-examples\src\rpar.hs
 [1 of 4] Compiling Control.Parallel ( ... )
@@ -79,13 +93,38 @@ time: 3.76s
 
 ### <span id="strat_cabal">***Cabal build/run***</span>
 
+<pre style="font-size:80%;">
+<b>&gt;  cabal clean & cabal run strat</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.3 -O1
+In order, the following will be built (use -v for more details):
+ - parconc-examples-0.4.7 (exe:strat) (first run)
+Configuring executable 'strat' for parconc-examples-0.4.7..
+Preprocessing executable 'strat' for parconc-examples-0.4.7..
+Building executable 'strat' for parconc-examples-0.4.7..
+[1 of 1] Compiling Main             ( src\strat.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.3\parconc-examples-0.4.7\x\strat\build\strat\strat-tmp\Main.o )
+Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.3\parconc-examples-0.4.7\x\strat\build\strat\strat.exe ...
+(14930352,24157817)
+</pre>
+
 ### <span id="strat_stack">***Stack build/run***</span>
+
+<pre style="font-size:80%;">
+</pre>
 
 ### <span id="strat_batch">***Batch build/run***</span>
 
+<pre style="font-size:80%;">
+<b>&gt; build -verbose -exec:strat clean run</b>
+Delete directory "target"
+Compile Haskell source files to directory "H:\parconc-examples\target"
+Execute Haskell program "target\strat.exe"
+(14930352,24157817)
+</pre>
+
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2020* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
