@@ -53,24 +53,25 @@ C:\Users\%USERNAME%\AppData\Roaming\cabal
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
-[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] code. We install [`hlint`][hlint_downloads] in two steps on Windows.
+[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [`hlint`][hlint_downloads] in two steps on Windows.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
- - base-compat-0.11.2 (lib) (requires download & build)
- - base-orphans-0.8.3 (lib) (requires download & build)
-[...]
-Starting     hlint-3.2.6 (lib)
-Building     hlint-3.2.6 (lib)
-Installing   hlint-3.2.6 (lib)
-Completed    hlint-3.2.6 (lib)
-Starting     hlint-3.2.6 (exe:hlint)
-Building     hlint-3.2.6 (exe:hlint)
-Installing   hlint-3.2.6 (exe:hlint)
-Completed    hlint-3.2.6 (exe:hlint)
+ - hlint-3.2.7 (lib) (requires download & build)
+ - hlint-3.2.7 (exe:hlint) (requires download & build)
+Downloading  hlint-3.2.7
+Downloaded   hlint-3.2.7
+Starting     hlint-3.2.7 (lib)
+Building     hlint-3.2.7 (lib)
+Installing   hlint-3.2.7 (lib)
+Completed    hlint-3.2.7 (lib)
+Starting     hlint-3.2.7 (exe:hlint)
+Building     hlint-3.2.7 (exe:hlint)
+Installing   hlint-3.2.7 (exe:hlint)
+Completed    hlint-3.2.7 (exe:hlint)
 Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
@@ -79,16 +80,16 @@ Since the last installation step fails on Windows, we search for the path to the
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hlint.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.6-4f7e185c559e1d19fe6ca7ad88283e3d6cb0ddf8\bin\hlint.exe
+%APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.7-5aa469904bdabf015c2e105bbe2c9a63561b1a33\\bin\hlint.exe
 &nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.6-4f7e185c559e1d19fe6ca7ad88283e3d6cb0ddf8 c:\opt\ghc-8.10.3\hlint</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.7-5aa469904bdabf015c2e105bbe2c9a63561b1a33\ c:\opt\ghc-8.10.3\hlint</b>
 12 file(s) copied
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HLINT_HOME% hlint</b>
 C:\opt\ghc-8.10.3\hlint\bin\hlint.exe
 &nbsp;
 <b>&gt; C:\opt\ghc-8.10.3\hlint\bin\<a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
-HLint v3.2.6, (C) Neil Mitchell 2006-2020
+HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 
 > **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
@@ -101,7 +102,7 @@ HLint v3.2.6, (C) Neil Mitchell 2006-2020
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.2.6
+>     Default available version: 3.2.7
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -164,16 +165,17 @@ hpack version 0.34.3
 > [..]
 > </pre>
 
-
 ## <span id="hunit"><code>HUnit</code> installation</span>
+
+[HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.2 -O1
+Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
  - call-stack-0.2.0 (lib) (requires download & build)
- - HUnit-1.6.0.0 (lib) (requires download & build)
+ - HUnit-1.6.1.0 (lib) (requires download & build)
 Downloading  call-stack-0.2.0
 Downloaded   call-stack-0.2.0
 Downloading  HUnit-1.6.0.0
@@ -188,6 +190,57 @@ Installing   HUnit-1.6.1.0 (lib)
 Completed    HUnit-1.6.1.0 (lib)
 </pre>
 
+## <span id="ormolu"><code>ormolu</code> installation</span>
+
+[ormolu](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
+
+<pre style="font-size:80%;">
+<b>&gt; cabal list ormolu</b>
+* ormolu
+    Synopsis: A formatter for Haskell source code
+    Default available version: 0.1.4.1
+    Installed versions: [ Not installed ]
+    Homepage: https://github.com/tweag/ormolu
+    License:  BSD3
+&nbsp;
+<b>&gt; cabal install ormolu</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.3 -O1
+In order, the following will be built (use -v for more details):
+ - [...]
+ - ghc-lib-parser-8.10.3.20201220 (lib) (requires download & build)
+ - ormolu-0.1.4.1 (lib) (requires download & build)
+ - ormolu-0.1.4.1 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.1.4.1
+[...]
+Starting     ormolu-0.1.4.1 (lib)
+Building     ormolu-0.1.4.1 (lib)
+Installing   ormolu-0.1.4.1 (lib)
+Completed    ormolu-0.1.4.1 (lib)
+Starting     ormolu-0.1.4.1 (exe:ormolu)
+Building     ormolu-0.1.4.1 (exe:ormolu)
+Installing   ormolu-0.1.4.1 (exe:ormolu)
+Completed    ormolu-0.1.4.1 (exe:ormolu)
+Symlinking 'hpack.exe'
+cabal: Symlinking feature not available on Windows
+</pre>
+
+Since the last installation step fails on Windows, we search for the path to the `ormolu` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.2\ormolu\`):
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal ormolu.exe</b>
+%APPDATA%\cabal\store\ghc-8.10.3\ormolu-0.1.4.1-fef4c51e80594af1ce3bbd7e2284b01d39c167f4\bin\ormolu.exe
+&nbsp;
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\\cabal\store\ghc-8.10.3\ormolu-0.1.4.1-fef4c51e80594af1ce3bbd7e2284b01d39c167f4 c:\opt\ghc-8.10.3\ormolu</b>
+3 file(s) copied
+&nbsp;
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %ORMOLU_HOME% ormolu</b>
+c:\opt\ghc-8.10.3\ormolu\bin\ormolu.exe
+&nbsp;
+<b>&gt; C:\opt\ghc-8.10.3\ormolu\bin\<a href="https://hackage.haskell.org/package/ormolu">ormolu</a> --version</b>
+ormolu 0.1.4.1 UNKNOWN UNKNOWN
+using ghc-lib-parser 8.10.3.20201220
+</pre>
 
 ## <span id="footnotes">Footnotes</span>
 
@@ -198,7 +251,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/~ghc/8.10.2/">ghc-8.10.3-x86_64-unknown-mingw32.tar.xz</a>          <i>(377 MB)</i>
+<a href="https://downloads.haskell.org/~ghc/latest/">ghc-8.10.3-x86_64-unknown-mingw32.tar.xz</a>          <i>(377 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.5.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 

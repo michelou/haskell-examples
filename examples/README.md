@@ -12,10 +12,10 @@ In the following we present the two examples [**`Factorial`**](#factorial) and [
 
 Build tools rely on one or more configuration files to achieve their tasks. In our case we created the following configuration files for example [**`Factorial`**](#factorial):
 
-| Build tool                    | Configuration file                       | Parent file                |
-|-------------------------------|------------------------------------------|----------------------------|
-| **`build.bat`**                   | **`build.properties`**                   | n.a.                       |
-| [**`cabal.exe`**][cabal_cli]      | [**`build.gradle`**](Factorial/Factorial.cabal) | n.a.                |
+| Build tool                    | Configuration file                           | Parent file                |
+|-------------------------------|----------------------------------------------|----------------------------|
+| [**`build.bat`**](Factorial/build.bat) | **`build.properties`**              | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [**`Factorial.cabal`**](Factorial/Factorial.cabal) | n.a.             |
 | [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
 | [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
 

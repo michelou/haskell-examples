@@ -10,6 +10,7 @@
 
 ## <span id="articles">Articles</span>
 
+- [Haskell Documentation with Haddock][article_haddock] by Veronica Romashkina and Dimitrii Kovanikou, December 2020.
 - [My thoughts on Haskell in 2020][article_sampellegrini] by Marco Sampelligrini, December 26, 2019.
 - [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
 - [GHC Parser][ghc_parser]
@@ -30,6 +31,7 @@
 
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, Coherent Press 2019.<br/><span style="font-size:80%;">(ISBN 978-0957671133)</span>
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br><span style="font-size:80%;">(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)</span>
+- [Get Programming with Hashkell][book_get_programming], by Will Kurt, Manning 2018.<br/><span style="font-size:80%;">(ISBN 978-1617293764)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
 
@@ -67,6 +69,7 @@
 
 [article_abela]: http://www.cse.chalmers.se/~abela/master/layout-parsing.html
 [article_doig]: https://medium.com/@dogwith1eye/setting-up-haskell-in-vs-code-with-stack-and-the-ide-engine-81d49eda3ecf
+[article_haddock]: https://kowainik.github.io/posts/haddock-tips
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
@@ -74,9 +77,10 @@
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
-[book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
+[book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
+[book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [haskell_weekly]: https://haskellweekly.news/newsletter.html
 [kowainik_github]: https://kowainik.github.io/
