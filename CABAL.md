@@ -86,9 +86,9 @@ Since the last installation step fails on Windows, we search for the path to the
 12 file(s) copied
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HLINT_HOME% hlint</b>
-C:\opt\ghc-8.10.3\hlint\bin\hlint.exe
+C:\opt\ghc-8.10.3\hlint-3.2.7\bin\hlint.exe
 &nbsp;
-<b>&gt; C:\opt\ghc-8.10.3\hlint\bin\<a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
+<b>&gt; C:\opt\ghc-8.10.3\hlint-3.2.7\bin\<a href="https://hackage.haskell.org/package/hlint">hlint</a> --version</b>
 HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 
@@ -99,14 +99,13 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 > To revert to previous state run:
 >    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | head -6</b>
 > * hlint
 >     Synopsis: Source code suggestions
 >     Default available version: 3.2.7
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
-> [..]
 > </pre>
 
 ## <span id="hpack"><code>hpack</code> installation</span>
@@ -155,14 +154,13 @@ hpack version 0.34.3
 > To revert to previous state run:
 >    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
 >     Default available version: 0.34.3
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/sol/hpack#readme
 >     License:  MIT
-> [..]
 > </pre>
 
 ## <span id="hunit"><code>HUnit</code> installation</span>
@@ -174,28 +172,44 @@ hpack version 0.34.3
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
- - call-stack-0.2.0 (lib) (requires download & build)
+ - call-stack-0.3.0 (lib) (requires download & build)
  - HUnit-1.6.1.0 (lib) (requires download & build)
-Downloading  call-stack-0.2.0
-Downloaded   call-stack-0.2.0
-Downloading  HUnit-1.6.0.0
-Starting     call-stack-0.2.0 (lib)
-Downloaded   HUnit-1.6.0.0
-Building     call-stack-0.2.0 (lib)
-Installing   call-stack-0.2.0 (lib)
-Completed    call-stack-0.2.0 (lib)
+Downloading  call-stack-0.3.0
+Downloaded   call-stack-0.3.0
+Downloading  HUnit-1.6.1.0
+Starting     call-stack-0.3.0 (lib)
+Downloaded   HUnit-1.6.1.0
+Building     call-stack-0.3.0 (lib)
+Installing   call-stack-0.3.0 (lib)
+Completed    call-stack-0.3.0 (lib)
 Starting     HUnit-1.6.1.0 (lib)
 Building     HUnit-1.6.1.0 (lib)
 Installing   HUnit-1.6.1.0 (lib)
 Completed    HUnit-1.6.1.0 (lib)
 </pre>
 
+> **:mag_right:** Command **`cabal list hunit`** shows the latest available version of package `hunit` (*do not* forget **`cabal update`**) :
+> <pre style="font-size:80%;">
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+> Downloading the latest package list from hackage.haskell.org
+> To revert to previous state run:
+>    cabal v2-update 'hackage.haskell.org,2021-01-17T09:27:33Z'
+> &nbsp;
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+> * HUnit
+>     Synopsis: A unit testing framework for Haskell
+>     Default available version: 1.6.1.0
+>     Installed versions: [ Not installed ]
+>     Homepage: https://github.com/hspec/HUnit#readme
+>     License:  BSD3
+> </pre>
+
 ## <span id="ormolu"><code>ormolu</code> installation</span>
 
 [ormolu](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
 
 <pre style="font-size:80%;">
-<b>&gt; cabal list ormolu</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
     Default available version: 0.1.4.1
@@ -203,7 +217,7 @@ Completed    HUnit-1.6.1.0 (lib)
     Homepage: https://github.com/tweag/ormolu
     License:  BSD3
 &nbsp;
-<b>&gt; cabal install ormolu</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
@@ -267,7 +281,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
