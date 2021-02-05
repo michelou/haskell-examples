@@ -27,7 +27,7 @@ The directory structure of project `Factorial` looks as follows:
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cd">cd</a></b>
 H:\examples\Factorial
 &nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | findstr /v "^[A-Z]"</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/findstr">findstr</a> /v "^[A-Z]"</b>
 |   .gitignore
 |   <a href="Factorial/.hlint.yaml">.hlint.yaml</a>
 |   <a href="Factorial/build.bat">build.bat</a>
@@ -46,7 +46,7 @@ Command `cabal run all` builds and execute the [Haskell] application (configurat
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.3\bin\cabal.exe
 &nbsp;
-<b>&gt; cabal run all</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> run all</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
@@ -254,7 +254,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
