@@ -57,6 +57,7 @@ set _ERROR_LABEL=%_STRONG_FG_RED%Error%_RESET%:
 set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 
 set "_SOURCE_DIR=%_ROOT_DIR%src"
+set "_LIB_DIR=%_ROOT_DIR%lib"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_DOCS_DIR=%_TARGET_DIR%\docs"
@@ -256,6 +257,7 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% 1>&2
+	echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" 1>&2
     echo %_DEBUG_LABEL% Variables  : _EXEC=%_EXEC% 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
@@ -358,26 +360,28 @@ goto :eof
 
 @rem output parameter: _INCLUDES
 :includes
+if not exist "%_LIB_DIR%\" mkdir "%_LIB_DIR%"
+
 @rem http://hackage.haskell.org/package/monad-par
 set __PACKAGE_NAME=monad-par-0.3.5
-call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
+call :install_package "%__PACKAGE_NAME%" "%_LIB_DIR%"
 if not %_EXITCODE%==0 goto :eof
 
-set "_INCLUDES=%_ROOT_DIR%lib\%__PACKAGE_NAME%"
+set "_INCLUDES=%_LIB_DIR%\%__PACKAGE_NAME%"
 
 @rem http://hackage.haskell.org/package/parallel
 set __PACKAGE_NAME=parallel-3.2.2.0
-call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
+call :install_package "%__PACKAGE_NAME%" "%_LIB_DIR%"
 if not %_EXITCODE%==0 goto :eof
 
-set "_INCLUDES=%_INCLUDES%:%_ROOT_DIR%lib\%__PACKAGE_NAME%"
+set "_INCLUDES=%_INCLUDES%:%_LIB_DIR%\%__PACKAGE_NAME%"
 
 @rem http://hackage.haskell.org/package/timeit
 set __PACKAGE_NAME=timeit-2.0
-call :install_package "%__PACKAGE_NAME%" "%_ROOT_DIR%lib"
+call :install_package "%__PACKAGE_NAME%" "%_LIB_DIR%"
 if not %_EXITCODE%==0 goto :eof
 
-set "_INCLUDES=%_INCLUDES%:%_ROOT_DIR%lib\%__PACKAGE_NAME%"
+set "_INCLUDES=%_INCLUDES%:%_LIB_DIR%\%__PACKAGE_NAME%"
 goto :eof
 
 @rem input parameters: %1=package name, %2=installation directory path
@@ -395,7 +399,7 @@ set __TGZ_NAME=%__PACKAGE_NAME%.tar.gz
 set __TGZ_URL=%__PACKAGE_URL%/%__PACKAGE_NAME%/!__TGZ_NAME!
 set "__TGZ_FILE=%__TEMP_DIR%\!__TGZ_NAME!"
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% powershell -c "Invoke-WebRequest -Uri !__TGZ_URL! -Outfile '!__TGZ_FILE!'" 1>&2
-) else if %_VERBOSE%==1 ( echo Download file !__TGZ_NAME! 1>&2
+) else if %_VERBOSE%==1 ( echo Download archive file !__TGZ_NAME! to directory "%%TEMP%%\lib" 1>&2
 )
 powershell -c "$progressPreference='silentlyContinue';Invoke-WebRequest -Uri !__TGZ_URL! -Outfile '!__TGZ_FILE!'"
 if not !ERRORLEVEL!==0 (
@@ -403,9 +407,9 @@ if not !ERRORLEVEL!==0 (
     set _EXITCODE=1
     goto :eof
 )
-pushd "%_ROOT_DIR%lib"
+pushd "%_LIB_DIR%"
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_TAR_CMD%" xf "!__TGZ_FILE!" 1>&2
-) else if %_VERBOSE%==1 ( echo Extract files from !__TGZ_NAME! 1>&2
+) else if %_VERBOSE%==1 ( echo Extract archive file !__TGZ_NAME! into directory "!_LIB_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_TAR_CMD%" xf "!__TGZ_FILE!"
 if not !ERRORLEVEL!==0 (

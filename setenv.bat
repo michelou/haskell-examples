@@ -291,25 +291,25 @@ if not exist "%_GHC_HOME%\bin\cabal.exe" (
     echo %_WARNING_LABEL% Cabal executable not installed 1>&2
 )
 set _HLINT_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\hlint-*"') do (
+for /f %%f in ('dir /b "%_GHC_HOME%\hlint-*" 2^>NUL') do (
     set "_HLINT_HOME=%_GHC_HOME%\%%f"
 )
 if not defined _HLINT_HOME echo %_WARNING_LABEL% HLint tool not installed 1>&2
 
 set _HPACK_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\hpack-*"') do (
+for /f %%f in ('dir /b "%_GHC_HOME%\hpack-*" 2^>NUL') do (
     set "_HPACK_HOME=%_GHC_HOME%\%%f"
 )
 if not defined _HPACK_HOME echo %_WARNING_LABEL% HPack tool not installed 1>&2
 
 set _ORMOLU_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*"') do (
+for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*" 2^>NUL') do (
     set "_ORMOLU_HOME=%_GHC_HOME%\%%f"
 )
 if not defined _ORMOLU_HOME echo %_WARNING_LABEL% ormolu tool not installed 1>&2
 
 set _STACK_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\stack-*"') do (
+for /f %%f in ('dir /b "%_GHC_HOME%\stack-*" 2^>NUL') do (
     set "_STACK_HOME=%_GHC_HOME%\%%f"
 )
 if not defined _STACK_HOME echo %_WARNING_LABEL% Stack tool not installed 1>&2
