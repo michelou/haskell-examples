@@ -8,11 +8,11 @@
   </tr>
 </table>
 
-In this project we use the following packages : [`hlint`](#hlint), [`hpack`](#hpack), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
+Useful packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
-Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the **`cabal.exe`** executable somewhere on the `%PATH%`
+Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the `cabal.exe` executable somewhere on the `%PATH%`
 (in our case `C:\opt\ghc-8.10.3\bin\`).
 
 <pre style="font-size:80%;">
@@ -77,7 +77,7 @@ Symlinking 'hlint.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
 
-Since the last installation step fails on Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.3\hlint-3.2.7\`):
+Since the last installation step fails on MS Windows, we search for the path to the `hlint` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.3\hlint-3.2.7\`):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hlint.exe</b>
@@ -93,7 +93,7 @@ C:\opt\ghc-8.10.3\hlint-3.2.7\bin\hlint.exe
 HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 
-> **:mag_right:** Command **`cabal list hlint`** shows the latest available version of package `hlint` (*do not* forget **`cabal update`**):
+> **:mag_right:** Command [`cabal`][cabal_man] `list hlint` shows the latest available version of package `hlint` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
@@ -148,7 +148,7 @@ C:\opt\ghc-8.10.3\hpack-0.34.3\bin\hpack.exe
 hpack version 0.34.3
 </pre>
 
-> **:mag_right:** Command **`cabal list hpack`** shows the latest available version of package `hpack` (*do not* forget **`cabal update`**) :
+> **:mag_right:** Command [`cabal`][cabal_man] `list hpack` shows the latest available version of package `hpack` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
@@ -189,7 +189,7 @@ Installing   HUnit-1.6.1.0 (lib)
 Completed    HUnit-1.6.1.0 (lib)
 </pre>
 
-> **:mag_right:** Command **`cabal list hunit`** shows the latest available version of package `hunit` (*do not* forget **`cabal update`**) :
+> **:mag_right:** Command [`cabal`][cabal_man] `list hunit` shows the latest available version of package `hunit` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
@@ -240,7 +240,7 @@ Symlinking 'hpack.exe'
 cabal: Symlinking feature not available on Windows
 </pre>
 
-Since the last installation step fails on Windows, we search for the path to the `ormolu` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.3\ormolu-0.1.4.1\`):
+Since the last installation step fails on MS Windows, we search for the path to the `ormolu` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.3\ormolu-0.1.4.1\`):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal ormolu.exe</b>
@@ -289,6 +289,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 [article_abela]: http://www.cse.chalmers.se/~abela/master/layout-parsing.html
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
+[cabal_man]: https://man.archlinux.org/man/cabal.1
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser

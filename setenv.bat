@@ -520,7 +520,7 @@ endlocal & (
     if not defined HLINT_HOME set "HLINT_HOME=%_HLINT_HOME%"
     if not defined HPACK_HOME set "HPACK_HOME=%_HPACK_HOME%"
     @rem Variable JAVA_HOME must be defined for Maven
-    if not defined JAVA_HOME set "JAVA_HOME=%_JAVA_HOME%"
+    if not defined JAVA_HOME set "JAVA_HOME=%_JDK_HOME%"
     if not defined ORMOLU_HOME set "ORMOLU_HOME=%_ORMOLU_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target

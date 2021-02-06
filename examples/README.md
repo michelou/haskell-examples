@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="120" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell logo"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/" rel="external">Haskell project</a>.
   </td>
   </tr>
@@ -92,7 +92,7 @@ factorialProd(5)=120
 
 > **:mag_right:** We can build a profile-version of the project and execute the profile-instrumented [Haskell] application as follows:
 > <pre style="font-size:80%;">
-> <b>&gt; stack build --profile</b>
+> <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> build --profile</b>
 > &nbsp;
 > <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> exec target\dist\29cc6475\build\Factorial\Factorial.exe -- +RTS -p</b>
 > factorialRec(5) =120
@@ -187,7 +187,7 @@ Command `cabal run all` builds and executes the [Haskell] application (configura
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.3\bin\cabal.exe
 &nbsp;
-<b>&gt; cabal run all</b>
+<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run all</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
@@ -210,7 +210,7 @@ Command `stack run` builds and executes the [Haskell] application (configuration
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
 C:\opt\ghc-8.10.3\stack\stack.exe
 &nbsp;
-<b>&gt; stack --silent run</b>
+<b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
