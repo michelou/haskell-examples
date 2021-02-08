@@ -1,7 +1,6 @@
 {-|
 Description: Several ways to define the program entry point.
 License    : MIT License
-Stability  : demo
 -}
 module Main (main) where
 

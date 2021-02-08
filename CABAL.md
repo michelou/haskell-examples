@@ -8,7 +8,7 @@
   </tr>
 </table>
 
-Useful packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
+Useful Haskell packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [`hspec`](#hspec), [`HTF`](#htf), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
@@ -83,7 +83,7 @@ Since the last installation step fails on MS Windows, we search for the path to 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hlint.exe</b>
 %APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.7-5aa469904bdabf015c2e105bbe2c9a63561b1a33\\bin\hlint.exe
 &nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.7-5aa469904bdabf015c2e105bbe2c9a63561b1a33\ c:\opt\ghc-8.10.3\hlint</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.3\hlint-3.2.7-5aa469904bdabf015c2e105bbe2c9a63561b1a33\ c:\opt\ghc-8.10.3\hlint-3.2.7</b>
 12 file(s) copied
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HLINT_HOME% hlint</b>
@@ -163,6 +163,61 @@ hpack version 0.34.3
 >     Homepage: https://github.com/sol/hpack#readme
 >     License:  MIT
 > </pre>
+
+## <span id="hspec"><code>hspec</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+
+[Hspec] is a testing framework for Haskell.
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib hspec</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.3 -O1
+In order, the following will be built (use -v for more details):
+[...]
+ - hspec-core-2.7.8 (lib) (requires download & build)
+ - hspec-2.7.8 (lib) (requires download & build)
+[...]
+Starting     hspec-2.7.8 (lib)
+Building     hspec-2.7.8 (lib)
+Installing   hspec-2.7.8 (lib)
+Completed    hspec-2.7.8 (lib)
+</pre>
+
+## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+
+[HTF](https://hackage.haskell.org/package/HTF) (*Haskell Test Framework*) lets you define [unit tests](http://hunit.sourceforge.net), [QuickCheck properties](http://www.cs.chalmers.se/~rjmh/QuickCheck/), and black box tests in an easy and convenient way.
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install HTF</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.3 -O1
+In order, the following will be built (use -v for more details):
+ - HUnit-1.6.2.0 (lib) (requires download & build)
+ - QuickCheck-2.14.2 (lib) (requires download & build)
+[...]
+Starting     HTF-0.14.0.5 (all, legacy fallback)
+Building     HTF-0.14.0.5 (all, legacy fallback)
+Installing   HTF-0.14.0.5 (all, legacy fallback)
+Completed    HTF-0.14.0.5 (all, legacy fallback)
+Symlinking 'htfpp.exe'
+cabal: Symlinking feature not available on Windows
+</pre>
+
+Since the last installation step fails on MS Windows, we search for the path to the `HTF` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.3\HTF-0.14.0.5\`):
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %APPDATA%\cabal htfpp.exe</b>
+%APPDATA%\cabal\store\ghc-8.10.3\HTF-0.14.0.5-2ee615388cd462cc7ccee89e6ced4e6724049bda\bin\htfpp.exe
+&nbsp;
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-8.10.3\HTF-0.14.0.5-2ee615388cd462cc7ccee89e6ced4e6724049bda\ c:\opt\ghc-8.10.3\\HTF-0.14.0.5</b>
+28 file(s) copied
+&nbsp;
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HTF_HOME% htfpp.exe</b>
+c:\opt\ghc-8.10.3\HTF-0.14.0.5\bin\htfpp.exe
+&nbsp;
+<b>&gt; c:\opt\ghc-8.10.3\HTF-0.14.0.5\bin\<a href="http://hackage.haskell.org/package/HTF-0.14.0.5/docs/Test-Framework-Tutorial.html">htfpp.exe</a> --version</b>
+0.14.0.5
+</pre>
 
 ## <span id="hunit"><code>HUnit</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
@@ -304,6 +359,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.3/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
+[hspec]: https://hackage.haskell.org/package/hspec
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [nodejs_examples]: https://github.com/michelou/nodejs-examples

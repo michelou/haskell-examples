@@ -1,7 +1,6 @@
 {-|
 Description: Evaluating arithmetic expressions.
 License    : MIT License
-Stability  : demo
 -}
 module Main (main) where
 

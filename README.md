@@ -16,13 +16,16 @@
 This project relies on the following external software for the **Microsoft Windows** plaform:
 
 - [Cabal 3.2][cabal_downloads] ([*changelog*][cabal_changelog])
+- [Git 2.30][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10][haskell_downloads] ([*release notes*][haskell_relnotes])
 
 Optionally one may also install the following software:
 
-- [Git 2.30][git_downloads] ([*release notes*][git_relnotes])
+- [Apache Maven 3.6][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
 - [hlint 3.2][hlint_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][hpack_changelog])
+- [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
+- [HTF 0.14][htf_downloads] ([*changelog*][htf_changelog])
 - [ormolu 0.1][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.5][stack_downloads] ([*changelog*][stack_changelog])
 
@@ -32,12 +35,15 @@ Optionally one may also install the following software:
 For instance our development environment looks as follows (*February 2021*) <sup id="anchor_02">[[2]](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
+C:\opt\apache-maven-3.6.3\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.3\                 <i>(2.4 GB)</i>
 C:\opt\ghc-8.10.3\hlint-3.2.7\     <i>( 68 MB)</i>
 C:\opt\ghc-8.10.3\hpack-0.34.3\    <i>( 49 MB)</i>
+C:\opt\ghc-8.10.3\HTF-0.14.0.5\    <i>( 16 MB)</i>
 C:\opt\ghc-8.10.3\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-8.10.3\stack-2.5.1\     <i>( 70 MB)</i>
 C:\opt\Git-2.30.0\                 <i>(290 MB)</i>
+C:\opt\jdk-11.0.10+9\              <i>(181 MB)</i>
 </pre>
 
 <!--
@@ -130,8 +136,8 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.3, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, ormolu 0.1.4.1,
-   git 2.30.0.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, htfpp 0.14.0.5
+   ormolu 0.1.4.1, git 2.30.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 C:\opt\ghc-8.10.3\hlint\bin\hlint.exe
@@ -145,8 +151,8 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.2.0.0, ghc version 8.10.3, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, ormolu 0.1.4.1,
-   git 2.30.0.windows.1, diff 3.7
+   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, htfpp 0.14.0.5
+   ormolu 0.1.4.1, git 2.30.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.3\bin\cabal.exe
    C:\opt\ghc-8.10.3\bin\ghc.exe
@@ -154,6 +160,7 @@ Tool paths:
    C:\opt\ghc-8.10.3\bin\haddock.exe
    C:\opt\ghc-8.10.3\hlint-3.2.7\bin\hlint.exe
    C:\opt\ghc-8.10.3\hpack-0.34.3\bin\hpack.exe
+   C:\opt\ghc-8.10.3\HTF-0.14.0.5\bin\htfpp.exe
    C:\opt\ghc-8.10.3\ormolu-0.1.4.1\bin\ormolu.exe
    C:\opt\Git-2.30.0\bin\git.exe
    C:\opt\Git-2.30.0\mingw64\bin\git.exe
@@ -187,6 +194,10 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 <!-- link refs -->
 
+[apache_maven]: https://maven.apache.org/download.cgi
+[apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
+[apache_maven_history]: https://maven.apache.org/docs/history.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.6.3/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
@@ -206,6 +217,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
+[htf_changelog]: https://hackage.haskell.org/package/HTF-0.14.0.5/changelog
+[htf_downloads]: https://hackage.haskell.org/package/HTF
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [man1_awk]: https://www.linux.org/docs/man1/awk.html
@@ -218,6 +231,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_sed]: https://www.linux.org/docs/man1/sed.html
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
+[oracle_openjdk]: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot
+<!-- also: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/tag/jdk8u252-b09 -->
+[oracle_openjdk_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
 [ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.1.4.1/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/

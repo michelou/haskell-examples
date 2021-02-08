@@ -1,7 +1,6 @@
 {-|
 Description: Several ways to define the n! function.
 License    : MIT License
-Stability  : demo
 -}
 module Main
     ( factorialRec
@@ -32,8 +31,7 @@ factorialProd n = product [1..n]
 main :: IO ()
 main = do
     let x = 5
-    putStrLn ("factorialRec(" ++ show x ++ ") =" ++ show (factorialRec x)) ;
-    putStrLn ("factorialRec2(" ++ show x ++ ")=" ++ show (factorialRec2 x)) ;
-    putStrLn ("factorialFold(" ++ show x ++ ")=" ++ show (factorialFold x)) ;
-    putStrLn ("factorialProd(" ++ show x ++ ")=" ++ show (factorialProd x)) ;
-    return ()
+    putStrLn ("factorialRec(" ++ show x ++ ") =" ++ show (factorialRec x))
+    putStrLn ("factorialRec2(" ++ show x ++ ")=" ++ show (factorialRec2 x))
+    putStrLn ("factorialFold(" ++ show x ++ ")=" ++ show (factorialFold x))
+    putStrLn ("factorialProd(" ++ show x ++ ")=" ++ show (factorialProd x))

@@ -1,7 +1,6 @@
 {-|
 Description: Different implementations of the Quicksort algorihtm.
 License    : MIT License
-Stability  : demo
 -}
 module Main (main) where
 

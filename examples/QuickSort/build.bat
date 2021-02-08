@@ -227,7 +227,8 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
-    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" HLINT_HOME="%HLINT_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : HLINT_HOME="%HLINT_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof

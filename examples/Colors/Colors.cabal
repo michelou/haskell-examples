@@ -10,7 +10,7 @@ license:             MIT
 author:              Stéphane Micheloud
 maintainer:          stephane.micheloud@gmail.com
 -- copyright:
--- category:
+category:            example
 
 build-type:          Simple
 -- extra-source-files:  CHANGELOG.md

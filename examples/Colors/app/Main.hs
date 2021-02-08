@@ -1,7 +1,6 @@
 {-|
 Description: Dealing with user inputs.
 License    : MIT License
-Stability  : demo
 -}
 module Main (main) where
 

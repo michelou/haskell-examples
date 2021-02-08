@@ -76,20 +76,6 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-### <span id="factorial_maven">***Maven build/run***</span>
-
-Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
-
-<pre style="font-size:80%;">
-<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
-[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
-Linking target/Main.exe ...
-factorialRec(5) =120
-factorialRec2(5)=120
-factorialFold(5)=120
-factorialProd(5)=120
-</pre>
-
 > **:mag_right:** We can build a profile-version of the project and execute the profile-instrumented [Haskell] application as follows:
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> build --profile</b>
@@ -123,6 +109,20 @@ factorialProd(5)=120
 > [..]
 > </pre>
 
+### <span id="factorial_maven">***Maven build/run***</span>
+
+Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+[1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
+Linking target/Main.exe ...
+factorialRec(5) =120
+factorialRec2(5)=120
+factorialFold(5)=120
+factorialProd(5)=120
+</pre>
+
 ### <span id="factorial_batch">***Batch build/run***</span>
 
 Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application:
@@ -141,14 +141,18 @@ factorialProd(5)=120
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
 > <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> clean compile exec:exec</b>
-> <b>&gt; cabal clean && cabal run all</b>
-> <b>&gt; stack clean && stack run</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> clean && cabal run all</b>
+> <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean && stack run</b>
 > </pre>
 
 Command [`build -debug clean run`](Factorial/build.bat) also displays the internally executed commands:
 <pre style="font-size:80%;">
 <b>&gt; <a href="Factorial/build.bat">build</a> -debug clean run</b>
-[build] _CLEAN=1 _COMPILE=1 _DOC=0 _RUN=1 _VERBOSE=0
+[build] Properties : _PACKAGE_NAME=Factorial
+[build] Options    : _TIMER=0 _VERBOSE=0
+[build] Subcommands: _CLEAN=1 _COMPILE=1 _DOC=0 _LINT=0 _RUN=1 _TEST=0
+[build] Variables  : GHC_HOME="C:\opt\ghc-8.10.3"
+[build] Variables  : HLINT_HOME="C:\opt\ghc-8.10.3\hlint-3.2.7"
 [build] rmdir /s /q "H:\examples\Factorial\target"
 [build] ghc.exe -Wall -Werror -o "H:\examples\Factorial\target\Main.exe" -hidir "H:\examples\Factorial\target\gen" -odir "H:\examples\Factorial\target\gen"  "H:\examples\Factorial\app\Main.hs"
 [1 of 1] Compiling Main             ( H:\examples\Factorial\app\Main.hs, H:\examples\Factorial\target\gen\Main.o )
@@ -187,7 +191,7 @@ Command `cabal run all` builds and executes the [Haskell] application (configura
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.3\bin\cabal.exe
 &nbsp;
-<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run all</b>
+<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean &amp;&amp; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run all</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.3 -O1
 In order, the following will be built (use -v for more details):
@@ -210,7 +214,7 @@ Command `stack run` builds and executes the [Haskell] application (configuration
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
 C:\opt\ghc-8.10.3\stack\stack.exe
 &nbsp;
-<b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
+<b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]

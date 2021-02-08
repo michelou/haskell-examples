@@ -6,5 +6,6 @@
 *.prof
 
 *_LOCAL/
-.hash
+.hash/
+.stack-work/
 target/
