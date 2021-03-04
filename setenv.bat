@@ -264,6 +264,7 @@ set _HPACK_HOME=
 set _HTF_HOME=
 set _STACK_HOME=
 
+set __GHC_VERSION=8
 set __GHC_CMD=
 for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
 if defined __GHC_CMD (
@@ -276,10 +277,10 @@ if defined __GHC_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable HASKELL_HOME 1>&2
 ) else (
     set __PATH=C:\opt
-    for /f %%f in ('dir /ad /b "!__PATH!\ghc-8*" 2^>NUL') do set "_GHC_HOME=!__PATH!\%%f"
+    for /f %%f in ('dir /ad /b "!__PATH!\ghc-%__GHC_VERSION%*" 2^>NUL') do set "_GHC_HOME=!__PATH!\%%f"
     if not defined _GHC_HOME (
         set "__PATH=%ProgramFiles%"
-        for /f "delims=" %%f in ('dir /ad /b "!__PATH!\ghc-8*" 2^>NUL') do set "_GHC_HOME=!__PATH!\%%f"
+        for /f "delims=" %%f in ('dir /ad /b "!__PATH!\ghc-%__GHC_VERSION%*" 2^>NUL') do set "_GHC_HOME=!__PATH!\%%f"
     )
 )
 if not exist "%_GHC_HOME%\bin\ghc.exe" (

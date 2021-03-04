@@ -34,7 +34,7 @@ if %_LINT%==1 (
     if not !_EXITCODE!==0 goto end
 )
 if %_COMPILE%==1 (
-    call :compile_%_TARGET%
+    call :compile
     if not !_EXITCODE!==0 goto end
 )
 if %_DOC%==1 (
@@ -42,7 +42,11 @@ if %_DOC%==1 (
     if not !_EXITCODE!==0 goto end
 )
 if %_RUN%==1 (
-    call :run_%_TARGET%
+    call :run
+    if not !_EXITCODE!==0 goto end
+)
+if %_TEST%==1 (
+    call :test
     if not !_EXITCODE!==0 goto end
 )
 goto end
@@ -51,7 +55,7 @@ goto end
 @rem ## Subroutine
 
 @rem output parameters: _DEBUG_LABEL, _ERROR_LABEL, _WARNING_LABEL
-@rem                    _SOURCE_DIR, TARGET_DIR, _TARGET_DOCS_DIR
+@rem                    _SOURCE_DIR, _TARGET_DIR, _TARGET_DOCS_DIR
 :env
 set _BASENAME=%~n0
 set "_ROOT_DIR=%~dp0"
@@ -61,12 +65,12 @@ set _DEBUG_LABEL=%_NORMAL_BG_CYAN%[%_BASENAME%]%_RESET%
 set _ERROR_LABEL=%_STRONG_FG_RED%Error%_RESET%:
 set _WARNING_LABEL=%_STRONG_FG_YELLOW%Warning%_RESET%:
 
-set "_APP_DIR=%_ROOT_DIR%app"
+set "_SOURCE_DIR=%_ROOT_DIR%app"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
 set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
 
-if not exist "%GHC_HOME%\" (
+if not exist "%GHC_HOME%\bin\ghc.exe" (
     echo %_ERROR_LABEL% GHC installation not found 1>&2
     set _EXITCODE=1
     goto :eof
@@ -76,7 +80,7 @@ set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
 set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _HLINT_CMD=
 if exist "%HLINT_HOME%\bin\hlint.exe" (
@@ -132,12 +136,13 @@ goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
-for %%f in ("%~dp0\.") do set __PACKAGE_NAME=%%~nf
-set __PACKAGE_VERSION=0.0.1
+for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
+set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 set __GHC_OPTIONS=-Wall -Werror
 
-for /f "delims=" %%f in ('dir /b "%_ROOT_DIR%" *.cabal') do set "__CABAL_FILE=%%f"
+set __CABAL_FILE=
+for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
 if exist "%__CABAL_FILE%" (
     for /f "tokens=1,* delims=:" %%i in (%__CABAL_FILE%) do (
         set __NAME=
@@ -150,14 +155,14 @@ if exist "%__CABAL_FILE%" (
             set "_!__NAME:-=_!=!__VALUE!"
         )
     )
-    if defined _name set __PACKAGE_NAME=!_name!
+    if defined _name set _PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
     if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
-set "_EXE_FILE=%_TARGET_DIR%\%__PACKAGE_NAME%.exe"
+set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
 set _GHC_OPTS=%_GHC_OPTS% %__GHC_OPTIONS% -o "%_EXE_FILE%"
-set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%__PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
+set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
 @rem input parameter: %*
@@ -170,7 +175,6 @@ set _DOCVIEW=0
 set _HELP=0
 set _LINT=0
 set _RUN=0
-set _TARGET=native
 set _TEST=0
 set _TIMER=0
 set _VERBOSE=0
@@ -215,10 +219,14 @@ goto :args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
+if %_LINT%==1 if not defined _HLINT_CMD (
+    echo %_WARNING_LABEL% Hlint tool not found ^(disable subcommand 'lint'^) 1>&2
+    set _LINT=0
+)
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
-    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
     echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" HLINT_HOME="%HLINT_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
@@ -246,10 +254,11 @@ echo.
 echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%clean%__END%       delete generated files
 echo     %__BEG_O%compile%__END%     generate program executable
-echo     %__BEG_O%doc%__END%         generate HTML documentation
+echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
 echo     %__BEG_O%run%__END%         execute the generated program
+echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
 echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
@@ -276,20 +285,20 @@ goto :eof
 :lint
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
-if %_DEBUG%==1 ( set __LINT_OPTS=%_HLINT_OPTS%
-) else ( set __LINT_OPTS=%_HLINT_OPTS% "--report=%_TARGET_DIR%\report.html"
+if %_DEBUG%==1 ( set __HLINT_OPTS=--color=auto
+) else ( set __HLINT_OPTS=--color=auto "--report=%_TARGET_DIR%\report.html"
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__LINT_OPTS% "%_SOURCE_DIR%" 1>&2
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" 1>&2
 ) else if %_VERBOSE%==1 ( echo Analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
 )
-call "%_HLINT_CMD%" %__LINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
+call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
     set _EXITCODE=1
     goto :eof
 )
 goto :eof
 
-:compile_native
+:compile
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
 call :compile_required "%_EXE_FILE%" "%_SOURCE_DIR%\*.hs"
@@ -297,24 +306,25 @@ if %_COMPILE_REQUIRED%==0 goto :eof
 
 set __SOURCE_FILES=
 set __N=0
-for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
+for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
     set /a __N+=1
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Compile %__N% Haskell source files 1>&2
+) else if %_VERBOSE%==1 ( echo Compile %__N% Haskell source files to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
 call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
-   set _EXITCODE=1
-   goto :eof
+    echo %_ERROR_LABEL% Compilation of %__N% Haskell source files failed 1>&2
+    set _EXITCODE=1
+    goto :eof
 )
 goto :eof
 
 @rem input parameter: 1=target file 2=path (wildcards accepted)
 @rem output parameter: _COMPILE_REQUIRED
 :compile_required
-set __TARGET_FILE=%~1
+set "__TARGET_FILE=%~1"
 set __PATH=%~2
 
 set __TARGET_TIMESTAMP=00000000000000
@@ -328,8 +338,8 @@ for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop
 call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
 set _COMPILE_REQUIRED=%_NEWER%
 if %_DEBUG%==1 (
-    echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% "%__TARGET_FILE%" 1>&2
-    echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% "%__PATH%" 1>&2
+    echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% Target : "%__TARGET_FILE%" 1>&2
+    echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% Sources: "%__PATH%" 1>&2
     echo %_DEBUG_LABEL% _COMPILE_REQUIRED=%_COMPILE_REQUIRED% 1>&2
 ) else if %_VERBOSE%==1 if %_COMPILE_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
     echo No compilation needed ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
@@ -370,20 +380,27 @@ for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) d
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
 )
 set __SOURCE_FILES=
-for /f "usebackq delims=" %%f in (`where /r "%_APP_DIR%" *.hs`) do (
+for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
 )
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
-   set _EXITCODE=1
-   goto :eof
+    echo %_ERROR_LABEL% Generation of HTML documentation failed 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+if %_DOCVIEW%==1 if exist "%_TARGET_DOCS_DIR%\index.html" (
+    if %_DEBUG%==1 ( echo %_DEBUG_LABEL% start "" "%_TARGET_DOCS_DIR%\index.html" 1>&2
+	) else if %_VERBOSE%==1 ( echo Open the generated HTML pages in default browser 1>&2
+	)
+    start "" "%_TARGET_DOCS_DIR%\index.html"
 )
 goto :eof
 
-:run_native
+:run
 if not exist "%_EXE_FILE%" (
     echo %_ERROR_LABEL% Executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
     set _EXITCODE=1
@@ -394,10 +411,14 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_EXE_FILE%" 1>&2
 )
 call "%_EXE_FILE%"
 if not %ERRORLEVEL%==0 (
-   echo %_ERROR_LABEL% Program executable not found ^(!_EXE_FILE:%_ROOT_DIR%=!^) 1>&2
-   set _EXITCODE=1
-   goto :eof
+    echo %_ERROR_LABEL% Program executable not found ^("!_EXE_FILE:%_ROOT_DIR%=!"^) 1>&2
+    set _EXITCODE=1
+    goto :eof
 )
+goto :eof
+
+:test
+echo %_WARNING_LABEL% Test not yet implemented 1>&2
 goto :eof
 
 @rem output parameter: _DURATION

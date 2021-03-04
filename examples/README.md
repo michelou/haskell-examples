@@ -10,7 +10,7 @@
 
 In the following we present the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
 
-We can build/run code examples in directory [`examples`](./) in several ways. For instance we have the following configuration files for example [**`Factorial`**](#factorial):
+We can build/run code examples in directory [`examples`](./) in several ways. For instance we have the following configuration files for project [**`Factorial`**](#factorial):
 
 | Build tool                    | Configuration file                           | Parent file                |
 |-------------------------------|----------------------------------------------|----------------------------|
@@ -41,7 +41,7 @@ H:\examples\Factorial
 
 ### <span id="factorial_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
+Command [`cabal run all`][cabal_cli] builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.3\bin\cabal.exe
@@ -64,7 +64,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_stack">***Stack build/run***</span>
 
-Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
+Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
 C:\opt\ghc-8.10.3\stack\stack.exe
@@ -111,7 +111,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_maven">***Maven build/run***</span>
 
-Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
@@ -185,7 +185,7 @@ H:\examples\QuickSort
 
 ### <span id="quicksort_cabal">***Cabal build/run***</span>
 
-Command `cabal run all` builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
+Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
@@ -208,7 +208,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 ### <span id="quicksort_stack">***Stack build/run***</span>
 
-Command `stack run` builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
+Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
@@ -258,7 +258,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -274,6 +274,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [haskell]: https://www.haskell.org
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
+[mvn_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
 [stack_cli]: https://docs.haskellstack.org/en/stable/build_command/
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

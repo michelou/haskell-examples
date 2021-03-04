@@ -368,7 +368,7 @@ goto :eof
 :doc
 if not exist "%_TARGET_DOCS_DIR%" mkdir "%_TARGET_DOCS_DIR%"
 
-set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
+set "__HTML_LIBS_DIR=%GHC_HOME%\docs\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
