@@ -94,16 +94,16 @@ time: 3.76s
 ### <span id="strat_cabal">***Cabal build/run***</span>
 
 <pre style="font-size:80%;">
-<b>&gt;  cabal clean & cabal run strat</b>
+<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean & cabal run strat</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.3 -O1
+Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
  - parconc-examples-0.4.7 (exe:strat) (first run)
 Configuring executable 'strat' for parconc-examples-0.4.7..
 Preprocessing executable 'strat' for parconc-examples-0.4.7..
 Building executable 'strat' for parconc-examples-0.4.7..
-[1 of 1] Compiling Main             ( src\strat.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.3\parconc-examples-0.4.7\x\strat\build\strat\strat-tmp\Main.o )
-Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.3\parconc-examples-0.4.7\x\strat\build\strat\strat.exe ...
+[1 of 1] Compiling Main             ( src\strat.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-9.0.1\parconc-examples-0.4.7\x\strat\build\strat\strat-tmp\Main.o )
+Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-9.0.1\parconc-examples-0.4.7\x\strat\build\strat\strat.exe ...
 (14930352,24157817)
 </pre>
 
@@ -115,7 +115,7 @@ Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.3\parcon
 ### <span id="strat_batch">***Batch build/run***</span>
 
 <pre style="font-size:80%;">
-<b>&gt; build -verbose -exec:strat clean run</b>
+<b>&gt; <a href="./build.bat">build</a> -verbose -exec:strat clean run</b>
 Delete directory "target"
 Compile Haskell source files to directory "H:\parconc-examples\target"
 Execute Haskell program "target\strat.exe"

@@ -26,7 +26,7 @@ if %_HELP%==1 (
 set _GIT_PATH=
 set _MAVEN_PATH=
 
-call :ghc
+call :ghc 9
 if not %_EXITCODE%==0 goto end
 
 call :git
@@ -255,8 +255,12 @@ echo   %__BEG_P%Subcommands:%__END%
 echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
+@rem input parameter: %1=GHC major version
 @rem output parameter(s): _CABAL_DIR, _GHC_HOME, _HLINT_HOME, _HPACK_HOME, _STACK_HOME
 :ghc
+set __GHC_VERSION=%~1
+if not defined __GHC_VERSION set __GHC_VERSION=8
+
 set _CABAL_DIR=
 set _GHC_HOME=
 set _HLINT_HOME=
@@ -264,7 +268,6 @@ set _HPACK_HOME=
 set _HTF_HOME=
 set _STACK_HOME=
 
-set __GHC_VERSION=8
 set __GHC_CMD=
 for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
 if defined __GHC_CMD (
