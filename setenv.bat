@@ -33,8 +33,8 @@ call :git
 if not %_EXITCODE%==0 goto end
 
 @rem %1=vendor, %2=version
-@rem eg. "" (Oracle), bellsoft, corretto, bellsoft, openj9, redhat, sapmachine, zulu
-call :jdk "" 11
+@rem eg. bellsoft, corretto, bellsoft, openj9, opendjdk, redhat, sapmachine, zulu
+call :jdk "openjdk" 11
 if not %_EXITCODE%==0 goto end
 
 call :maven
@@ -256,16 +256,13 @@ echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
 @rem input parameter: %1=GHC major version
-@rem output parameter(s): _CABAL_DIR, _GHC_HOME, _HLINT_HOME, _HPACK_HOME, _STACK_HOME
+@rem output parameter(s): _CABAL_DIR, _GHC_HOME, _STACK_HOME
 :ghc
 set __GHC_VERSION=%~1
 if not defined __GHC_VERSION set __GHC_VERSION=8
 
 set _CABAL_DIR=
 set _GHC_HOME=
-set _HLINT_HOME=
-set _HPACK_HOME=
-set _HTF_HOME=
 set _STACK_HOME=
 
 set __GHC_CMD=
@@ -295,24 +292,15 @@ set "_CABAL_DIR=%APPDATA%\cabal"
 if not exist "%_GHC_HOME%\bin\cabal.exe" (
     echo %_WARNING_LABEL% Cabal executable not installed 1>&2
 )
-set _HLINT_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\hlint-*" 2^>NUL') do (
-    set "_HLINT_HOME=%_GHC_HOME%\%%f"
+if not exist "%_CABAL_DIR%\bin\hlint.exe" (
+    echo %_WARNING_LABEL% HLint tool not installed 1>&2
 )
-if not defined _HLINT_HOME echo %_WARNING_LABEL% HLint tool not installed 1>&2
-
-set _HPACK_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\hpack-*" 2^>NUL') do (
-    set "_HPACK_HOME=%_GHC_HOME%\%%f"
+if not exist "%_CABAL_DIR%\bin\hpack.exe" (
+    echo %_WARNING_LABEL% HPack tool not installed 1>&2
 )
-if not defined _HPACK_HOME echo %_WARNING_LABEL% HPack tool not installed 1>&2
-
-set _HTF_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\HTF-*" 2^>NUL') do (
-    set "_HTF_HOME=%_GHC_HOME%\%%f"
+if not exist "%_CABAL_DIR%\bin\htfpp.exe" (
+    echo %_WARNING_LABEL% HTF tool not installed 1>&2
 )
-if not defined _HTF_HOME echo %_WARNING_LABEL% HTF tool not installed 1>&2
-
 set _ORMOLU_HOME=
 for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*" 2^>NUL') do (
     set "_ORMOLU_HOME=%_GHC_HOME%\%%f"
@@ -483,20 +471,20 @@ if %ERRORLEVEL%==0 (
     for /f "tokens=1,2,3,*" %%i in ('"%GHC_HOME%\bin\haddock.exe" --version ^| findstr version') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% haddock %%~k"
     set __WHERE_ARGS=%__WHERE_ARGS% "%GHC_HOME%\bin:haddock.exe"
 )
-where /q "%HLINT_HOME%\bin:hlint.exe"
+where /q "%CABAL_DIR%\bin:hlint.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('"%HLINT_HOME%\bin\hlint.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hlint %%~j"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%HLINT_HOME%\bin:hlint.exe"
+    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\bin\hlint.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hlint %%~j"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:hlint.exe"
 )
-where /q "%HPACK_HOME%\bin:hpack.exe"
+where /q "%CABAL_DIR%\bin:hpack.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('"%HPACK_HOME%\bin\hpack.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%HPACK_HOME%\bin:hpack.exe"
+    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\bin\hpack.exe" --version') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% hpack %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:hpack.exe"
 )
-where /q "%HTF_HOME%\bin:htfpp.exe"
+where /q "%CABAL_DIR%\bin:htfpp.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=*" %%i in ('"%HTF_HOME%\bin\htfpp.exe" --version 2^>^&1') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% htfpp %%~i,"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%HTF_HOME%\bin:htfpp.exe"
+    for /f "tokens=*" %%i in ('"%CABAL_DIR%\bin\htfpp.exe" --version 2^>^&1') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% htfpp %%~i,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:htfpp.exe"
 )
 where /q "%ORMOLU_HOME%\bin:ormolu.exe"
 if %ERRORLEVEL%==0 (
@@ -534,9 +522,6 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     echo Environment variables: 1>&2
     if defined CABAL_DIR echo    CABAL_DIR=%CABAL_DIR% 1>&2
     if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
-    if defined HLINT_HOME echo    HLINT_HOME=%HLINT_HOME% 1>&2
-    if defined HPACK_HOME echo    HPACK_HOME=%HPACK_HOME% 1>&2
-    if defined HTF_HOME echo    HTF_HOME=%HTF_HOME% 1>&2
     if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
     if defined MAVEN_HOME echo    MAVEN_HOME=%MAVEN_HOME% 1>&2
     if defined ORMOLU_HOME echo    ORMOLU_HOME=%ORMOLU_HOME% 1>&2
@@ -551,16 +536,13 @@ goto :eof
 endlocal & (
     if not defined CABAL_DIR set "CABAL_DIR=%_CABAL_DIR%"
     if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
-    if not defined HLINT_HOME set "HLINT_HOME=%_HLINT_HOME%"
-    if not defined HPACK_HOME set "HPACK_HOME=%_HPACK_HOME%"
-    if not defined HTF_HOME set "HTF_HOME=%_HTF_HOME%"
     @rem Variable JAVA_HOME must be defined for Maven
     if not defined JAVA_HOME set "JAVA_HOME=%_JDK_HOME%"
     if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"
     if not defined ORMOLU_HOME set "ORMOLU_HOME=%_ORMOLU_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%;%_GHC_HOME%\bin;%_HTF_HOME%\bin;%_CABAL_DIR%;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
+    set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
     call :print_env %_VERBOSE%
     if not "%CD:~0,2%"=="%_DRIVE_NAME%:" (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% cd /d %_DRIVE_NAME%: 1>&2

@@ -19,7 +19,7 @@ Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mi
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-9.0.1\bin\cabal.exe
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 Config file path source is default config file.
 Config file %APPDATA%\cabal\config not found.
 Writing default configuration to %APPDATA%\cabal\config
@@ -63,22 +63,23 @@ Downloading the latest package list from hackage.haskell.org
 [HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [`hlint`][hlint_downloads] as follows.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
- - hlint-3.2.7 (lib) (requires download & build)
- - hlint-3.2.7 (exe:hlint) (requires download & build)
-Downloading  hlint-3.2.7
-Downloaded   hlint-3.2.7
-Starting     hlint-3.2.7 (lib)
-Building     hlint-3.2.7 (lib)
-Installing   hlint-3.2.7 (lib)
-Completed    hlint-3.2.7 (lib)
-Starting     hlint-3.2.7 (exe:hlint)
-Building     hlint-3.2.7 (exe:hlint)
-Installing   hlint-3.2.7 (exe:hlint)
-Completed    hlint-3.2.7 (exe:hlint)
+[...]
+ - hlint-3.3 (lib) (requires download & build)
+ - hlint-3.3 (exe:hlint) (requires download & build)
+Downloading  hlint-3.3
+Downloaded   hlint-3.3
+Starting     hlint-3.3 (lib)
+Building     hlint-3.3 (lib)
+Installing   hlint-3.3 (lib)
+Completed    hlint-3.3 (lib)
+Starting     hlint-3.3 (exe:hlint)
+Building     hlint-3.3 (exe:hlint)
+Installing   hlint-3.3 (exe:hlint)
+Completed    hlint-3.3 (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=<path>. Using default installdir:
 "%APPDATA%\\cabal\\bin"
@@ -103,15 +104,15 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 -->
 > **:mag_right:** Command [`cabal`][cabal_man] `list hlint` shows the latest available version of package `hlint` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
+>    cabal v2-update 'hackage.haskell.org,2021-03-05T07:35:37Z'
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | head -6</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | head -6</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.2.7
+>     Default available version: 3.3
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -119,54 +120,39 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 
 ## <span id="hpack"><code>hpack</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[Hpack][hpack_readme] is a format for Haskell packages. Similarly to `hlint` we install [`hpack`][hpack_downloads] in two steps on MS Windows.
+[Hpack][hpack_readme] is a format for Haskell packages. Similarly to `hlint` we install [`hpack`][hpack_downloads] as follows.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
- - cabal-doctest-1.0.8 (lib) (requires build)
 [...]
-Starting     hpack-0.34.3 (lib)
-Building     hpack-0.34.3 (lib)
-Installing   hpack-0.34.3 (lib)
-Completed    hpack-0.34.3 (lib)
-Starting     hpack-0.34.3 (exe:hpack)
-Building     hpack-0.34.3 (exe:hpack)
-Installing   hpack-0.34.3 (exe:hpack)
-Completed    hpack-0.34.3 (exe:hpack)
-Symlinking 'hpack.exe'
-cabal: Symlinking feature not available on Windows
-</pre>
-
-Since the last installation step fails on MS Windows, we search for the path to the `hpack` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-9.0.1\hpack-0.34.3\`):
-
-<pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal hpack.exe</b>
-%APPDATA%\cabal\store\ghc-9.0.1\hpack-0.34.3-66f92fa5c7eb33250bcdd5caa70c3c8dcd631e97\bin\hpack.exe
-&nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\cabal\store\ghc-9.0.1\hpack-0.34.3-66f92fa5c7eb33250bcdd5caa70c3c8dcd631e97 c:\opt\ghc-9.0.1\hpack</b>
-3 file(s) copied
-&nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %HPACK_HOME% hpack</b>
-C:\opt\ghc-9.0.1\hpack-0.34.3\bin\hpack.exe
-&nbsp;
-<b>&gt; C:\opt\ghc-9.0.1\hpack-0.34.3\bin\<a href="https://hackage.haskell.org/package/hpack">hpack.exe</a> --version</b>
-hpack version 0.34.3
+Starting     hpack-0.34.4 (lib)
+Building     hpack-0.34.4 (lib)
+Installing   hpack-0.34.4 (lib)
+Completed    hpack-0.34.4 (lib)
+Starting     hpack-0.34.4 (exe:hpack)
+Building     hpack-0.34.4 (exe:hpack)
+Installing   hpack-0.34.4 (exe:hpack)
+Completed    hpack-0.34.4 (exe:hpack)
+Warning: installdir is not defined. Set it in your cabal config file or use
+--installdir=<path>. Using default installdir:
+"%APPDATA%\\cabal\\bin"
+Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 </pre>
 
 > **:mag_right:** Command [`cabal`][cabal_man] `list hpack` shows the latest available version of package `hpack` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2020-06-16T03:59:14Z
+>    cabal v2-update 'hackage.haskell.org,2021-03-05T07:35:37Z'
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
->     Default available version: 0.34.3
+>     Default available version: 0.34.4
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/sol/hpack#readme
 >     License:  MIT
@@ -177,7 +163,7 @@ hpack version 0.34.3
 [Hspec] is a testing framework for Haskell.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib hspec</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib hspec</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
@@ -196,7 +182,7 @@ Completed    hspec-2.7.8 (lib)
 [HTF](https://hackage.haskell.org/package/HTF) (*Haskell Test Framework*) lets you define [unit tests](http://hunit.sourceforge.net), [QuickCheck properties](http://www.cs.chalmers.se/~rjmh/QuickCheck/), and black box tests in an easy and convenient way.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install HTF</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install HTF</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
@@ -234,37 +220,37 @@ c:\opt\ghc-9.0.1\HTF-0.14.0.6\bin\htfpp.exe
 [HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):
  - call-stack-0.3.0 (lib) (requires download & build)
- - HUnit-1.6.1.0 (lib) (requires download & build)
+ - HUnit-1.6.2.0 (lib) (requires download & build)
 Downloading  call-stack-0.3.0
 Downloaded   call-stack-0.3.0
-Downloading  HUnit-1.6.1.0
+Downloading  HUnit-1.6.2.0
 Starting     call-stack-0.3.0 (lib)
-Downloaded   HUnit-1.6.1.0
+Downloaded   HUnit-1.6.2.0
 Building     call-stack-0.3.0 (lib)
 Installing   call-stack-0.3.0 (lib)
 Completed    call-stack-0.3.0 (lib)
-Starting     HUnit-1.6.1.0 (lib)
-Building     HUnit-1.6.1.0 (lib)
-Installing   HUnit-1.6.1.0 (lib)
-Completed    HUnit-1.6.1.0 (lib)
+Starting     HUnit-1.6.2.0 (lib)
+Building     HUnit-1.6.2.0 (lib)
+Installing   HUnit-1.6.2.0 (lib)
+Completed    HUnit-1.6.2.0 (lib)
 </pre>
 
 > **:mag_right:** Command [`cabal`][cabal_man] `list hunit` shows the latest available version of package `hunit` (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2021-01-17T09:27:33Z'
+>    cabal v2-update 'hackage.haskell.org,2021-03-05T07:35:37Z'
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * HUnit
 >     Synopsis: A unit testing framework for Haskell
->     Default available version: 1.6.1.0
+>     Default available version: 1.6.2.0
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/hspec/HUnit#readme
 >     License:  BSD3
@@ -275,7 +261,7 @@ Completed    HUnit-1.6.1.0 (lib)
 [ormolu](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
     Default available version: 0.1.4.1
@@ -283,7 +269,7 @@ Completed    HUnit-1.6.1.0 (lib)
     Homepage: https://github.com/tweag/ormolu
     License:  BSD3
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
 Resolving dependencies...
 Build profile: -w ghc-9.0.1 -O1
 In order, the following will be built (use -v for more details):

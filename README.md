@@ -16,13 +16,13 @@
 This project relies on the following external software for the **Microsoft Windows** plaform:
 
 - [Cabal 3.4][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.30][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.31][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 9.0][haskell_downloads] ([*release notes*][haskell_relnotes])
 
 Optionally one may also install the following software:
 
 - [Apache Maven 3.6][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
-- [hlint 3.2][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
+- [hlint 3.3][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
 - [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
 - [HTF 0.1][htf_downloads] ([*changelog*][htf_changelog])
@@ -37,12 +37,9 @@ For instance our development environment looks as follows (*March 2021*) <sup id
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.6.3\         <i>( 10 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
-C:\opt\ghc-9.0.1\hlint-3.2.7\      <i>( 68 MB)</i>
-C:\opt\ghc-9.0.1\hpack-0.34.3\     <i>( 49 MB)</i>
-C:\opt\ghc-9.0.1\HTF-0.14.0.6\     <i>( 16 MB)</i>
 C:\opt\ghc-9.0.1\ormolu-0.1.4.1\   <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\stack-2.5.1\      <i>( 70 MB)</i>
-C:\opt\Git-2.30.1\                 <i>(290 MB)</i>
+C:\opt\Git-2.31.0\                 <i>(279 MB)</i>
 C:\opt\jdk-11.0.10+9\              <i>(181 MB)</i>
 </pre>
 
@@ -135,9 +132,9 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.2.0.0, ghc version 9.0.1, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, htfpp 0.14.0.6
-   ormolu 0.1.4.1, git 2.30.1.windows.1, diff 3.7
+   cabal 3.4.0.0, ghc version 9.0.1, stack 2.5.1,
+   haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
+   ormolu 0.1.4.1, git 2.31.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 C:\opt\ghc-9.0.1\hlint\bin\hlint.exe
@@ -150,21 +147,21 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.2.0.0, ghc version 9.0.1, stack 2.5.1,
-   haddock 2.24.0, hlint v3.2.7, hpack 0.34.3, htfpp 0.14.0.6
-   ormolu 0.1.4.1, git 2.30.1.windows.1, diff 3.7
+   cabal 3.4.0.0, ghc version 9.0.1, stack 2.5.1,
+   haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
+   ormolu 0.1.4.1, git 2.31.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-9.0.1\bin\cabal.exe
    C:\opt\ghc-9.0.1\bin\ghc.exe
    C:\opt\ghc-9.0.1\stack-2.5.1\stack.exe
    C:\opt\ghc-9.0.1\bin\haddock.exe
-   C:\opt\ghc-9.0.1\hlint-3.2.7\bin\hlint.exe
-   C:\opt\ghc-9.0.1\hpack-0.34.3\bin\hpack.exe
-   C:\opt\ghc-9.0.1\HTF-0.14.0.6\bin\htfpp.exe
+   %APPDATA%\bin\hlint.exe
+   %APPDATA%\bin\hpack.exe
+   %APPDATA%\bin\htfpp.exe
    C:\opt\ghc-9.0.1\ormolu-0.1.4.1\bin\ormolu.exe
-   C:\opt\Git-2.30.1\bin\git.exe
-   C:\opt\Git-2.30.1\mingw64\bin\git.exe
-   C:\opt\Git-2.30.1\usr\bin\diff.exe
+   C:\opt\Git-2.31.0\bin\git.exe
+   C:\opt\Git-2.31.0\mingw64\bin\git.exe
+   C:\opt\Git-2.31.0\usr\bin\diff.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -186,9 +183,9 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
-<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
+<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.30.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.31.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.5.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
@@ -211,7 +208,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.30.1.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.31.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
