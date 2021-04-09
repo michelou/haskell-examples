@@ -15,32 +15,35 @@
 
 This project relies on the following external software for the **Microsoft Windows** plaform:
 
-- [Cabal 3.4][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
+- [Cabal 3.2][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
 - [Git 2.31][git_downloads] ([*release notes*][git_relnotes])
-- [Haskell 9.0][haskell_downloads] ([*release notes*][haskell_relnotes])
+- [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 Optionally one may also install the following software:
 
 - [Apache Maven 3.6][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
+- [Cabal 3.4][cabal_downloads] ([*changelog*][cabal_changelog])
+- [Haskell 9.0][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [hlint 3.3][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
-- [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
 - [HTF 0.1][htf_downloads] ([*changelog*][htf_changelog])
+- [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
 - [ormolu 0.1][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.5][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*March 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
+For instance our development environment looks as follows (*April 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.6.3\         <i>( 10 MB)</i>
+C:\opt\ghc-8.10.4\                 <i>(2.5 GB)</i>
+C:\opt\ghc-8.10.4\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
-C:\opt\ghc-9.0.1\ormolu-0.1.4.1\   <i>( 58 MB)</i>
-C:\opt\ghc-9.0.1\stack-2.5.1\      <i>( 70 MB)</i>
-C:\opt\Git-2.31.0\                 <i>(279 MB)</i>
+C:\opt\Git-2.31.1\                 <i>(279 MB)</i>
 C:\opt\jdk-11.0.10+9\              <i>(181 MB)</i>
+C:\opt\stack-2.5.1\                <i>( 70 MB)</i>
 </pre>
 
 <!--
@@ -132,14 +135,14 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 9.0.1, stack 2.5.1,
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1,
    haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
-   ormolu 0.1.4.1, git 2.31.0.windows.1, diff 3.7
+   ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
-C:\opt\ghc-9.0.1\hlint\bin\hlint.exe
-C:\opt\ghc-9.0.1\hpack\bin\hpack.exe
-C:\opt\ghc-9.0.1\stack\stack.exe
+C:\opt\ghc-8.10.4\hlint\bin\hlint.exe
+C:\opt\ghc-8.10.4\hpack\bin\hpack.exe
+C:\opt\ghc-8.10.4\stack\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -147,29 +150,28 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 9.0.1, stack 2.5.1,
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1,
    haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
-   ormolu 0.1.4.1, git 2.31.0.windows.1, diff 3.7
+   ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 Tool paths:
-   C:\opt\ghc-9.0.1\bin\cabal.exe
-   C:\opt\ghc-9.0.1\bin\ghc.exe
-   C:\opt\ghc-9.0.1\stack-2.5.1\stack.exe
-   C:\opt\ghc-9.0.1\bin\haddock.exe
+   C:\opt\ghc-8.10.4\bin\cabal.exe
+   C:\opt\ghc-8.10.4\bin\ghc.exe
+   C:\opt\ghc-8.10.4\stack-2.5.1\stack.exe
+   C:\opt\ghc-8.10.4\bin\haddock.exe
    %APPDATA%\bin\hlint.exe
    %APPDATA%\bin\hpack.exe
    %APPDATA%\bin\htfpp.exe
-   C:\opt\ghc-9.0.1\ormolu-0.1.4.1\bin\ormolu.exe
-   C:\opt\Git-2.31.0\bin\git.exe
-   C:\opt\Git-2.31.0\mingw64\bin\git.exe
-   C:\opt\Git-2.31.0\usr\bin\diff.exe
+   C:\opt\ghc-8.10.4\ormolu-0.1.4.1\bin\ormolu.exe
+   C:\opt\Git-2.31.1\bin\git.exe
+   C:\opt\Git-2.31.1\mingw64\bin\git.exe
+   C:\opt\Git-2.31.1\usr\bin\diff.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
 
-<span name="footnote_01">[1]</span> ***Cabal*** [↩](#anchor_01)
+<span name="footnote_01">[1]</span> ***Cabal versions*** [↩](#anchor_01)
 
-- `cabal 3.2` works with `ghc 8.x`
-- `cabal 3.4` works with `ghc 9.x`
+`cabal 3.2` works with `ghc 8.x` while `cabal 3.4` works with `ghc 9.x`.
 
 <span name="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
 
@@ -184,14 +186,15 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.31.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://downloads.haskell.org/ghc/8.10.4/">ghc-8.10.4-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.4-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.31.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.5.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -202,19 +205,21 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven_relnotes]: https://maven.apache.org/docs/3.6.3/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
-[cabal_downloads]: https://www.haskell.org/cabal/download.html
+[cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.31.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.31.1.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_downloads]: https://downloads.haskell.org/ghc/latest/
-[haskell_relnotes]: https://downloads.haskell.org/ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
+[haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.4/
+[haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.4/docs/html/users_guide/8.10.4-notes.html
+[haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
+[haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog

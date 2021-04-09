@@ -114,6 +114,9 @@ factorialProd(5)=120
 Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
+C:\opt\apache-maven-3.6.3\bin\mvn.cmd
+&nbsp;
 <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
@@ -258,7 +261,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

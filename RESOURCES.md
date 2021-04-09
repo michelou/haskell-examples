@@ -39,6 +39,7 @@
 
 ## <span id="courses">Courses</span>
 
+- [Advanced Programming](https://www.cis.upenn.edu/~cis552/current/) (CIS 552), by [Stéphanie Weirich](https://www.cis.upenn.edu/~sweirich/), Fall 2020.
 - [Functional and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
 
 ## <span id="news">News</span>
@@ -65,7 +66,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

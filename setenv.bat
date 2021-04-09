@@ -25,8 +25,13 @@ if %_HELP%==1 (
 
 set _GIT_PATH=
 set _MAVEN_PATH=
+set _STACK_PATH=
 
-call :ghc 9
+@rem lts -> 8, latest -> 9
+call :ghc 8
+if not %_EXITCODE%==0 goto end
+
+call :stack
 if not %_EXITCODE%==0 goto end
 
 call :git
@@ -306,12 +311,36 @@ for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*" 2^>NUL') do (
     set "_ORMOLU_HOME=%_GHC_HOME%\%%f"
 )
 if not defined _ORMOLU_HOME echo %_WARNING_LABEL% ormolu tool not installed 1>&2
+goto :eof
 
+@rem output parameter(s): _STACK_HOME, _STACK_PATH
+:stack
 set _STACK_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\stack-*" 2^>NUL') do (
-    set "_STACK_HOME=%_GHC_HOME%\%%f"
+set _STACK_PATH=
+
+set __STACK_CMD=
+for /f %%f in ('where stack.exe 2^>NUL') do set "__STACK_CMD=%%f"
+if defined __GIT_CMD (
+    for %%i in (%__GIT_CMD%) do set "_STACK_HOME=%%~dpi"
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Stack executable found in PATH 1>&2
+    goto :eof
+) else if defined STACK_HOME (
+    set "_STACK_HOME=%STACK_HOME%"
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable STACK_HOME 1>&2
+) else (
+    set __PATH=C:\opt
+    for /f %%f in ('dir /ad /b "!__PATH!\stack-2*" 2^>NUL') do set "_STACK_HOME=!__PATH!\%%f"
+    if not defined _STACK_HOME (
+        set "__PATH=%ProgramFiles%"
+        for /f %%f in ('dir /ad /b "!__PATH!\stack-2*" 2^>NUL') do set "_STACK_HOME=!__PATH!\%%f"
+    )
 )
-if not defined _STACK_HOME echo %_WARNING_LABEL% Stack tool not installed 1>&2
+if not exist "%_STACK_HOME%\stack.exe" (
+    echo %_ERROR_LABEL% Stack executable not found ^(%_STACK_HOME%^) 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+set "_STACK_PATH=;%_STACK_HOME%\bin"
 goto :eof
 
 @rem output parameter(s): _GIT_HOME, _GIT_PATH
@@ -525,7 +554,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
     if defined MAVEN_HOME echo    MAVEN_HOME=%MAVEN_HOME% 1>&2
     if defined ORMOLU_HOME echo    ORMOLU_HOME=%ORMOLU_HOME% 1>&2
-    if defined STACK_WORK echo    STACK_WORK=%STACK_WORK% 1>&2
+    if defined STACK_HOME echo    STACK_HOME=%STACK_HOME% 1>&2
 )
 goto :eof
 
