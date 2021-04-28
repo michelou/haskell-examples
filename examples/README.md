@@ -39,35 +39,35 @@ H:\examples\Factorial
         <a href="./Factorial/app/Main.hs">Main.hs</a>
 </pre>
 
-### <span id="factorial_cabal">***Cabal build/run***</span>
+### <span id="factorial_cabal">***Cabal***</span>
 
 Command [`cabal run all`][cabal_cli] builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-9.0.1\bin\cabal.exe
+C:\opt\ghc-8.10.4\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> run all</b>
 Resolving dependencies...
-Build profile: -w ghc-9.0.1 -O1
+Build profile: -w ghc-8.10.4 -O1
 In order, the following will be built (use -v for more details):
  - Factorial-0.1.0.0 (exe:Factorial) (first run)
 Configuring executable 'Factorial' for Factorial-0.1.0.0..
 Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
 Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-9.0.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
-Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-9.0.1\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.4\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
+Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.4\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-### <span id="factorial_stack">***Stack build/run***</span>
+### <span id="factorial_stack">***Stack***</span>
 
 Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
-C:\opt\ghc-9.0.1\stack\stack.exe
+C:\opt\stack-2.5.1\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
@@ -109,7 +109,7 @@ factorialProd(5)=120
 > [..]
 > </pre>
 
-### <span id="factorial_maven">***Maven build/run***</span>
+### <span id="factorial_maven">***Maven***</span>
 
 Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
@@ -126,7 +126,7 @@ factorialFold(5)=120
 factorialProd(5)=120
 </pre>
 
-### <span id="factorial_batch">***Batch build/run***</span>
+### <span id="factorial_batch">***Batch***</span>
 
 Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
@@ -154,8 +154,8 @@ Command [`build -debug clean run`](Factorial/build.bat) also displays the intern
 [build] Properties : _PACKAGE_NAME=Factorial
 [build] Options    : _TIMER=0 _VERBOSE=0
 [build] Subcommands: _CLEAN=1 _COMPILE=1 _DOC=0 _LINT=0 _RUN=1 _TEST=0
-[build] Variables  : GHC_HOME="C:\opt\ghc-9.0.1"
-[build] Variables  : HLINT_HOME="C:\opt\ghc-9.0.1\hlint-3.2.7"
+[build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.4"
+[build] Variables  : "CABAL_DIR=%APPDATA%\cabal"
 [build] rmdir /s /q "H:\examples\Factorial\target"
 [build] ghc.exe -Wall -Werror -o "H:\examples\Factorial\target\Main.exe" -hidir "H:\examples\Factorial\target\gen" -odir "H:\examples\Factorial\target\gen"  "H:\examples\Factorial\app\Main.hs"
 [1 of 1] Compiling Main             ( H:\examples\Factorial\app\Main.hs, H:\examples\Factorial\target\gen\Main.o )
@@ -186,36 +186,36 @@ H:\examples\QuickSort
         <a href="./QuickSort/app/Main.hs">Main.hs</a>
 </pre>
 
-### <span id="quicksort_cabal">***Cabal build/run***</span>
+### <span id="quicksort_cabal">***Cabal***</span>
 
 Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-9.0.1\bin\cabal.exe
+C:\opt\ghc-8.10.4\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean &amp;&amp; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run all</b>
 Resolving dependencies...
-Build profile: -w ghc-9.0.1 -O1
+Build profile: -w ghc-8.10.4 -O1
 In order, the following will be built (use -v for more details):
  - QuickSort-0.1.0.0 (exe:QuickSort) (first run)
 Configuring executable 'QuickSort' for QuickSort-0.1.0.0..
 Preprocessing executable 'QuickSort' for QuickSort-0.1.0.0..
 Building executable 'QuickSort' for QuickSort-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-9.0.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
-Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-9.0.1\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.4\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
+Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.4\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
 </pre>
 
-### <span id="quicksort_stack">***Stack build/run***</span>
+### <span id="quicksort_stack">***Stack***</span>
 
 Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\ghc-9.0.1\stack\stack.exe
+C:\opt\stack-2.5.1\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
@@ -223,7 +223,7 @@ sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
 </pre>
 
-### <span id="quicksort_maven">***Maven build/run***</span>
+### <span id="quicksort_maven">***Maven***</span>
 
 Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./QuickSort/pom.xml))
 
@@ -236,7 +236,7 @@ sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
 </pre>
 
-### <span id="quicksort_batch">***Batch build/run***</span>
+### <span id="quicksort_batch">***Batch***</span>
 
 Command [`build clean run`](QuickSort/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">

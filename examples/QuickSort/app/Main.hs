@@ -8,8 +8,8 @@ module Main (main) where
 --   (see https://hackage.haskell.org/package/base-4.14.0.0/docs/src/GHC.List.html) 
 qsort :: [Int] -> [Int]
 qsort []      = []
-qsort (a:as)  = qsort left ++ [a] ++ qsort right
-    where (left, right) = (filter (<=a) as, filter (>a) as)
+qsort (x:xs)  = qsort left ++ [x] ++ qsort right
+    where (left, right) = (filter (<=x) xs, filter (>x) xs)
 
 -- | QuickSort function using a user-defined filter function.
 qsort1 :: [Int] -> [Int]

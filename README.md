@@ -42,7 +42,7 @@ C:\opt\ghc-8.10.4\                 <i>(2.5 GB)</i>
 C:\opt\ghc-8.10.4\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.31.1\                 <i>(279 MB)</i>
-C:\opt\jdk-11.0.10+9\              <i>(181 MB)</i>
+C:\opt\jdk-openjdk-11.0.10_9\      <i>(181 MB)</i>
 C:\opt\stack-2.5.1\                <i>( 70 MB)</i>
 </pre>
 

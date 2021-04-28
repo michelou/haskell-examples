@@ -23,7 +23,8 @@
 ## <span id="blogs">Blogs</span>
 
 - [Making the most of Cabal][blog_lau], June 6, 2020.
-- [ Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
+-  [Kindness for Mean Girls: a discussion on type-level programming in Haskell][blog_nadeem] by Ayman Nadeem, May 2020.
+- [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
 - [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
@@ -33,6 +34,7 @@
 
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, Coherent Press 2019.<br/><span style="font-size:80%;">(ISBN 978-0957671133)</span>
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br><span style="font-size:80%;">(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)</span>
+- [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
 - [Get Programming with Haskell][book_get_programming], by Will Kurt, Manning 2018.<br/><span style="font-size:80%;">(ISBN 978-1617293764)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
@@ -82,9 +84,11 @@
 [blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
+[blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
+[book_thinking_with_types]: https://leanpub.com/thinking-with-types
 [book_very_beginning]: https://www.bookdepository.com/Haskell-from-Very-Beginning-John-Whitington/9780957671133
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [haskell_weekly]: https://haskellweekly.news/newsletter.html

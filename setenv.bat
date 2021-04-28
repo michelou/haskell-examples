@@ -549,12 +549,12 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     echo Tool paths: 1>&2
     for /f "tokens=*" %%p in ('where %__WHERE_ARGS%') do echo    %%p 1>&2
     echo Environment variables: 1>&2
-    if defined CABAL_DIR echo    CABAL_DIR=%CABAL_DIR% 1>&2
-    if defined GHC_HOME echo    GHC_HOME=%GHC_HOME% 1>&2
-    if defined JAVA_HOME echo    JAVA_HOME=%JAVA_HOME% 1>&2
-    if defined MAVEN_HOME echo    MAVEN_HOME=%MAVEN_HOME% 1>&2
-    if defined ORMOLU_HOME echo    ORMOLU_HOME=%ORMOLU_HOME% 1>&2
-    if defined STACK_HOME echo    STACK_HOME=%STACK_HOME% 1>&2
+    if defined CABAL_DIR echo    "CABAL_DIR=%CABAL_DIR%" 1>&2
+    if defined GHC_HOME echo    "GHC_HOME=%GHC_HOME%" 1>&2
+    if defined JAVA_HOME echo    "JAVA_HOME=%JAVA_HOME%" 1>&2
+    if defined MAVEN_HOME echo    "MAVEN_HOME=%MAVEN_HOME%" 1>&2
+    if defined ORMOLU_HOME echo    "ORMOLU_HOME=%ORMOLU_HOME%" 1>&2
+    if defined STACK_HOME echo    "STACK_HOME=%STACK_HOME%" 1>&2
 )
 goto :eof
 
