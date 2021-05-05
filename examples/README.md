@@ -261,7 +261,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

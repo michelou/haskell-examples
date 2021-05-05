@@ -344,7 +344,7 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% Sources: "%__PATH%" 1>&2
     echo %_DEBUG_LABEL% _ACTION_REQUIRED=%_ACTION_REQUIRED% 1>&2
 ) else if %_VERBOSE%==1 if %_ACTION_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
-    echo No compilation needed ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
+    echo No action required ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
 )
 goto :eof
 

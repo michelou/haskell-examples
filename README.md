@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][dotty_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
+[GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][scala3_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -34,15 +34,15 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*April 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
+For instance our development environment looks as follows (*May 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\apache-maven-3.6.3\         <i>( 10 MB)</i>
+C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.4\                 <i>(2.5 GB)</i>
 C:\opt\ghc-8.10.4\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.31.1\                 <i>(279 MB)</i>
-C:\opt\jdk-openjdk-11.0.10_9\      <i>(181 MB)</i>
+C:\opt\jdk-openjdk-11.0.11_9\      <i>(181 MB)</i>
 C:\opt\stack-2.5.1\                <i>( 70 MB)</i>
 </pre>
 
@@ -135,8 +135,8 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1,
-   haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1, haddock 2.24.0
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
@@ -150,21 +150,30 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1,
-   haddock 2.24.0, hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1, haddock 2.24.0
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.4\bin\cabal.exe
    C:\opt\ghc-8.10.4\bin\ghc.exe
-   C:\opt\ghc-8.10.4\stack-2.5.1\stack.exe
+   C:\opt\stack-2.5.1\stack.exee
    C:\opt\ghc-8.10.4\bin\haddock.exe
    %APPDATA%\bin\hlint.exe
    %APPDATA%\bin\hpack.exe
    %APPDATA%\bin\htfpp.exe
    C:\opt\ghc-8.10.4\ormolu-0.1.4.1\bin\ormolu.exe
+   C:\opt\jdk-openjdk-11.0.11_9\bin\java.exe
+   C:\opt\apache-maven-3.8.1\bin\mvn.cmd
    C:\opt\Git-2.31.1\bin\git.exe
    C:\opt\Git-2.31.1\mingw64\bin\git.exe
    C:\opt\Git-2.31.1\usr\bin\diff.exe
+Environment variables:
+   "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
+   "GHC_HOME=C:\opt\ghc-8.10.4"
+   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.11_9"
+   "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
+   "ORMOLU_HOME=C:\opt\ghc-8.10.4\ormolu-0.1.4.1"
+   "STACK_HOME=C:\opt\stack-2.5.1"
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -194,7 +203,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -202,12 +211,12 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.6.3/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.8.1/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
-[dotty_examples]: https://github.com/michelou/dotty-examples
+[scala3_examples]: https://github.com/michelou/dotty-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win

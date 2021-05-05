@@ -227,8 +227,8 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
-    echo %_DEBUG_LABEL% Variables  : GHC_HOME="%GHC_HOME%" 1>&2
-    echo %_DEBUG_LABEL% Variables  : CABAL_DIR="%CABAL_DIR%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -307,8 +307,8 @@ goto :eof
 :compile
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
 
-call :compile_required "%_EXE_FILE%" "%_SOURCE_DIR%\*.hs"
-if %_COMPILE_REQUIRED%==0 goto :eof
+call :action_required "%_EXE_FILE%" "%_SOURCE_DIR%\*.hs"
+if %_ACTION_REQUIRED%==0 goto :eof
 
 set __SOURCE_FILES=
 set __N=0
@@ -328,8 +328,8 @@ if not %ERRORLEVEL%==0 (
 goto :eof
 
 @rem input parameter: 1=target file 2=path (wildcards accepted)
-@rem output parameter: _COMPILE_REQUIRED
-:compile_required
+@rem output parameter: _ACTION_REQUIRED
+:action_required
 set "__TARGET_FILE=%~1"
 set __PATH=%~2
 
@@ -342,13 +342,13 @@ for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop
     set __SOURCE_TIMESTAMP=%%i
 )
 call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
-set _COMPILE_REQUIRED=%_NEWER%
+set _ACTION_REQUIRED=%_NEWER%
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% Target : "%__TARGET_FILE%" 1>&2
     echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% Sources: "%__PATH%" 1>&2
-    echo %_DEBUG_LABEL% _COMPILE_REQUIRED=%_COMPILE_REQUIRED% 1>&2
-) else if %_VERBOSE%==1 if %_COMPILE_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
-    echo No compilation needed ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
+    echo %_DEBUG_LABEL% _ACTION_REQUIRED=%_ACTION_REQUIRED% 1>&2
+) else if %_VERBOSE%==1 if %_ACTION_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
+    echo No action required ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
 )
 goto :eof
 
