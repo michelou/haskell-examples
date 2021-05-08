@@ -29,7 +29,7 @@ Optionally one may also install the following software:
 - [HTF 0.1][htf_downloads] ([*changelog*][htf_changelog])
 - [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
 - [ormolu 0.1][ormolu_downloads] ([*changelog*][ormolu_changelog])
-- [Stack 2.5][stack_downloads] ([*changelog*][stack_changelog])
+- [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
@@ -43,7 +43,7 @@ C:\opt\ghc-8.10.4\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.31.1\                 <i>(279 MB)</i>
 C:\opt\jdk-openjdk-11.0.11_9\      <i>(181 MB)</i>
-C:\opt\stack-2.5.1\                <i>( 70 MB)</i>
+C:\opt\stack-2.7.1\                <i>( 70 MB)</i>
 </pre>
 
 <!--
@@ -135,7 +135,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.7.1, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 
@@ -150,13 +150,13 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.5.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.4, stack 2.7.1, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.4\bin\cabal.exe
    C:\opt\ghc-8.10.4\bin\ghc.exe
-   C:\opt\stack-2.5.1\stack.exee
+   C:\opt\stack-2.7.1\stack.exee
    C:\opt\ghc-8.10.4\bin\haddock.exe
    %APPDATA%\bin\hlint.exe
    %APPDATA%\bin\hpack.exe
@@ -173,7 +173,7 @@ Environment variables:
    "JAVA_HOME=C:\opt\jdk-openjdk-11.0.11_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
    "ORMOLU_HOME=C:\opt\ghc-8.10.4\ormolu-0.1.4.1"
-   "STACK_HOME=C:\opt\stack-2.5.1"
+   "STACK_HOME=C:\opt\stack-2.7.1"
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -195,10 +195,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/8.10.4/">ghc-8.10.4-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.4-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.31.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.5.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***

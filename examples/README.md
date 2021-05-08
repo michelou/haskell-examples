@@ -115,9 +115,9 @@ Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] 
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
-C:\opt\apache-maven-3.6.3\bin\mvn.cmd
+C:\opt\apache-maven-3.8.1\bin\mvn.cmd
 &nbsp;
-<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 factorialRec(5) =120
@@ -143,7 +143,7 @@ factorialProd(5)=120
 > **:mag_right:** Commands `build` and `mvn` accept one or more subcommands while `cabal` and `stack` accept only one. For instance the following command lines produce the same result:
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="Factorial/build.bat">build</a> clean run</b>
-> <b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> clean compile exec:exec</b>
+> <b>&gt; <a href="https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html">mvn</a> clean compile exec:exec</b>
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> clean && cabal run all</b>
 > <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean && stack run</b>
 > </pre>
@@ -228,7 +228,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./QuickSort/pom.xml))
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 input list       : [8,4,0,3,1,23,11,18]
@@ -266,7 +266,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 <!-- link refs -->
 
-[apache_maven_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
+[apache_maven_cli]: https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html
 [cabal]: https://www.haskell.org/cabal/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_cli]: https://cabal.readthedocs.io/en/stable/intro.html
@@ -277,7 +277,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [haskell]: https://www.haskell.org
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
-[mvn_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
+[mvn_cli]: https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html
 [stack_cli]: https://docs.haskellstack.org/en/stable/build_command/
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

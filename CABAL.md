@@ -65,7 +65,7 @@ Downloading the latest package list from hackage.haskell.org
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
-Build profile: -w ghc-9.0.1 -O1
+Build profile: -w ghc-8.10.4 -O1
 In order, the following will be built (use -v for more details):
 [...]
  - hlint-3.3 (lib) (requires download & build)
@@ -125,7 +125,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
 Resolving dependencies...
-Build profile: -w ghc-9.0.1 -O1
+Build profile: -w ghc-8.10.4 -O1
 In order, the following will be built (use -v for more details):
 [...]
 Starting     hpack-0.34.4 (lib)
@@ -310,7 +310,7 @@ using ghc-lib-parser 8.10.3.20201220
 
 ## <span id="footnotes">Footnotes</span>
 
-<b name="footnote_01">[1]</b> ***Downloads*** [↩](#anchor_01)
+<span name="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
@@ -325,7 +325,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
   <sup>(<b>*</b>)</sup>requires GHC 9.x but does not work for me.
 </div>
 
-<b name="footnote_02">[2]</b> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
+<span name="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
 
 <p style="margin:0 0 1em 20px;">
 Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows: 
