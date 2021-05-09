@@ -1,3 +1,5 @@
+system-ghc: true
+
 resolver: lts-17.9
 packages:
 - .

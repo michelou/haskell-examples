@@ -1,3 +1,14 @@
-flags: {}
-extra-deps: []
-resolver: lts-15.1
+system-ghc: true
+
+resolver: lts-17.9
+packages:
+- .
+# extra-deps: []
+# flags: {}
+# extra-package-dbs: []
+
+##############################################################################
+## Notes
+
+## lts-17.9 -> ghc-8.10.4, lts-15.3 -> ghc-8.8.2
+## (see https://www.stackage.org/)
