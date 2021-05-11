@@ -215,7 +215,7 @@ Command [`stack run`][stack_cli] builds and executes the [Haskell] application (
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\stack-2.5.1\stack.exe
+C:\opt\stack-2.7.1\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
