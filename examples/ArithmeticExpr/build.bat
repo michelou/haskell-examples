@@ -136,7 +136,7 @@ goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
-for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
+for %%f in ("%~dp0\.") do set _APP_NAME=%%~nf
 set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 set __GHC_OPTIONS=-Wall -Werror
@@ -155,14 +155,14 @@ if exist "%__CABAL_FILE%" (
             set "_!__NAME:-=_!=!__VALUE!"
         )
     )
-    if defined _name set _PACKAGE_NAME=!_name!
+    if defined _name set _APP_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
     if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
-set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
+set "_EXE_FILE=%_TARGET_DIR%\%_APP_NAME%.exe"
 set _GHC_OPTS=%_GHC_OPTS% %__GHC_OPTIONS% -o "%_EXE_FILE%"
-set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
+set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_APP_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
 @rem input parameter: %*
@@ -224,7 +224,7 @@ if %_LINT%==1 if not defined _HLINT_CMD (
     set _LINT=0
 )
 if %_DEBUG%==1 (
-    echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
+    echo %_DEBUG_LABEL% Properties : _APP_NAME=%_APP_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2

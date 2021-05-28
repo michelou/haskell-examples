@@ -13,16 +13,15 @@
 
 ## <span id="proj_deps">Project dependencies</span>
 
-This project relies on the following external software for the **Microsoft Windows** plaform:
+This project relies on the following external software for the **Microsoft Windows** platform:
 
-- [Cabal 3.2][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
+- [Cabal 3.4][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
 - [Git 2.31][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 Optionally one may also install the following software:
 
 - [Apache Maven 3.6][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
-- [Cabal 3.4][cabal_downloads] ([*changelog*][cabal_changelog])
 - [Haskell 9.0][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [hlint 3.3][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
@@ -180,7 +179,7 @@ Environment variables:
 
 <span name="footnote_01">[1]</span> ***Cabal versions*** [↩](#anchor_01)
 
-`cabal 3.2` works with `ghc 8.x` while `cabal 3.4` works with `ghc 9.x`.
+`cabal 3.4` works fine both with `ghc 8.x` and `ghc 9.x` while `cabal 3.2` only works with `ghc 8.x`. 
 
 <span name="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
 

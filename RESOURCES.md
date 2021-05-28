@@ -22,6 +22,10 @@
 
 ## <span id="blogs">Blogs</span>
 
+- [Michael's Blog Posts](https://www.snoyman.com/blog)
+  - [Haskell: The Bad Parts, part 3](https://www.snoyman.com/blog/2020/12/haskell-bad-parts-3/), December 9, 2020.
+  - [Haskell: The Bad Parts, part 2](https://www.snoyman.com/blog/2020/11/haskell-bad-parts-2/), November 9, 2020.
+  - [Haskell: The Bad Parts, part 1](https://www.snoyman.com/blog/2020/10/haskell-bad-parts-1/), October 28, 2020.
 - [Making the most of Cabal][blog_lau], June 6, 2020.
 -  [Kindness for Mean Girls: a discussion on type-level programming in Haskell][blog_nadeem] by Ayman Nadeem, May 2020.
 - [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.

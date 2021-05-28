@@ -261,14 +261,13 @@ echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
 @rem input parameter: %1=GHC major version
-@rem output parameter(s): _CABAL_DIR, _GHC_HOME, _STACK_HOME
+@rem output parameter(s): _CABAL_DIR, _GHC_HOME
 :ghc
 set __GHC_VERSION=%~1
 if not defined __GHC_VERSION set __GHC_VERSION=8
 
 set _CABAL_DIR=
 set _GHC_HOME=
-set _STACK_HOME=
 
 set __GHC_CMD=
 for /f %%f in ('where ghc.exe 2^>NUL') do set "__GHC_CMD=%%f"
