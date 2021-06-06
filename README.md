@@ -21,7 +21,7 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
-- [Apache Maven 3.6][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
+- [Apache Maven 3.8][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
 - [Haskell 9.0][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [hlint 3.3][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
@@ -33,7 +33,7 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*May 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
+For instance our development environment looks as follows (*June 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
@@ -57,7 +57,7 @@ This project is organized as follows:
 
 <pre style="font-size:80%;">
 docs\
-examples\{HelloWorld, ..}
+examples\{<a href="examples/HelloWorld/">HelloWorld</a>, ..}
 parconc-examples\
 <a href="CABAL.md">CABAL.md</a>
 README.md
@@ -201,7 +201,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
