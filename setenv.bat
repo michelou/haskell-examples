@@ -431,7 +431,8 @@ if not exist "%__JAVAC_CMD%" (
 )
 set __JAVAC_VERSION=
 for /f "usebackq tokens=1,*" %%i in (`"%__JAVAC_CMD%" -version 2^>^&1`) do set __JAVAC_VERSION=%%j
-if "!__JAVAC_VERSION:~0,2!"=="14" ( set _JDK_VERSION=14
+if "!__JAVAC_VERSION:~0,2!"=="17" ( set _JDK_VERSION=17
+) else if "!__JAVAC_VERSION:~0,2!"=="14" ( set _JDK_VERSION=14
 ) else if "!__JAVAC_VERSION:~0,2!"=="11" ( set _JDK_VERSION=11
 ) else if "!__JAVAC_VERSION:~0,3!"=="1.8" ( set _JDK_VERSION=8
 ) else if "!__JAVAC_VERSION:~0,3!"=="1.7" ( set _JDK_VERSION=7
@@ -443,7 +444,7 @@ if "!__JAVAC_VERSION:~0,2!"=="14" ( set _JDK_VERSION=14
 )
 goto :eof
 
-@rem output parameter(s): _MAVEN_PATH
+@rem output parameters: _MAVEN_HOME, _MAVEN_PATH
 :maven
 set _MAVEN_HOME=
 set _MAVEN_PATH=
@@ -529,15 +530,15 @@ if %ERRORLEVEL%==0 (
     for /f "tokens=1,2,3,*" %%i in ('"%MAVEN_HOME%\bin\mvn.cmd" -version 2^>^&1 ^| findstr /b Apache') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% mvn %%~k,"
     set __WHERE_ARGS=%__WHERE_ARGS% "%MAVEN_HOME%\bin:mvn.cmd"
 )
-where /q git.exe
+where /q "%GIT_HOME%\bin:git.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('git.exe --version') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% git %%k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% git.exe
+    for /f "tokens=1,2,*" %%i in ('"%GIT_HOME%\bin\git.exe" --version') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% git %%k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%GIT_HOME%\bin:git.exe"
 )
-where /q diff.exe
+where /q "%GIT_HOME%\usr\bin:diff.exe"
 if %ERRORLEVEL%==0 (
-   for /f "tokens=1-3,*" %%i in ('diff.exe --version ^| findstr /B diff') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% diff %%l"
-    set __WHERE_ARGS=%__WHERE_ARGS% diff.exe
+    for /f "tokens=1-3,*" %%i in ('"%GIT_HOME%\usr\bin\diff.exe" --version ^| findstr /B diff') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% diff %%l"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%GIT_HOME%\usr\bin:diff.exe"
 )
 echo Tool versions:
 echo %__VERSIONS_LINE1%
@@ -550,6 +551,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     echo Environment variables: 1>&2
     if defined CABAL_DIR echo    "CABAL_DIR=%CABAL_DIR%" 1>&2
     if defined GHC_HOME echo    "GHC_HOME=%GHC_HOME%" 1>&2
+    if defined GIT_HOME echo    "GIT_HOME=%GIT_HOME%" 1>&2
     if defined JAVA_HOME echo    "JAVA_HOME=%JAVA_HOME%" 1>&2
     if defined MAVEN_HOME echo    "MAVEN_HOME=%MAVEN_HOME%" 1>&2
     if defined ORMOLU_HOME echo    "ORMOLU_HOME=%ORMOLU_HOME%" 1>&2
@@ -564,6 +566,7 @@ goto :eof
 endlocal & (
     if not defined CABAL_DIR set "CABAL_DIR=%_CABAL_DIR%"
     if not defined GHC_HOME set "GHC_HOME=%_GHC_HOME%"
+    if not defined GIT_HOME set "GIT_HOME=%_GIT_HOME%"
     @rem Variable JAVA_HOME must be defined for Maven
     if not defined JAVA_HOME set "JAVA_HOME=%_JDK_HOME%"
     if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"

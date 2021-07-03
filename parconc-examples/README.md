@@ -32,7 +32,7 @@ We can build/run code examples in directory [**`parconc-examples\`**](./) in sev
 ### <span id="rpar_stack">***Stack build/run***</span>
 
 <pre style="font-size:80%;">
-<b>&gt; stack clean &amp;&amp; stack build</b>
+<b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; stack build</b>
 </pre>
 
 <!--
@@ -124,14 +124,16 @@ Execute Haskell program "target\strat.exe"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
 
 [apache_maven_cli]: https://maven.apache.org/ref/3.6.3/maven-embedder/cli.html
+[cabal_cli]: https://cabal.readthedocs.io/en/stable/intro.html
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
 [haskell]: https://www.haskell.org
 [simonmar_readme]: https://github.com/simonmar/parconc-examples/blob/master/README.md
 [simonmar_repo]: https://github.com/simonmar/parconc-examples
+[stack_cli]: https://docs.haskellstack.org/en/stable/build_command/
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/

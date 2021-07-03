@@ -16,7 +16,7 @@
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.4][cabal_downloads] <sup id="anchor_01">[[1]](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.31][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.32][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 Optionally one may also install the following software:
@@ -37,10 +37,10 @@ For instance our development environment looks as follows (*June 2021*) <sup id=
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
-C:\opt\ghc-8.10.4\                 <i>(2.5 GB)</i>
-C:\opt\ghc-8.10.4\ormolu-0.1.4.1\  <i>( 58 MB)</i>
+C:\opt\ghc-8.10.5\                 <i>(2.5 GB)</i>
+C:\opt\ghc-8.10.5\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
-C:\opt\Git-2.31.1\                 <i>(279 MB)</i>
+C:\opt\Git-2.32.0\                 <i>(279 MB)</i>
 C:\opt\jdk-openjdk-11.0.11_9\      <i>(181 MB)</i>
 C:\opt\stack-2.7.1\                <i>( 70 MB)</i>
 </pre>
@@ -134,14 +134,14 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.7.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.1, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
-   ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
+   ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
-C:\opt\ghc-8.10.4\hlint\bin\hlint.exe
-C:\opt\ghc-8.10.4\hpack\bin\hpack.exe
-C:\opt\ghc-8.10.4\stack\stack.exe
+C:\opt\ghc-8.10.5\hlint\bin\hlint.exe
+C:\opt\ghc-8.10.5\hpack\bin\hpack.exe
+C:\opt\ghc-8.10.5\stack\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -149,29 +149,29 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.4, stack 2.7.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.1, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
-   ormolu 0.1.4.1, git 2.31.1.windows.1, diff 3.7
+   ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
 Tool paths:
-   C:\opt\ghc-8.10.4\bin\cabal.exe
-   C:\opt\ghc-8.10.4\bin\ghc.exe
+   C:\opt\ghc-8.10.5\bin\cabal.exe
+   C:\opt\ghc-8.10.5\bin\ghc.exe
    C:\opt\stack-2.7.1\stack.exee
-   C:\opt\ghc-8.10.4\bin\haddock.exe
+   C:\opt\ghc-8.10.5\bin\haddock.exe
    %APPDATA%\bin\hlint.exe
    %APPDATA%\bin\hpack.exe
    %APPDATA%\bin\htfpp.exe
-   C:\opt\ghc-8.10.4\ormolu-0.1.4.1\bin\ormolu.exe
+   C:\opt\ghc-8.10.5\ormolu-0.1.4.1\bin\ormolu.exe
    C:\opt\jdk-openjdk-11.0.11_9\bin\java.exe
    C:\opt\apache-maven-3.8.1\bin\mvn.cmd
-   C:\opt\Git-2.31.1\bin\git.exe
-   C:\opt\Git-2.31.1\mingw64\bin\git.exe
-   C:\opt\Git-2.31.1\usr\bin\diff.exe
+   C:\opt\Git-2.32.0\bin\git.exe
+   C:\opt\Git-2.32.0\mingw64\bin\git.exe
+   C:\opt\Git-2.32.0\usr\bin\diff.exe
 Environment variables:
    "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
-   "GHC_HOME=C:\opt\ghc-8.10.4"
+   "GHC_HOME=C:\opt\ghc-8.10.5"
    "JAVA_HOME=C:\opt\jdk-openjdk-11.0.11_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
-   "ORMOLU_HOME=C:\opt\ghc-8.10.4\ormolu-0.1.4.1"
+   "ORMOLU_HOME=C:\opt\ghc-8.10.5\ormolu-0.1.4.1"
    "STACK_HOME=C:\opt\stack-2.7.1"
 </pre>
 
@@ -194,14 +194,14 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.4-x86_64-unknown-mingw32.tar.xz </a>         <i>(411 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.31.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.32.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -218,13 +218,13 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.31.1.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.32.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.4/
-[haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.4/docs/html/users_guide/8.10.4-notes.html
+[haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.5/
+[haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.5/docs/html/users_guide/8.10.5-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog

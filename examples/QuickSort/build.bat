@@ -83,8 +83,8 @@ set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _HLINT_CMD=
-if exist "%HLINT_HOME%\bin\hlint.exe" (
-    set "_HLINT_CMD=%HLINT_HOME%\bin\hlint.exe"
+if exist "%CABAL_DIR%\bin\hlint.exe" (
+    set "_HLINT_CMD=%CABAL_DIR%\bin\hlint.exe"
 )
 goto :eof
 
@@ -368,7 +368,7 @@ goto :eof
 :doc
 if not exist "%_TARGET_DOCS_DIR%" mkdir "%_TARGET_DOCS_DIR%"
 
-set "__HTML_LIBS_DIR=%GHC_HOME%\docs\html\libraries"
+set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
     set _EXITCODE=1
