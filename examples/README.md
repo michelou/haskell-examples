@@ -44,18 +44,18 @@ H:\examples\Factorial
 Command [`cabal run all`][cabal_cli] builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.4\bin\cabal.exe
+C:\opt\ghc-8.10.5\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.2/intro.html#a-tool-for-working-with-packages">cabal</a> run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.4 -O1
+Build profile: -w ghc-8.10.5 -O1
 In order, the following will be built (use -v for more details):
  - Factorial-0.1.0.0 (exe:Factorial) (first run)
 Configuring executable 'Factorial' for Factorial-0.1.0.0..
 Preprocessing executable 'Factorial' for Factorial-0.1.0.0..
 Building executable 'Factorial' for Factorial-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.4\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
-Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.4\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.5\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial-tmp\Main.o )
+Linking H:\examples\Factorial\dist-newstyle\build\x86_64-windows\ghc-8.10.5\Factorial-0.1.0.0\x\Factorial\build\Factorial\Factorial.exe ...
 factorialRec(5) =120
 factorialRec2(5)=120
 factorialFold(5)=120
@@ -67,7 +67,7 @@ factorialProd(5)=120
 Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
-C:\opt\stack-2.7.1\stack.exe
+C:\opt\stack-2.7.3\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
@@ -154,7 +154,7 @@ Command [`build -debug clean run`](Factorial/build.bat) also displays the intern
 [build] Properties : _PACKAGE_NAME=Factorial
 [build] Options    : _TIMER=0 _VERBOSE=0
 [build] Subcommands: _CLEAN=1 _COMPILE=1 _DOC=0 _LINT=0 _RUN=1 _TEST=0
-[build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.4"
+[build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.5"
 [build] Variables  : "CABAL_DIR=%APPDATA%\cabal"
 [build] rmdir /s /q "H:\examples\Factorial\target"
 [build] ghc.exe -Wall -Werror -o "H:\examples\Factorial\target\Main.exe" -hidir "H:\examples\Factorial\target\gen" -odir "H:\examples\Factorial\target\gen"  "H:\examples\Factorial\app\Main.hs"
@@ -175,7 +175,7 @@ The directory structure of project `QuickSort` looks as follows:
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cd">cd</a></b>
 H:\examples\QuickSort
 &nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | findstr /v "^[A-Z]"</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/findstr">findstr</a> /v "^[A-Z]"</b>
 |   .gitignore
 |   <a href="./QuickSort/build.bat">build.bat</a>
 |   <a href="./QuickSort/QuickSort.cabal">QuickSort.cabal</a>
@@ -192,18 +192,18 @@ Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] applicati
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.4\bin\cabal.exe
+C:\opt\ghc-8.10.5\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean &amp;&amp; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run all</b>
 Resolving dependencies...
-Build profile: -w ghc-8.10.4 -O1
+Build profile: -w ghc-8.10.5 -O1
 In order, the following will be built (use -v for more details):
  - QuickSort-0.1.0.0 (exe:QuickSort) (first run)
 Configuring executable 'QuickSort' for QuickSort-0.1.0.0..
 Preprocessing executable 'QuickSort' for QuickSort-0.1.0.0..
 Building executable 'QuickSort' for QuickSort-0.1.0.0..
-[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.4\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
-Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.4\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
+[1 of 1] Compiling Main             ( app\Main.hs, H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.5\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort-tmp\Main.o )
+Linking H:\examples\QuickSort\dist-newstyle\build\x86_64-windows\ghc-8.10.5\QuickSort-0.1.0.0\x\QuickSort\build\QuickSort\QuickSort.exe ...
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
@@ -215,7 +215,7 @@ Command [`stack run`][stack_cli] builds and executes the [Haskell] application (
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\stack-2.7.1\stack.exe
+C:\opt\stack-2.7.3\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
@@ -269,7 +269,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 [apache_maven_cli]: https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html
 [cabal]: https://www.haskell.org/cabal/
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
-[cabal_cli]: https://cabal.readthedocs.io/en/stable/intro.html
+[cabal_cli]: https://cabal.readthedocs.io/en/3.4/
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser

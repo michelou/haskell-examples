@@ -318,14 +318,11 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.4.0.0-x86_64-windows.zip</a> <sup>(<b>*</b>)</sup>       <i>( 19 MB)</i>
+<a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.4.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/8.10.5/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
-<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
-<div style="margin:0 0 1em 20px;">
-  <sup>(<b>*</b>)</sup>requires GHC 9.x but does not work for me.
-</div>
 
 <span name="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
 
@@ -339,7 +336,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

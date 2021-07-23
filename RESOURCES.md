@@ -22,6 +22,8 @@
 
 ## <span id="blogs">Blogs</span>
 
+- [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
+- [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
 - [Michael's Blog Posts](https://www.snoyman.com/blog)
   - [Haskell: The Bad Parts, part 3](https://www.snoyman.com/blog/2020/12/haskell-bad-parts-3/), December 9, 2020.
   - [Haskell: The Bad Parts, part 2](https://www.snoyman.com/blog/2020/11/haskell-bad-parts-2/), November 9, 2020.
@@ -86,10 +88,12 @@
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
+[blog_dominguez]: https://www.tweag.io/blog/2021-03-25-haskell-java/
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
+[blog_mostovoy]: https://serokell.io/blog/past-and-present-of-haskell
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
 [book_thinking_with_types]: https://leanpub.com/thinking-with-types
