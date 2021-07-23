@@ -42,7 +42,7 @@ C:\opt\ghc-8.10.5\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.32.0\                 <i>(279 MB)</i>
 C:\opt\jdk-openjdk-11.0.11_9\      <i>(181 MB)</i>
-C:\opt\stack-2.7.1\                <i>( 70 MB)</i>
+C:\opt\stack-2.7.3\                <i>( 57 MB)</i>
 </pre>
 
 <!--
@@ -134,7 +134,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
 
@@ -149,13 +149,13 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.1, haddock 2.24.0
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.0
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
    ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.5\bin\cabal.exe
    C:\opt\ghc-8.10.5\bin\ghc.exe
-   C:\opt\stack-2.7.1\stack.exee
+   C:\opt\stack-2.7.3\stack.exee
    C:\opt\ghc-8.10.5\bin\haddock.exe
    %APPDATA%\bin\hlint.exe
    %APPDATA%\bin\hpack.exe
@@ -172,7 +172,7 @@ Environment variables:
    "JAVA_HOME=C:\opt\jdk-openjdk-11.0.11_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
    "ORMOLU_HOME=C:\opt\ghc-8.10.5\ormolu-0.1.4.1"
-   "STACK_HOME=C:\opt\stack-2.7.1"
+   "STACK_HOME=C:\opt\stack-2.7.3"
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -196,7 +196,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.32.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
 ***
