@@ -24,6 +24,10 @@
 
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
+- [Haskell for all](https://www.haskellforall.com/) by Gabriel Gonzalez
+  - [Module organization guidelines for Haskell projects](https://www.haskellforall.com/2021/05/module-organization-guidelines-for.html), May 19, 2021.
+  - [The trick to avoid deeply-nested error-handling code](https://www.haskellforall.com/2021/05/the-trick-to-avoid-deeply-nested-error.html), May 19, 2021.
+- [Lessons Learned From A Year Of Writing Haskell](https://wespiser.com/posts/2021-01-03-Lessons-Learned-From-A-Year-Of-Haskell.html) by Adam Wespiser, January 3, 2021.
 - [Michael's Blog Posts](https://www.snoyman.com/blog)
   - [Haskell: The Bad Parts, part 3](https://www.snoyman.com/blog/2020/12/haskell-bad-parts-3/), December 9, 2020.
   - [Haskell: The Bad Parts, part 2](https://www.snoyman.com/blog/2020/11/haskell-bad-parts-2/), November 9, 2020.
@@ -74,7 +78,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -110,7 +110,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 > To revert to previous state run:
 >    cabal v2-update 'hackage.haskell.org,2021-03-05T07:35:37Z'
 > &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | head -6</b>
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * hlint
 >     Synopsis: Source code suggestions
 >     Default available version: 3.3.1
@@ -169,13 +169,13 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.5 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hspec-core-2.7.10 (lib) (requires download & build)
- - hspec-2.7.10 (lib) (requires download & build)
+ - hspec-core-2.8.2 (lib) (requires download & build)
+ - hspec-2.8.2 (lib) (requires download & build)
 [...]
-Starting     hspec-2.7.10 (lib)
-Building     hspec-2.7.10 (lib)
-Installing   hspec-2.7.10 (lib)
-Completed    hspec-2.7.10 (lib)
+Starting     hspec-2.8.2 (lib)
+Building     hspec-2.8.2 (lib)
+Installing   hspec-2.8.2 (lib)
+Completed    hspec-2.8.2 (lib)
 </pre>
 
 ## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
@@ -336,7 +336,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

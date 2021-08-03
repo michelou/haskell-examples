@@ -33,7 +33,7 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*July 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
+For instance our development environment looks as follows (*August 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
@@ -201,7 +201,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
