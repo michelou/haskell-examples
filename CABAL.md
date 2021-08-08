@@ -265,10 +265,10 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.1.4.1
+    Default available version: 0.2.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
-    License:  BSD3
+    License:  BSD-3-Clause
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
 Resolving dependencies...
@@ -276,22 +276,26 @@ Build profile: -w ghc-8.10.5 -O1
 In order, the following will be built (use -v for more details):
  - [...]
  - ghc-lib-parser-8.10.5.20201220 (lib) (requires download & build)
- - ormolu-0.1.4.1 (lib) (requires download & build)
- - ormolu-0.1.4.1 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.1.4.1
+ - ormolu-0.2.0.0 (lib) (requires download & build)
+ - ormolu-0.2.0.0 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.2.0.0
 [...]
-Starting     ormolu-0.1.4.1 (lib)
-Building     ormolu-0.1.4.1 (lib)
-Installing   ormolu-0.1.4.1 (lib)
-Completed    ormolu-0.1.4.1 (lib)
-Starting     ormolu-0.1.4.1 (exe:ormolu)
-Building     ormolu-0.1.4.1 (exe:ormolu)
-Installing   ormolu-0.1.4.1 (exe:ormolu)
-Completed    ormolu-0.1.4.1 (exe:ormolu)
-Symlinking 'hpack.exe'
-cabal: Symlinking feature not available on Windows
+Starting     ormolu-0.2.0.0 (lib)
+Building     ormolu-0.2.0.0 (lib)
+Installing   ormolu-0.2.0.0 (lib)
+Completed    ormolu-0.2.0.0 (lib)
+Starting     ormolu-0.2.0.0 (exe:ormolu)
+Building     ormolu-0.2.0.0 (exe:ormolu)
+Installing   ormolu-0.2.0.0 (exe:ormolu)
+Completed    ormolu-0.2.0.0 (exe:ormolu)
+Warning: installdir is not defined. Set it in your cabal config file or use
+--installdir=<path>. Using default installdir:
+"%APPDATA%\\cabal\\bin"
+Copying 'ormolu.exe' to
+'%APPDATA%\cabal\bin\ormolu.exe
 </pre>
 
+<!--
 Since the last installation step fails on MS Windows, we search for the path to the `ormolu` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.5\ormolu-0.1.4.1\`):
 
 <pre style="font-size:80%;">
@@ -308,6 +312,7 @@ c:\opt\ghc-8.10.5\ormolu-0.1.4.1\bin\ormolu.exe
 ormolu 0.1.4.1 UNKNOWN UNKNOWN
 using ghc-lib-parser 8.10.3.20201220
 </pre>
+-->
 
 ## <span id="footnotes">Footnotes</span>
 

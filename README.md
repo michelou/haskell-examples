@@ -27,7 +27,7 @@ Optionally one may also install the following software:
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
 - [HTF 0.1][htf_downloads] ([*changelog*][htf_changelog])
 - [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
-- [ormolu 0.1][ormolu_downloads] ([*changelog*][ormolu_changelog])
+- [ormolu 0.2][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
@@ -38,10 +38,9 @@ For instance our development environment looks as follows (*August 2021*) <sup i
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.5\                 <i>(2.5 GB)</i>
-C:\opt\ghc-8.10.5\ormolu-0.1.4.1\  <i>( 58 MB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.32.0\                 <i>(279 MB)</i>
-C:\opt\jdk-openjdk-11.0.11_9\      <i>(181 MB)</i>
+C:\opt\jdk-openjdk-11.0.12_7\      <i>(181 MB)</i>
 C:\opt\stack-2.7.3\                <i>( 57 MB)</i>
 </pre>
 
@@ -134,14 +133,14 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.0
-   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
-   ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.2
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
+   git 2.32.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 C:\opt\ghc-8.10.5\hlint\bin\hlint.exe
 C:\opt\ghc-8.10.5\hpack\bin\hpack.exe
-C:\opt\ghc-8.10.5\stack\stack.exe
+C:\opt\stack-2.7.3\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -149,19 +148,19 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.0
-   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.1.4.1
-   ormolu 0.1.4.1, git 2.32.0.windows.1, diff 3.7
+   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.2
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
+   git 2.32.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.5\bin\cabal.exe
    C:\opt\ghc-8.10.5\bin\ghc.exe
    C:\opt\stack-2.7.3\stack.exee
    C:\opt\ghc-8.10.5\bin\haddock.exe
-   %APPDATA%\bin\hlint.exe
-   %APPDATA%\bin\hpack.exe
-   %APPDATA%\bin\htfpp.exe
-   C:\opt\ghc-8.10.5\ormolu-0.1.4.1\bin\ormolu.exe
-   C:\opt\jdk-openjdk-11.0.11_9\bin\java.exe
+   %APPDATA%\Cabal\bin\hlint.exe
+   %APPDATA%\Cabal\bin\hpack.exe
+   %APPDATA%\Cabal\bin\htfpp.exe
+   %APPDATA%\Cabal\bin\ormolu.exe
+   C:\opt\jdk-openjdk-11.0.12_7\bin\java.exe
    C:\opt\apache-maven-3.8.1\bin\mvn.cmd
    C:\opt\Git-2.32.0\bin\git.exe
    C:\opt\Git-2.32.0\mingw64\bin\git.exe
@@ -169,9 +168,8 @@ Tool paths:
 Environment variables:
    "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.5"
-   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.11_9"
+   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.12_7"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
-   "ORMOLU_HOME=C:\opt\ghc-8.10.5\ormolu-0.1.4.1"
    "STACK_HOME=C:\opt\stack-2.7.3"
 </pre>
 
@@ -248,7 +246,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [oracle_openjdk]: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot
 <!-- also: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/tag/jdk8u252-b09 -->
 [oracle_openjdk_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
-[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.1.4.1/changelog
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.2.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
