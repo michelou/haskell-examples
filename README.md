@@ -192,7 +192,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://downloads.haskell.org/ghc/8.10.5/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(236 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.32.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>

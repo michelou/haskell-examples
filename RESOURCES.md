@@ -24,6 +24,7 @@
 
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
+- [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
 - [Haskell for all](https://www.haskellforall.com/) by Gabriel Gonzalez
   - [Module organization guidelines for Haskell projects](https://www.haskellforall.com/2021/05/module-organization-guidelines-for.html), May 19, 2021.
   - [The trick to avoid deeply-nested error-handling code](https://www.haskellforall.com/2021/05/the-trick-to-avoid-deeply-nested-error.html), May 19, 2021.
@@ -93,6 +94,7 @@
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
 [blog_dominguez]: https://www.tweag.io/blog/2021-03-25-haskell-java/
+[blog_king]: https://lexi-lambda.github.io/blog/2021/03/25/an-introduction-to-typeclass-metaprogramming/
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
