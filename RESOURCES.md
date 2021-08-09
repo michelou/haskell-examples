@@ -19,6 +19,7 @@
 - [Cleaning Up Our Projects with Hpack!][article_hpack], July 17, 2017.
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
+- [A history of Haskell: Being lazy with class][article_hudack] by John Hudak et al., June 2007.
 
 ## <span id="blogs">Blogs</span>
 
@@ -88,6 +89,7 @@
 [article_doig]: https://medium.com/@dogwith1eye/setting-up-haskell-in-vs-code-with-stack-and-the-ide-engine-81d49eda3ecf
 [article_haddock]: https://kowainik.github.io/posts/haddock-tips
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
+[article_hudack]: https://www.researchgate.net/publication/221501761_A_history_of_Haskell_Being_lazy_with_class]
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
