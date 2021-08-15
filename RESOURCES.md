@@ -23,8 +23,8 @@
 
 ## <span id="blogs">Blogs</span>
 
-- [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
-- [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
+- [Past and Present of Haskell: Interview with Simon Peyton Jones][blog_mostovoy] by J. Mostovoy, July 1, 2021.
+- [How to build hybrid Haskell and Java programs][blog_dominguez] by F. Domínguez and A. Herrman, March 26, 2021.
 - [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
 - [Haskell for all](https://www.haskellforall.com/) by Gabriel Gonzalez
   - [Module organization guidelines for Haskell projects](https://www.haskellforall.com/2021/05/module-organization-guidelines-for.html), May 19, 2021.

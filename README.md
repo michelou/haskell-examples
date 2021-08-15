@@ -37,7 +37,7 @@ For instance our development environment looks as follows (*August 2021*) <sup i
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.1\         <i>( 10 MB)</i>
-C:\opt\ghc-8.10.5\                 <i>(2.5 GB)</i>
+C:\opt\ghc-8.10.6\                 <i>(2.6 GB)</i>
 C:\opt\ghc-9.0.1\                  <i>(2.4 GB)</i>
 C:\opt\Git-2.32.0\                 <i>(279 MB)</i>
 C:\opt\jdk-openjdk-11.0.12_7\      <i>(181 MB)</i>
@@ -133,13 +133,13 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.2
+   cabal 3.4.0.0, ghc version 8.10.6, stack 2.7.3, haddock 2.24.2
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
    git 2.32.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
-C:\opt\ghc-8.10.5\hlint\bin\hlint.exe
-C:\opt\ghc-8.10.5\hpack\bin\hpack.exe
+%APPDATA%\Cabal\bin\hlint.exe
+%APPDATA%\Cabal\bin\hpack.exe
 C:\opt\stack-2.7.3\stack.exe
 </pre>
 
@@ -148,14 +148,14 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.4.0.0, ghc version 8.10.5, stack 2.7.3, haddock 2.24.2
+   cabal 3.4.0.0, ghc version 8.10.6, stack 2.7.3, haddock 2.24.2
    hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
    git 2.32.0.windows.1, diff 3.7
 Tool paths:
-   C:\opt\ghc-8.10.5\bin\cabal.exe
-   C:\opt\ghc-8.10.5\bin\ghc.exe
+   C:\opt\ghc-8.10.6\bin\cabal.exe
+   C:\opt\ghc-8.10.6\bin\ghc.exe
    C:\opt\stack-2.7.3\stack.exee
-   C:\opt\ghc-8.10.5\bin\haddock.exe
+   C:\opt\ghc-8.10.6\bin\haddock.exe
    %APPDATA%\Cabal\bin\hlint.exe
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
@@ -167,7 +167,7 @@ Tool paths:
    C:\opt\Git-2.32.0\usr\bin\diff.exe
 Environment variables:
    "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
-   "GHC_HOME=C:\opt\ghc-8.10.5"
+   "GHC_HOME=C:\opt\ghc-8.10.6"
    "JAVA_HOME=C:\opt\jdk-openjdk-11.0.12_7"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.1"
    "STACK_HOME=C:\opt\stack-2.7.3"
@@ -192,7 +192,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/8.10.5/">ghc-8.10.5-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://downloads.haskell.org/ghc/8.10.6/">ghc-8.10.6-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(236 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.32.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
@@ -222,8 +222,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haddock_userguide]: https://www.haskell.org/haddock/doc/html/index.html
 [haskell]: https://www.haskell.org
-[haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.5/
-[haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.5/docs/html/users_guide/8.10.5-notes.html
+[haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.6/
+[haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.6/docs/html/users_guide/8.10.6-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
