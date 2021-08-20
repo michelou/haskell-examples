@@ -249,7 +249,7 @@ if "%__ARG:~0,1%"=="-" (
     set /a __N+=1
 )
 shift
-goto :args_loop
+goto args_loop
 :args_done
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
@@ -386,8 +386,8 @@ goto :eof
 
 @rem input parameters: %1=package name, %2=installation directory path
 :install_package
-set __PACKAGE_NAME=%~1
-set __INSTALL_DIR=%~2
+set "__PACKAGE_NAME=%~1"
+set "__INSTALL_DIR=%~2"
 
 if exist "%__INSTALL_DIR%\%__PACKAGE_NAME%" goto :eof
 

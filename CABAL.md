@@ -29,7 +29,7 @@ Downloading the latest package list from hackage.haskell.org
 %APPDATA%\cabal
 </pre>
 
-> **:mag_right:** The `CABAL_DIR` variable defines where the `cabal` command will install the software packages.
+> **:mag_right:** The [`CABAL_DIR`](https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables) variable defines where the `cabal` command will install the software packages.
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\</b>
 > ghc-8.10.1
