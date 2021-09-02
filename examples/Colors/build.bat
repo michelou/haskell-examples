@@ -227,7 +227,7 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
-    echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
+	echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
@@ -235,7 +235,7 @@ goto :eof
 
 :help
 if %_VERBOSE%==1 (
-    set __BEG_P=%_STRONG_FG_CYAN%%_UNDERSCORE%
+    set __BEG_P=%_STRONG_FG_CYAN%
     set __BEG_O=%_STRONG_FG_GREEN%
     set __BEG_N=%_NORMAL_FG_YELLOW%
     set __END=%_RESET%

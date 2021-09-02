@@ -19,11 +19,13 @@
 - [Cleaning Up Our Projects with Hpack!][article_hpack], July 17, 2017.
 - [Practical Haskell - Getting started with Stack][article_seanhess], August 4, 2015.
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
+- [A history of Haskell: Being lazy with class][article_hudack] by John Hudak et al., June 2007.
 
 ## <span id="blogs">Blogs</span>
 
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
+- [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
 - [Haskell Explained](https://haskell-explained.gitlab.io/blog/) by Raghu Kaippully
   - [Polysemy is fun! - Part 2](https://haskell-explained.gitlab.io/blog/posts/2019/07/31/polysemy-is-cool-part-2/), July 2019.
   - [Polysemy is fun! - Part 1](https://haskell-explained.gitlab.io/blog/posts/2019/07/28/polysemy-is-cool-part-1/), July 2019.
@@ -91,12 +93,14 @@
 [article_doig]: https://medium.com/@dogwith1eye/setting-up-haskell-in-vs-code-with-stack-and-the-ide-engine-81d49eda3ecf
 [article_haddock]: https://kowainik.github.io/posts/haddock-tips
 [article_hpack]: https://mmhaskell.com/blog/2017/7/17/cleaning-up-our-projects-with-hpack
+[article_hudack]: https://www.researchgate.net/publication/221501761_A_history_of_Haskell_Being_lazy_with_class]
 [article_jaspervdj]: https://jaspervdj.be/posts/2015-01-20-haskell-design-patterns-extended-modules.html
 [article_sampellegrini]: https://alpacaaa.net/thoughts-on-haskell-2020/
 [article_seanhess]: https://seanhess.github.io/2015/08/04/practical-haskell-getting-started.html
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
 [blog_dominguez]: https://www.tweag.io/blog/2021-03-25-haskell-java/
+[blog_king]: https://lexi-lambda.github.io/blog/2021/03/25/an-introduction-to-typeclass-metaprogramming/
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html

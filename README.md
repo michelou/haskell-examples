@@ -25,7 +25,7 @@ Optionally one may also install the following software:
 - [Haskell 9.0][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [hlint 3.3][hlint_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
-- [HTF 0.1][htf_downloads] ([*changelog*][htf_changelog])
+- [HTF 0.14][htf_downloads] ([*changelog*][htf_changelog])
 - [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
 - [ormolu 0.2][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
@@ -138,8 +138,8 @@ Tool versions:
    git 2.33.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
-C:\opt\ghc-8.10.7\hlint\bin\hlint.exe
-C:\opt\ghc-8.10.7\hpack\bin\hpack.exe
+%APPDATA%\Cabal\bin\hlint.exe
+%APPDATA%\Cabal\bin\hpack.exe
 C:\opt\stack-2.7.3\stack.exe
 </pre>
 
@@ -166,7 +166,7 @@ Tool paths:
    C:\opt\Git-2.33.0\mingw64\bin\git.exe
    C:\opt\Git-2.33.0\usr\bin\diff.exe
 Environment variables:
-   "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
+   "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
    "JAVA_HOME=C:\opt\jdk-openjdk-11.0.12_7"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.2"
@@ -193,7 +193,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.11-bin.zip</a>                        <i>(  9 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.4.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(236 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.33.0-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
