@@ -136,7 +136,7 @@ goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
-for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
+for %%f in ("%~dp0\.") do set "_PACKAGE_NAME=%%~nf"
 set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 set __GHC_OPTIONS=-Wall -Werror
@@ -214,7 +214,7 @@ if "%__ARG:~0,1%"=="-" (
     set /a __N+=1
 )
 shift
-goto :args_loop
+goto args_loop
 :args_done
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
@@ -258,11 +258,16 @@ echo     %__BEG_O%compile%__END%     generate program executable
 echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
-echo     %__BEG_O%run%__END%         execute the generated program
+echo     %__BEG_O%run%__END%         execute the generated program %__BEG_O%%_PACKAGE_NAME%%__END%
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
-echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
+echo   %__BEG_P%Other build tools:%__END%
+echo     %__BEG_O%^> cabal clean ^& cabal run all%__END%
+echo     %__BEG_O%^> stack clean ^& stack run%__END%
+echo.
+echo   %__BEG_P%Notes:%__END%
+echo     %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
 goto :eof
 
 :clean
@@ -311,12 +316,15 @@ for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
     set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
     set /a __N+=1
 )
+if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
+) else ( set __N_FILES=%__N% Haskell source file
+)
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Compile %__N% Haskell source files to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
 call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
-    echo %_ERROR_LABEL% Compilation of %__N% Haskell source files failed 1>&2
+    echo %_ERROR_LABEL% Compilation of %__N_FILES% failed 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -437,7 +445,7 @@ goto :eof
 if %_TIMER%==1 (
     for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
-    echo Total elapsed time: !_DURATION! 1>&2
+    echo Total execution time: !_DURATION! 1>&2
 )
 if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
 exit /b %_EXITCODE%

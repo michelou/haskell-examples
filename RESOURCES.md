@@ -3,7 +3,7 @@
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell logo"/></a></td>
-  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> related resources.
+  <td style="border:0;padding:0;vertical-align:text-top;">This document gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> related resources we have collected so far.
   </td>
   </tr>
 </table>
@@ -24,6 +24,9 @@
 
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
+- [Haskell Explained](https://haskell-explained.gitlab.io/blog/) by Raghu Kaippully
+  - [Polysemy is fun! - Part 2](https://haskell-explained.gitlab.io/blog/posts/2019/07/31/polysemy-is-cool-part-2/), July 2019.
+  - [Polysemy is fun! - Part 1](https://haskell-explained.gitlab.io/blog/posts/2019/07/28/polysemy-is-cool-part-1/), July 2019.
 - [Haskell for all](https://www.haskellforall.com/) by Gabriel Gonzalez
   - [Module organization guidelines for Haskell projects](https://www.haskellforall.com/2021/05/module-organization-guidelines-for.html), May 19, 2021.
   - [The trick to avoid deeply-nested error-handling code](https://www.haskellforall.com/2021/05/the-trick-to-avoid-deeply-nested-error.html), May 19, 2021.
@@ -61,6 +64,7 @@
 ## <span id="projects">Projects</span>
 
 - [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland].
+- [polysemy](https://github.com/polysemy-research/polysemy) - a library for writing high-power, low-boilerplate DSLs.
 
 ## <span id="tutorials">Tutorials</span>
 
@@ -78,7 +82,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/September 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
