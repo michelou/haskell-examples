@@ -19,7 +19,7 @@ tested-with:         GHC >= 8.8.2
 executable Factorial
   build-depends:       base >= 4.13 && < 5
   default-language:    Haskell2010
-  ghc-options:         -Wall -Werror
+  ghc-options:         -Wall -Wmissing-import-lists -Wincomplete-uni-patterns -Werror
   -- hs-source-dirs:
   main-is:             app/Main.hs
   -- other-modules:

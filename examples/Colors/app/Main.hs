@@ -4,7 +4,7 @@ License    : MIT License
 -}
 module Main (main) where
 
-import Control.Monad -- forM, mapM
+import Control.Monad (forM)
 
 -- | Program entry point.
 main :: IO ()

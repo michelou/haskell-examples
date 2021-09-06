@@ -47,10 +47,10 @@
 
 ## <span id="books">Books</span>
 
-- [Haskell from the Very Beginning][book_very_beginning], by John Whitington, Coherent Press 2019.<br/><span style="font-size:80%;">(ISBN 978-0957671133)</span>
-- [Practical Haskell][book_practical_haskell], by Alejandro Serrano, Apress 2019.</br><span style="font-size:80%;">(ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition)</span>
+- [Haskell from the Very Beginning][book_very_beginning], by John Whitington, September 2019.<br/><span style="font-size:80%;">(Coherent Press, ISBN 978-0-9576-7113-3, 214 pages)</span>
+- [Practical Haskell][book_practical_haskell], by Alejandro Serrano, 2019.</br><span style="font-size:80%;">(Apress, ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition, 595 pages)</span>
 - [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
-- [Get Programming with Haskell][book_get_programming], by Will Kurt, Manning 2018.<br/><span style="font-size:80%;">(ISBN 978-1617293764)</span>
+- [Get Programming with Haskell][book_get_programming], by Will Kurt, 2018.<br/><span style="font-size:80%;">(Manning Publishing, ISBN 978-1-6172-9376-4, 616 pages)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
 

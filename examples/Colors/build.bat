@@ -76,8 +76,6 @@ if not exist "%GHC_HOME%\bin\ghc.exe" (
     goto :eof
 )
 set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
-@rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%"
 
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
 set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
@@ -139,7 +137,10 @@ goto :eof
 for %%f in ("%~dp0\.") do set "_PACKAGE_NAME=%%~nf"
 set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
-set __GHC_OPTIONS=-Wall -Werror
+
+@rem see https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wall
+set _GHC_OPTS=-Wall -Wmissing-import-lists -Wincomplete-uni-patterns
+if %_DEBUG%==1 set _GHC_OPTS=%_GHC_OPTS% -Werror
 
 set __CABAL_FILE=
 for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
@@ -158,10 +159,10 @@ if exist "%__CABAL_FILE%" (
     if defined _name set _PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
-    if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
+    if defined _ghc_options set _GHC_OPTS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
-set _GHC_OPTS=%_GHC_OPTS% %__GHC_OPTIONS% -o "%_EXE_FILE%"
+
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
@@ -227,7 +228,7 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
-	echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
@@ -235,7 +236,7 @@ goto :eof
 
 :help
 if %_VERBOSE%==1 (
-    set __BEG_P=%_STRONG_FG_CYAN%
+    set __BEG_P=%_STRONG_FG_CYAN%%_UNDERSCORE%
     set __BEG_O=%_STRONG_FG_GREEN%
     set __BEG_N=%_NORMAL_FG_YELLOW%
     set __END=%_RESET%
@@ -319,10 +320,13 @@ for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
 if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
 ) else ( set __N_FILES=%__N% Haskell source file
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
+set __GHC_OPTS=%_GHC_OPTIONS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
+
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
-call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
+call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
     echo %_ERROR_LABEL% Compilation of %__N_FILES% failed 1>&2
     set _EXITCODE=1
@@ -334,7 +338,7 @@ goto :eof
 @rem output parameter: _ACTION_REQUIRED
 :action_required
 set "__TARGET_FILE=%~1"
-set __PATH=%~2
+set "__PATH=%~2"
 
 set __TARGET_TIMESTAMP=00000000000000
 for /f "usebackq" %%i in (`powershell -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (

@@ -137,7 +137,10 @@ goto :eof
 for %%f in ("%~dp0\.") do set "_PACKAGE_NAME=%%~nf"
 set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
-set __GHC_OPTIONS=-Wall -Werror
+
+@rem see https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wall
+set _GHC_OPTS=-Wall -Wmissing-import-lists -Wincomplete-uni-patterns
+if %_DEBUG%==1 set _GHC_OPTS=%_GHC_OPTS% -Werror
 
 set __CABAL_FILE=
 for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
@@ -156,14 +159,10 @@ if exist "%__CABAL_FILE%" (
     if defined _name set _PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
-    if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
+    if defined _ghc_options set _GHC_OPTS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
-@rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
-if %_DEBUG%==1 ( set _GHC_OPTS=%_GHC_OPTS% -Werror
-) else ( set _GHC_OPTS=%_GHC_OPTS% -Wall
-)
+
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
@@ -321,10 +320,13 @@ for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
 if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
 ) else ( set __N_FILES=%__N% Haskell source file
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
+set __GHC_OPTS=%_GHC_OPTIONS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
+
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
-call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
+call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
     echo %_ERROR_LABEL% Compilation of %__N_FILES% failed 1>&2
     set _EXITCODE=1
