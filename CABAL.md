@@ -13,19 +13,11 @@ Useful Haskell packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [
 ## <span id="cabal"><code>cabal</code> installation</span>
 
 Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the `cabal.exe` executable somewhere on the `%PATH%`
-<<<<<<< HEAD
 (in our case `C:\opt\ghc-8.10.7\bin\`).
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
-=======
-(in our case `C:\opt\ghc-8.10.6\bin\`).
-
-<pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.6\bin\cabal.exe
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 Config file path source is default config file.
@@ -34,7 +26,7 @@ Writing default configuration to %APPDATA%\cabal\config
 Downloading the latest package list from hackage.haskell.org
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
-%APPDATA%\cabal
+<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
 </pre>
 
 > **:mag_right:** The [`CABAL_DIR`](https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables) variable defines where the `cabal` command will install the software packages.
@@ -43,10 +35,7 @@ Downloading the latest package list from hackage.haskell.org
 > ghc-8.10.4
 > ghc-8.10.5
 > ghc-8.10.6
-<<<<<<< HEAD
 > ghc-8.10.7
-=======
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 > ghc-9.0.1
 > </pre>
 > For version GHC 8.10.5, installed packages whose name starts with letter `h` are:
@@ -76,11 +65,7 @@ Downloading the latest package list from hackage.haskell.org
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
-=======
-Build profile: -w ghc-8.10.6 -O1
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 In order, the following will be built (use -v for more details):
 [...]
  - hlint-3.3.4 (lib) (requires download & build)
@@ -96,8 +81,8 @@ Building     hlint-3.3.4  (exe:hlint)
 Installing   hlint-3.3.4  (exe:hlint)
 Completed    hlint-3.3.4  (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
---installdir=<path>. Using default installdir:
-"%APPDATA%\\cabal\\bin"
+--installdir=&lt;path&gt;. Using default installdir:
+"<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
 Copying 'hlint.exe' to '%APPDATA%\cabal\bin\hlint.exe'
 </pre>
 <!--
@@ -140,11 +125,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
-=======
-Build profile: -w ghc-8.10.6 -O1
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 In order, the following will be built (use -v for more details):
 [...]
 Starting     hpack-0.34.4 (lib)
@@ -156,8 +137,8 @@ Building     hpack-0.34.4 (exe:hpack)
 Installing   hpack-0.34.4 (exe:hpack)
 Completed    hpack-0.34.4 (exe:hpack)
 Warning: installdir is not defined. Set it in your cabal config file or use
---installdir=<path>. Using default installdir:
-"%APPDATA%\\cabal\\bin"
+--installdir=&lt;path&gt;. Using default installdir:
+"<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
 Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 </pre>
 
@@ -184,11 +165,7 @@ Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib hspec</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
-=======
-Build profile: -w ghc-8.10.6 -O1
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 In order, the following will be built (use -v for more details):
 [...]
  - hspec-core-2.8.3 (lib) (requires download & build)
@@ -207,11 +184,7 @@ Completed    hspec-2.8.3 (lib)
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install HTF</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
-=======
-Build profile: -w ghc-8.10.6 -O1
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 In order, the following will be built (use -v for more details):
  - HUnit-1.6.2.0 (lib) (requires download & build)
  - QuickCheck-2.14.2 (lib) (requires download & build)
@@ -221,7 +194,7 @@ Building     HTF-0.14.0.6 (all, legacy fallback)
 Installing   HTF-0.14.0.6 (all, legacy fallback)
 Completed    HTF-0.14.0.6 (all, legacy fallback)
 Warning: installdir is not defined. Set it in your cabal config file or use
---installdir=<path>. Using default installdir:
+--installdir=&lt;path&gt;. Using default installdir:
 <a href="https://en.wikipedia.org/wiki/Environment_variable#Default_values">%APPDATA%</a>\\cabal\\bin"
 Copying 'htfpp.exe' to '%APPDATA%\cabal\bin\htfpp.exe'
 </pre>
@@ -233,11 +206,7 @@ Copying 'htfpp.exe' to '%APPDATA%\cabal\bin\htfpp.exe'
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
-=======
-Build profile: -w ghc-8.10.6 -O1
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 In order, the following will be built (use -v for more details):
  - call-stack-0.3.0 (lib) (requires download & build)
  - HUnit-1.6.2.0 (lib) (requires download & build)
@@ -286,17 +255,10 @@ Completed    HUnit-1.6.2.0 (lib)
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
 Resolving dependencies...
-<<<<<<< HEAD
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
  - [...]
  - ghc-lib-parser-9.0.1.20210324 (lib) (requires download & build)
-=======
-Build profile: -w ghc-8.10.6 -O1
-In order, the following will be built (use -v for more details):
- - [...]
- - ghc-lib-parser-8.10.6.20201220 (lib) (requires download & build)
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
  - ormolu-0.2.0.0 (lib) (requires download & build)
  - ormolu-0.2.0.0 (exe:ormolu) (requires download & build)
 Downloading  ormolu-0.2.0.0
@@ -310,34 +272,12 @@ Building     ormolu-0.2.0.0 (exe:ormolu)
 Installing   ormolu-0.2.0.0 (exe:ormolu)
 Completed    ormolu-0.2.0.0 (exe:ormolu)
 Warning: installdir is not defined. Set it in your cabal config file or use
---installdir=<path>. Using default installdir:
-"%APPDATA%\\cabal\\bin"
+--installdir=&lt;path&gt;. Using default installdir:
+"<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
 Copying 'ormolu.exe' to
 '%APPDATA%\cabal\bin\ormolu.exe
 </pre>
 
-<<<<<<< HEAD
-=======
-<!--
-Since the last installation step fails on MS Windows, we search for the path to the `ormolu` installation directory inside the [Cabal][cabal_downloads] local store and copies its contents to a new directory (e.g. `c:\opt\ghc-8.10.6\ormolu-0.1.4.1\`):
-
-<pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r  %APPDATA%\cabal ormolu.exe</b>
-%APPDATA%\cabal\store\ghc-8.10.6\ormolu-0.1.4.1-fef4c51e80594af1ce3bbd7e2284b01d39c167f4\bin\ormolu.exe
-&nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/xcopy">xcopy</a> /e /i /q %APPDATA%\\cabal\store\ghc-8.10.6\ormolu-0.1.4.1-fef4c51e80594af1ce3bbd7e2284b01d39c167f4 c:\opt\ghc-8.10.6\ormolu</b>
-3 file(s) copied
-&nbsp;
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> /r %ORMOLU_HOME% ormolu</b>
-c:\opt\ghc-8.10.6\ormolu-0.1.4.1\bin\ormolu.exe
-&nbsp;
-<b>&gt; C:\opt\ghc-8.10.6\ormolu-0.1.4.1\bin\<a href="https://hackage.haskell.org/package/ormolu">ormolu.exe</a> --version</b>
-ormolu 0.1.4.1 UNKNOWN UNKNOWN
-using ghc-lib-parser 8.10.3.20201220
-</pre>
--->
-
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 ## <span id="footnotes">Footnotes</span>
 
 <span name="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
@@ -348,11 +288,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.4.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
-<<<<<<< HEAD
 <a href="https://downloads.haskell.org/~ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
-=======
-<a href="https://downloads.haskell.org/~ghc/8.10.5/">ghc-8.10.6-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
->>>>>>> eaf75b5d2e2d52f79779c6f254987fd2b22f5d63
 <a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
