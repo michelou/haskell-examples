@@ -38,9 +38,9 @@ Downloading the latest package list from hackage.haskell.org
 > ghc-8.10.7
 > ghc-9.0.1
 > </pre>
-> For version GHC 8.10.5, installed packages whose name starts with letter `h` are:
+> For version GHC 8.10.7, installed packages whose name starts with letter `h` are:
 > <pre style="font-size:80%;">
-> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.6\package.db\h*</b>
+> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
 > ashable-1.3.1.0-4617ce822355b44942599748794c0524146e663c.conf
 > haskell-src-1.0.3.1-5d646ec6de5ff3f92ac6e0a64960cf2f3c25a32d.conf
 > hlint-3.3.4-b03e2de0eaba064069e59333460373b8a253aaa4.conf
@@ -248,7 +248,7 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.2.0.0
+    Default available version: 0.3.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
     License:  BSD-3-Clause
@@ -259,23 +259,22 @@ Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
  - [...]
  - ghc-lib-parser-9.0.1.20210324 (lib) (requires download & build)
- - ormolu-0.2.0.0 (lib) (requires download & build)
- - ormolu-0.2.0.0 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.2.0.0
+ - ormolu-0.3.0.0 (lib) (requires download & build)
+ - ormolu-0.3.0.0 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.3.0.0
 [...]
-Starting     ormolu-0.2.0.0 (lib)
-Building     ormolu-0.2.0.0 (lib)
-Installing   ormolu-0.2.0.0 (lib)
-Completed    ormolu-0.2.0.0 (lib)
-Starting     ormolu-0.2.0.0 (exe:ormolu)
-Building     ormolu-0.2.0.0 (exe:ormolu)
-Installing   ormolu-0.2.0.0 (exe:ormolu)
-Completed    ormolu-0.2.0.0 (exe:ormolu)
+Starting     ormolu-0.3.0.0 (lib)
+Building     ormolu-0.3.0.0 (lib)
+Installing   ormolu-0.3.0.0 (lib)
+Completed    ormolu-0.3.0.0 (lib)
+Starting     ormolu-0.3.0.0 (exe:ormolu)
+Building     ormolu-0.3.0.0 (exe:ormolu)
+Installing   ormolu-0.3.0.0 (exe:ormolu)
+Completed    ormolu-0.3.0.0 (exe:ormolu)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
-Copying 'ormolu.exe' to
-'%APPDATA%\cabal\bin\ormolu.exe
+Copying 'ormolu.exe' to '%APPDATA%\cabal\bin\ormolu.exe
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
