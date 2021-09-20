@@ -74,6 +74,7 @@
 - [Haskell at Work][tuto_haskell_at_work], January 2019.
 - [Pitfalls in Haskell][haskell_pitfalls], 2014.
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
+  - [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses).
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
 - [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html).
 - [Wise Man's Hasekll](https://andre.tips/wmh/).
