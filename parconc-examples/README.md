@@ -23,13 +23,23 @@ We can build/run code examples in directory [**`parconc-examples\`**](./) in sev
 
 ## <span id="rpar"><code>rpar</code></span>
 
-### <span id="rpar_cabal">***Cabal build/run***</span>
+### <span id="rpar_cabal">***Cabal***</span>
 
 <pre style="font-size:80%;">
-
+<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean & cabal run rpar</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.7 -O1
+In order, the following will be built (use -v for more details):
+ - parconc-examples-0.4.7 (exe:rpar) (first run)
+Configuring executable 'rpar' for parconc-examples-0.4.7..
+Preprocessing executable 'rpar' for parconc-examples-0.4.7..
+Building executable 'rpar' for parconc-examples-0.4.7..
+[1 of 1] Compiling Main             ( src\rpar.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.7\parconc-examples-0.4.7\x\rpar\build\rpar\rpar-tmp\Main.o )
+Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.7\parconc-examples-0.4.7\x\rpar\build\rpar\rpar.exe ...
+rpar: user error (Pattern match failure in do expression at src\rpar.hs:18:3-5)
 </pre>
 
-### <span id="rpar_stack">***Stack build/run***</span>
+### <span id="rpar_stack">***Stack***</span>
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; stack build</b>
@@ -40,25 +50,7 @@ will build all the executables and install them in a platform-specific
 subdirectory under `.stack-work/install`.
 -->
 
-### <span id="rpar_batch">***Batch build/run***</span>
-
-<pre style="font-size:80%;">
-<b>&gt; <a href="build.bat">build</a> help</b>
-Usage: build { &lt;option&gt; | &lt;subcommand&gt; }
-&nbsp;
-  Options:
-    -debug        show commands executed by this script
-    -exec:&lt;exec&gt;  define Cabal executable (default: rpar)
-    -timer        display total elapsed time
-    -verbose      display progress messages
-&nbsp;
-  Subcommands:
-    clean         delete generated files
-    compile       generate program executable
-    doc           generate HTML documentation with Haddock
-    help          display this help message
-    run           execute the generated program
-</pre>
+### <span id="rpar_batch">***Batch***</span>
 
 Command [`build clean run`](./build.bat) builds and executes the [Haskell] program [`src\rpar.hs`](src/rpar.hs):
 <pre style="font-size:80%;">
@@ -68,7 +60,10 @@ time: 0.00s
 time: 3.76s
 </pre>
 
-Command [`build -debug clean run`](./build.bat) also displays the internally executed commands:
+With option `-debug` command [`build`](./build.bat) also displays several useful informations, e.g.
+- Execution environment : display *actual value* of properties, options, variables.
+- Conditional processing : compile *only if* target is older than sources.
+- Execution transparency : the executed console command with options and arguments can be *copied/run separately*.
 <pre style="font-size:80%;">
 <b>&gt; <a href="./build.bat">build</a> -debug clean run</b>
 [build] Options    : _TIMER=0 _VERBOSE=0
@@ -91,29 +86,30 @@ time: 3.76s
 
 ## <span id="strat"><code>strat</code></span>
 
-### <span id="strat_cabal">***Cabal build/run***</span>
+### <span id="strat_cabal">***Cabal***</span>
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean & cabal run strat</b>
 Resolving dependencies...
-Build profile: -w ghc-9.0.1 -O1
+Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
  - parconc-examples-0.4.7 (exe:strat) (first run)
 Configuring executable 'strat' for parconc-examples-0.4.7..
 Preprocessing executable 'strat' for parconc-examples-0.4.7..
 Building executable 'strat' for parconc-examples-0.4.7..
-[1 of 1] Compiling Main             ( src\strat.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-9.0.1\parconc-examples-0.4.7\x\strat\build\strat\strat-tmp\Main.o )
-Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-9.0.1\parconc-examples-0.4.7\x\strat\build\strat\strat.exe ...
+[1 of 1] Compiling Main             ( src\strat.hs, H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.7\parconc-examples-0.4.7\x\strat\build\strat\strat-tmp\Main.o )
+Linking H:\parconc-examples\dist-newstyle\build\x86_64-windows\ghc-8.10.7\parconc-examples-0.4.7\x\strat\build\strat\strat.exe ...
 (14930352,24157817)
 </pre>
 
-### <span id="strat_stack">***Stack build/run***</span>
+### <span id="strat_stack">***Stack***</span>
 
 <pre style="font-size:80%;">
 </pre>
 
-### <span id="strat_batch">***Batch build/run***</span>
+### <span id="strat_batch">***Batch***</span>
 
+With option `-exec:strat` command [`build`](./build.bat) builds and executes the [Haskell] application `strat`:
 <pre style="font-size:80%;">
 <b>&gt; <a href="./build.bat">build</a> -verbose -exec:strat clean run</b>
 Delete directory "target"
@@ -122,9 +118,28 @@ Execute Haskell program "target\strat.exe"
 (14930352,24157817)
 </pre>
 
+With option `-debug` command [`build`](./build.bat) also displays several useful informations, e.g.
+- Execution environment : display *actual value* of properties, options, variables.
+- Conditional processing : compile *only if* target is older than sources.
+- Execution transparency : the executed console command with options and arguments can be *copied/run separately*.
+<pre style="font-size:80%;">
+<b>&gt; <a href="./build.bat">build</a> -debug -exec:strat run</b>
+[build] Options    : _TIMER=0 _VERBOSE=0
+[build] Subcommands: _CLEAN=0 _COMPILE=1 _DOC=0 _RUN=1
+[build] Variables  : "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
+[build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.7"
+[build] Variables  : _EXEC=strat
+[build] 20210921191143 Target : "H:\parconc-examples\target\strat.exe"
+[build] 20200910092417 Sources: "H:\parconc-examples\src\*.hs"
+[build] _ACTION_REQUIRED=0
+[build] "H:\parconc-examples\target\strat.exe" 1
+(14930352,24157817)
+[build] _EXITCODE=0
+</pre>
+
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/September 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

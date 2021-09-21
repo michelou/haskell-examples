@@ -249,7 +249,7 @@ executable fwsparse
   build-depends:   base >= 4.5 && < 5
                  , random >= 1.0 && < 1.2
                  , array >= 0.4 && <0.6
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
   default-language: Haskell2010
 
 executable fwsparse1
@@ -259,7 +259,7 @@ executable fwsparse1
   build-depends:   base >= 4.5 && < 5
                  , random >= 1.0 && < 1.2
                  , array >= 0.4 && <0.6
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , monad-par >= 0.3.4 && < 0.4
                  , deepseq >= 1.3 && < 1.5
   ghc-options: -threaded
@@ -268,7 +268,7 @@ executable fwsparse1
 executable  timetable
   main-is: src/timetable.hs
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , deepseq >= 1.3 && < 1.5
                  , random >= 1.0 && < 1.2
   default-language: Haskell2010
@@ -276,7 +276,7 @@ executable  timetable
 executable  timetable1
   main-is: src/timetable1.hs
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , deepseq >= 1.3 && < 1.5
                  , monad-par >= 0.3.4 && < 0.4
                  , random >= 1.0 && < 1.2
@@ -285,7 +285,7 @@ executable  timetable1
 executable  timetable2
   main-is: src/timetable2.hs
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , deepseq >= 1.3 && < 1.5
                  , monad-par >= 0.3.4 && < 0.4
                  , random >= 1.0 && < 1.2
@@ -294,7 +294,7 @@ executable  timetable2
 executable  timetable3
   main-is: src/timetable3.hs
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , deepseq >= 1.3 && < 1.5
                  , monad-par >= 0.3.4 && < 0.4
                  , random >= 1.0 && < 1.2
@@ -317,7 +317,7 @@ executable  parinfer
                   Substitution
                   StateX
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , deepseq >= 1.3 && < 1.5
                  , monad-par >= 0.3.4 && < 0.4
                  , array >= 0.4 && <0.6
@@ -369,7 +369,7 @@ executable  fwaccel
   build-depends:   base >= 4.5 && < 5
   ghc-options: -O2
   if flag(accelerate)
-     build-depends: accelerate >= 0.12 && < 1.3
+     build-depends: accelerate >= 0.12 && < 1.4
   else
      buildable: False
   default-language: Haskell2010
@@ -378,7 +378,7 @@ executable  fwaccel-gpu
   main-is: src/fwaccel-gpu.hs
   build-depends:   base >= 4.5 && < 5
   if flag(accelerate)
-     build-depends: accelerate >= 0.12 && < 1.3
+     build-depends: accelerate >= 0.12 && < 1.4
   else
      buildable: False
   if flag(cuda)
@@ -395,7 +395,7 @@ executable  mandel
   build-depends:   base >= 4.5 && < 5
                  , fclabels
   if flag(accelerate)
-     build-depends: accelerate >= 0.12 && < 1.3
+     build-depends: accelerate >= 0.12 && < 1.4
                   , accelerate-io
   else
      buildable: False
@@ -450,7 +450,7 @@ executable  logger
 executable  phonebook
   main-is: src/phonebook.hs
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
   default-language: Haskell2010
 
 executable  chan
@@ -470,7 +470,7 @@ executable geturls1
   main-is: src/geturls1.hs
   other-modules: GetURL
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , http-conduit >= 2.1 && < 2.4
                  , bytestring >= 0.9 && < 0.11
   if flag(network26)
@@ -626,7 +626,7 @@ executable  miscmodules
   hs-source-dirs: src/miscmodules .
   other-modules: TMVar, TList, TQueue, TBQueue, WindowManager
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , stm ==2.5.*
   default-language: Haskell2010
 
@@ -800,7 +800,7 @@ executable chat
   main-is: src/chat.hs
   other-modules: ConcurrentUtils
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , async >= 2.0 && < 2.3
                  , stm ==2.5.*
   if flag(network26)
@@ -956,7 +956,7 @@ executable distrib-chat
   main-is: src/distrib-chat/chat.hs
   other-modules: ConcurrentUtils DistribUtils
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , stm ==2.5.*
                  , async >= 2.0 && < 2.3
                  , binary >=0.6.3 && < 0.11
@@ -983,7 +983,7 @@ executable distrib-chat-noslave
   main-is: src/distrib-chat/chat-noslave.hs
   other-modules: ConcurrentUtils
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , stm ==2.5.*
                  , async >= 2.0 && < 2.3
                  , binary >=0.6.3 && < 0.11
@@ -1011,7 +1011,7 @@ executable distrib-db
   hs-source-dirs: . src/distrib-db
   other-modules: DistribUtils Database
   build-depends:   base >= 4.5 && < 5
-                 , containers >= 0.4 && < 0.6
+                 , containers >= 0.4 && < 0.7
                  , stm ==2.5.*
                  , async >= 2.0 && < 2.3
                  , binary >=0.6.3 && < 0.11

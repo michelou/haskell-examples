@@ -257,6 +257,7 @@ if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
 	echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
     echo %_DEBUG_LABEL% Variables  : _EXEC=%_EXEC% 1>&2
 )
@@ -341,6 +342,9 @@ if not defined __SOURCE_FILES (
     echo %_WARNING_LABEL% Executable %_EXEC% not found 1>&2
     goto :eof
 )
+call :action_required "%_TARGET_DIR%\%_EXEC%.exe" "%_SOURCE_DIR%\*.hs"
+if %_ACTION_REQUIRED%==0 goto :eof
+
 call :includes
 if not %_EXITCODE%==0 goto :eof
 
@@ -355,6 +359,49 @@ call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
    set _EXITCODE=1
    goto :eof
+)
+goto :eof
+
+@rem input parameter: 1=target file 2=path (wildcards accepted)
+@rem output parameter: _ACTION_REQUIRED
+:action_required
+set "__TARGET_FILE=%~1"
+set "__PATH=%~2"
+
+set __TARGET_TIMESTAMP=00000000000000
+for /f "usebackq" %%i in (`powershell -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+     set __TARGET_TIMESTAMP=%%i
+)
+set __SOURCE_TIMESTAMP=00000000000000
+for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop | sort LastWriteTime | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+    set __SOURCE_TIMESTAMP=%%i
+)
+call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
+set _ACTION_REQUIRED=%_NEWER%
+if %_DEBUG%==1 (
+    echo %_DEBUG_LABEL% %__TARGET_TIMESTAMP% Target : "%__TARGET_FILE%" 1>&2
+    echo %_DEBUG_LABEL% %__SOURCE_TIMESTAMP% Sources: "%__PATH%" 1>&2
+    echo %_DEBUG_LABEL% _ACTION_REQUIRED=%_ACTION_REQUIRED% 1>&2
+) else if %_VERBOSE%==1 if %_ACTION_REQUIRED%==0 if %__SOURCE_TIMESTAMP% gtr 0 (
+    echo No action required ^("!__PATH:%_ROOT_DIR%=!"^) 1>&2
+)
+goto :eof
+
+@rem output parameter: _NEWER
+:newer
+set __TIMESTAMP1=%~1
+set __TIMESTAMP2=%~2
+
+set __DATE1=%__TIMESTAMP1:~0,8%
+set __TIME1=%__TIMESTAMP1:~-6%
+
+set __DATE2=%__TIMESTAMP2:~0,8%
+set __TIME2=%__TIMESTAMP2:~-6%
+
+if %__DATE1% gtr %__DATE2% ( set _NEWER=1
+) else if %__DATE1% lss %__DATE2% ( set _NEWER=0
+) else if %__TIME1% gtr %__TIME2% ( set _NEWER=1
+) else ( set _NEWER=0
 )
 goto :eof
 
@@ -483,7 +530,7 @@ goto :eof
 if %_TIMER%==1 (
     for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
-    echo Total elapsed time: !_DURATION! 1>&2
+    echo Total execution time: !_DURATION! 1>&2
 )
 if %_DEBUG%==1 echo %_DEBUG_LABEL% _EXITCODE=%_EXITCODE% 1>&2
 exit /b %_EXITCODE%

@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][scala3_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
+[Deno][deno_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][scala3_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -214,7 +214,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
-[scala3_examples]: https://github.com/michelou/dotty-examples
+[deno_examples]: https://github.com/michelou/deno-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
@@ -250,6 +250,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [oracle_openjdk_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
 [ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.2.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
+[scala3_examples]: https://github.com/michelou/dotty-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
