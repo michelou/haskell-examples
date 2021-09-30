@@ -248,29 +248,29 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.3.0.0
+    Default available version: 0.3.0.1
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
     License:  BSD-3-Clause
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install ormolu</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --overwrite-policy=always ormolu</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
  - [...]
  - ghc-lib-parser-9.0.1.20210324 (lib) (requires download & build)
- - ormolu-0.3.0.0 (lib) (requires download & build)
- - ormolu-0.3.0.0 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.3.0.0
+ - ormolu-0.3.0.1 (lib) (requires download & build)
+ - ormolu-0.3.0.1 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.3.0.1
 [...]
-Starting     ormolu-0.3.0.0 (lib)
-Building     ormolu-0.3.0.0 (lib)
-Installing   ormolu-0.3.0.0 (lib)
-Completed    ormolu-0.3.0.0 (lib)
-Starting     ormolu-0.3.0.0 (exe:ormolu)
-Building     ormolu-0.3.0.0 (exe:ormolu)
-Installing   ormolu-0.3.0.0 (exe:ormolu)
-Completed    ormolu-0.3.0.0 (exe:ormolu)
+Starting     ormolu-0.3.0.1 (lib)
+Building     ormolu-0.3.0.1 (lib)
+Installing   ormolu-0.3.0.1 (lib)
+Completed    ormolu-0.3.0.1 (lib)
+Starting     ormolu-0.3.0.1 (exe:ormolu)
+Building     ormolu-0.3.0.1 (exe:ormolu)
+Installing   ormolu-0.3.0.1 (exe:ormolu)
+Completed    ormolu-0.3.0.1 (exe:ormolu)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -304,7 +304,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/September 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

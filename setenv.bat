@@ -305,11 +305,9 @@ if not exist "%_CABAL_DIR%\bin\hpack.exe" (
 if not exist "%_CABAL_DIR%\bin\htfpp.exe" (
     echo %_WARNING_LABEL% HTF tool not installed 1>&2
 )
-set _ORMOLU_HOME=
-for /f %%f in ('dir /b "%_GHC_HOME%\ormolu-*" 2^>NUL') do (
-    set "_ORMOLU_HOME=%_GHC_HOME%\%%f"
+if not exist "%_CABAL_DIR%\bin\\ormolu.exe" (
+    echo %_WARNING_LABEL% ormolu tool not installed 1>&2
 )
-if not defined _ORMOLU_HOME echo %_WARNING_LABEL% ormolu tool not installed 1>&2
 goto :eof
 
 @rem output parameter(s): _STACK_HOME, _STACK_PATH
@@ -515,10 +513,10 @@ if %ERRORLEVEL%==0 (
     for /f "tokens=*" %%i in ('"%CABAL_DIR%\bin\htfpp.exe" --version 2^>^&1') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% htfpp %%~i,"
     set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:htfpp.exe"
 )
-where /q "%ORMOLU_HOME%\bin:ormolu.exe"
+where /q "%CABAL_DIR%\bin:ormolu.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('"%ORMOLU_HOME%\bin\ormolu.exe" --version ^| findstr /b ormolu') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% ormolu %%~j"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%ORMOLU_HOME%\bin:ormolu.exe"
+    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\bin\ormolu.exe" --version ^| findstr /b ormolu') do set "__VERSIONS_LINE2=%__VERSIONS_LINE2% ormolu %%~j"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:ormolu.exe"
 )
 where /q "%JAVA_HOME%\bin:java.exe"
 if %ERRORLEVEL%==0 (
@@ -554,7 +552,6 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     if defined GIT_HOME echo    "GIT_HOME=%GIT_HOME%" 1>&2
     if defined JAVA_HOME echo    "JAVA_HOME=%JAVA_HOME%" 1>&2
     if defined MAVEN_HOME echo    "MAVEN_HOME=%MAVEN_HOME%" 1>&2
-    if defined ORMOLU_HOME echo    "ORMOLU_HOME=%ORMOLU_HOME%" 1>&2
     if defined STACK_HOME echo    "STACK_HOME=%STACK_HOME%" 1>&2
 )
 goto :eof
@@ -570,7 +567,6 @@ endlocal & (
     @rem Variable JAVA_HOME must be defined for Maven
     if not defined JAVA_HOME set "JAVA_HOME=%_JDK_HOME%"
     if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"
-    if not defined ORMOLU_HOME set "ORMOLU_HOME=%_ORMOLU_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
     set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"

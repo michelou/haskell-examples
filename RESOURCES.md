@@ -65,7 +65,7 @@
 
 ## <span id="projects">Projects</span>
 
-- [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland].
+- [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland] -  a Haskell <b>ST</b>atic <b>AN</b>alysis tool.
 - [polysemy](https://github.com/polysemy-research/polysemy) - a library for writing high-power, low-boilerplate DSLs.
 
 ## <span id="tutorials">Tutorials</span>
@@ -85,7 +85,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/September 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

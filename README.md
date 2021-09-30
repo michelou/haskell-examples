@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Deno][deno_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Scala 3][scala3_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
+[Deno][deno_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples] and [TruffleSqueak][trufflesqueak_examples] are other topics we are currently monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -27,13 +27,13 @@ Optionally one may also install the following software:
 - [hpack 0.34][hpack_downloads] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*changelog*][hpack_changelog])
 - [HTF 0.14][htf_downloads] ([*changelog*][htf_changelog])
 - [Oracle OpenJDK 11][oracle_openjdk] <sup id="anchor_02">[[2]](#footnote_02)</sup> ([*release notes*][oracle_openjdk_relnotes], for Maven)
-- [ormolu 0.2][ormolu_downloads] ([*changelog*][ormolu_changelog])
+- [ormolu 0.3][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*September 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
+For instance our development environment looks as follows (*October 2021*) <sup id="anchor_03">[[3]](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.2\         <i>( 10 MB)</i>
@@ -134,7 +134,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.4.0.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
-   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.3.0.1
    git 2.33.0.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
@@ -149,7 +149,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.4.0.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
-   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.2.0.0
+   hlint v3.3, hpack 0.34.3, htfpp 0.14.0.6, ormolu 0.3.0.1
    git 2.33.0.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.7\bin\cabal.exe
@@ -201,7 +201,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/September 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -248,8 +248,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [oracle_openjdk]: https://adoptopenjdk.net/?variant=openjdk11&jvmVariant=hotspot
 <!-- also: https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/tag/jdk8u252-b09 -->
 [oracle_openjdk_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
-[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.2.0.0/changelog
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.3.0.1/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
+[rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
