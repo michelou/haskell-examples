@@ -41,21 +41,19 @@ Downloading the latest package list from hackage.haskell.org
 > For version GHC 8.10.7, installed packages whose name starts with letter `h` are:
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
-> ashable-1.3.1.0-4617ce822355b44942599748794c0524146e663c.conf
-> haskell-src-1.0.3.1-5d646ec6de5ff3f92ac6e0a64960cf2f3c25a32d.conf
-> hlint-3.3.4-b03e2de0eaba064069e59333460373b8a253aaa4.conf
-> hourglass-0.2.12-3afd42a553038668d05a7e95973999e26919464d.conf
-> hpack-0.34.4-7b300e172f040dfc9f4ed7fa93e717f8afdae35f.conf
-> hscolour-1.24.4-03d75823444789a1ba409a068b300c62e3d3c5ba.conf
-> hspec-2.7.10-f7309c5d3f0fc0778a07ba1332e8ca1a8e557e1a.conf
-> hspec-core-2.7.10-4c91f1d8fc92aa620a25f4b8ae99927330143831.conf
-> hspec-discover-2.7.10-0db2f7cc2cbc5d6e9b59942f0b1eb7d8cac84ba8.conf
-> hspec-expecta_-0.8.2-91479d411faf4a5d97f9d7eb72ef8b2dc204915f.conf
-> HTF-0.14.0.6-25589de38c5190cb527d8a63854eb11dee725101.conf
-> http-client-0.7.8-0a8bdf13d21341466be5802897af508dc85f5cb6.conf
-> http-client-t_-0.3.5.3-4815b9d69ad510e1722edbadf589b28f758d698d.conf
-> http-types-0.12.3-d9e9f1a2e4a43ea30badbbbeeeebd4c02e18a31e.conf
-> HUnit-1.6.2.0-bcef421a27c67c07e07b58a24c2d39287b7700a8.conf
+> hashable-1.3.3.0-9aa5b1c17f7be6618063ae943312ca890700d98f.conf
+> hlint-3.3.4-a3f166f4044b65bd5cb7051c1794269a28c4ebf6.conf
+> hourglass-0.2.12-0adfffb133b4ecb1429c8ab7a3a63e1f715772fc.conf
+> hpack-0.34.4-e960b875b1cbf4df20cc14c3d94710b436385e86.conf
+> hscolour-1.24.4-0372f886d39fa7f543b5ca4f492dac187f227b70.conf
+> hspec-2.8.3-c1637174f023f78391253f7cc431cb06249a2794.conf
+> hspec-core-2.8.3-a0c773b4747f383a6460d9b380f2a09f715ba4c1.conf
+> hspec-discover-2.8.3-31f13ffd41ab63d77a11628e8772aa520eada03b.conf
+> hspec-expecta_-0.8.2-b33ff16d3fc2949d866d11f9f449bfd6edadbb1c.conf
+> http-client-0.7.8-6232138c7b5fb2b04a9cb69f45f3e51acdcd1faa.conf
+> http-client-t_-0.3.5.3-8357a5c906524b43b069b4a786985f5fda5b6a48.conf
+> http-types-0.12.3-428886f417f521d2610e887cc591784748da284e.conf
+> HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
 > </pre>
 
 ## <span id="hlint"><code>hlint</code> installation</span>
@@ -285,8 +283,7 @@ Copying 'ormolu.exe' to '%APPDATA%\cabal\bin\ormolu.exe
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
 </p>
 <pre style="margin:0 0 1em 20px; font-size:80%;">
-<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.2.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
-<a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.4.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
+<a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.6.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
@@ -304,7 +301,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/November 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

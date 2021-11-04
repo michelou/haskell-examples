@@ -81,11 +81,12 @@
 
 ## <span id="videos">Videos</span>
 
+- [Dependent Types in Haskell][video_weirich] by Stephane Weirich, October 2017.
 - [Haskell taketh away: limiting side effects for parallel programming][video_newton], June 2017.
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/November 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -125,3 +126,4 @@
 [tuto_haskell_at_work]: https://haskell-at-work.com/
 [tuto_mmhaskell]: https://mmhaskell.com/
 [video_newton]: https://youtu.be/lC5UWG5N8oY
+[video_weirich]: https://youtu.be/wNa3MMbhwS4
