@@ -52,7 +52,7 @@
 - [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
 - [Get Programming with Haskell][book_get_programming], by Will Kurt, 2018.<br/><span style="font-size:80%;">(Manning Publishing, ISBN 978-1-6172-9376-4, 616 pages)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
-- [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">(content freely [available online](http://book.realworldhaskell.org/))</span>
+- [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">([online book](http://book.realworldhaskell.org/), freely available)</span>
 
 ## <span id="courses">Courses</span>
 
