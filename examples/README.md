@@ -25,7 +25,7 @@ We can build/run code examples in directory [`examples`](./) in several ways. Fo
 The directory structure of project `Factorial` looks as follows:
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/cd">cd</a></b>
-H:\examples\Factorial
+H:\examples\<a href="Factorial/">Factorial</a>
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/findstr">findstr</a> /v "^[A-Z]"</b>
 |   .gitignore
@@ -263,14 +263,14 @@ With option `-debug` command [`build`](QuickSort/build.bat) also displays severa
 [build] Properties : _PACKAGE_NAME=Factorial
 [build] Options    : _TIMER=0 _VERBOSE=0
 [build] Subcommands: _CLEAN=0 _COMPILE=1 _DOC=0 _LINT=0 _RUN=1 _TEST=0
-[build] Variables  : "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
+[build] Variables  : "CABAL_DIR=%APPDATA%\cabal"
 [build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.7"
 [build] 00000000000000 Target : "H:\examples\Factorial\target\Factorial.exe"
 [build] 20210208190257 Sources: "H:\examples\Factorial\app\*.hs"
 [build] _ACTION_REQUIRED=1
 [build] "C:\opt\ghc-8.10.7\bin\ghc.exe" -Wall -Wmissing-import-lists -Wincomplete-uni-patterns -Werror -hidir "H:\examples\Factorial\target\gen" -odir "H:\examples\Factorial\target\gen" -o "H:\examples\Factorial\target\Factorial.exe"  "H:\examples\Factorial\app\Main.hs"
 
-Loaded package environment from C:\Users\michelou\AppData\Roaming\ghc\x86_64-mingw32-8.10.7\environments\default
+Loaded package environment from %APPDATA%\ghc\x86_64-mingw32-8.10.7\environments\default
 [1 of 1] Compiling Main             ( H:\examples\Factorial\app\Main.hs, H:\examples\Factorial\target\gen\Main.o )
 Linking H:\examples\Factorial\target\Factorial.exe ...
 [build] "H:\examples\Factorial\target\Factorial.exe"
@@ -293,7 +293,7 @@ We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to instal
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

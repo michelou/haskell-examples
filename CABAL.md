@@ -246,7 +246,7 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.3.0.1
+    Default available version: 0.4.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
     License:  BSD-3-Clause
@@ -255,29 +255,32 @@ Completed    HUnit-1.6.2.0 (lib)
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
- - [...]
- - ghc-lib-parser-9.0.1.20210324 (lib) (requires download & build)
- - ormolu-0.3.0.1 (lib) (requires download & build)
- - ormolu-0.3.0.1 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.3.0.1
+ - Cabal-3.6.2.0 (lib) (requires download & build)
+ - base-compat-0.12.1 (lib) (requires download & build)
+ - ghc-lib-parser-9.2.1.20211101 (lib) (requires download & build)
 [...]
-Starting     ormolu-0.3.0.1 (lib)
-Building     ormolu-0.3.0.1 (lib)
-Installing   ormolu-0.3.0.1 (lib)
-Completed    ormolu-0.3.0.1 (lib)
-Starting     ormolu-0.3.0.1 (exe:ormolu)
-Building     ormolu-0.3.0.1 (exe:ormolu)
-Installing   ormolu-0.3.0.1 (exe:ormolu)
-Completed    ormolu-0.3.0.1 (exe:ormolu)
-Warning: installdir is not defined. Set it in your cabal config file or use
---installdir=&lt;path&gt;. Using default installdir:
-"<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
+ - ormolu-0.4.0.0 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.4.0.0
+[...]
+Starting     ormolu-0.4.0.0 (lib)
+Building     ormolu-0.4.0.0 (lib)
+Installing   ormolu-0.4.0.0 (lib)
+Completed    ormolu-0.4.0.0 (lib)
+Starting     ormolu-0.4.0.0 (exe:ormolu)
+Building     ormolu-0.4.0.0 (exe:ormolu)
+Installing   ormolu-0.4.0.0 (exe:ormolu)
+Completed    ormolu-0.4.0.0 (exe:ormolu)
+Copying 'ormolu.exe' to
 Copying 'ormolu.exe' to '%APPDATA%\cabal\bin\ormolu.exe
+&nbsp;
+<b>&gt; <a href="https://hackage.haskell.org/package/ormolu-0.4.0.0#usage">ormolu</a> --version</b>
+ormolu 0.4.0.0 UNKNOWN UNKNOWN
+using ghc-lib-parser 9.2.1.20211101
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
 
-<span name="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
+<span id="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
 
 <p style="margin:0 0 1em 20px;">
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
@@ -285,11 +288,11 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <pre style="margin:0 0 1em 20px; font-size:80%;">
 <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.6.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
-<a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.0.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
+<a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 
-<span name="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
+<span id="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
 
 <p style="margin:0 0 1em 20px;">
 Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows: 
@@ -301,7 +304,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

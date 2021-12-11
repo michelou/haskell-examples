@@ -126,7 +126,7 @@ With option `-debug` command [`build`](./build.bat) also displays several useful
 <b>&gt; <a href="./build.bat">build</a> -debug -exec:strat run</b>
 [build] Options    : _TIMER=0 _VERBOSE=0
 [build] Subcommands: _CLEAN=0 _COMPILE=1 _DOC=0 _RUN=1
-[build] Variables  : "CABAL_DIR=C:\Users\michelou\AppData\Roaming\cabal"
+[build] Variables  : "CABAL_DIR=%APPDATA%\cabal"
 [build] Variables  : "GHC_HOME=C:\opt\ghc-8.10.7"
 [build] Variables  : _EXEC=strat
 [build] 20210921191143 Target : "H:\parconc-examples\target\strat.exe"
@@ -139,7 +139,7 @@ With option `-debug` command [`build`](./build.bat) also displays several useful
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/November 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2021* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
