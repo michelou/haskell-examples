@@ -238,7 +238,7 @@ Completed    HUnit-1.6.2.0 (lib)
 >     License:  BSD3
 > </pre>
 
-## <span id="ormolu"><code>ormolu</code> installation</span>
+## <span id="ormolu"><code>ormolu</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 [ormolu](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
 
@@ -278,29 +278,33 @@ ormolu 0.4.0.0 UNKNOWN UNKNOWN
 using ghc-lib-parser 9.2.1.20211101
 </pre>
 
-## <span id="footnotes">Footnotes</span>
+## <span id="footnotes">Footnotes</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 <span id="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
 
-<p style="margin:0 0 1em 20px;">
+<dl><dd>
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
-</p>
-<pre style="margin:0 0 1em 20px; font-size:80%;">
+</dd>
+<dd>
+<pre style="font-size:80%;">
 <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.6.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
 <a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
 <a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
+</dd></dl>
 
 <span id="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
 
-<p style="margin:0 0 1em 20px;">
-Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows: 
+<dl><dd>
+Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows:
+</dd>
+<dd>
 <ul>
 <li><a href="https://www.haskell.org/cabal/">Cabal</a> is a build system, which is used by <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>. Cabal defines the concept of a <i>package</i> (eg. name, version, 0 or more executables, etc.).</li>
 <li><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a> is a build tool that works <i>on top</i> of the <a href="https://www.haskell.org/cabal/">Cabal</a> build system, and defines a new concept called a <i>project</i> (eg. GHC options, etc.)</li>
 </ul>
-</p>
+</dd></dl>
 
 ***
 

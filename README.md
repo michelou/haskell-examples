@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Deno][deno_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
+[Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -56,8 +56,8 @@ This project is organized as follows:
 
 <pre style="font-size:80%;">
 docs\
-examples\{<a href="examples/HelloWorld/">HelloWorld</a>, ..}
-parconc-examples\
+examples\{<a href="examples/README.md">README.md</a>, <a href="examples/HelloWorld/">HelloWorld</a>, ..}
+parconc-examples\{<a href="parconc-examples/README.md">README.md</a>, ..}
 <a href="CABAL.md">CABAL.md</a>
 README.md
 <a href="RESOURCES.md">RESOURCES.md</a>
@@ -175,22 +175,25 @@ Environment variables:
 
 ## <span id="footnotes">Footnotes</span>
 
-<span name="footnote_01">[1]</span> ***Cabal versions*** [↩](#anchor_01)
+<span id="footnote_01">[1]</span> ***Cabal versions*** [↩](#anchor_01)
 
-`cabal 3.4` works fine both with `ghc 8.x` and `ghc 9.x` while `cabal 3.2` only works with `ghc 8.x`. 
+<dl><dd>
+<code>cabal 3.4</code> works fine both with <code>ghc 8.x</code> and <code>ghc 9.x</code> while <code>cabal 3.2</code> only works with <code>ghc 8.x</code>.
+</dd></dl>
 
-<span name="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
+<span id="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
 
-<p style="margin:0 0 1em 20px;">
+<dl><dd>
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
-</p>
+</dd></dl>
 
-<span name="footnote_03">[3]</span> ***Downloads*** [↩](#anchor_03)
+<span id="footnote_03">[3]</span> ***Downloads*** [↩](#anchor_03)
 
-<p style="margin:0 0 1em 20px;">
+<dl><dd>
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
-</p>
-<pre style="margin:0 0 1em 20px; font-size:80%;">
+</dd>
+<dd>
+<pre style="font-size:80%;">
 <a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.12-bin.zip</a>                        <i>(  9 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
@@ -198,6 +201,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://git-scm.com/download/win">PortableGit-2.34.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
+</dd></dl>
 
 ***
 
