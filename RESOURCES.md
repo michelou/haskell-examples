@@ -52,6 +52,8 @@
 - [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
 - [Get Programming with Haskell][book_get_programming], by Will Kurt, 2018.<br/><span style="font-size:80%;">(Manning Publishing, ISBN 978-1-6172-9376-4, 616 pages)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
+- [Learn You a Haskell for Great Good!][book_lipovaca] by Miran Lipovača
+April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7283-8, 400 pages)</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">([online book](http://book.realworldhaskell.org/), freely available)</span>
 
 ## <span id="courses">Courses</span>
@@ -86,7 +88,7 @@
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/December 2021* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -107,6 +109,7 @@
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
+[book_lipovaca]: https://nostarch.com/lyah.htm
 [blog_mostovoy]: https://serokell.io/blog/past-and-present-of-haskell
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
