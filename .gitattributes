@@ -36,4 +36,5 @@
 *.m4a binary
 *.pdf binary
 *.png binary
+*.rtf binary
 *.zip binary
