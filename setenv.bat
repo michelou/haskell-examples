@@ -200,7 +200,7 @@ if %_DEBUG%==1 (
 )
 goto :eof
 
-@rem input parameter(s): %1: drive letter, %2: path to be substituted
+@rem input parameters: %1: drive letter, %2: path to be substituted
 :subst
 set __DRIVE_NAME=%~1
 set "__GIVEN_PATH=%~2"
@@ -261,7 +261,7 @@ echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
 @rem input parameter: %1=GHC major version
-@rem output parameter(s): _CABAL_DIR, _GHC_HOME
+@rem output parameters: _CABAL_DIR, _GHC_HOME
 :ghc
 set __GHC_VERSION=%~1
 if not defined __GHC_VERSION set __GHC_VERSION=8
@@ -310,7 +310,7 @@ if not exist "%_CABAL_DIR%\bin\\ormolu.exe" (
 )
 goto :eof
 
-@rem output parameter(s): _STACK_HOME, _STACK_PATH
+@rem output parameters: _STACK_HOME, _STACK_PATH
 :stack
 set _STACK_HOME=
 set _STACK_PATH=
@@ -340,7 +340,7 @@ if not exist "%_STACK_HOME%\stack.exe" (
 set "_STACK_PATH=;%_STACK_HOME%\bin"
 goto :eof
 
-@rem output parameter(s): _GIT_HOME, _GIT_PATH
+@rem output parameters: _GIT_HOME, _GIT_PATH
 :git
 set _GIT_HOME=
 set _GIT_PATH=
@@ -374,7 +374,7 @@ set "_GIT_PATH=;%_GIT_HOME%\bin;%_GIT_HOME%\mingw64\bin;%_GIT_HOME%\usr\bin"
 goto :eof
 
 @rem input parameter: %1=vendor %1^=required version
-@rem output parameter(s): _JDK_HOME
+@rem output parameter: _JDK_HOME
 @rem Note: JAVA_HOME is required for Maven
 :jdk
 set _JDK_HOME=
@@ -385,7 +385,11 @@ if not defined __VENDOR ( set __JDK_NAME=jdk-%__VERSION%
 ) else ( set __JDK_NAME=jdk-%__VENDOR%-%__VERSION%
 )
 set __JAVAC_CMD=
-for /f %%f in ('where javac.exe 2^>NUL') do set "__JAVAC_CMD=%%f"
+for /f %%f in ('where javac.exe 2^>NUL') do (
+    set "__JAVAC_CMD=%%f"
+    @rem we ignore Scoop managed Java installation
+    if not "!__JAVAC_CMD:scoop=!"=="!__JAVAC_CMD!" set __JAVAC_CMD=
+)
 if defined __JAVAC_CMD (
     call :jdk_version "%__JAVAC_CMD%"
     if !_JDK_VERSION!==%__VERSION% (
@@ -447,19 +451,22 @@ goto :eof
 set _MAVEN_HOME=
 set _MAVEN_PATH=
 
-set __MAVEN_CMD=
-for /f %%f in ('where mvn.cmd 2^>NUL') do set "__MAVEN_CMD=%%f"
-if defined __MAVEN_CMD (
-    for %%i in ("%__MAVEN_CMD%") do set "__MAVEN_BIN_DIR=%%~dpi"
-    for %%f in ("!__MAVEN_BIN_DIR!\.") do set "_MAVEN_HOME=%%~dpf"
+set __MVN_CMD=
+for /f %%f in ('where mvn.cmd 2^>NUL') do (
+    set "__MVN_CMD=%%f"
+    @rem we ignore Scoop managed Maven installation
+    if not "!__MVN_CMD:scoop=!"=="!__MVN_CMD!" set __MVN_CMD=
+)
+if defined __MVN_CMD (
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Maven executable found in PATH 1>&2
-    goto :eof
+    for %%i in ("%__MVN_CMD%") do set "__MAVEN_BIN_DIR=%%~dpi"
+    for %%f in ("!__MAVEN_BIN_DIR!\.") do set "_MAVEN_HOME=%%~dpf"
 ) else if defined MAVEN_HOME (
     set "_MAVEN_HOME=%MAVEN_HOME%"
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable MAVEN_HOME 1>&2
 ) else (
-    set __PATH=C:\opt
-    for /f %%f in ('dir /ad /b "!__PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!__PATH!\%%f"
+    set _PATH=C:\opt
+    for /f %%f in ('dir /ad /b "!_PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!_PATH!\%%f"
     if defined _MAVEN_HOME (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Maven installation directory !_MAVEN_HOME! 1>&2
     )
@@ -569,7 +576,7 @@ endlocal & (
     if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
+    set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%;%~dp0bin"
     call :print_env %_VERBOSE%
     if not "%CD:~0,2%"=="%_DRIVE_NAME%:" (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% cd /d %_DRIVE_NAME%: 1>&2

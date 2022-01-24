@@ -8,4 +8,5 @@
 *_LOCAL/
 .hash/
 .stack-work/
+dist-newstyle/
 target/

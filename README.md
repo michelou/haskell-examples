@@ -23,17 +23,18 @@ Optionally one may also install the following software:
 
 - [Apache Maven 3.8][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
 - [Haskell 9.2][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
-- [hlint 3.3][hlint_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hlint_changelog])
-- [hpack 0.34][hpack_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hpack_changelog])
+- [haskell-language-server 1.5][haskell_lsp_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*release notes*][haskell_lsp_relnotes])
+- [hlint 3.3][hlint_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hlint_changelog])
+- [hpack 0.34][hpack_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hpack_changelog])
 - [HTF 0.14][htf_downloads] ([*changelog*][htf_changelog])
-- [Oracle OpenJDK 11][oracle_openjdk11] <sup id="anchor_02">[2](#footnote_02)</sup> ([*release notes*][oracle_openjdk11_relnotes], for Maven)
+- [Oracle OpenJDK 11][oracle_openjdk11] ([*release notes*][oracle_openjdk11_relnotes], for Maven)
 - [ormolu 0.4][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*January 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*January 2022*) <sup id="anchor_04">[4](#footnote_04)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
@@ -57,6 +58,7 @@ This project is organized as follows:
 <pre style="font-size:80%;">
 docs\
 examples\{<a href="examples/README.md">README.md</a>, <a href="examples/HelloWorld/">HelloWorld</a>, ..}
+kurt-examples\{<a href="kurt-examples/README.md">README.md</a>, <a href="kurt-examples/listing_02.6/">listing_02.6</a>}
 parconc-examples\{<a href="parconc-examples/README.md">README.md</a>, ..}
 <a href="CABAL.md">CABAL.md</a>
 README.md
@@ -181,13 +183,19 @@ Environment variables:
 <code>cabal 3.4</code> works fine both with <code>ghc 8.x</code> and <code>ghc 9.x</code> while <code>cabal 3.2</code> only works with <code>ghc 8.x</code>.
 </dd></dl>
 
-<span id="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
+<span id="footnote_02">[2]</span> ***Haskell Language Server*** [↩](#anchor_02)
+
+<dl><dd>
+<code>8.10.7</code> is the currently supported GHC version (see document <a href="https://github.com/haskell/haskell-language-server/blob/master/docs/supported-versions.md">"Supported GHC versions"</a>).
+</dd></dl>
+
+<span id="footnote_03">[3]</span> ***Hackage installation*** [↩](#anchor_03)
 
 <dl><dd>
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </dd></dl>
 
-<span id="footnote_03">[3]</span> ***Downloads*** [↩](#anchor_03)
+<span id="footnote_04">[4]</span> ***Downloads*** [↩](#anchor_04)
 
 <dl><dd>
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
@@ -198,6 +206,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(471 MB)</i>
+<a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>    <i>( 51 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.34.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
@@ -233,6 +242,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.2.1/docs/html/users_guide/9.2.1-notes.html
+[haskell_lsp_downloads]: https://hackage.haskell.org/package/haskell-language-server-1.5.1.0
+[haskell_lsp_relnotes]: https://github.com/haskell/haskell-language-server/releases/tag/1.5.1
 [hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog

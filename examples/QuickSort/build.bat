@@ -159,6 +159,7 @@ if exist "%__CABAL_FILE%" (
     if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
+
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
 set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
 if %_DEBUG%==1 ( set _GHC_OPTS=%_GHC_OPTS% -Werror
@@ -269,9 +270,10 @@ goto :eof
 
 :clean
 call :rmdir "%_TARGET_DIR%"
+call :rmdir "%_ROOTDIR%dist-newstyle"
 goto :eof
 
-@rem input parameter(s): %1=directory path
+@rem input parameter: %1=directory path
 :rmdir
 set "__DIR=%~1"
 if not exist "%__DIR%\" goto :eof

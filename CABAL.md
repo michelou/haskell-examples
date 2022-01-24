@@ -8,7 +8,7 @@
   </tr>
 </table>
 
-Useful Haskell packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [`hspec`](#hspec), [`HTF`](#htf), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
+Useful Haskell packages are for instance [`haskell-language-server`](#haskell_lsp), [`hlint`](#hlint), [`hpack`](#hpack), [`hspec`](#hspec), [`HTF`](#htf), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
 
 ## <span id="cabal"><code>cabal</code> installation</span>
 
@@ -55,6 +55,10 @@ Downloading the latest package list from hackage.haskell.org
 > http-types-0.12.3-428886f417f521d2610e887cc591784748da284e.conf
 > HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
 > </pre>
+
+## <span id="haskell_lsp"><code>haskell-language-server</code> installation</span>
+
+[`haskell-language-server`][haskell_lsp] is a LSP server for GHC.
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
@@ -323,6 +327,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
+[haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server-1.5.1.0
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2.3/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
