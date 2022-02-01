@@ -8,57 +8,39 @@
   </tr>
 </table>
 
-Useful Haskell packages are for instance [`hlint`](#hlint), [`hpack`](#hpack), [`hspec`](#hspec), [`HTF`](#htf), [`HUnit`](#hunit) and [`ormolu`](#ormolu).
+Useful Haskell packages are for instance [**`hlint`**](#hlint), [**`hpack`**](#hpack), [**`hspec`**](#hspec), [**`HTF`**](#htf), [**`HUnit`**](#hunit) and [**`ormolu`**](#ormolu).
 
-## <span id="cabal"><code>cabal</code> installation</span>
+## <span id="cabal-install"><code>cabal-install</code> installation</span>
 
-Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads] and put the `cabal.exe` executable somewhere on the `%PATH%`
-(in our case `C:\opt\ghc-8.10.7\bin\`).
+We install [**`cabal-install`**](https://hackage.haskell.org/package/cabal-install) as follows <sup id="anchor_01">[1](#footnote_01)</sup> :
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
-C:\opt\ghc-8.10.7\bin\cabal.exe
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install cabal-install</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.7 -O1
+In order, the following will be built (use -v for more details):
+ - Cabal-syntax-3.6.0.0 (lib) (requires download & build)
+[...]
+Starting     cabal-install-3.6.2.0 (exe:cabal)
+Building     cabal-install-3.6.2.0 (exe:cabal)
+Installing   cabal-install-3.6.2.0 (exe:cabal)
+Completed    cabal-install-3.6.2.0 (exe:cabal)
+Copying 'cabal.exe' to '%APPDATA%\cabal\bin\cabal.exe'
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
-Config file path source is default config file.
-Config file %APPDATA%\cabal\config not found.
-Writing default configuration to %APPDATA%\cabal\config
-Downloading the latest package list from hackage.haskell.org
-
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
-<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> --version</b>
+cabal-install version 3.6.2.0
+compiled using version 3.6.2.0 of the Cabal library
 </pre>
 
-> **:mag_right:** The [`CABAL_DIR`](https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables) variable defines where the `cabal` command will install the software packages.
-> <pre style="font-size:80%;">
-> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\</b>
-> ghc-8.10.4
-> ghc-8.10.5
-> ghc-8.10.6
-> ghc-8.10.7
-> ghc-9.0.1
-> </pre>
-> For version GHC 8.10.7, installed packages whose name starts with letter `h` are:
-> <pre style="font-size:80%;">
-> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
-> hashable-1.3.3.0-9aa5b1c17f7be6618063ae943312ca890700d98f.conf
-> hlint-3.3.4-a3f166f4044b65bd5cb7051c1794269a28c4ebf6.conf
-> hourglass-0.2.12-0adfffb133b4ecb1429c8ab7a3a63e1f715772fc.conf
-> hpack-0.34.4-e960b875b1cbf4df20cc14c3d94710b436385e86.conf
-> hscolour-1.24.4-0372f886d39fa7f543b5ca4f492dac187f227b70.conf
-> hspec-2.8.3-c1637174f023f78391253f7cc431cb06249a2794.conf
-> hspec-core-2.8.3-a0c773b4747f383a6460d9b380f2a09f715ba4c1.conf
-> hspec-discover-2.8.3-31f13ffd41ab63d77a11628e8772aa520eada03b.conf
-> hspec-expecta_-0.8.2-b33ff16d3fc2949d866d11f9f449bfd6edadbb1c.conf
-> http-client-0.7.8-6232138c7b5fb2b04a9cb69f45f3e51acdcd1faa.conf
-> http-client-t_-0.3.5.3-8357a5c906524b43b069b4a786985f5fda5b6a48.conf
-> http-types-0.12.3-428886f417f521d2610e887cc591784748da284e.conf
-> HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
-> </pre>
+After running the above command we have two `cabal.exe` installed :
+- `%GHC_HOME%\bin\cabal.exe` which we initially extracted from [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads]. 
+- `%CABAL_DIR%\bin\cabal.exe` which comes with package `cabal-install`.
+
+That means we have to carefully set up our **`PATH`** variable so that `%CABAL_DIR%\bin` <sup id="anchor_02">[2](#footnote_02)</sup> appears before `%GHC_HOME%\bin` (another option would be to remove `%GHC_HOME%\bin\cabal.exe`).  
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
-[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [`hlint`][hlint_downloads] as follows.
+[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [**`hlint`**][hlint_downloads] as follows.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
@@ -100,7 +82,7 @@ C:\opt\ghc-9.0.1\hlint-3.2.7\bin\hlint.exe
 HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 -->
-> **:mag_right:** Command [`cabal`][cabal_man] `list hlint` shows the latest available version of package `hlint` (*do not* forget `cabal update`) :
+> **:mag_right:** Command [`cabal`][cabal_man] `list hlint` shows the latest available version of package **`hlint`** (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
@@ -118,7 +100,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 
 ## <span id="hpack"><code>hpack</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[Hpack][hpack_readme] is a format for Haskell packages. Similarly to `hlint` we install [`hpack`][hpack_downloads] as follows.
+[Hpack][hpack_readme] is a format for Haskell packages. Similarly to [**`hlint`**][hlint_downloads] we install [**`hpack`**][hpack_downloads] as follows.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
@@ -140,7 +122,7 @@ Warning: installdir is not defined. Set it in your cabal config file or use
 Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 </pre>
 
-> **:mag_right:** Command [`cabal`][cabal_man] `list hpack` shows the latest available version of package `hpack` (*do not* forget `cabal update`) :
+> **:mag_right:** Command [`cabal`][cabal_man] `list hpack` shows the latest available version of package [**`hpack`**][hpack_downloads] (*do not* forget `cabal update`) :
 > <pre style="font-size:80%;">
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
@@ -240,7 +222,7 @@ Completed    HUnit-1.6.2.0 (lib)
 
 ## <span id="ormolu"><code>ormolu</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[ormolu](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
+[**`ormolu`**](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
@@ -280,35 +262,68 @@ using ghc-lib-parser 9.2.1.20211101
 
 ## <span id="footnotes">Footnotes</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-<span id="footnote_01">[1]</span> ***Downloads*** [↩](#anchor_01)
+<span id="footnote_01">[1]</span> **1<sup>st</sup> installation of `cabal.exe`** [↩](#anchor_01)
 
 <dl><dd>
-In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
+Windows users can download the Zip archive <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/"><code>cabal-install-XXXX-x86_64-unknown-mingw32.zip</code></a> and put <a href="https://man.archlinux.org/man/cabal.1"><code>cabal.exe</code></a> somewhere on <code>%PATH%</code>
+(in our case <code>C:\opt\ghc-8.10.7\bin\</code>).
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<a href="https://downloads.haskell.org/~cabal/cabal-install-latest/">cabal-install-3.6.0.0-x86_64-windows.zip</a>          <i>( 19 MB)</i>
-<a href="https://downloads.haskell.org/~ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz</a>          <i>(431 MB)</i>
-<a href="https://downloads.haskell.org/~ghc/latest/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(236 MB)</i>
-<a href="https://docs.haskellstack.org/en/stable/install_and_upgrade/#manual-download">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
+C:\opt\ghc-8.10.7\bin\cabal.exe
+&nbsp;
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+Config file path source is default config file.
+Config file %APPDATA%\cabal\config not found.
+Writing default configuration to %APPDATA%\cabal\config
+Downloading the latest package list from hackage.haskell.org
+&nbsp;
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
+<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
 </pre>
 </dd></dl>
 
-<span id="footnote_02">[2]</span> ***<code>stack.yaml</code> versus a <code>.cabal</code> file*** [↩](#anchor_02)
+<span id="footnote_02">[2]</span> **Variable  `CABAL_DIR`** [↩](#anchor_02)
 
 <dl><dd>
-Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> file &#8213; as described in the <a href="https://docs.haskellstack.org/en/stable/stack_yaml_vs_cabal_package_file/">Online Stack documentation</a> &#8213; can be resumed as follows:
+The <a href="https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables"><b><code>CABAL_DIR</code></b></a> variable defines where the <a href="https://man.archlinux.org/man/cabal.1"><code>cabal</code></a> command will install the software packages.
 </dd>
 <dd>
-<ul>
-<li><a href="https://www.haskell.org/cabal/">Cabal</a> is a build system, which is used by <a href="https://docs.haskellstack.org/en/stable/README/">Stack</a>. Cabal defines the concept of a <i>package</i> (eg. name, version, 0 or more executables, etc.).</li>
-<li><a href="https://docs.haskellstack.org/en/stable/README/">Stack</a> is a build tool that works <i>on top</i> of the <a href="https://www.haskell.org/cabal/">Cabal</a> build system, and defines a new concept called a <i>project</i> (eg. GHC options, etc.)</li>
-</ul>
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b <a href="https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables">%CABAL_DIR%</a>\store\</b>
+ghc-8.10.4
+ghc-8.10.5
+ghc-8.10.6
+ghc-8.10.7
+ghc-9.0.1
+</pre>
+</dd>
+<dd>
+For version GHC 8.10.7, installed packages whose name starts with letter <code>h</code> are:
+</dd>
+<dd>
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
+hashable-1.3.3.0-9aa5b1c17f7be6618063ae943312ca890700d98f.conf
+hlint-3.3.4-a3f166f4044b65bd5cb7051c1794269a28c4ebf6.conf
+hourglass-0.2.12-0adfffb133b4ecb1429c8ab7a3a63e1f715772fc.conf
+hpack-0.34.4-e960b875b1cbf4df20cc14c3d94710b436385e86.conf
+hscolour-1.24.4-0372f886d39fa7f543b5ca4f492dac187f227b70.conf
+hspec-2.8.3-c1637174f023f78391253f7cc431cb06249a2794.conf
+hspec-core-2.8.3-a0c773b4747f383a6460d9b380f2a09f715ba4c1.conf
+hspec-discover-2.8.3-31f13ffd41ab63d77a11628e8772aa520eada03b.conf
+hspec-expecta_-0.8.2-b33ff16d3fc2949d866d11f9f449bfd6edadbb1c.conf
+http-client-0.7.8-6232138c7b5fb2b04a9cb69f45f3e51acdcd1faa.conf
+http-client-t_-0.3.5.3-8357a5c906524b43b069b4a786985f5fda5b6a48.conf
+http-types-0.12.3-428886f417f521d2610e887cc591784748da284e.conf
+HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
+</pre>
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -316,7 +331,7 @@ Differences between a <code>stack.yaml</code> file and a <code>.cabal</code> fil
 [article_abela]: http://www.cse.chalmers.se/~abela/master/layout-parsing.html
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_man]: https://man.archlinux.org/man/cabal.1
-[cabal_downloads]: https://www.haskell.org/cabal/download.html
+[cabal_downloads]: https://downloads.haskell.org/~cabal/cabal-install-latest/
 [dotty_examples]: https://github.com/michelou/dotty-examples
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
 [github_markdown]: https://github.github.com/gfm/

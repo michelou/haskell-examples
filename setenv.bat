@@ -38,8 +38,8 @@ call :git
 if not %_EXITCODE%==0 goto end
 
 @rem %1=vendor, %2=version
-@rem eg. bellsoft, corretto, bellsoft, openj9, opendjdk, redhat, sapmachine, zulu
-call :jdk "openjdk" 11
+@rem eg. bellsoft, corretto, bellsoft, openj9, redhat, sapmachine, temurin, zulu
+call :jdk "temurin" 11
 if not %_EXITCODE%==0 goto end
 
 call :maven
@@ -261,7 +261,7 @@ echo     %__BEG_O%help%__END%        display this help message
 goto :eof
 
 @rem input parameter: %1=GHC major version
-@rem output parameter(s): _CABAL_DIR, _GHC_HOME
+@rem output parameters: _CABAL_DIR, _GHC_HOME
 :ghc
 set __GHC_VERSION=%~1
 if not defined __GHC_VERSION set __GHC_VERSION=8
@@ -310,7 +310,7 @@ if not exist "%_CABAL_DIR%\bin\\ormolu.exe" (
 )
 goto :eof
 
-@rem output parameter(s): _STACK_HOME, _STACK_PATH
+@rem output parameters: _STACK_HOME, _STACK_PATH
 :stack
 set _STACK_HOME=
 set _STACK_PATH=
@@ -340,7 +340,7 @@ if not exist "%_STACK_HOME%\stack.exe" (
 set "_STACK_PATH=;%_STACK_HOME%\bin"
 goto :eof
 
-@rem output parameter(s): _GIT_HOME, _GIT_PATH
+@rem output parameters: _GIT_HOME, _GIT_PATH
 :git
 set _GIT_HOME=
 set _GIT_PATH=
@@ -478,10 +478,10 @@ set "__VERSIONS_LINE1=  "
 set "__VERSIONS_LINE2=  "
 set "__VERSIONS_LINE3=  "
 set __WHERE_ARGS=
-where /q "%GHC_HOME%\bin:cabal.exe"
+where /q "%CABAL_DIR%\bin:cabal.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1,2,*" %%i in ('"%GHC_HOME%\bin\cabal.exe" --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
-    set __WHERE_ARGS=%__WHERE_ARGS% "%GHC_HOME%\bin:cabal.exe"
+    for /f "tokens=1,2,*" %%i in ('"%CABAL_DIR%\bin\cabal.exe" --version ^| findstr install') do set "__VERSIONS_LINE1=%__VERSIONS_LINE1% cabal %%~k,"
+    set __WHERE_ARGS=%__WHERE_ARGS% "%CABAL_DIR%\bin:cabal.exe"
 )
 where /q "%GHC_HOME%\bin:ghc.exe"
 if %ERRORLEVEL%==0 (
@@ -569,7 +569,7 @@ endlocal & (
     if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"
     if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
     for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-    set "PATH=%PATH%;%_GHC_HOME%\bin;%_CABAL_DIR%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
+    set "PATH=%PATH%;%_CABAL_DIR%\bin;%_GHC_HOME%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
     call :print_env %_VERBOSE%
     if not "%CD:~0,2%"=="%_DRIVE_NAME%:" (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% cd /d %_DRIVE_NAME%: 1>&2

@@ -26,7 +26,7 @@ We can build/run code examples in directory [**`parconc-examples\`**](./) in sev
 ### <span id="rpar_cabal">***Cabal***</span>
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean & cabal run rpar</b>
+<b>&gt; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> clean &amp; <a href="https://man.archlinux.org/man/cabal.1">cabal</a> run rpar</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
@@ -139,7 +139,7 @@ With option `-debug` command [`build`](./build.bat) also displays several useful
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
