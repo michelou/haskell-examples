@@ -16,7 +16,7 @@
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.6][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.34][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.35][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 Optionally one may also install the following software:
@@ -34,14 +34,14 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*January 2022*) <sup id="anchor_04">[4](#footnote_04)</sup>:
+For instance our development environment looks as follows (*February 2022*) <sup id="anchor_04">[4](#footnote_04)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
 C:\opt\ghc-9.2.1\                  <i>(2.7 GB)</i>
-C:\opt\Git-2.34.1\                 <i>(279 MB)</i>
-C:\opt\jdk-openjdk-11.0.13_8\      <i>(181 MB)</i>
+C:\opt\Git-2.35.1\                 <i>(282 MB)</i>
+C:\opt\jdk-openjdk-11.0.14_9\      <i>(181 MB)</i>
 C:\opt\stack-2.7.3\                <i>( 57 MB)</i>
 </pre>
 
@@ -135,9 +135,9 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.6.0.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
+   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
    hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.34.1.windows.1, diff 3.7
+   git 2.35.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 %APPDATA%\Cabal\bin\hlint.exe
@@ -150,9 +150,9 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.6.0.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
+   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
    hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.34.1.windows.1, diff 3.7
+   git 2.35.1.windows.1, diff 3.7
 Tool paths:
    C:\opt\ghc-8.10.7\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -162,15 +162,15 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-openjdk-11.0.13_8\bin\java.exe
+   C:\opt\jdk-openjdk-11.0.14_9\bin\java.exe
    C:\opt\apache-maven-3.8.4\bin\mvn.cmd
-   C:\opt\Git-2.34.1\bin\git.exe
-   C:\opt\Git-2.34.1\mingw64\bin\git.exe
-   C:\opt\Git-2.34.1\usr\bin\diff.exe
+   C:\opt\Git-2.35.1\bin\git.exe
+   C:\opt\Git-2.35.1\mingw64\bin\git.exe
+   C:\opt\Git-2.35.1\usr\bin\diff.exe
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.13_8"
+   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.14_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.4"
    "STACK_HOME=C:\opt\stack-2.7.3"
 </pre>
@@ -203,18 +203,18 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <dd>
 <pre style="font-size:80%;">
 <a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.12-bin.zip</a>                        <i>(  9 MB)</i>
-<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.0.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
+<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.2.0-x86_64-unknown-mingw32.zip</a>  <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(471 MB)</i>
 <a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>    <i>( 51 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.34.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.35.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -225,14 +225,14 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven_history]: https://maven.apache.org/docs/history.html
 [apache_maven_relnotes]: https://maven.apache.org/docs/3.8.4/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
-[cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.6.0.0.md
+[cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.6.2.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
 [deno_examples]: https://github.com/michelou/deno-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.34.1.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.35.1.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples

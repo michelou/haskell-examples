@@ -38,8 +38,8 @@ call :git
 if not %_EXITCODE%==0 goto end
 
 @rem %1=vendor, %2=version
-@rem eg. bellsoft, corretto, bellsoft, openj9, opendjdk, redhat, sapmachine, zulu
-call :jdk "openjdk" 11
+@rem eg. bellsoft, corretto, bellsoft, openj9, redhat, sapmachine, temurin, zulu
+call :jdk "temurin" 11
 if not %_EXITCODE%==0 goto end
 
 call :maven
