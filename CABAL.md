@@ -8,7 +8,7 @@
   </tr>
 </table>
 
-Useful Haskell packages are for instance [**`hlint`**](#hlint), [**`hpack`**](#hpack), [**`hspec`**](#hspec), [**`HTF`**](#htf), [**`HUnit`**](#hunit) and [**`ormolu`**](#ormolu).
+Useful Haskell packages are for instance [**`haskell-language-server`**](#haskell_lsp), [**`hlint`**](#hlint), [**`hpack`**](#hpack), [**`hspec`**](#hspec), [**`HTF`**](#htf), [**`HUnit`**](#hunit) and [**`ormolu`**](#ormolu).
 
 ## <span id="cabal-install"><code>cabal-install</code> installation</span>
 
@@ -32,11 +32,25 @@ cabal-install version 3.6.2.0
 compiled using version 3.6.2.0 of the Cabal library
 </pre>
 
-After running the above command we have two `cabal.exe` installed :
+We now have two `cabal.exe` installed after running the above command :
 - `%GHC_HOME%\bin\cabal.exe` which we initially extracted from [cabal-install-XXXX-x86_64-unknown-mingw32.zip][cabal_downloads]. 
 - `%CABAL_DIR%\bin\cabal.exe` which comes with package `cabal-install`.
 
 That means we have to carefully set up our **`PATH`** variable so that `%CABAL_DIR%\bin` <sup id="anchor_02">[2](#footnote_02)</sup> appears before `%GHC_HOME%\bin` (another option would be to remove `%GHC_HOME%\bin\cabal.exe`).  
+
+## <span id="haskell_lsp"><code>haskell-language-server</code> installation</span>
+
+[`haskell-language-server`][haskell_lsp] is a LSP server for GHC.
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install haskell-language-server</b>
+Resolving dependencies...
+Build profile: -w ghc-8.10.7 -O1
+In order, the following will be built (use -v for more details):
+ - Diff-0.4.1 (lib) (requires download & build)
+[...]
+
+</pre>
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
@@ -338,6 +352,7 @@ HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
+[haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2.3/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint

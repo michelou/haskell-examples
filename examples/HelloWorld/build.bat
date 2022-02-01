@@ -139,7 +139,7 @@ set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
 
 @rem see https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wall
-set _GHC_OPTS=-Wall -Wmissing-import-lists -Wincomplete-uni-patterns
+set _GHC_OPTS=-Wall -Wmissing-import-lists -Wincomplete-uni-patterns -Wno-type-defaults
 if %_DEBUG%==1 set _GHC_OPTS=%_GHC_OPTS% -Werror
 
 set __CABAL_FILE=
@@ -321,7 +321,7 @@ if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
 ) else ( set __N_FILES=%__N% Haskell source file
 )
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set __GHC_OPTS=%_GHC_OPTIONS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
+set __GHC_OPTS=%_GHC_OPTS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
 
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2

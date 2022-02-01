@@ -32,6 +32,11 @@
 - [Haskell for all](https://www.haskellforall.com/) by Gabriel Gonzalez
   - [Module organization guidelines for Haskell projects](https://www.haskellforall.com/2021/05/module-organization-guidelines-for.html), May 19, 2021.
   - [The trick to avoid deeply-nested error-handling code](https://www.haskellforall.com/2021/05/the-trick-to-avoid-deeply-nested-error.html), May 19, 2021.
+- [Kowainik's Blog Posts](https://kowainik.github.io/tags/haskell)
+  - [Fix(ity) Me](https://kowainik.github.io/posts/fixity), May 2021.
+  - [Many Faces of Internal Functions](https://kowainik.github.io/posts/internal-functions), March 2021.
+  - [Arrows Zoo](https://kowainik.github.io/posts/arrows-zoo), March 2021.
+  - [Totality](https://kowainik.github.io/posts/totality), February 2021.
 - [Lessons Learned From A Year Of Writing Haskell](https://wespiser.com/posts/2021-01-03-Lessons-Learned-From-A-Year-Of-Haskell.html) by Adam Wespiser, January 3, 2021.
 - [Michael's Blog Posts](https://www.snoyman.com/blog)
   - [Haskell: The Bad Parts, part 3](https://www.snoyman.com/blog/2020/12/haskell-bad-parts-3/), December 9, 2020.
@@ -50,7 +55,7 @@
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, September 2019.<br/><span style="font-size:80%;">(Coherent Press, ISBN 978-0-9576-7113-3, 214 pages)</span>
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, 2019.</br><span style="font-size:80%;">(Apress, ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition, 595 pages)</span>
 - [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
-- [Get Programming with Haskell][book_get_programming], by Will Kurt, 2018.<br/><span style="font-size:80%;">(Manning Publishing, ISBN 978-1-6172-9376-4, 616 pages)</span>
+- &#128077; [Get Programming with Haskell][book_get_programming], by Will Kurt, 2018.<br/><span style="font-size:80%;">(Manning Publishing, ISBN 978-1-6172-9376-4, 616 pages)</span>
 - [Parallel and Concurrent Programming in Haskell][parconc_book], OReilly 2013.<br/><span style="font-size:80%;">(on GitHub: [parconc-examples][parconc_examples])</span>
 - [Learn You a Haskell for Great Good!][book_lipovaca] by Miran Lipovača
 April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7283-8, 400 pages)</span>
@@ -63,6 +68,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ## <span id="news">News</span>
 
+- [Haskell Planetarium][haskell_planetarium] - link aggregator of discussions about Haskell.
 - [Haskell Weekly][haskell_weekly]
 
 ## <span id="projects">Projects</span>
@@ -79,6 +85,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
   - [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses).
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
 - [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html).
+- [What I wisk I knew when learning Haskell](http://dev.stephendiehl.com/hask/) by Stephen Diehl, version 2.5.
 - [Wise Man's Hasekll](https://andre.tips/wmh/).
 
 ## <span id="videos">Videos</span>
@@ -122,6 +129,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 [kowainik_summoner]: https://kowainik.github.io/projects/summoner
 [kowainik_tomland]: https://kowainik.github.io/projects/tomland
 [haskell_pitfalls]: http://users.jyu.fi/~sapekiis/haskell-pitfalls/
+[haskell_planetarium]: https://haskell.pl-a.net/
 [haskell_tutorial]: https://www.haskell.org/tutorial/index.html
 [learn_you_haskell]: http://learnyouahaskell.com/chapters
 [parconc_book]: https://simonmar.github.io/pages/pcph.html
