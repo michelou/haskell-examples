@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -63,6 +63,7 @@ parconc-examples\{<a href="parconc-examples/README.md">README.md</a>, ..}
 <a href="CABAL.md">CABAL.md</a>
 README.md
 <a href="RESOURCES.md">RESOURCES.md</a>
+<a href="REPL.md">REPL.md</a>
 <a href="setenv.bat">setenv.bat</a>
 </pre>
 
@@ -71,9 +72,10 @@ where
 - directory [**`docs\`**](docs/) contains [Haskell] related papers/articles.
 - directory [**`examples\`**](examples/) contains [Haskell] examples grabbed from various websites (see file [**`examples\README.md`**](examples/README.md)).
 - directory [**`parconc-examples`**](parconc-examples/) contains [Haskell] examples from Simon Marlow's [book][book_parconc] (see file [**`parconc-examples\README.md`**](parconc-examples/README.md)).
-- file [**`CABAL.md`**](CABAL.md) gathers usage information about the Cabal tool.
+- file [**`CABAL.md`**](CABAL.md) gathers usage information about the [Cabal][cabal_userguide] tool.
 - file **`README.md`** is the [Markdown][github_markdown] document for this page.
-- file [**`RESOURCES.md`**](RESOURCES.md) gathers Haskell related informations.
+- file [**`REPL.md`**](REPL.md) presents [GHCi] usage examples.
+- file [**`RESOURCES.md`**](RESOURCES.md) gathers [Haskell] related informations.
 - file [**`setenv.bat`**](setenv.bat) is the batch command for setting up our environment.
 
 <!--
@@ -230,6 +232,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
 [deno_examples]: https://github.com/michelou/deno-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
+[ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
 [git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.35.1.txt
@@ -268,6 +271,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
+[spring_examples]: https://github.com/michelou/spring-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
