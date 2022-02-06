@@ -35,6 +35,7 @@ Optionally one may also install the following software:
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
 For instance our development environment looks as follows (*February 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
@@ -161,7 +162,7 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-openjdk-11.0.13_8\bin\java.exe
+   C:\opt\jdk-openjdk-11.0.14_9\bin\java.exe
    C:\opt\apache-maven-3.8.4\bin\mvn.cmd
    C:\opt\Git-2.35.1\bin\git.exe
    C:\opt\Git-2.35.1\mingw64\bin\git.exe
@@ -169,7 +170,7 @@ Tool paths:
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.13_8"
+   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.14_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.4"
    "STACK_HOME=C:\opt\stack-2.7.3"
 </pre>

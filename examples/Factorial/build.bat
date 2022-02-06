@@ -76,9 +76,7 @@ if not exist "%GHC_HOME%\bin\ghc.exe" (
     goto :eof
 )
 set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
-
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _HLINT_CMD=
 if exist "%CABAL_DIR%\bin\hlint.exe" (
@@ -163,11 +161,12 @@ if exist "%__CABAL_FILE%" (
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
 
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
 @rem input parameter: %*
-@rem output parameter(s): _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
+@rem output parameters: _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
 :args
 set _CLEAN=0
 set _COMPILE=0
@@ -230,6 +229,8 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
     echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "JAVA_HOME=%JAVA_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "MAVEN_HOME=%MAVEN_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -259,7 +260,7 @@ echo     %__BEG_O%compile%__END%     generate program executable
 echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
-echo     %__BEG_O%run%__END%         execute the generated program %__BEG_O%%_PACKAGE_NAME%%__END%
+echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%%_PACKAGE_NAME%%__END%"
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
@@ -300,6 +301,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR
 )
 call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
+    echo %_ERROR_LABEL% Failed to analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )
