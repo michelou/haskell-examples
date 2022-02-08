@@ -19,7 +19,7 @@ Windows users can download the Zip archive [cabal-install-XXXX-x86_64-unknown-mi
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/latest/intro.html#cabal-featureset">cabal</a> update</b>
 Config file path source is default config file.
 Config file %APPDATA%\cabal\config not found.
 Writing default configuration to %APPDATA%\cabal\config

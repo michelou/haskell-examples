@@ -27,7 +27,7 @@ Optionally one may also install the following software:
 - [hlint 3.3][hlint_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hlint_changelog])
 - [hpack 0.34][hpack_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hpack_changelog])
 - [HTF 0.14][htf_downloads] ([*changelog*][htf_changelog])
-- [Oracle OpenJDK 11][oracle_openjdk11] ([*release notes*][oracle_openjdk11_relnotes], for Maven)
+- [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
 - [ormolu 0.4][ormolu_downloads] ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
@@ -41,7 +41,7 @@ C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
 C:\opt\ghc-9.2.1\                  <i>(2.7 GB)</i>
 C:\opt\Git-2.35.1\                 <i>(282 MB)</i>
-C:\opt\jdk-openjdk-11.0.14_9\      <i>(181 MB)</i>
+C:\opt\jdk-temurin-11.0.14_9\      <i>(181 MB)</i>
 C:\opt\stack-2.7.3\                <i>( 57 MB)</i>
 </pre>
 
@@ -164,7 +164,7 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-openjdk-11.0.14_9\bin\java.exe
+   C:\opt\jdk-temurin-11.0.14_9\bin\java.exe
    C:\opt\apache-maven-3.8.4\bin\mvn.cmd
    C:\opt\Git-2.35.1\bin\git.exe
    C:\opt\Git-2.35.1\mingw64\bin\git.exe
@@ -172,7 +172,7 @@ Tool paths:
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-openjdk-11.0.14_9"
+   "JAVA_HOME=C:\opt\jdk-temurin-11.0.14_9"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.4"
    "STACK_HOME=C:\opt\stack-2.7.3"
 </pre>
@@ -209,6 +209,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>         <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz </a>          <i>(471 MB)</i>
 <a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>    <i>( 51 MB)</i>
+<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.14_9.zip</a>  <i>( 99 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.35.1-64-bit.7z.exe</a>                  <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
@@ -265,8 +266,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_sed]: https://www.linux.org/docs/man1/sed.html
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
-[oracle_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
-[oracle_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
+[temurin_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
+[temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
 [ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.4.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [rust_examples]: https://github.com/michelou/rust-examples
