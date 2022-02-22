@@ -52,6 +52,7 @@
 
 ## <span id="books">Books</span>
 
+- [Haskell in Depth][book_bragilevsky] by Vitaly Bragilevsky, 2021.<br/><span style="font-size:80%;">(Manning, ISBN 978-1-6172-9540-9, 665 pages)</span>
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, September 2019.<br/><span style="font-size:80%;">(Coherent Press, ISBN 978-0-9576-7113-3, 214 pages)</span>
 - [Practical Haskell][book_practical_haskell], by Alejandro Serrano, 2019.</br><span style="font-size:80%;">(Apress, ISBN 978-1-4842-4479-1, 2<sup>nd</sup> Edition, 595 pages)</span>
 - [Thinking with Types][book_thinking_with_types], by Sandy Maguire, LeanPub 2018.
@@ -115,6 +116,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
+[book_bragilevsky]: https://
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
 [book_lipovaca]: https://nostarch.com/lyah.htm
 [blog_mostovoy]: https://serokell.io/blog/past-and-present-of-haskell

@@ -30,6 +30,15 @@ Copying 'cabal.exe' to '%APPDATA%\cabal\bin\cabal.exe'
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> --version</b>
 cabal-install version 3.6.2.0
 compiled using version 3.6.2.0 of the Cabal library
+&nbsp;
+<b>&gt; <a href="https://cabal.readthedocs.io/en/latest/intro.html#cabal-featureset">cabal</a> update</b>
+Config file path source is default config file.
+Config file %APPDATA%\cabal\config not found.
+Writing default configuration to %APPDATA%\cabal\config
+Downloading the latest package list from hackage.haskell.org
+
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
+<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
 </pre>
 
 We now have two `cabal.exe` installed after running the above command :
@@ -162,13 +171,13 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hspec-core-2.8.3 (lib) (requires download & build)
- - hspec-2.8.3 (lib) (requires download & build)
+ - hspec-core-2.9.4 (lib) (requires download & build)
+ - hspec-2.9.4 (lib) (requires download & build)
 [...]
-Starting     hspec-2.8.3 (lib)
-Building     hspec-2.8.3 (lib)
-Installing   hspec-2.8.3 (lib)
-Completed    hspec-2.8.3 (lib)
+Starting     hspec-2.9.4 (lib)
+Building     hspec-2.9.4 (lib)
+Installing   hspec-2.9.4 (lib)
+Completed    hspec-2.9.4 (lib)
 </pre>
 
 ## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
@@ -319,19 +328,29 @@ For version GHC 8.10.7, installed packages whose name starts with letter <code>h
 <dd>
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
-hashable-1.3.3.0-9aa5b1c17f7be6618063ae943312ca890700d98f.conf
-hlint-3.3.4-a3f166f4044b65bd5cb7051c1794269a28c4ebf6.conf
-hourglass-0.2.12-0adfffb133b4ecb1429c8ab7a3a63e1f715772fc.conf
-hpack-0.34.4-e960b875b1cbf4df20cc14c3d94710b436385e86.conf
-hscolour-1.24.4-0372f886d39fa7f543b5ca4f492dac187f227b70.conf
-hspec-2.8.3-c1637174f023f78391253f7cc431cb06249a2794.conf
-hspec-core-2.8.3-a0c773b4747f383a6460d9b380f2a09f715ba4c1.conf
-hspec-discover-2.8.3-31f13ffd41ab63d77a11628e8772aa520eada03b.conf
-hspec-expecta_-0.8.2-b33ff16d3fc2949d866d11f9f449bfd6edadbb1c.conf
-http-client-0.7.8-6232138c7b5fb2b04a9cb69f45f3e51acdcd1faa.conf
-http-client-t_-0.3.5.3-8357a5c906524b43b069b4a786985f5fda5b6a48.conf
-http-types-0.12.3-428886f417f521d2610e887cc591784748da284e.conf
-HUnit-1.6.2.0-d7c91dc1d186c000539b73616c390e93daea894b.conf
+hackage-secur_-0.6.2.0-4bcfc91bab3c9672887242ecd330bcd74353fb3a.conf
+haddock-libra_-1.10.0-75d854e07f5a0b27babf51cc17072e68eb6e245e.conf
+hashable-1.3.5.0-65bc77b538ac7d072f1fcd030b6ee6a57e0b26c4.conf
+hashtables-1.2.4.2-f4d494972092c75e404f02da79d84e1f242dfbf7.conf
+haskell-langu_-1.6.1.0-f31acb97be2fbd5fed0b7e021cff339e3c175d6c.conf
+haskell-src-e_-1.23.1-4440c55b672a41bb11a00f76ff75f45612ae1cd4.conf
+heapsize-0.3.0.1-27572f5939b1d90b9cb6eddd909b80e8cc943471.conf
+hie-bios-0.8.1-d6478efe291f7474286ad3633a2b3625ddbd4cff.conf
+hie-compat-0.2.1.1-3d80479a30af4ccfe5285e11884b258270cf5da5.conf
+hiedb-0.4.1.0-f92bc53bbba3b57bf3a8e19b79d25ef9e66b449a.conf
+hlint-3.2.8-07a017a8a2bca5a63749ab6686cca487f10a8038.conf
+[...]
+hscolour-1.24.4-0061dbe6d18e3cd673fce03ea0660dc5aaea655c.conf
+hslogger-1.3.1.0-ee928afffd7ec0713310f830500c93fbd2f8c290.conf
+hspec-2.9.4-630a6b50002ab7a0f91aaaeb68c05dff9fad57b5.conf
+hspec-core-2.9.4-5d423483180beed29c5cb7bd5432d1296f6e3127.conf
+hspec-discover-2.9.4-c1877178bbde3b2ac7c7a39dcf35b3e17924ad6c.conf
+hspec-expecta_-0.8.2-298fc3d376661a3415ebc3ea5fb2e5c975cc9f9b.conf
+HsYAML-0.2.1.0-07ad9aac91ccaff8e81e57b0c2b3f7c41d13eb79.conf
+HsYAML-aeson-0.2.0.1-566689edb1c87f23b9e83ca7a4f7206983c56ccd.conf
+HTTP-4000.3._-a14a8e673826c92e06e8f90d8b92ed1ad00f6951.conf
+HUnit-1.6.2.0-7584a845e4464486d878b49a7f17ebf7806dc12b.conf
+hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 </pre>
 </dd></dl>
 
