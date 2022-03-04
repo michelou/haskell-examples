@@ -44,7 +44,9 @@
   - [Haskell: The Bad Parts, part 1](https://www.snoyman.com/blog/2020/10/haskell-bad-parts-1/), October 28, 2020.
 - [Making the most of Cabal][blog_lau], June 6, 2020.
 -  [Kindness for Mean Girls: a discussion on type-level programming in Haskell][blog_nadeem] by Ayman Nadeem, May 2020.
-- [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
+- [GHC Blog](https://serokell.io/blog/ghc) by the [Serokell team](https://serokell.io/team):
+  - [Haskell to Core: Understanding Haskell Features Through Their Desugaring](https://serokell.io/blog/haskell-to-core) by Vladislav Zaviakov, August 2020.
+  - [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
 - [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
@@ -96,7 +98,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

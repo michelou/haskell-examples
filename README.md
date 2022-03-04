@@ -34,7 +34,7 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*February 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*March 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
@@ -142,7 +142,7 @@ Tool versions:
    git 2.35.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
-%APPDATA%\Cabal\bin\hlint.exe
+<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
 %APPDATA%\Cabal\bin\hpack.exe
 C:\opt\stack-2.7.3\stack.exe
 </pre>
@@ -156,9 +156,9 @@ Tool versions:
    hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
    git 2.35.1.windows.1, diff 3.7
 Tool paths:
-   %APPDATA%\\cabal\bin\cabal.exe
+   <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
-   C:\opt\stack-2.7.3\stack.exee
+   C:\opt\stack-2.7.3\stack.exe
    C:\opt\ghc-8.10.7\bin\haddock.exe
    %APPDATA%\Cabal\bin\hlint.exe
    %APPDATA%\Cabal\bin\hpack.exe
@@ -218,7 +218,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

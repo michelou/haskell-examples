@@ -139,7 +139,7 @@ With option `-debug` command [`build`](./build.bat) also displays several useful
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
