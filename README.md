@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Akka][akka_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -233,6 +233,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.6.2.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
+[cpp_examples]: https://github.com/michelou/cpp-examples
 [deno_examples]: https://github.com/michelou/deno-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
