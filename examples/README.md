@@ -14,7 +14,7 @@ We can build/run code examples in directory [`examples`](./) in several ways. Fo
 
 | Build tool                    | Configuration file                           | Parent file                |
 |-------------------------------|----------------------------------------------|----------------------------|
-| [**`build.bat`**](Factorial/build.bat) | **`build.properties`**              | n.a.                       |
+| [**`build.bat`**](Factorial/build.bat) | [**`Factorial.cabal`**](Factorial/Factorial.cabal) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       |
 | [**`cabal.exe`**][cabal_cli]      | [**`Factorial.cabal`**](Factorial/Factorial.cabal) | n.a.             |
 | [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
 | [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
@@ -281,19 +281,17 @@ factorialProd(5)=120
 [build] _EXITCODE=0
 </pre>
 
-<!--
 ## <span id="footnotes">Footnotes</span>
 
-<a name="footnote_01">[1]</a> ***hlint installation*** [↩](#anchor_01)
+<span id="footnote_01">[1]</span> ***build.bat*** [↩](#anchor_01)
 
-<p style="margin:0 0 1em 20px;">
-We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install package <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a>; see  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information about its usage.
-</p>
--->
+<dl><dd>
+In project <code>Factorial</code> the batch file <a href="Factorial/build.bat"><code>build.bat</code></a> reads several properties directly from <a href="Factorial/Factorial.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code> and <code>ghc_options<code>.
+</dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

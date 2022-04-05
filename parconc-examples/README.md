@@ -15,8 +15,8 @@ We can build/run code examples in directory [**`parconc-examples\`**](./) in sev
 
 | Build tool                    | Configuration file                           | Parent file                |
 |-------------------------------|----------------------------------------------|----------------------------|
-| [**`build.bat`**](./build.bat) | **`build.properties`**              | n.a.                       |
-| [**`cabal.exe`**][cabal_cli]      | [**`Factorial.cabal`**](./parconc-examples.cabal) | n.a.             |
+| [**`build.bat`**](./build.bat) | [**`parconc-examples.cabal`**](./parconc-examples.cabal) <sup id="anchor_01">[1](#footnote_01)</sup>  | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [**`parconc-examples.cabal`**](./parconc-examples.cabal) | n.a.             |
 | [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](./pom.xml)       | [**`pom.xml`**](./pom.xml) |
 | [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](./stack.yaml) | n.a.                       |
 
@@ -136,6 +136,15 @@ With option `-debug` command [`build`](./build.bat) also displays several useful
 (14930352,24157817)
 [build] _EXITCODE=0
 </pre>
+
+
+## <span id="footnotes">Footnotes</span>
+
+<span id="footnote_01">[1]</span> ***build.bat*** [↩](#anchor_01)
+
+<dl><dd>
+In project <code>Factorial</code> the batch file <a href="./build.bat"><code>build.bat</code></a> reads several properties directly from <a href="./parconc-examples.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code>, <code>executable</code>, <code>main-is</code>, <code>ghc-options</code> and <code>default-language</code>.
+</dd></dl>
 
 ***
 

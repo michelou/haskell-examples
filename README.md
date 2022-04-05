@@ -34,15 +34,15 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*March 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*April 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\apache-maven-3.8.4\         <i>( 10 MB)</i>
+C:\opt\apache-maven-3.8.5\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
-C:\opt\ghc-9.2.1\                  <i>(2.7 GB)</i>
+C:\opt\ghc-9.2.2\                  <i>(1.8 GB)</i>
 C:\opt\Git-2.35.1\                 <i>(282 MB)</i>
 C:\opt\jdk-temurin-11.0.14.1_1\    <i>(181 MB)</i>
-C:\opt\stack-2.7.3\                <i>( 57 MB)</i>
+C:\opt\stack-2.7.5\                <i>( 58 MB)</i>
 </pre>
 
 <!--
@@ -137,14 +137,14 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
+   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
    hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
    git 2.35.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
 %APPDATA%\Cabal\bin\hpack.exe
-C:\opt\stack-2.7.3\stack.exe
+C:\opt\stack-2.7.5\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -152,20 +152,20 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.3, haddock 2.24.2
+   cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
    hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
    git 2.35.1.windows.1, diff 3.7
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
-   C:\opt\stack-2.7.3\stack.exe
+   C:\opt\stack-2.7.5\stack.exe
    C:\opt\ghc-8.10.7\bin\haddock.exe
    %APPDATA%\Cabal\bin\hlint.exe
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
    C:\opt\jdk-temurin-11.0.14.1_1\bin\java.exe
-   C:\opt\apache-maven-3.8.4\bin\mvn.cmd
+   C:\opt\apache-maven-3.8.5\bin\mvn.cmd
    C:\opt\Git-2.35.1\bin\git.exe
    C:\opt\Git-2.35.1\mingw64\bin\git.exe
    C:\opt\Git-2.35.1\usr\bin\diff.exe
@@ -173,8 +173,8 @@ Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
    "JAVA_HOME=C:\opt\jdk-temurin-11.0.14.1_1"
-   "MAVEN_HOME=C:\opt\apache-maven-3.8.4"
-   "STACK_HOME=C:\opt\stack-2.7.3"
+   "MAVEN_HOME=C:\opt\apache-maven-3.8.5"
+   "STACK_HOME=C:\opt\stack-2.7.5"
 </pre>
 
 ## <span id="footnotes">Footnotes</span>
@@ -207,18 +207,18 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.12-bin.zip</a>                          <i>(  9 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.2.0-x86_64-unknown-mingw32.zip</a>    <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>           <i>(414 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.1-x86_64-unknown-mingw32.tar.xz </a>            <i>(471 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.2-x86_64-unknown-mingw32.tar.xz </a>            <i>(471 MB)</i>
 <a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>      <i>( 51 MB)</i>
 <a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.14.1_1.zip</a>  <i>( 99 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.35.1-64-bit.7z.exe</a>                    <i>( 41 MB)</i>
 <a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>      <i>( 51 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.3-windows-x86_64.zip</a>                      <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.5-windows-x86_64.zip</a>                      <i>( 15 MB)</i>
 </pre>
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -228,7 +228,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.8.4/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.8.5/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.6.2.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
@@ -248,7 +248,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell_lts_downloads]: https://downloads.haskell.org/ghc/8.10.7/
 [haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
-[haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.2.1/docs/html/users_guide/9.2.1-notes.html
+[haskell_latest_relnotes]: https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html
 [haskell_lsp_downloads]: https://hackage.haskell.org/package/haskell-language-server-1.6.1.1
 [haskell_lsp_relnotes]: https://github.com/haskell/haskell-language-server/releases/tag/1.6.1.0
 [hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog

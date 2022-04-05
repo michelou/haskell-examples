@@ -23,6 +23,9 @@
 
 ## <span id="blogs">Blogs</span>
 
+- [Algebraic Data Types in Haskell][blog_dreimanis] by Gints Dreimanis, March 2022.
+- [Typed Template Haskell in GHC 9][blog_lassarote] by Heitor Toledo Lassarote de Paula, January 2022.
+- [Parser Combinators in Haskell][blog_lassarote_comb] by Heitor Toledo Lassarote de Paula, December 2021.
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
 - [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
@@ -98,7 +101,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -114,14 +117,17 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 [article_tagher]: https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
 [blog_deeper_stack]: https://mmhaskell.com/blog/2018/10/8/deeper-stack-knowledge
 [blog_dominguez]: https://www.tweag.io/blog/2021-03-25-haskell-java/
+[blog_dreimanis]: https://serokell.io/blog/algebraic-data-types-in-haskell
 [blog_king]: https://lexi-lambda.github.io/blog/2021/03/25/an-introduction-to-typeclass-metaprogramming/
+[blog_lassarote]: https://serokell.io/blog/typed-template-haskell-in-ghc-9
+[blog_lassarote_comb]: https://serokell.io/blog/parser-combinators-in-haskell
 [blog_lau]: https://lukelau.me/haskell/posts/making-the-most-of-cabal/
+[blog_mostovoy]: https://serokell.io/blog/past-and-present-of-haskell
 [blog_msitko]: https://msitko.pl/blog/2020/02/08/haskell-getting-into-speed.html
 [blog_nadeem]: https://www.aymannadeem.com/haskell/2020/05/15/Kindness-for-Mean-Girls.html
 [book_bragilevsky]: https://
 [book_get_programming]: https://www.manning.com/books/get-programming-with-haskell
 [book_lipovaca]: https://nostarch.com/lyah.htm
-[blog_mostovoy]: https://serokell.io/blog/past-and-present-of-haskell
 [book_practical_haskell]: https://www.apress.com/gp/book/9781484244791
 [book_real_world]: http://book.realworldhaskell.org/
 [book_thinking_with_types]: https://leanpub.com/thinking-with-types

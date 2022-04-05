@@ -327,7 +327,7 @@ For version GHC 8.10.7, installed packages whose name starts with letter <code>h
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b %CABAL_DIR%\store\ghc-8.10.7\package.db\h*</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir">dir</a> /b <a href="https://cabal.readthedocs.io/en/latest/installing-packages.html#environment-variables">%CABAL_DIR%</a>\store\ghc-8.10.7\package.db\h*</b>
 hackage-secur_-0.6.2.0-4bcfc91bab3c9672887242ecd330bcd74353fb3a.conf
 haddock-libra_-1.10.0-75d854e07f5a0b27babf51cc17072e68eb6e245e.conf
 hashable-1.3.5.0-65bc77b538ac7d072f1fcd030b6ee6a57e0b26c4.conf
@@ -356,7 +356,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/March 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
