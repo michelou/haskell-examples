@@ -71,18 +71,18 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hlint-3.3.4 (lib) (requires download & build)
- - hlint-3.3.4  (exe:hlint) (requires download & build)
-Downloading  hlint-3.3.4 
-Downloaded   hlint-3.3.4 
-Starting     hlint-3.3.4  (lib)
-Building     hlint-3.3.4  (lib)
-Installing   hlint-3.3.4  (lib)
-Completed    hlint-3.3.4  (lib)
-Starting     hlint-3.3.4  (exe:hlint)
-Building     hlint-3.3.4  (exe:hlint)
-Installing   hlint-3.3.4  (exe:hlint)
-Completed    hlint-3.3.4  (exe:hlint)
+ - hlint-3.4 (lib) (requires download & build)
+ - hlint-3.4  (exe:hlint) (requires download & build)
+Downloading  hlint-3.4 
+Downloaded   hlint-3.4 
+Starting     hlint-3.4  (lib)
+Building     hlint-3.4  (lib)
+Installing   hlint-3.4  (lib)
+Completed    hlint-3.4  (lib)
+Starting     hlint-3.4  (exe:hlint)
+Building     hlint-3.4  (exe:hlint)
+Installing   hlint-3.4  (exe:hlint)
+Completed    hlint-3.4  (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -115,7 +115,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * hlint
 >     Synopsis: Source code suggestions
->     Default available version: 3.3.4
+>     Default available version: 3.4
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/ndmitchell/hlint#readme
 >     License:  BSD3
@@ -131,14 +131,14 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
-Starting     hpack-0.34.4 (lib)
-Building     hpack-0.34.4 (lib)
-Installing   hpack-0.34.4 (lib)
-Completed    hpack-0.34.4 (lib)
-Starting     hpack-0.34.4 (exe:hpack)
-Building     hpack-0.34.4 (exe:hpack)
-Installing   hpack-0.34.4 (exe:hpack)
-Completed    hpack-0.34.4 (exe:hpack)
+Starting     hpack-0.35 (lib)
+Building     hpack-0.35 (lib)
+Installing   hpack-0.5 (lib)
+Completed    hpack-0.5 (lib)
+Starting     hpack-0.35 (exe:hpack)
+Building     hpack-0.35 (exe:hpack)
+Installing   hpack-0.35 (exe:hpack)
+Completed    hpack-0.35 (exe:hpack)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -150,12 +150,12 @@ Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
 > Downloading the latest package list from hackage.haskell.org
 > To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2021-08-21T05:55:43Z'
+>    cabal v2-update 'hackage.haskell.org,2022-02-01T15:13:03Z'
 > &nbsp;
 > <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 > * hpack
 >     Synopsis: A modern format for Haskell packages
->     Default available version: 0.34.4
+>     Default available version: 0.35
 >     Installed versions: [ Not installed ]
 >     Homepage: https://github.com/sol/hpack#readme
 >     License:  MIT
@@ -171,13 +171,13 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hspec-core-2.9.4 (lib) (requires download & build)
- - hspec-2.9.4 (lib) (requires download & build)
+ - hspec-core-2.9.7 (lib) (requires download & build)
+ - hspec-2.9.7 (lib) (requires download & build)
 [...]
-Starting     hspec-2.9.4 (lib)
-Building     hspec-2.9.4 (lib)
-Installing   hspec-2.9.4 (lib)
-Completed    hspec-2.9.4 (lib)
+Starting     hspec-2.9.7 (lib)
+Building     hspec-2.9.7 (lib)
+Installing   hspec-2.9.7 (lib)
+Completed    hspec-2.9.7 (lib)
 </pre>
 
 ## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
@@ -189,13 +189,13 @@ Completed    hspec-2.9.4 (lib)
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
- - HUnit-1.6.2.0 (lib) (requires download & build)
- - QuickCheck-2.14.2 (lib) (requires download & build)
+ - cpphs-1.20.9.1 (exe:cpphs) (requires build)
 [...]
-Starting     HTF-0.14.0.6 (all, legacy fallback)
-Building     HTF-0.14.0.6 (all, legacy fallback)
-Installing   HTF-0.14.0.6 (all, legacy fallback)
-Completed    HTF-0.14.0.6 (all, legacy fallback)
+ - HTF-0.15.0.0 (lib:HTF, exe:htfpp) (requires download & build)
+Starting     HTF-0.15.0.0 (all, legacy fallback)
+Building     HTF-0.15.0.0 (all, legacy fallback)
+Installing   HTF-0.15.0.0 (all, legacy fallback)
+Completed    HTF-0.15.0.0 (all, legacy fallback)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 <a href="https://en.wikipedia.org/wiki/Environment_variable#Default_values">%APPDATA%</a>\\cabal\\bin"
