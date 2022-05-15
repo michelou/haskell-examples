@@ -191,7 +191,7 @@ Environment variables:
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
 </dd></dl>
 
-<span id="footnote_04">[4]</span> ***Downloads*** [↩](#anchor_04)
+<span id="footnote_03">[3]</span> ***Downloads*** [↩](#anchor_03)
 
 <dl><dd>
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
