@@ -67,7 +67,7 @@ factorialProd(5)=120
 Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
-C:\opt\stack-2.7.3\stack.exe
+C:\opt\stack-2.7.5\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
@@ -115,9 +115,9 @@ Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] 
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
-C:\opt\apache-maven-3.8.2\bin\mvn.cmd
+C:\opt\apache-maven-3.8.5\bin\mvn.cmd
 &nbsp;
-<b>&gt; <a href="https://maven.apache.org/ref/3.8.2/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.8.5/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 factorialRec(5) =120
@@ -220,7 +220,7 @@ Command [`stack run`][stack_cli] builds and executes the [Haskell] application (
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\stack-2.7.3\stack.exe
+C:\opt\stack-2.7.5\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
@@ -233,7 +233,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./QuickSort/pom.xml))
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/current/maven-embedder/cli.html" rel="external">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 input list       : [8,4,0,3,1,23,11,18]
@@ -245,7 +245,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 Command [`build clean run`](QuickSort/build.bat) builds and executes the [Haskell] application:
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> build</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> build</b>
 H:\examples\QuickSort\build.bat
 &nbsp;
 <b>&gt; <a href="QuickSort/build.bat">build</a> clean run</b>
@@ -286,12 +286,12 @@ factorialProd(5)=120
 <span id="footnote_01">[1]</span> ***build.bat*** [↩](#anchor_01)
 
 <dl><dd>
-In project <code>Factorial</code> the batch file <a href="Factorial/build.bat"><code>build.bat</code></a> reads several properties directly from <a href="Factorial/Factorial.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code> and <code>ghc_options<code>.
+In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a href="./Factorial/build.bat"><code>build.bat</code></a> reads several properties directly from <a href="Factorial/Factorial.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code> and <code>ghc_options<code>.
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

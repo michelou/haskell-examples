@@ -9,39 +9,39 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Deno][deno_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.6][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.35][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.36][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 Optionally one may also install the following software:
 
 - [Apache Maven 3.8][apache_maven] ([requires Java 7][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
 - [Haskell 9.2][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
-- [haskell-language-server 1.6][haskell_lsp_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*release notes*][haskell_lsp_relnotes])
-- [hlint 3.4][hlint_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hlint_changelog])
-- [hpack 0.35][hpack_downloads] <sup id="anchor_03">[3](#footnote_03)</sup> ([*changelog*][hpack_changelog])
-- [HTF 0.15][htf_downloads] ([*changelog*][htf_changelog])
+- [haskell-language-server 1.7][haskell_lsp_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*release notes*][haskell_lsp_relnotes])
+- [hlint 3.4][hlint_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hlint_changelog])
+- [hpack 0.35][hpack_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hpack_changelog])
+- [HTF 0.15][htf_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][htf_changelog])
 - [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
-- [ormolu 0.4][ormolu_downloads] ([*changelog*][ormolu_changelog])
+- [ormolu 0.5][ormolu_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][ormolu_changelog])
 - [Stack 2.7][stack_downloads] ([*changelog*][stack_changelog])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*April 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*May 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.5\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
 C:\opt\ghc-9.2.2\                  <i>(1.8 GB)</i>
-C:\opt\Git-2.36.0\                 <i>(282 MB)</i>
-C:\opt\jdk-temurin-11.0.14.1_1\    <i>(181 MB)</i>
+C:\opt\Git-2.36.1\                 <i>(286 MB)</i>
+C:\opt\jdk-temurin-11.0.15_10\     <i>(181 MB)</i>
 C:\opt\stack-2.7.5\                <i>( 58 MB)</i>
 </pre>
 
@@ -138,8 +138,8 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
-   hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.36.0.windows.1, diff 3.7
+   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
+   git 2.36.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
@@ -153,8 +153,8 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
-   hlint v3.3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.36.0.windows.1, diff 3.7
+   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
+   git 2.36.1.windows.1, diff 3.7
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -164,15 +164,15 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-temurin-11.0.14.1_1\bin\java.exe
+   C:\opt\jdk-temurin-11.0.15_10\bin\java.exe
    C:\opt\apache-maven-3.8.5\bin\mvn.cmd
-   C:\opt\Git-2.36.0\bin\git.exe
-   C:\opt\Git-2.36.0\mingw64\bin\git.exe
-   C:\opt\Git-2.36.0\usr\bin\diff.exe
+   C:\opt\Git-2.36.1\bin\git.exe
+   C:\opt\Git-2.36.1\mingw64\bin\git.exe
+   C:\opt\Git-2.36.1\usr\bin\diff.exe
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-temurin-11.0.14.1_1"
+   "JAVA_HOME=C:\opt\jdk-temurin-11.0.15_10"
    "MAVEN_HOME=C:\opt\apache-maven-3.8.5"
    "STACK_HOME=C:\opt\stack-2.7.5"
 </pre>
@@ -185,13 +185,7 @@ Environment variables:
 <code>cabal 3.4</code> works fine both with <code>ghc 8.x</code> and <code>ghc 9.x</code> while <code>cabal 3.2</code> only works with <code>ghc 8.x</code>.
 </dd></dl>
 
-<span id="footnote_02">[2]</span> ***Haskell Language Server*** [↩](#anchor_02)
-
-<dl><dd>
-<code>8.10.7</code> is the currently supported GHC version (see document <a href="https://github.com/haskell/haskell-language-server/blob/master/docs/supported-versions.md">"Supported GHC versions"</a>).
-</dd></dl>
-
-<span id="footnote_03">[3]</span> ***Hackage installation*** [↩](#anchor_03)
+<span id="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
 
 <dl><dd>
 We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
@@ -208,17 +202,15 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.2.0-x86_64-unknown-mingw32.zip</a>    <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>           <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.0.1/">ghc-9.2.2-x86_64-unknown-mingw32.tar.xz </a>            <i>(471 MB)</i>
-<a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>      <i>( 51 MB)</i>
-<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.14.1_1.zip</a>  <i>( 99 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.36.0-64-bit.7z.exe</a>                    <i>( 41 MB)</i>
-<a href="https://github.com/haskell/haskell-language-server/releases">haskell-language-server-Windows-8.10.7.exe.zip</a>      <i>( 51 MB)</i>
+<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.15_10.zip</a>   <i>( 99 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.36.1-64-bit.7z.exe</a>                    <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.7.5-windows-x86_64.zip</a>                      <i>( 15 MB)</i>
 </pre>
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -239,7 +231,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.36.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.36.1.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
@@ -271,15 +263,19 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
 [temurin_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
 <!--
-11.0.9 => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
+11.0.9      => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
+11.0.11     => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-April/005860.html
+11.0.12     => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-July/006954.html
 11.0.14.1_1 => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
+11.0.15_10  => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
 -->
 [temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
-[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.4.0.0/changelog
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.5.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
 [spring_examples]: https://github.com/michelou/spring-examples
+[spark_examples]: https://github.com/michelou/spark-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://github.com/commercialhaskell/stack/releases
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/

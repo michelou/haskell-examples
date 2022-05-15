@@ -10,6 +10,13 @@
 
 Useful Haskell packages are for instance [**`haskell-language-server`**](#haskell_lsp), [**`hlint`**](#hlint), [**`hpack`**](#hpack), [**`hspec`**](#hspec), [**`HTF`**](#htf), [**`HUnit`**](#hunit) and [**`ormolu`**](#ormolu).
 
+> **:mag_right:** Do not forget to execute command [`cabal`][cabal_man] `update` before running `list` and `install` :
+> <pre style="font-size:80%;">
+> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
+> Downloading the latest package list from hackage.haskell.org
+> To revert to previous state run:
+>    cabal v2-update 'hackage.haskell.org,2021-08-21T05:55:43Z'
+
 ## <span id="cabal-install"><code>cabal-install</code> installation</span>
 
 We install [**`cabal-install`**](https://hackage.haskell.org/package/cabal-install) as follows <sup id="anchor_01">[1](#footnote_01)</sup> :
@@ -31,12 +38,6 @@ Copying 'cabal.exe' to '%APPDATA%\cabal\bin\cabal.exe'
 cabal-install version 3.6.2.0
 compiled using version 3.6.2.0 of the Cabal library
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/latest/intro.html#cabal-featureset">cabal</a> update</b>
-Config file path source is default config file.
-Config file %APPDATA%\cabal\config not found.
-Writing default configuration to %APPDATA%\cabal\config
-Downloading the latest package list from hackage.haskell.org
-
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
 </pre>
@@ -52,7 +53,15 @@ That means we have to carefully set up our **`PATH`** variable so that `%CABAL_D
 [`haskell-language-server`][haskell_lsp] is a LSP server for GHC.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install haskell-language-server</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> list haskell-language-server</b>
+* haskell-language-server
+    Synopsis: LSP server for GHC
+    Default available version: 1.7.0.0
+    Installed versions: [ Not installed ]
+    Homepage: https://github.com/haskell/haskell-language-server#readme
+    License:  Apache-2.0
+&nbsp;
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> install haskell-language-server</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
@@ -66,6 +75,14 @@ In order, the following will be built (use -v for more details):
 [HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [**`hlint`**][hlint_downloads] as follows.
 
 <pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+* hlint
+    Synopsis: Source code suggestions
+    Default available version: 3.4
+    Installed versions: [ Not installed ]
+    Homepage: https://github.com/ndmitchell/hlint#readme
+    License:  BSD3
+&nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
@@ -105,27 +122,20 @@ C:\opt\ghc-9.0.1\hlint-3.2.7\bin\hlint.exe
 HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 -->
-> **:mag_right:** Command [`cabal`][cabal_man] `list hlint` shows the latest available version of package **`hlint`** (*do not* forget `cabal update`) :
-> <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
-> Downloading the latest package list from hackage.haskell.org
-> To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2021-08-21T05:55:43Z'
-> &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
-> * hlint
->     Synopsis: Source code suggestions
->     Default available version: 3.4
->     Installed versions: [ Not installed ]
->     Homepage: https://github.com/ndmitchell/hlint#readme
->     License:  BSD3
-> </pre>
 
 ## <span id="hpack"><code>hpack</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 [Hpack][hpack_readme] is a format for Haskell packages. Similarly to [**`hlint`**][hlint_downloads] we install [**`hpack`**][hpack_downloads] as follows.
 
 <pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+* hpack
+    Synopsis: A modern format for Haskell packages
+    Default available version: 0.35
+    Installed versions: [ Not installed ]
+    Homepage: https://github.com/sol/hpack#readme
+    License:  MIT
+&nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
@@ -133,8 +143,8 @@ In order, the following will be built (use -v for more details):
 [...]
 Starting     hpack-0.35 (lib)
 Building     hpack-0.35 (lib)
-Installing   hpack-0.5 (lib)
-Completed    hpack-0.5 (lib)
+Installing   hpack-0.35 (lib)
+Completed    hpack-0.35 (lib)
 Starting     hpack-0.35 (exe:hpack)
 Building     hpack-0.35 (exe:hpack)
 Installing   hpack-0.35 (exe:hpack)
@@ -144,22 +154,6 @@ Warning: installdir is not defined. Set it in your cabal config file or use
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
 Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 </pre>
-
-> **:mag_right:** Command [`cabal`][cabal_man] `list hpack` shows the latest available version of package [**`hpack`**][hpack_downloads] (*do not* forget `cabal update`) :
-> <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
-> Downloading the latest package list from hackage.haskell.org
-> To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2022-02-01T15:13:03Z'
-> &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
-> * hpack
->     Synopsis: A modern format for Haskell packages
->     Default available version: 0.35
->     Installed versions: [ Not installed ]
->     Homepage: https://github.com/sol/hpack#readme
->     License:  MIT
-> </pre>
 
 ## <span id="hspec"><code>hspec</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
@@ -207,6 +201,14 @@ Copying 'htfpp.exe' to '%APPDATA%\cabal\bin\htfpp.exe'
 [HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java (note the mandatory option `--lib`).
 
 <pre style="font-size:80%;">
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+* HUnit
+    Synopsis: A unit testing framework for Haskell
+    Default available version: 1.6.2.0
+    Installed versions: [ Not installed ]
+    Homepage: https://github.com/hspec/HUnit#readme
+    License:  BSD3
+&nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib HUnit</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
@@ -227,22 +229,6 @@ Installing   HUnit-1.6.2.0 (lib)
 Completed    HUnit-1.6.2.0 (lib)
 </pre>
 
-> **:mag_right:** Command [`cabal`][cabal_man] `list hunit` shows the latest available version of package [`hunit`](https://hackage.haskell.org/package/HUnit) (*do not* forget `cabal update`) :
-> <pre style="font-size:80%;">
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
-> Downloading the latest package list from hackage.haskell.org
-> To revert to previous state run:
->    cabal v2-update 'hackage.haskell.org,2021-03-05T07:35:37Z'
-> &nbsp;
-> <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
-> * HUnit
->     Synopsis: A unit testing framework for Haskell
->     Default available version: 1.6.2.0
->     Installed versions: [ Not installed ]
->     Homepage: https://github.com/hspec/HUnit#readme
->     License:  BSD3
-> </pre>
-
 ## <span id="ormolu"><code>ormolu</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 [**`ormolu`**](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
@@ -251,7 +237,7 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.4.0.0
+    Default available version: 0.5.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
     License:  BSD-3-Clause
@@ -264,23 +250,26 @@ In order, the following will be built (use -v for more details):
  - base-compat-0.12.1 (lib) (requires download & build)
  - ghc-lib-parser-9.2.1.20211101 (lib) (requires download & build)
 [...]
- - ormolu-0.4.0.0 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.4.0.0
+ - ormolu-0.5.0.0 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.5.0.0
 [...]
-Starting     ormolu-0.4.0.0 (lib)
-Building     ormolu-0.4.0.0 (lib)
-Installing   ormolu-0.4.0.0 (lib)
-Completed    ormolu-0.4.0.0 (lib)
-Starting     ormolu-0.4.0.0 (exe:ormolu)
-Building     ormolu-0.4.0.0 (exe:ormolu)
-Installing   ormolu-0.4.0.0 (exe:ormolu)
-Completed    ormolu-0.4.0.0 (exe:ormolu)
+Starting     ormolu-0.5.0.0 (lib)
+Building     ormolu-0.5.0.0 (lib)
+Installing   ormolu-0.5.0.0 (lib)
+Completed    ormolu-0.5.0.0 (lib)
+Starting     ormolu-0.5.0.0 (exe:ormolu)
+Building     ormolu-0.5.0.0 (exe:ormolu)
+Installing   ormolu-0.5.0.0 (exe:ormolu)
+Completed    ormolu-0.5.0.0 (exe:ormolu)
+Warning: installdir is not defined. Set it in your cabal config file or use
+--installdir=&lt;path>. Using default installdir:
+"<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal\\bin"
 Copying 'ormolu.exe' to
-Copying 'ormolu.exe' to '%APPDATA%\cabal\bin\ormolu.exe
+'<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal\bin\ormolu.exe'
 &nbsp;
-<b>&gt; <a href="https://hackage.haskell.org/package/ormolu-0.4.0.0#usage">ormolu</a> --version</b>
-ormolu 0.4.0.0 UNKNOWN UNKNOWN
-using ghc-lib-parser 9.2.1.20211101
+<b>&gt; <a href="https://hackage.haskell.org/package/ormolu-0.5.0.0#usage">ormolu</a> --version</b>
+ormolu 0.5.0.0 UNKNOWN UNKNOWN
+using ghc-lib-parser 9.2.2.20220307
 </pre>
 
 ## <span id="footnotes">Footnotes</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
@@ -356,7 +345,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -48,6 +48,8 @@
 - [Making the most of Cabal][blog_lau], June 6, 2020.
 -  [Kindness for Mean Girls: a discussion on type-level programming in Haskell][blog_nadeem] by Ayman Nadeem, May 2020.
 - [GHC Blog](https://serokell.io/blog/ghc) by the [Serokell team](https://serokell.io/team):
+  - [Introduction to Haskell Typeclasses](https://serokell.io/blog/haskell-typeclasses) by Gints Dreimanis, April 2022.
+  - [Algebraic Data Types in Haskell](https://serokell.io/blog/algebraic-data-types-in-haskell) by Gints Dreimanis, March 2022.
   - [Haskell to Core: Understanding Haskell Features Through Their Desugaring](https://serokell.io/blog/haskell-to-core) by Vladislav Zaviakov, August 2020.
   - [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
 - [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
@@ -75,6 +77,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 ## <span id="news">News</span>
 
 - [Haskell Planetarium][haskell_planetarium] - link aggregator of discussions about Haskell.
+- [Haskell::Reddit](https://www.reddit.com/r/haskell/)
 - [Haskell Weekly][haskell_weekly]
 
 ## <span id="projects">Projects</span>
@@ -96,12 +99,16 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ## <span id="videos">Videos</span>
 
+- [Advanced Functional Programming in Haskell][video_hutton] by Graham Hutton (17 sessions).
+  - [AFP 15 - Making Append Vanish](https://www.youtube.com/watch?v=WQy7Bzr03R4), April 2021.
+  - [AFP 14 - Induction](https://www.youtube.com/watch?v=uykHCg2VUjc), March 2021.
 - [Dependent Types in Haskell][video_weirich] by Stephane Weirich, October 2017.
 - [Haskell taketh away: limiting side effects for parallel programming][video_newton], June 2017.
+- [Haskell Tutorial][video_banas] by Derek Banas, August 2015 (76 min).
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/April 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/May 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -146,5 +153,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 [parconc_examples]: https://github.com/simonmar/parconc-examples
 [tuto_haskell_at_work]: https://haskell-at-work.com/
 [tuto_mmhaskell]: https://mmhaskell.com/
-[video_newton]: https://youtu.be/lC5UWG5N8oY
-[video_weirich]: https://youtu.be/wNa3MMbhwS4
+[video_banas]: https://www.youtube.com/watch?v=02_H3LjqMr8
+[video_hutton]: https://www.youtube.com/watch?v=-qhbNGghVfc&list=PLF1Z-APd9zK5uFc8FKr_di9bfsYv8-lbc
+[video_newton]: https://www.youtube.com/watch?v=lC5UWG5N8oY
+[video_weirich]: https://www.youtube.com/watch?v=wNa3MMbhwS4
