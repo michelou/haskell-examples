@@ -83,7 +83,7 @@ In order, the following will be built (use -v for more details):
     Homepage: https://github.com/ndmitchell/hlint#readme
     License:  BSD3
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hlint</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --overwrite-policy=always hlint</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):

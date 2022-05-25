@@ -76,14 +76,16 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ## <span id="news">News</span>
 
-- [Haskell Planetarium][haskell_planetarium] - link aggregator of discussions about Haskell.
+- [Haskell Planetarium][haskell_planetarium] &ndash; link aggregator of discussions about Haskell.
 - [Haskell::Reddit](https://www.reddit.com/r/haskell/)
 - [Haskell Weekly][haskell_weekly]
 
 ## <span id="projects">Projects</span>
 
-- [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland] -  a Haskell <b>ST</b>atic <b>AN</b>alysis tool.
-- [polysemy](https://github.com/polysemy-research/polysemy) - a library for writing high-power, low-boilerplate DSLs.
+- [haskell-language-server](https://github.com/haskell/haskell-language-server) &ndash; the official Haskell language server (LSP) implementation.
+- [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland] &ndash; a Haskell <b>ST</b>atic <b>AN</b>alysis tool.
+- [LibHunt Haskell](https://www.libhunt.com/l/haskell) &ndash; discover trending Haskell open-source projects.
+- [polysemy](https://github.com/polysemy-research/polysemy) &ndash; a library for writing high-power, low-boilerplate DSLs.
 
 ## <span id="tutorials">Tutorials</span>
 

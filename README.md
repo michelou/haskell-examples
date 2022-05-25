@@ -138,8 +138,8 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
-   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.36.1.windows.1, diff 3.7
+   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.5.0.0
+   java 11.0.15, mvn 3.8.5, git 2.36.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
@@ -153,8 +153,8 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
    cabal 3.6.2.0, ghc version 8.10.7, stack 2.7.5, haddock 2.24.2
-   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.3.0.1
-   git 2.36.1.windows.1, diff 3.7
+   hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.5.0.0
+   java 11.0.15, mvn 3.8.5, git 2.36.1.windows.1, diff 3.7
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -263,13 +263,13 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
 [temurin_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
 <!--
-11.0.9      => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
-11.0.11     => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-April/005860.html
-11.0.12     => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-July/006954.html
-11.0.14.1_1 => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
-11.0.15_10  => https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
+11.0.9      -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
+11.0.11     -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-April/005860.html
+11.0.12     -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-July/006954.html
+11.0.14.1_1 -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
+11.0.15_10  -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
 -->
-[temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
+[temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
 [ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.5.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [rust_examples]: https://github.com/michelou/rust-examples
