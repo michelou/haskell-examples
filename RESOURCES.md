@@ -25,6 +25,17 @@
 
 - [Algebraic Data Types in Haskell][blog_dreimanis] by Gints Dreimanis, March 2022.
 - [Typed Template Haskell in GHC 9][blog_lassarote] by Heitor Toledo Lassarote de Paula, January 2022.
+- Pierre Guillemot Blog Posts
+  - [Haskell series part 10: `Maybe`, `Just` and `Nothing`](https://blog.kalvad.com/haskell-series-part-10/), January 2022.
+  - [Haskell series part 9: modules and exceptions](https://blog.kalvad.com/haskell-series-part-9/), December 2021.
+  - [Haskell series part 8: IO](https://blog.kalvad.com/haskell-series-part-8/), December 2021.
+  - [Haskell series part 7: `map`, `filter` and `foldl`](https://blog.kalvad.com/haskell-series-part-7/), November 2021.
+  - [Haskell series part 6: higher order functions](https://blog.kalvad.com/haskell-series-part-6/), November 2021.
+  - [Haskell series part 5: pattern matching](https://blog.kalvad.com/haskell-series-part-5/), October 2021.
+  - [Haskell series part 4: tuples and pattern matching](https://blog.kalvad.com/haskell-series-part-4/), September 2021.
+  - [Haskell series part 3: infix and prefix functions](https://blog.kalvad.com/haskell-series-part-3/), April 2021.
+  - [Haskell series part 2: lists and function declarations](https://blog.kalvad.com/haskell-series-part-2/), April 2021.
+  - [Haskell series part 1: introduction](https://blog.kalvad.com/haskell-series-part-1/), July 2021.
 - [Parser Combinators in Haskell][blog_lassarote_comb] by Heitor Toledo Lassarote de Paula, December 2021.
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.

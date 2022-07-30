@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/" rel="external">Haskell project</a>.
   </td>
   </tr>
@@ -286,12 +286,12 @@ factorialProd(5)=120
 <span id="footnote_01">[1]</span> ***build.bat*** [↩](#anchor_01)
 
 <dl><dd>
-In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a href="./Factorial/build.bat"><code>build.bat</code></a> reads several properties directly from <a href="Factorial/Factorial.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code> and <code>ghc_options<code>.
+In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a href="./Factorial/build.bat"><code>build.bat</code></a> reads several properties directly from <a href="Factorial/Factorial.cabal"><code>Factorial.cabal</code></a> if the Cabal project file is present; for instance: <code>name</code>, <code>synopsis</code>, <code>version</code> and <code>ghc_options</code>.
 </dd></dl>
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
