@@ -78,7 +78,7 @@ In order, the following will be built (use -v for more details):
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 * hlint
     Synopsis: Source code suggestions
-    Default available version: 3.4
+    Default available version: 3.4.1
     Installed versions: [ Not installed ]
     Homepage: https://github.com/ndmitchell/hlint#readme
     License:  BSD3
@@ -88,18 +88,18 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hlint-3.4 (lib) (requires download & build)
- - hlint-3.4  (exe:hlint) (requires download & build)
-Downloading  hlint-3.4 
-Downloaded   hlint-3.4 
-Starting     hlint-3.4  (lib)
-Building     hlint-3.4  (lib)
-Installing   hlint-3.4  (lib)
-Completed    hlint-3.4  (lib)
-Starting     hlint-3.4  (exe:hlint)
-Building     hlint-3.4  (exe:hlint)
-Installing   hlint-3.4  (exe:hlint)
-Completed    hlint-3.4  (exe:hlint)
+ - hlint-3.4.1 (lib) (requires download & build)
+ - hlint-3.4.1  (exe:hlint) (requires download & build)
+Downloading  hlint-3.4.1 
+Downloaded   hlint-3.4.1 
+Starting     hlint-3.4.1  (lib)
+Building     hlint-3.4.1  (lib)
+Installing   hlint-3.4.1  (lib)
+Completed    hlint-3.4.1  (lib)
+Starting     hlint-3.4.1  (exe:hlint)
+Building     hlint-3.4.1  (exe:hlint)
+Installing   hlint-3.4.1  (exe:hlint)
+Completed    hlint-3.4.1  (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -131,12 +131,12 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 * hpack
     Synopsis: A modern format for Haskell packages
-    Default available version: 0.35
+    Default available version: 0.35.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/sol/hpack#readme
     License:  MIT
 &nbsp;
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install hpack</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --overwrite-policy=always hpack</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
@@ -160,7 +160,15 @@ Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 [Hspec] is a testing framework for Haskell (note the mandatory option `--lib`).
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --lib hspec</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hspec-core | head -6</b>
+* hspec-core
+    Synopsis: A Testing Framework for Haskell
+    Default available version: 2.10.0.1
+    Installed versions: [ Not installed ]
+    Homepage: http://hspec.github.io/
+    License:  MIT
+&nbsp;
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> install --overwrite-policy=always --lib hspec</b>
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
@@ -250,25 +258,25 @@ In order, the following will be built (use -v for more details):
  - base-compat-0.12.1 (lib) (requires download & build)
  - ghc-lib-parser-9.2.1.20211101 (lib) (requires download & build)
 [...]
- - ormolu-0.5.0.0 (exe:ormolu) (requires download & build)
-Downloading  ormolu-0.5.0.0
+ - ormolu-0.5.0.1 (exe:ormolu) (requires download & build)
+Downloading  ormolu-0.5.0.1
 [...]
-Starting     ormolu-0.5.0.0 (lib)
-Building     ormolu-0.5.0.0 (lib)
-Installing   ormolu-0.5.0.0 (lib)
-Completed    ormolu-0.5.0.0 (lib)
-Starting     ormolu-0.5.0.0 (exe:ormolu)
-Building     ormolu-0.5.0.0 (exe:ormolu)
-Installing   ormolu-0.5.0.0 (exe:ormolu)
-Completed    ormolu-0.5.0.0 (exe:ormolu)
+Starting     ormolu-0.5.0.1 (lib)
+Building     ormolu-0.5.0.1 (lib)
+Installing   ormolu-0.5.0.1 (lib)
+Completed    ormolu-0.5.0.1 (lib)
+Starting     ormolu-0.5.0.1 (exe:ormolu)
+Building     ormolu-0.5.0.1 (exe:ormolu)
+Installing   ormolu-0.5.0.1 (exe:ormolu)
+Completed    ormolu-0.5.0.1 (exe:ormolu)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path>. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal\\bin"
 Copying 'ormolu.exe' to
 '<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal\bin\ormolu.exe'
 &nbsp;
-<b>&gt; <a href="https://hackage.haskell.org/package/ormolu-0.5.0.0#usage">ormolu</a> --version</b>
-ormolu 0.5.0.0 UNKNOWN UNKNOWN
+<b>&gt; <a href="https://hackage.haskell.org/package/ormolu-0.5.0.1#usage">ormolu</a> --version</b>
+ormolu 0.5.0.1 UNKNOWN UNKNOWN
 using ghc-lib-parser 9.2.2.20220307
 </pre>
 
@@ -345,7 +353,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -362,10 +370,8 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
-[hlint_changelog]: https://hackage.haskell.org/package/hlint-3.2.3/changelog
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hlint_readme]: https://hackage.haskell.org/package/hlint-3.2#readme
-[hpack_changelog]: https://hackage.haskell.org/package/hpack-0.34.3/changelog
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.4.1#readme
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
 [hspec]: https://hackage.haskell.org/package/hspec

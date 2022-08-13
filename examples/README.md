@@ -115,9 +115,9 @@ Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] 
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
-C:\opt\apache-maven-3.8.5\bin\mvn.cmd
+C:\opt\apache-maven-3.8.6\bin\mvn.cmd
 &nbsp;
-<b>&gt; <a href="https://maven.apache.org/ref/3.8.5/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.8.6/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 factorialRec(5) =120
@@ -291,7 +291,7 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

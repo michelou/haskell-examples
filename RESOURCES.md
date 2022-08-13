@@ -23,6 +23,9 @@
 
 ## <span id="blogs">Blogs</span>
 
+- [Hasura blog posts](https://hasura.io/blog/tagged/haskell/):
+  - [Hasura and Well-Typed collaborate on Haskell tooling](https://hasura.io/blog/hasura-and-well-typed-collaborate-on-haskell-tooling/), May 2022.
+  - [Parser Combinators: a Walkthrough](https://hasura.io/blog/parser-combinators-walkthrough/), December 2020.
 - [Algebraic Data Types in Haskell][blog_dreimanis] by Gints Dreimanis, March 2022.
 - [Typed Template Haskell in GHC 9][blog_lassarote] by Heitor Toledo Lassarote de Paula, January 2022.
 - Pierre Guillemot Blog Posts
@@ -67,6 +70,10 @@
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
 - Build a CPU: [Part 1](https://yager.io/CPU/CPU2.html), October 2017, and [Part 2](https://yager.io/CPU/CPU2.html), April 2018.
+- [PUSHER blog posts](https://making.pusher.com/):
+  - [Memory profiling in Haskell](https://making.pusher.com/memory-profiling-in-haskell/), January 2016.
+  - [Low latency, large working set, and GHC’s garbage collector: pick two of three](https://making.pusher.com/latency-working-set-ghc-gc-pick-two/), May 2016.
+  - [Top tips and tools for optimizing Haskell](https://making.pusher.com/top-tips-and-tools-for-optimising-haskell/), October 2015.
 
 ## <span id="books">Books</span>
 
@@ -106,6 +113,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 - [Learn You a Haskell for Great Good!][learn_you_haskell], April 2011.
   - [Making Our Own Types and Typeclasses](http://learnyouahaskell.com/making-our-own-types-and-typeclasses).
 - [A Gentle Introduction do Haskell][haskell_tutorial], June 2000.
+- [FP Complete Haskell](https://www.fpcomplete.com/haskell/learn/).
 - [Haskell Crash Course](https://yager.io/CrashCourse/Haskell.html).
 - [What I wisk I knew when learning Haskell](http://dev.stephendiehl.com/hask/) by Stephen Diehl, version 2.5.
 - [Wise Man's Hasekll](https://andre.tips/wmh/).
@@ -121,7 +129,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
