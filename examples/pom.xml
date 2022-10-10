@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
-        <exec.maven.version>3.0.0</exec.maven.version>          <!-- Mar 2017 -->
+        <exec.maven.version>3.1.0</exec.maven.version>          <!-- Mar 2017 -->
         <ghc.cmd>${env.GHC_HOME}/bin/ghc.exe</ghc.cmd>
     </properties>
 

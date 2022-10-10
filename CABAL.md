@@ -50,13 +50,13 @@ That means we have to carefully set up our **`PATH`** variable so that `%CABAL_D
 
 ## <span id="haskell_lsp"><code>haskell-language-server</code> installation</span>
 
-[`haskell-language-server`][haskell_lsp] is a LSP server for GHC.
+[`haskell-language-server`][haskell_lsp] is a LSP server for GHC ([changelog](https://hackage.haskell.org/package/haskell-language-server-1.8.0.0/changelog)).
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> list haskell-language-server</b>
 * haskell-language-server
     Synopsis: LSP server for GHC
-    Default available version: 1.7.0.0
+    Default available version: 1.8.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/haskell/haskell-language-server#readme
     License:  Apache-2.0
@@ -72,13 +72,15 @@ In order, the following will be built (use -v for more details):
 
 ## <span id="hlint"><code>hlint</code> installation</span>
 
-[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code. We install [**`hlint`**][hlint_downloads] as follows.
+[HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code ([changelog](https://hackage.haskell.org/package/hlint-3.5/changelog)).
+
+We install [**`hlint`**][hlint_downloads] as follows.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hlint | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 * hlint
     Synopsis: Source code suggestions
-    Default available version: 3.4.1
+    Default available version: 3.5
     Installed versions: [ Not installed ]
     Homepage: https://github.com/ndmitchell/hlint#readme
     License:  BSD3
@@ -88,18 +90,18 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hlint-3.4.1 (lib) (requires download & build)
- - hlint-3.4.1  (exe:hlint) (requires download & build)
-Downloading  hlint-3.4.1 
-Downloaded   hlint-3.4.1 
-Starting     hlint-3.4.1  (lib)
-Building     hlint-3.4.1  (lib)
-Installing   hlint-3.4.1  (lib)
-Completed    hlint-3.4.1  (lib)
-Starting     hlint-3.4.1  (exe:hlint)
-Building     hlint-3.4.1  (exe:hlint)
-Installing   hlint-3.4.1  (exe:hlint)
-Completed    hlint-3.4.1  (exe:hlint)
+ - hlint-3.5 (lib) (requires download & build)
+ - hlint-3.5  (exe:hlint) (requires download & build)
+Downloading  hlint-3.5 
+Downloaded   hlint-3.5 
+Starting     hlint-3.5  (lib)
+Building     hlint-3.5  (lib)
+Installing   hlint-3.5  (lib)
+Completed    hlint-3.5  (lib)
+Starting     hlint-3.5  (exe:hlint)
+Building     hlint-3.5  (exe:hlint)
+Installing   hlint-3.5  (exe:hlint)
+Completed    hlint-3.5  (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -125,7 +127,9 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 
 ## <span id="hpack"><code>hpack</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[Hpack][hpack_readme] is a format for Haskell packages. Similarly to [**`hlint`**][hlint_downloads] we install [**`hpack`**][hpack_downloads] as follows.
+[Hpack][hpack_readme] is a format for Haskell packages ([changelog](https://hackage.haskell.org/package/hpack-0.35.0/changelog)).
+
+Similarly to [**`hlint`**][hlint_downloads] we install [**`hpack`**][hpack_downloads] as follows.
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
@@ -141,14 +145,14 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
-Starting     hpack-0.35 (lib)
-Building     hpack-0.35 (lib)
-Installing   hpack-0.35 (lib)
-Completed    hpack-0.35 (lib)
-Starting     hpack-0.35 (exe:hpack)
-Building     hpack-0.35 (exe:hpack)
-Installing   hpack-0.35 (exe:hpack)
-Completed    hpack-0.35 (exe:hpack)
+Starting     hpack-0.35.0 (lib)
+Building     hpack-0.35.0 (lib)
+Installing   hpack-0.35.0 (lib)
+Completed    hpack-0.35.0 (lib)
+Starting     hpack-0.35.0 (exe:hpack)
+Building     hpack-0.35.0 (exe:hpack)
+Installing   hpack-0.35.0 (exe:hpack)
+Completed    hpack-0.35.0 (exe:hpack)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -157,13 +161,13 @@ Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 
 ## <span id="hspec"><code>hspec</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[Hspec] is a testing framework for Haskell (note the mandatory option `--lib`).
+[Hspec] is a testing framework for Haskell ([changelog](https://hackage.haskell.org/package/hspec-2.10.6/changelog)). Note the mandatory `--lib` option.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hspec-core | head -6</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> list hspec-core | <a href="https://man7.org/linux/man-pages/man1/head.1.html" rel="external">head</a> -6</b>
 * hspec-core
     Synopsis: A Testing Framework for Haskell
-    Default available version: 2.10.0.1
+    Default available version: 2.10.6
     Installed versions: [ Not installed ]
     Homepage: http://hspec.github.io/
     License:  MIT
@@ -173,13 +177,13 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hspec-core-2.9.7 (lib) (requires download & build)
- - hspec-2.9.7 (lib) (requires download & build)
+ - hspec-core-2.10.6 (lib) (requires download & build)
+ - hspec-2.10.6 (lib) (requires download & build)
 [...]
-Starting     hspec-2.9.7 (lib)
-Building     hspec-2.9.7 (lib)
-Installing   hspec-2.9.7 (lib)
-Completed    hspec-2.9.7 (lib)
+Starting     hspec-2.10.6 (lib)
+Building     hspec-2.10.6 (lib)
+Installing   hspec-2.10.6 (lib)
+Completed    hspec-2.10.6 (lib)
 </pre>
 
 ## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
@@ -206,10 +210,10 @@ Copying 'htfpp.exe' to '%APPDATA%\cabal\bin\htfpp.exe'
 
 ## <span id="hunit"><code>HUnit</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
-[HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java (note the mandatory option `--lib`).
+[HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java ([changelog](https://hackage.haskell.org/package/HUnit-1.6.2.0/changelog)). Note the mandatory  `--lib` option.
 
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
+<b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> list hunit | <a href="https://man7.org/linux/man-pages/man1/head.1.html" rel="external">head</a> -6</b>
 * HUnit
     Synopsis: A unit testing framework for Haskell
     Default available version: 1.6.2.0
@@ -245,7 +249,7 @@ Completed    HUnit-1.6.2.0 (lib)
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list ormolu</b>
 * ormolu
     Synopsis: A formatter for Haskell source code
-    Default available version: 0.5.0.0
+    Default available version: 0.5.0.1
     Installed versions: [ Not installed ]
     Homepage: https://github.com/tweag/ormolu
     License:  BSD-3-Clause
@@ -353,7 +357,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -371,7 +375,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hlint_readme]: https://hackage.haskell.org/package/hlint-3.4.1#readme
+[hlint_readme]: https://hackage.haskell.org/package/hlint-3.5#readme
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
 [hspec]: https://hackage.haskell.org/package/hspec
