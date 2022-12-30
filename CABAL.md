@@ -26,17 +26,17 @@ We install [**`cabal-install`**](https://hackage.haskell.org/package/cabal-insta
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
- - Cabal-syntax-3.6.0.0 (lib) (requires download & build)
+ - Cabal-syntax-3.8.1.0 (lib) (requires download & build)
 [...]
-Starting     cabal-install-3.6.2.0 (exe:cabal)
-Building     cabal-install-3.6.2.0 (exe:cabal)
-Installing   cabal-install-3.6.2.0 (exe:cabal)
-Completed    cabal-install-3.6.2.0 (exe:cabal)
+Starting     cabal-install-3.8.1.0 (exe:cabal)
+Building     cabal-install-3.8.1.0 (exe:cabal)
+Installing   cabal-install-3.8.1.0 (exe:cabal)
+Completed    cabal-install-3.8.1.0 (exe:cabal)
 Copying 'cabal.exe' to '%APPDATA%\cabal\bin\cabal.exe'
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> --version</b>
-cabal-install version 3.6.2.0
-compiled using version 3.6.2.0 of the Cabal library
+cabal-install version 3.8.1.0
+compiled using version 3.8.1.0 of the Cabal library
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
@@ -56,7 +56,7 @@ That means we have to carefully set up our **`PATH`** variable so that `%CABAL_D
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages" rel="external">cabal</a> list haskell-language-server</b>
 * haskell-language-server
     Synopsis: LSP server for GHC
-    Default available version: 1.8.0.0
+    Default available version: 1.9.0.0
     Installed versions: [ Not installed ]
     Homepage: https://github.com/haskell/haskell-language-server#readme
     License:  Apache-2.0
@@ -135,7 +135,7 @@ Similarly to [**`hlint`**][hlint_downloads] we install [**`hpack`**][hpack_downl
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> list hpack | <a href="https://man7.org/linux/man-pages/man1/head.1.html">head</a> -6</b>
 * hpack
     Synopsis: A modern format for Haskell packages
-    Default available version: 0.35.0
+    Default available version: 0.35.1
     Installed versions: [ Not installed ]
     Homepage: https://github.com/sol/hpack#readme
     License:  MIT
@@ -145,14 +145,14 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
-Starting     hpack-0.35.0 (lib)
-Building     hpack-0.35.0 (lib)
-Installing   hpack-0.35.0 (lib)
-Completed    hpack-0.35.0 (lib)
-Starting     hpack-0.35.0 (exe:hpack)
-Building     hpack-0.35.0 (exe:hpack)
-Installing   hpack-0.35.0 (exe:hpack)
-Completed    hpack-0.35.0 (exe:hpack)
+Starting     hpack-0.35.1 (lib)
+Building     hpack-0.35.1 (lib)
+Installing   hpack-0.35.1 (lib)
+Completed    hpack-0.35.1 (lib)
+Starting     hpack-0.35.1 (exe:hpack)
+Building     hpack-0.35.1 (exe:hpack)
+Installing   hpack-0.35.1 (exe:hpack)
+Completed    hpack-0.35.1 (exe:hpack)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -357,7 +357,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/December 2022* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
