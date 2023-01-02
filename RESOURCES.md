@@ -23,6 +23,11 @@
 
 ## <span id="blogs">Blogs</span>
 
+- [Harry Garrood's Blog](https://harry.garrood.me/) :
+  - [Easy incremental Haskell CI builds with GHC 9.4](https://harry.garrood.me/blog/easy-incremental-haskell-ci-builds-with-ghc-9.4/), September 2022.
+  - [Down with Show! Part 3: A replacement for Show](https://harry.garrood.me/blog/down-with-show-part-3/), December 2018.
+  - [Down with Show! Part 2: What's wrong with the Show type class](https://harry.garrood.me/blog/down-with-show-part-2/), December 2018.
+  - [Down with Show! Part 1: Rules of thumb for when to use a type class](https://harry.garrood.me/blog/down-with-show-part-1/), December 2018.
 - [Hasura blog posts](https://hasura.io/blog/tagged/haskell/):
   - [Hasura and Well-Typed collaborate on Haskell tooling](https://hasura.io/blog/hasura-and-well-typed-collaborate-on-haskell-tooling/), May 2022.
   - [Parser Combinators: a Walkthrough](https://hasura.io/blog/parser-combinators-walkthrough/), December 2020.
@@ -129,7 +134,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/December 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -15,7 +15,7 @@
 
 This project relies on the following external software for the **Microsoft Windows** platform:
 
-- [Cabal 3.6][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
+- [Cabal 3.8][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
 - [Git 2.39][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
@@ -34,7 +34,7 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*December 2022*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*January 2023*) <sup id="anchor_03">[3](#footnote_03)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven-3.8.6\         <i>( 10 MB)</i>
@@ -137,7 +137,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.6.2.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
+   cabal 3.8.1.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
    hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.5.0.0
    java 11.0.16, mvn 3.8.6, git 2.39.0.windows.1, diff 3.7
 
@@ -152,7 +152,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.6.2.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
+   cabal 3.8.1.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
    hlint v3.4, hpack 0.34.4, htfpp 0.14.0.6, ormolu 0.5.0.0
    java 11.0.16, mvn 3.8.6, git 2.39.0.windows.1, diff 3.7
 Tool paths:
@@ -179,10 +179,15 @@ Environment variables:
 
 ## <span id="footnotes">Footnotes</span>
 
-<span id="footnote_01">[1]</span> ***Cabal versions*** [↩](#anchor_01)
+<span id="footnote_01">[1]</span> ***Cabal compatibility*** [↩](#anchor_01)
 
 <dl><dd>
-<code>cabal 3.4</code> works fine both with <code>ghc 8.x</code> and <code>ghc 9.x</code> while <code>cabal 3.2</code> only works with <code>ghc 8.x</code>.
+<table>
+<tr><th>GHC version</th><th>Cabal version</th></tr>
+<tr><td>8.x</td><td>3.2</td</tr>
+<tr><td>8.x, 9.x</td><td>3.4</td></tr>
+<tr><td>9.4</td><td>3.8 or later</td></tr>
+</table>
 </dd></dl>
 
 <span id="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
@@ -199,9 +204,9 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <dd>
 <pre style="font-size:80%;">
 <a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.12-bin.zip</a>                         <i>(  9 MB)</i>
-<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.6.2.0-x86_64-unknown-mingw32.zip</a>   <i>(  5 MB)</i>
+<a href="https://www.haskell.org/cabal/download.html">cabal-install-3.8.1.0-x86_64-unknown-mingw32.zip</a>   <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
-<a href="https://downloads.haskell.org/ghc/9.2.4/">ghc-9.2.4-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
+<a href="https://downloads.haskell.org/ghc/9.4.4/">ghc-9.4.4-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
 <a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.17_8.zip</a>   <i>( 99 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.39.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.9.3-windows-x86_64.zip</a>                     <i>( 15 MB)</i>
@@ -210,6 +215,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <dd>
 <table>
 <tr><th>Version</th><th>LLVM</th><th>Archive</th><th>Installation</th><th>Remarks</th></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.2.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
 <tr><td><a href="https://downloads.haskell.org/ghc/9.2.4/docs/html/users_guide/9.2.4-notes.html">9.2.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.2.4/docs/html/users_guide/9.2.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
 <tr><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html">9.2.2</a> <sup><b>a)</b></sup></td><td>10,11</td><td>331 MB</td><td>1.85 GB</td><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html#included-libraries">Included libraries</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html">9.0.1</a></td><td>9</td><td>236 MB</td><td>2.64 GB</td><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html#included-libraries">Included libraries</a></td></tr>
@@ -220,7 +226,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/December 2022* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -232,7 +238,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven_history]: https://maven.apache.org/docs/history.html
 [apache_maven_relnotes]: https://maven.apache.org/docs/3.8.6/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
-[cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.6.2.0.md
+[cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.8.1.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
 [cabal_userguide]: https://www.haskell.org/cabal/users-guide/
 [cpp_examples]: https://github.com/michelou/cpp-examples
