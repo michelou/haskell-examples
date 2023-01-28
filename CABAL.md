@@ -2,7 +2,7 @@
 
 <table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell project"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://github.com/haskell/cabal/#cabal" rel="external"><img style="border:0;" src="./docs/images/cabal.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/" rel="external">Cabal</a>, a system for packaging and installing <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on a Windows machine.
   </td>
   </tr>
@@ -70,7 +70,7 @@ In order, the following will be built (use -v for more details):
 
 </pre>
 
-## <span id="hlint"><code>hlint</code> installation</span>
+## <span id="hlint"><code>hlint</code> installation</span> [**&#x25B4;**](#top)
 
 [HLint][hlint_readme] is a tool for suggesting possible improvements to [Haskell] source code ([changelog](https://hackage.haskell.org/package/hlint-3.5/changelog)).
 
@@ -125,7 +125,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 -->
 
-## <span id="hpack"><code>hpack</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="hpack"><code>hpack</code> installation</span> [**&#x25B4;**](#top)
 
 [Hpack][hpack_readme] is a format for Haskell packages ([changelog](https://hackage.haskell.org/package/hpack-0.35.0/changelog)).
 

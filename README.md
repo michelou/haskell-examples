@@ -1,8 +1,8 @@
-# <span id="top">Haskell on Microsoft Windows</span>
+# <span id="top">Playing with Haskell on Windows</span>
 
-<table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
+<table style="font-family:Helvetica,Arial;font-size:12px;line-height:1.6;">
   <tr>
-  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="https://wiki.haskell.org/wikiupload/6/62/Double_lambda.png" width="100" alt="Haskell logo"/></a></td>
+  <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="./docs/images/Double_lambda.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This repository gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> examples coming from various websites and books.<br/>
   It also includes several <a href="https://en.wikibooks.org/wiki/Windows_Batch_Scripting" rel="external">batch files</a> for experimenting with <a href="https://www.haskell.org/" rel="external">Haskell</a> on a Windows machine.
   </td>
@@ -127,7 +127,7 @@ We distinguish different sets of batch commands:
       run         execute the generated program
     </pre>
 
-## <span id="usage">Usage examples</span>
+## <span id="usage">Usage examples</span> [**&#x25B4;**](#top)
 
 ### `setenv.bat`
 
