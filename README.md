@@ -58,7 +58,6 @@ This project is organized as follows:
 <pre style="font-size:80%;">
 docs\
 examples\{<a href="examples/README.md">README.md</a>, <a href="examples/HelloWorld/">HelloWorld</a>, ..}
-kurt-examples\{<a href="kurt-examples/README.md">README.md</a>, <a href="kurt-examples/listing_02.6/">listing_02.6</a>}
 parconc-examples\{<a href="parconc-examples/README.md">README.md</a>, ..}
 <a href="CABAL.md">CABAL.md</a>
 README.md
@@ -267,6 +266,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [htf_changelog]: https://hackage.haskell.org/package/HTF-0.15.0.0/changelog
 [htf_downloads]: https://hackage.haskell.org/package/HTF
+[kafka_examples]: https://github.com/michelou/kafka-examples
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [man1_awk]: https://www.linux.org/docs/man1/awk.html
