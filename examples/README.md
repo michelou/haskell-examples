@@ -115,9 +115,9 @@ Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] 
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
-C:\opt\apache-maven-3.8.6\bin\mvn.cmd
+C:\opt\apache-maven-3.8.7\bin\mvn.cmd
 &nbsp;
-<b>&gt; <a href="https://maven.apache.org/ref/3.8.6/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
+<b>&gt; <a href="https://maven.apache.org/ref/3.8.7/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
 Linking target/Main.exe ...
 factorialRec(5) =120
@@ -173,7 +173,7 @@ factorialProd(5)=120
 [build] _EXITCODE=0
 </pre>
 
-## <span id="quicksort">QuickSort</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="quicksort">`QuickSort` Example</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 The directory structure of project `QuickSort` looks as follows:
 <pre style="font-size:80%;">
@@ -291,7 +291,7 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -21,7 +21,7 @@ We can build/run code examples in directory [**`parconc-examples\`**](./) in sev
 | [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](./stack.yaml) | n.a.                       |
 
 
-## <span id="rpar"><code>rpar</code></span>
+## <span id="rpar">`rpar` Example</span>
 
 ### <span id="rpar_cabal">***Cabal***</span>
 
@@ -84,7 +84,7 @@ time: 3.76s
 [build] _EXITCODE=0
 </pre>
 
-## <span id="strat"><code>strat</code></span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="strat">`strat` Example</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
 
 ### <span id="strat_cabal">***Cabal***</span>
 
@@ -148,7 +148,7 @@ In project <code>Factorial</code> the batch file <a href="./build.bat"><code>bui
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/January 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/February 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
