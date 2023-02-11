@@ -10,6 +10,7 @@
 
 ## <span id="articles">Articles</span>
 
+- [Reader-Friendly Haskell Imports](https://www.extrema.is/articles/reader-friendly-haskell-imports) by Travis Cardwell, September 2021.
 - [Haskell Documentation with Haddock][article_haddock] by Veronica Romashkina and Dimitrii Kovanikou, December 2020.
 - [My thoughts on Haskell in 2020][article_sampellegrini] by Marco Sampelligrini, December 26, 2019.
 - [Setting up Haskell in VS Code with Stack and the IDE Engine][article_doig], November 15, 2019.
@@ -47,7 +48,10 @@
 - [Parser Combinators in Haskell][blog_lassarote_comb] by Heitor Toledo Lassarote de Paula, December 2021.
 - [Past and Present of Haskell](blog_mostovoy) by J. Mostovoy, July 1, 2021.
 - [How to build hybrid Haskell and Java programs](blog_dominguez) by F. Domínguez and A. Herrman, March 26, 2021.
-- [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
+- [Alexis King's Blog](https://lexi-lambda.github.io/) :
+  - [An introduction to typeclass metaprogramming][blog_king] by Alexis King, March 25, 2021.
+  - [Names are not type safety](https://lexi-lambda.github.io/blog/2020/11/01/names-are-not-type-safety/), November 2020.
+  - [Types as axioms, or: playing god with static types](https://lexi-lambda.github.io/blog/2020/08/13/types-as-axioms-or-playing-god-with-static-types/), August 2020.
 - [Haskell Explained](https://haskell-explained.gitlab.io/blog/) by Raghu Kaippully
   - [Polysemy is fun! - Part 2](https://haskell-explained.gitlab.io/blog/posts/2019/07/31/polysemy-is-cool-part-2/), July 2019.
   - [Polysemy is fun! - Part 1](https://haskell-explained.gitlab.io/blog/posts/2019/07/28/polysemy-is-cool-part-1/), July 2019.
@@ -75,12 +79,14 @@
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
 - Build a CPU: [Part 1](https://yager.io/CPU/CPU2.html), October 2017, and [Part 2](https://yager.io/CPU/CPU2.html), April 2018.
+- [Structuring your first Haskell project with Stack](https://sakshamsharma.com/2018/03/haskell-proj-struct/) by Saksham Sharma, March 2018.
 - [PUSHER blog posts](https://making.pusher.com/):
   - [Memory profiling in Haskell](https://making.pusher.com/memory-profiling-in-haskell/), January 2016.
   - [Low latency, large working set, and GHC’s garbage collector: pick two of three](https://making.pusher.com/latency-working-set-ghc-gc-pick-two/), May 2016.
   - [Top tips and tools for optimizing Haskell](https://making.pusher.com/top-tips-and-tools-for-optimising-haskell/), October 2015.
+- [Haskell on Windows](https://gundersen.net/haskell-on-windows/) by Espen Gundersen, April 2013.
 
-## <span id="books">Books</span>
+## <span id="books">Books</span> [**&#x25B4;**](#top)
 
 - [Haskell in Depth][book_bragilevsky] by Vitaly Bragilevsky, 2021.<br/><span style="font-size:80%;">(Manning, ISBN 978-1-6172-9540-9, 665 pages)</span>
 - [Haskell from the Very Beginning][book_very_beginning], by John Whitington, September 2019.<br/><span style="font-size:80%;">(Coherent Press, ISBN 978-0-9576-7113-3, 214 pages)</span>
@@ -103,7 +109,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 - [Haskell::Reddit](https://www.reddit.com/r/haskell/)
 - [Haskell Weekly][haskell_weekly]
 
-## <span id="projects">Projects</span>
+## <span id="projects">Projects</span> [**&#x25B4;**](#top)
 
 - [haskell-language-server](https://github.com/haskell/haskell-language-server) &ndash; the official Haskell language server (LSP) implementation.
 - [Kowainik][kowainik_github]: [relude][kowainik_relude],  [summoner][kowainik_summoner], [tomland][kowainik_tomland] &ndash; a Haskell <b>ST</b>atic <b>AN</b>alysis tool.

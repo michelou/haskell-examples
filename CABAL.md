@@ -1,6 +1,6 @@
-# <span id="top">Cabal on Microsoft Windows</span> <span style="size:25%;"><a href="README.md">↩</a></span>
+# <span id="top">Running Cabal on Windows</span> <span style="size:25%;"><a href="README.md">↩</a></span>
 
-<table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
+<table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://github.com/haskell/cabal/#cabal" rel="external"><img style="border:0;" src="./docs/images/cabal.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This document gathers usage information on running <a href="https://www.haskell.org/cabal/" rel="external">Cabal</a>, a system for packaging and installing <a href="https://www.haskell.org/" rel="external">Haskell</a> libraries and programs, on a Windows machine.
@@ -8,7 +8,14 @@
   </tr>
 </table>
 
-Useful Haskell packages are for instance [**`haskell-language-server`**](#haskell_lsp), [**`hlint`**](#hlint), [**`hpack`**](#hpack), [**`hspec`**](#hspec), [**`HTF`**](#htf), [**`HUnit`**](#hunit) and [**`ormolu`**](#ormolu).
+Useful Haskell packages are for instance :
+- [haskell-language-server 1.9][haskell_lsp_downloads] ([*release notes*][haskell_lsp_relnotes])
+- [hlint 3.5][hlint_downloads] ([*changelog*][hlint_changelog])
+- [hpack 0.35][hpack_downloads] ([*changelog*][hpack_changelog])
+- [`hspec` 2.10][hspec_downloads] ([*changelog*][hspec_changelog])
+- [`HTF` 0.15][htf_downloads] ([*changelog*][htf_changelog])
+- [`HUnit`][hunit_downloads] ([*changelog*][hunit_changelog])
+- [ormolu 0.5][ormolu_downloads] ([*changelog*][ormolu_changelog])
 
 > **:mag_right:** Do not forget to execute command [`cabal`][cabal_man] `update` before running `list` and `install` :
 > <pre style="font-size:80%;">
@@ -48,7 +55,7 @@ We now have two `cabal.exe` installed after running the above command :
 
 That means we have to carefully set up our **`PATH`** variable so that `%CABAL_DIR%\bin` <sup id="anchor_02">[2](#footnote_02)</sup> appears before `%GHC_HOME%\bin` (another option would be to remove `%GHC_HOME%\bin\cabal.exe`).  
 
-## <span id="haskell_lsp"><code>haskell-language-server</code> installation</span>
+## <span id="haskell_lsp">`haskell-language-server` installation</span> [**&#x25B4;**](#top)
 
 [`haskell-language-server`][haskell_lsp] is a LSP server for GHC ([changelog](https://hackage.haskell.org/package/haskell-language-server-1.8.0.0/changelog)).
 
@@ -125,7 +132,7 @@ HLint v3.2.7, (C) Neil Mitchell 2006-2021
 </pre>
 -->
 
-## <span id="hpack"><code>hpack</code> installation</span> [**&#x25B4;**](#top)
+## <span id="hpack">`hpack` installation</span> [**&#x25B4;**](#top)
 
 [Hpack][hpack_readme] is a format for Haskell packages ([changelog](https://hackage.haskell.org/package/hpack-0.35.0/changelog)).
 
@@ -159,7 +166,7 @@ Warning: installdir is not defined. Set it in your cabal config file or use
 Copying 'hpack.exe' to '%APPDATA%\cabal\bin\hpack.exe'
 </pre>
 
-## <span id="hspec"><code>hspec</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="hspec">`hspec` installation</span> [**&#x25B4;**](#top)
 
 [Hspec] is a testing framework for Haskell ([changelog](https://hackage.haskell.org/package/hspec-2.10.6/changelog)). Note the mandatory `--lib` option.
 
@@ -186,7 +193,7 @@ Installing   hspec-2.10.6 (lib)
 Completed    hspec-2.10.6 (lib)
 </pre>
 
-## <span id="htf"><code>HTF</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="htf">`HTF` installation</span> [**&#x25B4;**](#top)
 
 [HTF](https://hackage.haskell.org/package/HTF) (*Haskell Test Framework*) lets you define [unit tests](http://hunit.sourceforge.net), [QuickCheck properties](http://www.cs.chalmers.se/~rjmh/QuickCheck/), and black box tests in an easy and convenient way.
 
@@ -208,7 +215,7 @@ Warning: installdir is not defined. Set it in your cabal config file or use
 Copying 'htfpp.exe' to '%APPDATA%\cabal\bin\htfpp.exe'
 </pre>
 
-## <span id="hunit"><code>HUnit</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="hunit">`HUnit` installation</span> [**&#x25B4;**](#top)
 
 [HUnit](https://hackage.haskell.org/package/HUnit) is a unit testing framework for Haskell, inspired by the [JUnit](http://www.junit.org/) tool for Java ([changelog](https://hackage.haskell.org/package/HUnit-1.6.2.0/changelog)). Note the mandatory  `--lib` option.
 
@@ -241,7 +248,7 @@ Installing   HUnit-1.6.2.0 (lib)
 Completed    HUnit-1.6.2.0 (lib)
 </pre>
 
-## <span id="ormolu"><code>ormolu</code> installation</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="ormolu">`ormolu` installation</span> [**&#x25B4;**](#top)
 
 [**`ormolu`**](https://hackage.haskell.org/package/ormolu) is a formatter for Haskell source code.
 
@@ -284,17 +291,17 @@ ormolu 0.5.2.0 UNKNOWN UNKNOWN
 using ghc-lib-parser 9.2.2.20220307
 </pre>
 
-## <span id="footnotes">Footnotes</span> <sup style="font-size:60%;">[**&#9650;**](#top)</sup>
+## <span id="footnotes">Footnotes</span> [**&#x25B4;**](#top)
 
 <span id="footnote_01">[1]</span> **1<sup>st</sup> installation of `cabal.exe`** [↩](#anchor_01)
 
 <dl><dd>
-Windows users can download the Zip archive <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/"><code>cabal-install-XXXX-x86_64-unknown-mingw32.zip</code></a> and put <a href="https://man.archlinux.org/man/cabal.1"><code>cabal.exe</code></a> somewhere on <code>%PATH%</code>
+Windows users can download the Zip archive <a href="https://downloads.haskell.org/~cabal/cabal-install-latest/" rel="external"><code>cabal-install-XXXX-x86_64-unknown-mingw32.zip</code></a> and put <a href="https://man.archlinux.org/man/cabal.1"><code>cabal.exe</code></a> somewhere on <a href="https://en.wikipedia.org/wiki/PATH_(variable)" rel="external"><code>%PATH%</code></a>
 (in our case <code>C:\opt\ghc-8.10.7\bin\</code>).
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> cabal</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> update</b>
@@ -373,15 +380,27 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [haskell]: https://www.haskell.org
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server
+[haskell_lsp_downloads]: https://hackage.haskell.org/package/haskell-language-server-1.9.0.0
+[haskell_lsp_relnotes]: https://github.com/haskell/haskell-language-server/releases/tag/1.9.0.0
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hlint_readme]: https://hackage.haskell.org/package/hlint-3.5#readme
+[hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
+[hlint_downloads]: https://hackage.haskell.org/package/hlint
+[hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
-[hspec]: https://hackage.haskell.org/package/hspec
+[hspec_changelog]: https://hackage.haskell.org/package/hspec-2.10.9/changelog
+[hspec_downloads]: https://hackage.haskell.org/package/hspec
+[htf_changelog]: https://hackage.haskell.org/package/HTF-0.15.0.0/changelog
+[htf_downloads]: https://hackage.haskell.org/package/HTF
+[hunit_changelog]: https://hackage.haskell.org/package/HUnit-1.6.2.0/changelog
+[hunit_downloads]: https://hackage.haskell.org/package/HUnit
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.5.0.0/changelog
+[ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows
 [trufflesqueak_examples]: https://github.com/michelou/trufflesqueak-examples

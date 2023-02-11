@@ -1,6 +1,6 @@
 # <span id="top">Playing with Haskell on Windows</span>
 
-<table style="font-family:Helvetica,Arial;font-size:12px;line-height:1.6;">
+<table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/" rel="external"><img style="border:0;" src="./docs/images/Double_lambda.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">This repository gathers <a href="https://www.haskell.org/" rel="external">Haskell</a> examples coming from various websites and books.<br/>
@@ -19,25 +19,23 @@ This project relies on the following external software for the **Microsoft Windo
 - [Git 2.39][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
+> **&#9755;** ***Haskell packages***<br/>
+> We present the installed Haskell packages in document [`CABAL.md`](./CABAL.md).
+
 Optionally one may also install the following software:
 
-- [Apache Maven 3.8][apache_maven] ([requires Java 7 or newer][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
+- [Apache Maven 3.9][apache_maven] ([requires Java 8 or newer][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
 - [Haskell 9.4][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
-- [haskell-language-server 1.9][haskell_lsp_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*release notes*][haskell_lsp_relnotes])
-- [hlint 3.5][hlint_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hlint_changelog])
-- [hpack 0.35][hpack_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][hpack_changelog])
-- [HTF 0.15][htf_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][htf_changelog])
-- [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
-- [ormolu 0.5][ormolu_downloads] <sup id="anchor_02">[2](#footnote_02)</sup> ([*changelog*][ormolu_changelog])
 - [Stack 2.9][stack_downloads] ([*changelog*][stack_changelog])
+- [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*February 2023*) <sup id="anchor_03">[3](#footnote_03)</sup>:
+For instance our development environment looks as follows (*February 2023*) <sup id="anchor_02">[2](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\apache-maven-3.8.7\         <i>( 10 MB)</i>
+C:\opt\apache-maven-3.9.0\         <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
 C:\opt\ghc-9.4.4\                  <i>(2.6 GB)</i>
 C:\opt\Git-2.39.1\                 <i>(314 MB)</i>
@@ -138,7 +136,7 @@ Command [**`setenv`**](setenv.bat) is executed once to setup our development env
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.5.0.0
-   java 11.0.18, mvn 3.8.7, git 2.39.1.windows.1, diff 3.7
+   java 11.0.18, mvn 3.9.0, git 2.39.1.windows.1, diff 3.7
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
@@ -153,7 +151,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.9.3, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.5.0.0
-   java 11.0.18, mvn 3.8.7, git 2.39.1.windows.1, diff 3.7
+   java 11.0.18, mvn 3.9.0, git 2.39.1.windows.1, diff 3.7
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -164,7 +162,7 @@ Tool paths:
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
    C:\opt\jdk-temurin-11.0.18_10\bin\java.exe
-   C:\opt\apache-maven-3.8.7\bin\mvn.cmd
+   C:\opt\apache-maven-3.9.0\bin\mvn.cmd
    C:\opt\Git-2.39.1\bin\git.exe
    C:\opt\Git-2.39.1\mingw64\bin\git.exe
    C:\opt\Git-2.39.1\usr\bin\diff.exe
@@ -172,7 +170,7 @@ Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
    "JAVA_HOME=C:\opt\jdk-temurin-11.0.18_10"
-   "MAVEN_HOME=C:\opt\apache-maven-3.8.7"
+   "MAVEN_HOME=C:\opt\apache-maven-3.9.0"
    "STACK_HOME=C:\opt\stack-2.9.3"
 </pre>
 
@@ -189,13 +187,7 @@ Environment variables:
 </table>
 </dd></dl>
 
-<span id="footnote_02">[2]</span> ***Hackage installation*** [↩](#anchor_02)
-
-<dl><dd>
-We use <a href="https://www.haskell.org/cabal/"><code>cabal</code></a> to install Haskell packages, e.g. <a href="https://hackage.haskell.org/package/hlint"><code>hlint</code></a> and  <a href="https://hackage.haskell.org/package/hpack"><code>hpack</code></a>.<br/>See  document <a href="CABAL.md"><code>CABAL.md</code></a> for more information.
-</dd></dl>
-
-<span id="footnote_03">[3]</span> ***Downloads*** [↩](#anchor_03)
+<span id="footnote_02">[2]</span> ***Downloads*** [↩](#anchor_02)
 
 <dl><dd>
 In our case we downloaded the following installation files (<a href="#proj_deps">see section 1</a>):
@@ -235,7 +227,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.8.7/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.0/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.8.1.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
@@ -258,14 +250,6 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_latest_relnotes]: https://www.haskell.org/ghc/blog/20221224-ghc-9.4.4-released.html
-[haskell_lsp_downloads]: https://hackage.haskell.org/package/haskell-language-server-1.9.0.0
-[haskell_lsp_relnotes]: https://github.com/haskell/haskell-language-server/releases/tag/1.9.0.0
-[hlint_changelog]: https://hackage.haskell.org/package/hlint/changelog
-[hlint_downloads]: https://hackage.haskell.org/package/hlint
-[hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
-[hpack_downloads]: https://hackage.haskell.org/package/hpack
-[htf_changelog]: https://hackage.haskell.org/package/HTF-0.15.0.0/changelog
-[htf_downloads]: https://hackage.haskell.org/package/HTF
 [kafka_examples]: https://github.com/michelou/kafka-examples
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
@@ -289,8 +273,6 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 11.0.17_8   -> ???
 -->
 [temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
-[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.5.0.0/changelog
-[ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
 [spring_examples]: https://github.com/michelou/spring-examples
