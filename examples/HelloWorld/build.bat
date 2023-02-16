@@ -167,7 +167,7 @@ set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=
 goto :eof
 
 @rem input parameter: %*
-@rem output parameter(s): _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
+@rem output parameters: _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
 :args
 set _CLEAN=0
 set _COMPILE=0
@@ -236,7 +236,7 @@ goto :eof
 
 :help
 if %_VERBOSE%==1 (
-    set __BEG_P=%_STRONG_FG_CYAN%%_UNDERSCORE%
+    set __BEG_P=%_STRONG_FG_CYAN%
     set __BEG_O=%_STRONG_FG_GREEN%
     set __BEG_N=%_NORMAL_FG_YELLOW%
     set __END=%_RESET%
@@ -249,7 +249,7 @@ if %_VERBOSE%==1 (
 echo Usage: %__BEG_O%%_BASENAME% { ^<option^> ^| ^<subcommand^> }%__END%
 echo.
 echo   %__BEG_P%Options:%__END%
-echo     %__BEG_O%-debug%__END%      show commands executed by this script
+echo     %__BEG_O%-debug%__END%      display commands executed by this script
 echo     %__BEG_O%-timer%__END%      display total elapsed time
 echo     %__BEG_O%-verbose%__END%    display progress messages
 echo.
@@ -259,12 +259,13 @@ echo     %__BEG_O%compile%__END%     generate program executable
 echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
-echo     %__BEG_O%run%__END%         execute the generated program %__BEG_O%%_PACKAGE_NAME%%__END%
+echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%!_EXE_FILE:%_ROOT_DIR%=!%__END%"
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
 echo   %__BEG_P%Other build tools:%__END%
 echo     %__BEG_O%^> cabal clean ^& cabal run all%__END%
+echo     %__BEG_O%^> mvn clean compile exec:exec%__END%
 echo     %__BEG_O%^> stack clean ^& stack run%__END%
 echo.
 echo   %__BEG_P%Notes:%__END%
@@ -273,9 +274,10 @@ goto :eof
 
 :clean
 call :rmdir "%_TARGET_DIR%"
+call :rmdir "%_ROOTDIR%dist-newstyle"
 goto :eof
 
-@rem input parameter(s): %1=directory path
+@rem input parameter: %1=directory path
 :rmdir
 set "__DIR=%~1"
 if not exist "%__DIR%\" goto :eof
@@ -300,6 +302,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR
 )
 call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
+    echo %_ERROR_LABEL% Failed to analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )

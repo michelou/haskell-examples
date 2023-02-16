@@ -134,10 +134,13 @@ goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
 :props
-for %%f in ("%~dp0\.") do set _PACKAGE_NAME=%%~nf
+for %%f in ("%~dp0\.") do set "_PACKAGE_NAME=%%~nf"
 set __PACKAGE_VERSION=1.0.0
 set __PACKAGE_SYNOPSIS=Haskell Example
-set __GHC_OPTIONS=-Wall -Werror
+
+@rem see https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/using-warnings.html#ghc-flag--Wall
+set _GHC_OPTS=-Wall -Wmissing-import-lists -Wincomplete-uni-patterns -Wno-type-defaults
+if %_DEBUG%==1 set _GHC_OPTS=%_GHC_OPTS% -Werror
 
 set __CABAL_FILE=
 for /f "delims=" %%f in ('where "%_ROOT_DIR%:*.cabal" 2^>NUL') do set "__CABAL_FILE=%%f"
@@ -156,20 +159,15 @@ if exist "%__CABAL_FILE%" (
     if defined _name set _PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
-    if defined _ghc_options set __GHC_OPTIONS=!_ghc_options!
+    if defined _ghc_options set _GHC_OPTS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
 
-@rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set _GHC_OPTS=-hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
-if %_DEBUG%==1 ( set _GHC_OPTS=%_GHC_OPTS% -Werror
-) else ( set _GHC_OPTS=%_GHC_OPTS% -Wall
-)
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
 @rem input parameter: %*
-@rem output parameter(s): _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
+@rem output parameters: _CLEAN, _COMPILE, _DEBUG, _RUN, _TIMER, _VERBOSE
 :args
 set _CLEAN=0
 set _COMPILE=0
@@ -238,7 +236,7 @@ goto :eof
 
 :help
 if %_VERBOSE%==1 (
-    set __BEG_P=%_STRONG_FG_CYAN%%_UNDERSCORE%
+    set __BEG_P=%_STRONG_FG_CYAN%
     set __BEG_O=%_STRONG_FG_GREEN%
     set __BEG_N=%_NORMAL_FG_YELLOW%
     set __END=%_RESET%
@@ -251,7 +249,7 @@ if %_VERBOSE%==1 (
 echo Usage: %__BEG_O%%_BASENAME% { ^<option^> ^| ^<subcommand^> }%__END%
 echo.
 echo   %__BEG_P%Options:%__END%
-echo     %__BEG_O%-debug%__END%      show commands executed by this script
+echo     %__BEG_O%-debug%__END%      display commands executed by this script
 echo     %__BEG_O%-timer%__END%      display total elapsed time
 echo     %__BEG_O%-verbose%__END%    display progress messages
 echo.
@@ -261,11 +259,17 @@ echo     %__BEG_O%compile%__END%     generate program executable
 echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        display this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
-echo     %__BEG_O%run%__END%         execute the generated program %__BEG_O%%_PACKAGE_NAME%%__END%
+echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%!_EXE_FILE:%_ROOT_DIR%=!%__END%"
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
-echo   %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
+echo   %__BEG_P%Other build tools:%__END%
+echo     %__BEG_O%^> cabal clean ^& cabal run all%__END%
+echo     %__BEG_O%^> mvn clean compile exec:exec%__END%
+echo     %__BEG_O%^> stack clean ^& stack run%__END%
+echo.
+echo   %__BEG_P%Notes:%__END%
+echo     %__BEG_N%HLint%__END% hints are defined in file %__BEG_O%.hlint.yaml%__END%
 goto :eof
 
 :clean
@@ -298,6 +302,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR
 )
 call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
+    echo %_ERROR_LABEL% Failed to analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -318,12 +323,15 @@ for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
 if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
 ) else ( set __N_FILES=%__N% Haskell source file
 )
-if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% 1>&2
+@rem option "-hidir <dir>" redirects all generated interface files into <dir>
+set __GHC_OPTS=%_GHC_OPTS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
+
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
 )
-call "%_GHC_CMD%" %_GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
+call "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% %_REDIRECT_STDOUT%
 if not %ERRORLEVEL%==0 (
-    echo %_ERROR_LABEL% Compilation of %__N_FILES% failed 1>&2
+    echo %_ERROR_LABEL% Failed to compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -333,7 +341,7 @@ goto :eof
 @rem output parameter: _ACTION_REQUIRED
 :action_required
 set "__TARGET_FILE=%~1"
-set __PATH=%~2
+set "__PATH=%~2"
 
 set __TARGET_TIMESTAMP=00000000000000
 for /f "usebackq" %%i in (`powershell -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
@@ -396,7 +404,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
-    echo %_ERROR_LABEL% Generation of HTML documentation failed 1>&2
+    echo %_ERROR_LABEL% Failed to generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )

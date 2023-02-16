@@ -8,11 +8,36 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <profiles>
+        <profile>
+            <id>Windows</id>
+            <activation>
+                <os>
+                  <family>Windows</family>
+                </os>
+            </activation>
+            <properties>
+                <ghc.ext>.exe</ghc.ext>
+            </properties>
+        </profile>
+        <profile>
+            <id>unix</id>
+            <activation>
+                <os>
+                  <family>unix</family>
+                </os>
+            </activation>
+            <properties>
+                <ghc.ext></ghc.ext>
+            </properties>
+        </profile>
+    </profiles>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- https://mvnrepository.com/artifact/org.codehaus.mojo/exec-maven-plugin -->
-        <exec.maven.version>3.1.0</exec.maven.version>          <!-- Mar 2017 -->
-        <ghc.cmd>${env.GHC_HOME}/bin/ghc.exe</ghc.cmd>
+        <exec.maven.version>3.1.0</exec.maven.version>
+        <ghc.cmd>${env.GHC_HOME}/bin/ghc${ghc.ext}</ghc.cmd>
     </properties>
 
     <dependencies>

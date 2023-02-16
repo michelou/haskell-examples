@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright (c) 2018-2021 Stéphane Micheloud
+# Copyright (c) 2018-2023 Stéphane Micheloud
 #
 # Licensed under the MIT License.
 #
@@ -103,7 +103,7 @@ Usage: $BASENAME { <option> | <subcommand> }
     doc          generate HTML documentation
     help         display this help message
     lint         analyze Scala source files with HLint
-    run          execute main program $APP_NAME
+    run          execute main program "$APP_NAME"
 EOS
 }
 
@@ -210,7 +210,7 @@ doc() {
     fi
     eval "$HADDOCK_CMD" $haddock_opts $source_files
     if [[ $? -eq 0 ]]; then
-        error "Generation of HTML documentation failed"
+        error "Failed to generate HTML documentation into directory \"${TARGET_DOCS_DIR/$ROOT_DIR/\\}\""
         cleanup 1
     fi
 }
