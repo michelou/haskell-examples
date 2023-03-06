@@ -1,6 +1,6 @@
 # <span id="top">Haskell examples</span> <span style="size:30%;"><a href="../README.md">⬆</a></span>
 
-<table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
+<table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:100px;"><a href="https://www.haskell.org/"><img style="border:0;" src="../docs/images/Double_lambda.png" width="100" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">Directory <strong><code>examples\</code></strong> contains <a href="https://www.haskell.org/" alt="Haskell">Haskell</a> code examples coming from various websites - mostly from the <a href="https://www.haskell.org/" rel="external">Haskell project</a>.
@@ -291,7 +291,7 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

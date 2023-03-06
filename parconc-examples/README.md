@@ -1,6 +1,6 @@
 # <span id="top">Book &ndash; <i>Parallel and Concurrent Programming in Haskell</i></span> <span style="size:30%;"><a href="../README.md">⬆</a></span>
 
-<table style="font-family:Helvetica,Arial;font-size:14px;line-height:1.6;">
+<table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
   <td style="border:0;padding:0 10px 0 0;min-width:120px;"><a href="https://www.haskell.org/" rel="external"><img src="../docs/images/Double_lambda.png" width="120" alt="Haskell project"/></a></td>
   <td style="border:0;padding:0;vertical-align:text-top;">The <a href="."><strong><code>parconc-examples\</code></strong></a> directory contains <a href="https://www.haskell.org/" rel="external" alt="Haskell">Haskell</a> examples presented in <a href="https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/">Marlow's book</a> "<i>Parallel and Concurrent Programming in Haskell</i>" (<a href="https://www.oreilly.com/" rel="external">O'Reilly</a>, 2013).</td>
@@ -148,7 +148,7 @@ In project <code>Factorial</code> the batch file <a href="./build.bat"><code>bui
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/February 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/March 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
