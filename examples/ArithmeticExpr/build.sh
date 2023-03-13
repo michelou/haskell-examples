@@ -93,8 +93,8 @@ help() {
 Usage: $BASENAME { <option> | <subcommand> }
 
   Options:
-    -debug       show commands executed by this script
-    -timer       display total elapsed time
+    -debug       display commands executed by this script
+    -timer       display total execution time
     -verbose     display progress messages
 
   Subcommands:
@@ -108,7 +108,7 @@ EOS
 }
 
 clean() {
-    if [ -d "$TARGET_DIR" ]; then
+    if [[ -d "$TARGET_DIR" ]]; then
         if $DEBUG; then
             debug "Delete directory $TARGET_DIR"
         elif $VERBOSE; then
