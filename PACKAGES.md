@@ -12,10 +12,10 @@ Useful Haskell packages are for instance :
 - [haskell-language-server 1.10][haskell_lsp_downloads] ([*release notes*][haskell_lsp_relnotes])
 - [hlint 3.5][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.35][hpack_downloads] ([*changelog*][hpack_changelog])
-- [`hspec` 2.10][hspec_downloads] ([*changelog*][hspec_changelog])
+- [`hspec` 2.11][hspec_downloads] ([*changelog*][hspec_changelog])
 - [`HTF` 0.15][htf_downloads] ([*changelog*][htf_changelog])
 - [`HUnit`][hunit_downloads] ([*changelog*][hunit_changelog])
-- [ormolu 0.5][ormolu_downloads] ([*changelog*][ormolu_changelog])
+- [ormolu 0.7][ormolu_downloads] ([*changelog*][ormolu_changelog])
 
 > **:mag_right:** Do not forget to execute command [`cabal`][cabal_man] `update` before running `list` and `install` :
 > <pre style="font-size:80%;">
@@ -364,7 +364,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -390,7 +390,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [hpack_changelog]: https://hackage.haskell.org/package/hpack/changelog
 [hpack_downloads]: https://hackage.haskell.org/package/hpack
 [hpack_readme]: https://github.com/sol/hpack#readme
-[hspec_changelog]: https://hackage.haskell.org/package/hspec-2.10.9/changelog
+[hspec_changelog]: https://hackage.haskell.org/package/hspec-2.11.0/changelog
 [hspec_downloads]: https://hackage.haskell.org/package/hspec
 [htf_changelog]: https://hackage.haskell.org/package/HTF-0.15.0.0/changelog
 [htf_downloads]: https://hackage.haskell.org/package/HTF
@@ -399,7 +399,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
-[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.5.0.0/changelog
+[ormolu_changelog]: https://hackage.haskell.org/package/ormolu-0.7.0.0/changelog
 [ormolu_downloads]: https://hackage.haskell.org/package/ormolu
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/
 [stack_downloads]: https://docs.haskellstack.org/en/stable/install_and_upgrade/#windows
