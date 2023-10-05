@@ -10,7 +10,7 @@
 
 getHome() {
     local source="${BASH_SOURCE[0]}"
-    while [ -h "$source" ] ; do
+    while [[ -h "$source" ]]; do
         local linked="$(readlink "$source")"
         local dir="$( cd -P $(dirname "$source") && cd -P $(dirname "$linked") && pwd )"
         source="$dir/$(basename "$linked")"
@@ -74,7 +74,7 @@ args() {
         esac
     done
     if $LINT; then
-        if [ ! -x "$HLINT_CMD" ]; then
+        if [[ ! -x "$HLINT_CMD" ]]; then
             warning "HLint installation not found"
             LINT=false
         fi
@@ -93,15 +93,15 @@ help() {
 Usage: $BASENAME { <option> | <subcommand> }
 
   Options:
-    -debug       display commands executed by this script
-    -timer       display total execution time
-    -verbose     display progress messages
+    -debug       print commands executed by this script
+    -timer       print total execution time
+    -verbose     print progress messages
 
   Subcommands:
     clean        delete generated files
     compile      compile Haskell source files
     doc          generate HTML documentation
-    help         display this help message
+    help         print this help message
     lint         analyze Scala source files with HLint
     run          execute main program "$APP_NAME"
 EOS
@@ -140,7 +140,7 @@ compile() {
 
     local source_files=
     local n=0
-    for f in $(find $SOURCE_DIR/ -type f -name "*.hs" 2>/dev/null); do
+    for f in $(find "$SOURCE_DIR/" -type f -name "*.hs" 2>/dev/null); do
         source_files="$source_files $f"
         n=$((n + 1))
     done
@@ -155,7 +155,7 @@ compile() {
 }
 
 mixed_path() {
-    if [ -x "$CYGPATH_CMD" ]; then
+    if [[ -x "$CYGPATH_CMD" ]]; then
         $CYGPATH_CMD -am $1
     elif $mingw || $msys; then
         echo $1 | sed 's|/|\\\\|g'

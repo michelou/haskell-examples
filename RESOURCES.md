@@ -22,7 +22,7 @@
 - [Haskell Design Patterns: .Extended Modules][article_jaspervdj], January 20, 2015.
 - [A history of Haskell: Being lazy with class][article_hudack] by John Hudak et al., June 2007.
 
-## <span id="blogs">Blogs</span>
+## <span id="blogs">Blogs</span> [**&#x25B4;**](#top)
 
 - [Harry Garrood's Blog](https://harry.garrood.me/) :
   - [Easy incremental Haskell CI builds with GHC 9.4](https://harry.garrood.me/blog/easy-incremental-haskell-ci-builds-with-ghc-9.4/), September 2022.
@@ -101,8 +101,10 @@
 April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7283-8, 400 pages)</span>
 - [Real World Haskell][book_real_world], by Bryan O'Sullivan &amp; al., OReilly 2008.<br/><span style="font-size:80%;">([online book](http://book.realworldhaskell.org/), freely available)</span>
 
-## <span id="courses">Courses</span>
+## <span id="courses">Courses</span> [**&#x25B4;**](#top)
 
+- [Functional Prograimming in Haskell](https://www.classcentral.com/classroom/youtube-functional-programming-in-haskell-59638/61cc95daddfc8) by Graham Hutton, 2023.
+- [Haskell Beginners 2022](https://slides.com/haskellbeginners2022/) by Dimitrii Kovanikov, 2022.
 - [Advanced Programming](https://www.cis.upenn.edu/~cis552/current/) (CIS 552), by [Stéphanie Weirich](https://www.cis.upenn.edu/~sweirich/), Fall 2020.
 - [Functional and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
 
@@ -143,7 +145,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

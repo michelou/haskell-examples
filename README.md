@@ -9,7 +9,7 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Dart][dart_examples], [Deno][deno_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX Toolset][wix_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Dart][dart_examples], [Deno][deno_examples], [Docker][docker_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX Toolset][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
@@ -32,15 +32,15 @@ Optionally one may also install the following software:
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*June 2023*) <sup id="anchor_02">[2](#footnote_02)</sup>:
+For instance our development environment looks as follows (*October 2023*) <sup id="anchor_02">[2](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
-C:\opt\apache-maven-3.9.2\         <i>( 10 MB)</i>
-C:\opt\ghc-8.10.7\                 <i>(2.5 GB)</i>
-C:\opt\ghc-9.4.4\                  <i>(2.6 GB)</i>
-C:\opt\Git-2.41.0\                 <i>(358 MB)</i>
-C:\opt\jdk-temurin-11.0.19_7\      <i>(181 MB)</i>
-C:\opt\stack-2.11.1\               <i>( 74 MB)</i>
+C:\opt\apache-maven\             <i>( 10 MB)</i>
+C:\opt\ghc-8.10.7\               <i>(2.5 GB)</i>
+C:\opt\ghc-9.4.4\                <i>(2.6 GB)</i>
+C:\opt\Git\                      <i>(358 MB)</i>
+C:\opt\jdk-temurin-11.0.20_8\    <i>(181 MB)</i>
+C:\opt\stack-2.11.1\             <i>( 74 MB)</i>
 </pre>
 
 <!--
@@ -79,7 +79,7 @@ where
 > **:mag_right:** We use [VS Code][microsoft_vscode] with the extension [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles) to edit our Markdown files (see article ["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/) from [GitHub Guides][github_guides].
 -->
 
-We also define a virtual drive **`H:`** in our working environment in order to reduce/hide the real path of our project directory (see article ["Windows command prompt limitation"][windows_limitation] from Microsoft Support).
+We also define a virtual drive &ndash; e.g. drive **`H:`** &ndash; in our working environment in order to reduce/hide the real path of our project directory (see article ["Windows command prompt limitation"][windows_limitation] from Microsoft Support).
 > **:mag_right:** We use the Windows external command [**`subst`**][windows_subst] to create virtual drives; for instance:
 >
 > <pre style="font-size:80%;">
@@ -99,11 +99,11 @@ We distinguish different sets of batch commands:
    Usage: setenv { &lt;option&gt; | &lt;subcommand&gt; }
    &nbsp;
      Options:
-       -debug      show commands executed by this script
-       -verbose    display environment settings
+       -debug      print commands executed by this script
+       -verbose    print environment settings
    &nbsp;
      Subcommands:
-       help        display this help message
+       help        print this help message
    </pre>
 
 2. [**`examples\*\build.bat`**](examples/Factorial/build.bat) - Each example can be built/run using the [**`build`**](examples/Factorial/build.bat) command.<br/>
@@ -113,15 +113,15 @@ We distinguish different sets of batch commands:
     Usage: build { &lt;option&gt; | &lt;subcommand&gt; }
     &nbsp;
     Options:
-      -debug      show commands executed by this script
-      -timer      display total elapsed time
-      -verbose    display progress messages
+      -debug      print commands executed by this script
+      -timer      print total execution time
+      -verbose    print progress messages
     &nbsp;
     Subcommands:
       clean       delete generated files
       compile     generate program executable
       doc         generate HTML documentation
-      help        display this help message
+      help        print this help message
       run         execute the generated program
     </pre>
 
@@ -129,14 +129,14 @@ We distinguish different sets of batch commands:
 
 ### `setenv.bat`
 
-Command [**`setenv`**](setenv.bat) is executed once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
+We execute command [**`setenv`**](setenv.bat) once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.11.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.19, mvn 3.9.2, git 2.41.0.windows.1, diff 3.9
+   java 11.0.20, mvn 3.9.4, git 2.42.0.windows.1, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
@@ -151,7 +151,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.11.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.19, mvn 3.9.2, git 2.41.0.windows.1, diff 3.9
+   java 11.0.20, mvn 3.9.4, git 2.42.0.windows.1, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -161,16 +161,16 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-temurin-11.0.19_7\bin\java.exe
-   C:\opt\apache-maven-3.9.2\bin\mvn.cmd
-   C:\opt\Git-2.41.0\bin\git.exe
-   C:\opt\Git-2.41.0\mingw64\bin\git.exe
-   C:\opt\Git-2.41.0\usr\bin\diff.exe
+   C:\opt\jdk-temurin-11.0.20_8\bin\java.exe
+   C:\opt\apache-maven\bin\mvn.cmd
+   C:\opt\Git\bin\git.exe
+   C:\opt\Git\mingw64\bin\git.exe
+   C:\opt\Git\usr\bin\diff.exe
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-temurin-11.0.19_7"
-   "MAVEN_HOME=C:\opt\apache-maven-3.9.2"
+   "JAVA_HOME=C:\opt\jdk-temurin-11.0.20_8"
+   "MAVEN_HOME=C:\opt\apache-maven"
    "STACK_HOME=C:\opt\stack-2.11.1"
 </pre>
 
@@ -195,20 +195,20 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<a href="https://ant.apache.org/bindownload.cgi">apache-ant-1.10.13-bin.zip</a>                         <i>(  9 MB)</i>
+<a href="https://maven.apache.org/download.cgi">apache-maven-3.9.4-bin.zip</a>                         <i>( 10 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.8.1.0-x86_64-unknown-mingw32.zip</a>   <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.6.1/">ghc-9.6.1-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
-<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.19_7.zip</a>   <i>( 99 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.41.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
+<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.20_8.zip</a>   <i>( 99 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.42.0.2-64-bit.7z.exe</a>                 <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.11.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 </dd>
 <dd>
 <table>
 <tr><th>Version</th><th>LLVM</th><th>Archive</th><th>Installation</th><th>Remarks</th></tr>
-<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
-<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.6.3/docs/users_guide/9.6.3-notes.html">9.6.3</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/users_guide/9.4.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
 <tr><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html">9.2.2</a> <sup><b>a)</b></sup></td><td>10,11</td><td>331 MB</td><td>1.85 GB</td><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html#included-libraries">Included libraries</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html">9.0.1</a></td><td>9</td><td>236 MB</td><td>2.64 GB</td><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html#included-libraries">Included libraries</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html">8.10.7</a></td><td>9-12</td><td>414 MB</td><td>2.80 GB</td><td><a href="https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html#included-libraries">Included libraries</a></td></tr>
@@ -218,7 +218,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -228,7 +228,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.2/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.4/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.8.1.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
@@ -236,12 +236,13 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [cpp_examples]: https://github.com/michelou/cpp-examples
 [dart_examples]: https://github.com/michelou/dart-examples
 [deno_examples]: https://github.com/michelou/deno-examples
+[docker_examples]: https://github.com/michelou/docker-examples
 [flix_examples]: https://github.com/michelou/flix-examples
 [ghc_userguide]: https://downloads.haskell.org/ghc/latest/docs/html/users_guide/using.html
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.41.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.42.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples

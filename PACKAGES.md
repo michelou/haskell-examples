@@ -9,12 +9,12 @@
 </table>
 
 Useful Haskell packages are for instance :
-- [haskell-language-server 1.10][haskell_lsp_downloads] ([*release notes*][haskell_lsp_relnotes])
-- [hlint 3.5][hlint_downloads] ([*changelog*][hlint_changelog])
+- [haskell-language-server 2.1][haskell_lsp_downloads] ([*changelog*][haskell_lsp_changelog])
+- [hlint 3.6][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.35][hpack_downloads] ([*changelog*][hpack_changelog])
 - [`hspec` 2.11][hspec_downloads] ([*changelog*][hspec_changelog])
 - [`HTF` 0.15][htf_downloads] ([*changelog*][htf_changelog])
-- [`HUnit`][hunit_downloads] ([*changelog*][hunit_changelog])
+- [`HUnit` 1.6][hunit_downloads] ([*changelog*][hunit_changelog])
 - [ormolu 0.7][ormolu_downloads] ([*changelog*][ormolu_changelog])
 
 > **:mag_right:** Do not forget to execute command [`cabal`][cabal_man] `update` before running `list` and `install` :
@@ -33,17 +33,17 @@ We install [**`cabal-install`**](https://hackage.haskell.org/package/cabal-insta
 Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
- - Cabal-syntax-3.8.1.0 (lib) (requires download & build)
+ - Cabal-syntax-3.10.1.0 (lib) (requires download & build)
 [...]
-Starting     cabal-install-3.8.1.0 (exe:cabal)
-Building     cabal-install-3.8.1.0 (exe:cabal)
-Installing   cabal-install-3.8.1.0 (exe:cabal)
-Completed    cabal-install-3.8.1.0 (exe:cabal)
+Starting     cabal-install-3.10.1.0 (exe:cabal)
+Building     cabal-install-3.10.1.0 (exe:cabal)
+Installing   cabal-install-3.10.1.0 (exe:cabal)
+Completed    cabal-install-3.10.1.0 (exe:cabal)
 Copying 'cabal.exe' to '%APPDATA%\cabal\bin\cabal.exe'
 &nbsp;
 <b>&gt; <a href="https://cabal.readthedocs.io/en/3.4/intro.html#a-tool-for-working-with-packages">cabal</a> --version</b>
-cabal-install version 3.8.1.0
-compiled using version 3.8.1.0 of the Cabal library
+cabal-install version 3.10.1.0
+compiled using version 3.10.1.0 of the Cabal library
 &nbsp;
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/echo">echo</a> %CABAL_DIR%</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\cabal
@@ -364,7 +364,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -381,7 +381,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 [haskell_downloads]: https://downloads.haskell.org/ghc/latest/
 [haskell_lsp]: https://hackage.haskell.org/package/haskell-language-server
 [haskell_lsp_downloads]: https://hackage.haskell.org/package/haskell-language-server-1.10.0.0
-[haskell_lsp_relnotes]: https://github.com/haskell/haskell-language-server/releases/tag/1.10.0.0
+[haskell_lsp_changelog]: https://hackage.haskell.org/package/haskell-language-server-2.1.0.0/changelog
 [haskell_relnotes]: https://downloads.haskell.org/~ghc/9.0.1/docs/html/users_guide/9.0.1-notes.html
 [hlint_downloads]: https://hackage.haskell.org/package/hlint
 [hlint_readme]: https://hackage.haskell.org/package/hlint-3.5#readme

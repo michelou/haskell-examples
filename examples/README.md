@@ -20,7 +20,7 @@ We can build/run code examples in directory [`examples`](./) in several ways. Fo
 | [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
 
 
-## <span id="factorial">`Factorial` Example</span>
+## <span id="factorial">`Factorial` Example</span> [**&#x25B4;**](#top)
 
 The directory structure of project `Factorial` looks as follows:
 <pre style="font-size:80%;">
@@ -281,7 +281,7 @@ factorialProd(5)=120
 [build] _EXITCODE=0
 </pre>
 
-## <span id="footnotes">Footnotes</span>
+## <span id="footnotes">Footnotes</span> [**&#x25B4;**](#top)
 
 <span id="footnote_01">[1]</span> ***build.bat*** [↩](#anchor_01)
 
@@ -291,7 +291,7 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
