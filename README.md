@@ -9,14 +9,14 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Dart][dart_examples], [Deno][deno_examples], [Docker][docker_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX Toolset][wix_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [Dart][dart_examples], [Deno][deno_examples], [Docker][docker_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Modula-2][m2_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples] and [WiX Toolset][wix_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.8][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.41][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.43][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 > **&#9755;** ***Haskell packages***<br/>
@@ -24,22 +24,23 @@ This project relies on the following external software for the **Microsoft Windo
 
 Optionally one may also install the following software:
 
-- [Apache Maven 3.9][apache_maven] ([requires Java 8 or newer][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
-- [Haskell 9.6][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
-- [Stack 2.11][stack_downloads] ([*changelog*][stack_changelog])
+- [Apache Maven 3.9][apache_maven] ([requires Java 8+][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
+- [Haskell 9.8][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
+- [Stack 2.13][stack_downloads] ([*changelog*][stack_changelog])
 - [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*October 2023*) <sup id="anchor_02">[2](#footnote_02)</sup>:
+For instance our development environment looks as follows (*January 2024*) <sup id="anchor_02">[2](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven\             <i>( 10 MB)</i>
 C:\opt\ghc-8.10.7\               <i>(2.5 GB)</i>
-C:\opt\ghc-9.4.4\                <i>(2.6 GB)</i>
+C:\opt\ghc-9.6.4\                <i>(2.6 GB)</i>
+C:\opt\ghc-9.8.1\                <i>(2.6 GB)</i>
 C:\opt\Git\                      <i>(358 MB)</i>
-C:\opt\jdk-temurin-11.0.20_8\    <i>(181 MB)</i>
+C:\opt\jdk-temurin-11.0.22_7\    <i>(303 MB)</i>
 C:\opt\stack-2.11.1\             <i>( 74 MB)</i>
 </pre>
 
@@ -83,7 +84,7 @@ We also define a virtual drive &ndash; e.g. drive **`H:`** &ndash; in our workin
 > **:mag_right:** We use the Windows external command [**`subst`**][windows_subst] to create virtual drives; for instance:
 >
 > <pre style="font-size:80%;">
-> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/subst">subst</a> H: <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%USERPROFILE%</a>\workspace\haskell-examples</b>
+> <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/subst">subst</a> H: <a href="https://learn.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%USERPROFILE%</a>\workspace\haskell-examples</b>
 > </pre>
 
 In the next section we give a brief description of the [batch files][windows_batch_file] present in this project.
@@ -100,7 +101,7 @@ We distinguish different sets of batch commands:
    &nbsp;
      Options:
        -debug      print commands executed by this script
-       -verbose    print environment settings
+       -verbose    print progess messages
    &nbsp;
      Subcommands:
        help        print this help message
@@ -134,14 +135,14 @@ We execute command [**`setenv`**](setenv.bat) once to setup our development envi
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
 Tool versions:
-   cabal 3.8.1.0, ghc version 8.10.7, stack 2.11.1, haddock 2.24.2
+   cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.20, mvn 3.9.4, git 2.42.0.windows.1, diff 3.10
+   java 11.0.22, mvn 3.9.6, git 2.42.0.windows.1, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
 %APPDATA%\Cabal\bin\hpack.exe
-C:\opt\stack-2.11.1\stack.exe
+C:\opt\stack\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -149,19 +150,19 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a> -verbose</b>
 Tool versions:
-   cabal 3.8.1.0, ghc version 8.10.7, stack 2.11.1, haddock 2.24.2
+   cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.20, mvn 3.9.4, git 2.42.0.windows.1, diff 3.10
+   java 11.0.20, mvn 3.9.6, git 2.42.0.windows.1, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
-   C:\opt\stack-2.11.1\stack.exe
+   C:\opt\stack\stack.exe
    C:\opt\ghc-8.10.7\bin\haddock.exe
    %APPDATA%\Cabal\bin\hlint.exe
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-temurin-11.0.20_8\bin\java.exe
+   C:\opt\jdk-temurin-11.0.22_7\bin\java.exe
    C:\opt\apache-maven\bin\mvn.cmd
    C:\opt\Git\bin\git.exe
    C:\opt\Git\mingw64\bin\git.exe
@@ -169,9 +170,9 @@ Tool paths:
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-temurin-11.0.20_8"
+   "JAVA_HOME=C:\opt\jdk-temurin-11.0.22_7"
    "MAVEN_HOME=C:\opt\apache-maven"
-   "STACK_HOME=C:\opt\stack-2.11.1"
+   "STACK_HOME=C:\opt\stack"
 </pre>
 
 ## <span id="footnotes">Footnotes</span> [**&#x25B4;**](#top)
@@ -181,6 +182,7 @@ Environment variables:
 <dl><dd>
 <table>
 <tr><th>GHC version</th><th>Cabal version</th></tr>
+<tr><td>9.8</td><td>?</td></tr>
 <tr><td>9.6</td><td>?</td></tr>
 <tr><td>9.4</td><td>3.8 or later</td></tr>
 <tr><td>8.x, 9.x</td><td>3.4</td></tr>
@@ -195,12 +197,12 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<a href="https://maven.apache.org/download.cgi">apache-maven-3.9.4-bin.zip</a>                         <i>( 10 MB)</i>
+<a href="https://maven.apache.org/download.cgi">apache-maven-3.9.6-bin.zip</a>                         <i>( 10 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.8.1.0-x86_64-unknown-mingw32.zip</a>   <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.6.1/">ghc-9.6.1-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
-<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.20_8.zip</a>   <i>( 99 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.42.0.2-64-bit.7z.exe</a>                 <i>( 41 MB)</i>
+<a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.22_7.zip</a>   <i>( 99 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.43.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.11.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 </dd>
@@ -218,7 +220,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -228,7 +230,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.4/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.6/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.8.1.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/
@@ -254,6 +256,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <!--
 9.4.4 => https://www.haskell.org/ghc/blog/20221224-ghc-9.4.4-released.html
 9.6.1 => https://www.haskell.org/ghc/blog/20230310-ghc-9.6.1-released.html
+9.6.4 => 
+9.8.1 => 
 -->
 [haskell_latest_relnotes]: https://www.haskell.org/ghc/blog/20230310-ghc-9.6.1-released.html
 [kafka_examples]: https://github.com/michelou/kafka-examples

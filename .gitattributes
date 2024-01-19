@@ -3,6 +3,7 @@
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
+# (see https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml)
 *.ada text linguist-language=Ada
 *.adb text linguist-language=Ada
 *.ads text linguist-language=Ada
@@ -23,6 +24,7 @@
 *.json text linguist-language=JSON
 *.jsx text linguist-language=JavaScript
 *.md text linguist-documentation=true
+*.mod test linguist-language=Modula-2
 *.properties text linguist-language=INI
 *.py text linguist-language=Python
 *.rs text linguist-language=Rust

@@ -13,12 +13,12 @@ In the following we present the two examples [**`rpar`**](#rpar) and [**`strat`*
 
 We can build/run code examples in directory [**`parconc-examples\`**](./) in several ways. For instance we have the following configuration files for example [**`rpar`**](#rpar):
 
-| Build&nbsp;tool               | Configuration&nbsp;file                      | Parent file                |
-|-------------------------------|----------------------------------------------|----------------------------|
-| [**`build.bat`**](./build.bat) | [**`parconc-examples.cabal`**](./parconc-examples.cabal) <sup id="anchor_01">[1](#footnote_01)</sup>  | n.a.                       |
-| [**`cabal.exe`**][cabal_cli]      | [**`parconc-examples.cabal`**](./parconc-examples.cabal) | n.a.             |
-| [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](./pom.xml)       | [**`pom.xml`**](./pom.xml) |
-| [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](./stack.yaml) | n.a.                       |
+| Build&nbsp;tool               | Build&nbsp;file                      | Parent file                |
+|-------------------------------|--------------------------------------|----------------------------|
+| [**`build.bat`**](./build.bat) | [`parconc-examples.cabal`](./parconc-examples.cabal) <sup id="anchor_01">[1](#footnote_01)</sup>  | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [`parconc-examples.cabal`](./parconc-examples.cabal) | n.a.             |
+| [**`mvn.cmd`**][apache_maven_cli] | [`pom.xml`](./pom.xml)       | [**`pom.xml`**](./pom.xml) |
+| [**`stack.exe`**][stack_cli]      | [`stack.yaml`](./stack.yaml) | n.a.                       |
 
 
 ## <span id="rpar">`rpar` Example</span>
@@ -148,7 +148,7 @@ In project <code>Factorial</code> the batch file <a href="./build.bat"><code>bui
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

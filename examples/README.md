@@ -14,10 +14,10 @@ We can build/run code examples in directory [`examples`](./) in several ways. Fo
 
 | Build tool                    | Configuration file                           | Parent file                |
 |-------------------------------|----------------------------------------------|----------------------------|
-| [**`build.bat`**](Factorial/build.bat) | [**`Factorial.cabal`**](Factorial/Factorial.cabal) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       |
-| [**`cabal.exe`**][cabal_cli]      | [**`Factorial.cabal`**](Factorial/Factorial.cabal) | n.a.             |
-| [**`mvn.cmd`**][apache_maven_cli] | [**`pom.xml`**](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
-| [**`stack.exe`**][stack_cli]      | [**`stack.yaml`**](Factorial/stack.yaml) | n.a.                       |
+| [**`build.bat`**](Factorial/build.bat) | [`Factorial.cabal`](Factorial/Factorial.cabal) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       |
+| [**`cabal.exe`**][cabal_cli]      | [`Factorial.cabal`](Factorial/Factorial.cabal) | n.a.             |
+| [**`mvn.cmd`**][apache_maven_cli] | [`pom.xml`](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
+| [**`stack.exe`**][stack_cli]      | [`stack.yaml`](Factorial/stack.yaml) | n.a.                       |
 
 
 ## <span id="factorial">`Factorial` Example</span> [**&#x25B4;**](#top)
@@ -291,7 +291,7 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/October 2023* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/January 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
