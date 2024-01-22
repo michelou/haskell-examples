@@ -137,7 +137,7 @@ We execute command [**`setenv`**](setenv.bat) once to setup our development envi
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.22, mvn 3.9.6, git 2.42.0.windows.1, diff 3.10
+   java 11.0.22, mvn 3.9.6, git 2.43.0.windows.1, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
@@ -152,7 +152,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.20, mvn 3.9.6, git 2.42.0.windows.1, diff 3.10
+   java 11.0.20, mvn 3.9.6, git 2.43.0.windows.1, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -244,7 +244,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.42.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.43.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
@@ -256,8 +256,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <!--
 9.4.4 => https://www.haskell.org/ghc/blog/20221224-ghc-9.4.4-released.html
 9.6.1 => https://www.haskell.org/ghc/blog/20230310-ghc-9.6.1-released.html
-9.6.4 => 
-9.8.1 => 
+9.6.4 => https://www.haskell.org/ghc/blog/20240109-ghc-9.6.4-released.html
+9.8.1 => https://www.haskell.org/ghc/blog/20231009-ghc-9.8.1-released.html
 -->
 [haskell_latest_relnotes]: https://www.haskell.org/ghc/blog/20230310-ghc-9.6.1-released.html
 [kafka_examples]: https://github.com/michelou/kafka-examples
@@ -273,17 +273,40 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [man1_sed]: https://www.linux.org/docs/man1/sed.html
 [man1_wc]: https://www.linux.org/docs/man1/wc.html
 [nodejs_examples]: https://github.com/michelou/nodejs-examples
-[temurin_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
 <!--
-11.0.9      -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
-11.0.11     -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-April/005860.html
-11.0.12     -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-July/006954.html
-11.0.14.1_1 -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-February/012001.html
-11.0.15_10  -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
-11.0.17_8   -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-October/018119.html
-11.0.17_10  -> 
+11.0.9  -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2020-October/004007.html
+11.0.11 -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-April/005860.html
+11.0.12 -> https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2021-July/006954.html
+11.0.13 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2021-October/009368.html
+11.0.14 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-January/011643.html
+11.0.15 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-April/014104.html
+11.0.16 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-July/016017.html
+11.0.17 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2022-October/018119.html
+11.0.18 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-January/020111.html
+11.0.19 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-April/021900.html
+11.0.20 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-July/024064.html
+11.0.21 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026351.html
+11.0.22 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-January/029215.html
 -->
+[temurin_openjdk11]: https://adoptium.net/?variant=openjdk11&jvmVariant=hotspot
 [temurin_openjdk11_relnotes]: https://mail.openjdk.java.net/pipermail/jdk-updates-dev/2022-April/014104.html
+<!--
+17.0.7  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-April/021899.html
+17.0.8  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-July/024063.html
+17.0.9  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026352.html
+17.0.10 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-January/029089.html
+-->
+[temurin_openjdk17]: https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot
+[temurin_openjdk17_bugfixes]: https://www.oracle.com/java/technologies/javase/17-0-2-bugfixes.html
+[temurin_openjdk17_relnotes]: https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026352.html
+<!--
+21_35   -> https://adoptium.net/fr/temurin/release-notes/?version=jdk-21+35
+21.0.1  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026351.html
+21.0.2  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-January/029090.html
+-->
+[temurin_openjdk21]: https://adoptium.net/releases.html?variant=openjdk21&jvmVariant=hotspot
+[temurin_openjdk21_bugfixes]: https://www.oracle.com/java/technologies/javase/17-0-2-bugfixes.html
+[temurin_openjdk21_relnotes]: https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026351.html
 [rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
 [spring_examples]: https://github.com/michelou/spring-examples

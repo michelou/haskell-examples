@@ -16,8 +16,7 @@ set _LAST_MODIFIED_NEW=michelou/)/January 2024
 set _LAST_DOWNLOAD_OLD=(\*October 2023\*)
 set _LAST_DOWNLOAD_NEW=(*January 2024*)
 
-@rem https://superuser.com/questions/909127/findstr-dos-commands-multiple-string-argument
-set _MD_EXCLUDES=_LOCAL
+set _EXCLUDE_DIRS=bin docs
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -58,6 +57,7 @@ if not exist "%GIT_HOME%\usr\bin\grep.exe" (
     set _EXITCODE=1
     goto :eof
 )
+set "_FIND_CMD=%GIT_HOME%\usr\bin\find.exe"
 set "_GREP_CMD=%GIT_HOME%\usr\bin\grep.exe"
 set "_SED_CMD=%GIT_HOME%\usr\bin\sed.exe"
 set "_UNIX2DOS_CMD=%GIT_HOME%\usr\bin\unix2dos.exe"
@@ -173,8 +173,14 @@ echo     %__BEG_O%run%__END%          replace old patterns with new ones
 goto :eof
 
 :run
+set __FIND_EXCLUDES=
+for %%i in (%_EXCLUDE_DIRS%) do (
+    set __FIND_EXCLUDES=!__FIND_EXCLUDES! -not -path "./%%i/*"
+)
 set __N=0
-for /f "delims=" %%f in ('dir /b /s "%_ROOT_DIR%\*.md" ^| findstr /v "%_MD_EXCLUDES%"') do (
+if %_DEBUG%==1 echo %_DEBUG_LABEL% "%_FIND_CMD%" . -type f -name "*.md" %__FIND_EXCLUDES% 1>&2
+for /f "delims=" %%f in ('%_FIND_CMD% . -type f -name "*.md" %__EXCLUDES%') do (
+    set __OLD_N=!__N!
     set "__INPUT_FILE=%%f"
     if %_DEBUG%==1 echo %_DEBUG_LABEL% "%_GREP_CMD%" -q "%_LAST_MODIFIED_OLD%" "!__INPUT_FILE!" 1>&2
     call "%_GREP_CMD%" -q "%_LAST_MODIFIED_OLD%" "!__INPUT_FILE!"
