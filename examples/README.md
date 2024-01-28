@@ -10,14 +10,16 @@
 
 In the following we present the two examples [**`Factorial`**](#factorial) and [**`QuickSort`**](#quicksort).
 
-We can build/run code examples in directory [`examples`](./) in several ways. For instance we have the following configuration files for project [**`Factorial`**](#factorial):
+We can build/run code examples in directory [`examples`](./) in several ways :
 
-| Build tool                    | Configuration file                           | Parent file                |
-|-------------------------------|----------------------------------------------|----------------------------|
-| [**`build.bat`**](Factorial/build.bat) | [`Factorial.cabal`](Factorial/Factorial.cabal) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       |
-| [**`cabal.exe`**][cabal_cli]      | [`Factorial.cabal`](Factorial/Factorial.cabal) | n.a.             |
-| [**`mvn.cmd`**][apache_maven_cli] | [`pom.xml`](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) |
-| [**`stack.exe`**][stack_cli]      | [`stack.yaml`](Factorial/stack.yaml) | n.a.                       |
+| Build tool                    | Configuration file                           | Parent file                | Environment(s) |
+|-------------------------------|----------------------------------------------|----------------------------|-------------|
+| [**`cabal.exe`**][cabal_cli]      | [`Factorial.cabal`](Factorial/Factorial.cabal) | n.a.             | Any |
+| [**`cmd.exe`**][cmd_cli] | [`build.bat`](Factorial/build.bat) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       | Windows only |
+| [**`make.exe`**][gmake_cli] | [`Makefile`](Factorial/Makefile) | [`Makefile.inc`](./Makefile.inc) | Any |
+| [**`mvn.cmd`**][apache_maven_cli] | [`pom.xml`](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) | Any |
+| [**`sh.exe`**][sh_cli] | [`build.sh`](Factorial/build.sh) | | [Cygwin]/[MSYS2]/Unix only |
+| [**`stack.exe`**][stack_cli]      | [`stack.yaml`](Factorial/stack.yaml) | n.a.                       | Any |
 
 
 ## <span id="factorial">`Factorial` Example</span> [**&#x25B4;**](#top)
@@ -31,7 +33,9 @@ H:\examples\<a href="Factorial/">Factorial</a>
 |   .gitignore
 |   <a href="Factorial/.hlint.yaml">.hlint.yaml</a>
 |   <a href="Factorial/build.bat">build.bat</a>
+|   <a href="Factorial/build.sh">build.sh</a>
 |   <a href="Factorial/Factorial.cabal">Factorial.cabal</a>
+|   <a href="Factorial/Makefile">Makefile</a>
 |   <a href="Factorial/stack.yaml">stack.yaml</a>
 |   Setup.hs
 |
@@ -109,13 +113,28 @@ factorialProd(5)=120
 > [..]
 > </pre>
 
+### <span id="factorial_make">***Make***</span>
+
+Command [`make -s run`][gmake_cli] builds and executes the [Haskell] application (configuration file [`Makefile`](./Factorial/Makefile))
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> make</b>
+C:\opt\make-3.81\bin\make.exe
+&nbsp;
+<b>&gt; <a href="http://www.glue.umd.edu/lsf-docs/man/gmake.html">make</a> -s run</b>
+factorialRec(5) =120
+factorialRec2(5)=120
+factorialFold(5)=120
+factorialProd(5)=120
+</pre>
+
 ### <span id="factorial_maven">***Maven***</span>
 
 Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
-C:\opt\apache-maven-3.8.7\bin\mvn.cmd
+C:\opt\apache-maven\bin\mvn.cmd
 &nbsp;
 <b>&gt; <a href="https://maven.apache.org/ref/3.8.7/maven-embedder/cli.html">mvn</a> -q clean compile exec:exec</b>
 [1 of 1] Compiling Main             ( app\Main.hs, target\gen\Main.o )
@@ -128,7 +147,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_batch">***Batch***</span>
 
-Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application:
+Command [`build clean run`](Factorial/build.bat) builds and executes the [Haskell] application (option `-verbose` prints progress messages) :
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> build</b>
 H:\examples\Factorial\build.bat
@@ -183,6 +202,7 @@ H:\examples\QuickSort
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/tree">tree</a> /a /f . | <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/findstr">findstr</a> /v "^[A-Z]"</b>
 |   .gitignore
 |   <a href="./QuickSort/build.bat">build.bat</a>
+|   <a href="./QuickSort/build.sh">build.sh</a>
 |   <a href="./QuickSort/QuickSort.cabal">QuickSort.cabal</a>
 |   Setup.hs
 |   <a href="./QuickSort/stack.yaml">stack.yaml</a>
@@ -226,6 +246,18 @@ C:\opt\stack-2.11.1\stack.exe
 input list       : [8,4,0,3,1,23,11,18]
 sorted(filter)   : [0,1,3,4,8,11,18,23]
 sorted(list comp): [0,1,3,4,8,11,18,23]
+</pre>
+
+### <span id="quicksort_make">***Make***</span>
+
+Command `make -s run` builds and executes the [Haskell] application (configuration file [`Makefile`](./QuickSort/Makefile))
+
+<pre style="font-size:80%;">
+<b>&gt; <a href="https://www.glue.umd.edu/lsf-docs/man/gmake.html" rel="external">make</a> -s run</b>
+input list       : [8,4,0,3,1,23,11,18]
+sorted(filter)   : [0,1,3,4,8,11,18,23]
+sorted(list comp): [0,1,3,4,8,11,18,23]
+sorted(ST)       : [0,1,3,4,8,11,18,23]
 </pre>
 
 ### <span id="quicksort_maven">***Maven***</span>
@@ -301,13 +333,15 @@ In project <a href="./Factorial/"><code>Factorial</code></a> the batch file <a h
 [cabal_changelog]: https://hackage.haskell.org/package/Cabal/changelog
 [cabal_cli]: https://cabal.readthedocs.io/en/3.4/
 [cabal_downloads]: https://www.haskell.org/cabal/download.html
-[dotty_examples]: https://github.com/michelou/dotty-examples
+[cmd_cli]: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd
 [ghc_parser]: https://gitlab.haskell.org/ghc/ghc/wikis/commentary/compiler/parser
-[graalsqueak_examples]: https://github.com/michelou/graalsqueak-examples
+[gmake_cli]: http://www.glue.umd.edu/lsf-docs/man/gmake.html
+[cygwin]: https://cygwin.com/install.html
 [haskell]: https://www.haskell.org
-[kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
+[msys2]: https://www.msys2.org/
 [mvn_cli]: https://maven.apache.org/ref/3.8.1/maven-embedder/cli.html
+[sh_cli]: https://man7.org/linux/man-pages/man1/sh.1p.html
 [stack_cli]: https://docs.haskellstack.org/en/stable/build_command/
 [stack_userguide]: https://docs.haskellstack.org/en/stable/GUIDE/
 [windows_batch_file]: https://en.wikibooks.org/wiki/Windows_Batch_Scripting

@@ -24,6 +24,7 @@ if %_HELP%==1 (
 )
 
 set _GIT_PATH=
+set _MAKE_PATH=
 set _MAVEN_PATH=
 set _STACK_PATH=
 
@@ -39,7 +40,10 @@ if not %_EXITCODE%==0 goto end
 
 @rem %1=vendor, %2=version
 @rem eg. bellsoft, corretto, bellsoft, openj9, redhat, sapmachine, temurin, zulu
-call :jdk "temurin" 11
+call :jdk "temurin" 17
+if not %_EXITCODE%==0 goto end
+
+call :make
 if not %_EXITCODE%==0 goto end
 
 call :maven
@@ -386,7 +390,7 @@ if defined __GIT_CMD (
     set __PATH=C:\opt
     if exist "!__PATH!\Git\" ( set "_GIT_HOME=!__PATH!\Git"
     ) else (
-        for /f %%f in ('dir /ad /b "!__PATH!\Git*" 2^>NUL') do set "_GIT_HOME=!__PATH!\%%f"
+        for /f "delims=" %%f in ('dir /ad /b "!__PATH!\Git*" 2^>NUL') do set "_GIT_HOME=!__PATH!\%%f"
         if not defined _GIT_HOME (
             set "__PATH=%ProgramFiles%"
             for /f "delims=" %%f in ('dir /ad /b "!__PATH!\Git*" 2^>NUL') do set "_GIT_HOME=!__PATH!\%%f"
@@ -394,7 +398,7 @@ if defined __GIT_CMD (
     )
 )
 if not exist "%_GIT_HOME%\bin\git.exe" (
-    echo %_ERROR_LABEL% Git executable not found ^(%_GIT_HOME%^) 1>&2
+    echo %_ERROR_LABEL% Git executable not found ^("%_GIT_HOME%"^) 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -424,7 +428,7 @@ if defined __JAVAC_CMD (
         for %%i in ("%__JAVAC_CMD%") do set "__BIN_DIR=%%~dpi"
         for %%f in ("%__BIN_DIR%") do set "_JDK_HOME=%%~dpf"
     ) else (
-        echo %_ERROR_LABEL% Required JDK installation not found ^(%__JDK_NAME%^) 1>&2
+        echo %_ERROR_LABEL% Required JDK installation not found ^("%__JDK_NAME%"^) 1>&2
         set _EXITCODE=1
         goto :eof
     )
@@ -440,11 +444,11 @@ if defined JDK_HOME (
         for /f %%f in ('dir /ad /b "!_PATH!\%__JDK_NAME%*" 2^>NUL') do set "_JDK_HOME=!_PATH!\%%f"
     )
     if defined _JDK_HOME (
-        if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Java SDK installation directory !_JDK_HOME! 1>&2
+        if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Java SDK installation directory "!_JDK_HOME!" 1>&2
     )
 )
 if not exist "%_JDK_HOME%\bin\javac.exe" (
-    echo %_ERROR_LABEL% Executable javac.exe not found ^(%_JDK_HOME%^) 1>&2
+    echo %_ERROR_LABEL% Executable javac.exe not found ^("%_JDK_HOME%"^) 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -474,6 +478,35 @@ if "!__JAVAC_VERSION:~0,2!"=="17" ( set _JDK_VERSION=17
 )
 goto :eof
 
+@rem output parameters: _MAKE_HOME, _MAKE_PATH
+:make
+set _MAKE_HOME=
+set _MAKE_PATH=
+
+set __MAKE_CMD=
+for /f "delims=" %%f in ('where make.exe 2^>NUL') do set "__MAKE_CMD=%%f"
+if defined __MAKE_CMD (
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using path of Make executable found in PATH 1>&2
+    @rem keep _MAKE_PATH undefined since executable already in path
+    goto :eof
+) else if defined MAKE_HOME (
+    set "_MAKE_HOME=%MAKE_HOME%"
+    if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable MAKE_HOME 1>&2
+) else (
+    set _PATH=C:\opt
+    for /f "delims=" %%f in ('dir /ad /b "!_PATH!\make-3*" 2^>NUL') do set "_MAKE_HOME=!_PATH!\%%f"
+    if defined _MAKE_HOME (
+        if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Make installation directory "!_MAKE_HOME!" 1>&2
+    )
+)
+if not exist "%_MAKE_HOME%\bin\make.exe" (
+    echo %_ERROR_LABEL% Make executable not found ^("%_MAKE_HOME%"^) 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+set "_MAKE_PATH=;%_MAKE_HOME%\bin"
+goto :eof
+
 @rem output parameters: _MAVEN_HOME, _MAVEN_PATH
 :maven
 set _MAVEN_HOME=
@@ -495,10 +528,11 @@ if defined __MVN_CMD (
     set "_MAVEN_HOME=%MAVEN_HOME%"
     if %_DEBUG%==1 echo %_DEBUG_LABEL% Using environment variable MAVEN_HOME 1>&2
 ) else (
-    set _PATH=C:\opt
-    if exist "!__PATH!\apache-maven\" ( set "_MAVEN_HOME=!__PATH!\apache-maven"
+    set __PATH=C:\opt
+    if exist "!__PATH!\apache-maven\" (
+        set "_MAVEN_HOME=!__PATH!\apache-maven"
     ) else (
-        for /f %%f in ('dir /ad /b "!_PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!_PATH!\%%f"
+        for /f "delims=" %%f in ('dir /ad /b "!_PATH!\apache-maven-*" 2^>NUL') do set "_MAVEN_HOME=!_PATH!\%%f"
     )
     if defined _MAVEN_HOME (
         if %_DEBUG%==1 echo %_DEBUG_LABEL% Using default Maven installation directory !_MAVEN_HOME! 1>&2
@@ -596,6 +630,7 @@ if %__VERBOSE%==1 if defined __WHERE_ARGS (
     if defined GHC_HOME echo    "GHC_HOME=%GHC_HOME%" 1>&2
     if defined GIT_HOME echo    "GIT_HOME=%GIT_HOME%" 1>&2
     if defined JAVA_HOME echo    "JAVA_HOME=%JAVA_HOME%" 1>&2
+    if defined MAKE_HOME echo    "MAKE_HOME=%MAKE_HOME%" 1>&2
     if defined MAVEN_HOME echo    "MAVEN_HOME=%MAVEN_HOME%" 1>&2
     if defined STACK_HOME echo    "STACK_HOME=%STACK_HOME%" 1>&2
     echo Path associations: 1>&2
@@ -618,10 +653,11 @@ endlocal & (
         if not defined GIT_HOME set "GIT_HOME=%_GIT_HOME%"
         @rem Variable JAVA_HOME must be defined for Maven
         if not defined JAVA_HOME set "JAVA_HOME=%_JDK_HOME%"
+        if not defined MAKE_HOME set "MAKE_HOME=%_MAKE_HOME%"
         if not defined MAVEN_HOME set "MAVEN_HOME=%_MAVEN_HOME%"
         if not defined STACK_HOME set "STACK_HOME=%_STACK_HOME%"
         for /f %%i in ('stack.exe --version 2^>NUL') do set STACK_WORK=target
-        set "PATH=%PATH%;%_CABAL_DIR%\bin;%_GHC_HOME%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAVEN_PATH%"
+        set "PATH=%PATH%;%_CABAL_DIR%\bin;%_GHC_HOME%\bin;%_STACK_HOME%;%_GIT_PATH%%_MAKE_PATH%%_MAVEN_PATH%"
         call :print_env %_VERBOSE%
         if not "%CD:~0,2%"=="%_DRIVE_NAME%" (
             if %_DEBUG%==1 echo %_DEBUG_LABEL% cd /d %_DRIVE_NAME% 1>&2
