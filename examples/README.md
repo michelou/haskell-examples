@@ -12,13 +12,13 @@ In the following we present the two examples [**`Factorial`**](#factorial) and [
 
 We can build/run code examples in directory [`examples`](./) in several ways :
 
-| Build tool                    | Configuration file                           | Parent file                | Environment(s) |
-|-------------------------------|----------------------------------------------|----------------------------|-------------|
+| Build&nbsp;tool                   | Build&nbsp;file                           | Parent&nbsp;file           | Environment(s) |
+|-----------------------------------|-------------------------------------------|----------------------------|----------------|
 | [**`cabal.exe`**][cabal_cli]      | [`Factorial.cabal`](Factorial/Factorial.cabal) | n.a.             | Any |
-| [**`cmd.exe`**][cmd_cli] | [`build.bat`](Factorial/build.bat) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       | Windows only |
-| [**`make.exe`**][gmake_cli] | [`Makefile`](Factorial/Makefile) | [`Makefile.inc`](./Makefile.inc) | Any |
+| [**`cmd.exe`**][cmd_cli]          | [`build.bat`](Factorial/build.bat) <sup id="anchor_01">[1](#footnote_01)</sup> | n.a.                       | Windows only |
+| [**`make.exe`**][gmake_cli]       | [`Makefile`](Factorial/Makefile)     | [`Makefile.inc`](./Makefile.inc) | Any |
 | [**`mvn.cmd`**][apache_maven_cli] | [`pom.xml`](Factorial/pom.xml)       | [**`pom.xml`**](./pom.xml) | Any |
-| [**`sh.exe`**][sh_cli] | [`build.sh`](Factorial/build.sh) | | [Cygwin]/[MSYS2]/Unix only |
+| [**`sh.exe`**][sh_cli]            | [`build.sh`](Factorial/build.sh)     | | [Cygwin]/[MSYS2]/Unix only |
 | [**`stack.exe`**][stack_cli]      | [`stack.yaml`](Factorial/stack.yaml) | n.a.                       | Any |
 
 
@@ -45,7 +45,7 @@ H:\examples\<a href="Factorial/">Factorial</a>
 
 ### <span id="factorial_cabal">***Cabal***</span>
 
-Command [`cabal run all`][cabal_cli] builds and execute the [Haskell] application (configuration file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
+Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] application (build file [`Factorial.cabal`](./Factorial/Factorial.cabal)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
@@ -68,10 +68,10 @@ factorialProd(5)=120
 
 ### <span id="factorial_stack">***Stack***</span>
 
-Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./Factorial/stack.yaml)):
+Command [`stack run`][stack_cli] builds and executes the [Haskell] application (build file [`stack.yaml`](./Factorial/stack.yaml)):
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1" rel="external">where</a> stack</b>
-C:\opt\stack-2.11.1\stack.exe
+C:\opt\stack-2.13.1\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 factorialRec(5) =120
@@ -115,7 +115,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_make">***Make***</span>
 
-Command [`make -s run`][gmake_cli] builds and executes the [Haskell] application (configuration file [`Makefile`](./Factorial/Makefile))
+Command [`make -s run`][gmake_cli] builds and executes the [Haskell] application (build file [`Makefile`](./Factorial/Makefile))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> make</b>
@@ -130,7 +130,7 @@ factorialProd(5)=120
 
 ### <span id="factorial_maven">***Maven***</span>
 
-Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (configuration file [`pom.xml`](./Factorial/pom.xml))
+Command [`mvn -q compile exec:exec`][mvn_cli] builds and executes the [Haskell] application (build file [`pom.xml`](./Factorial/pom.xml))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> mvn.cmd</b>
@@ -213,7 +213,7 @@ H:\examples\QuickSort
 
 ### <span id="quicksort_cabal">***Cabal***</span>
 
-Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] application (configuration file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
+Command [`cabal run all`][cabal_cli] builds and executes the [Haskell] application (build file [`QuickSort.cabal`](./QuickSort/QuickSort.cabal)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal</b>
@@ -236,11 +236,11 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 ### <span id="quicksort_stack">***Stack***</span>
 
-Command [`stack run`][stack_cli] builds and executes the [Haskell] application (configuration file [`stack.yaml`](./QuickSort/stack.yaml)):
+Command [`stack run`][stack_cli] builds and executes the [Haskell] application (build file [`stack.yaml`](./QuickSort/stack.yaml)):
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> stack</b>
-C:\opt\stack-2.11.1\stack.exe
+C:\opt\stack-2.13.1\stack.exe
 &nbsp;
 <b>&gt; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> clean &amp;&amp; <a href="https://docs.haskellstack.org/en/stable/build_command/">stack</a> --silent run</b>
 input list       : [8,4,0,3,1,23,11,18]
@@ -250,7 +250,7 @@ sorted(list comp): [0,1,3,4,8,11,18,23]
 
 ### <span id="quicksort_make">***Make***</span>
 
-Command `make -s run` builds and executes the [Haskell] application (configuration file [`Makefile`](./QuickSort/Makefile))
+Command `make -s run` builds and executes the [Haskell] application (build file [`Makefile`](./QuickSort/Makefile))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://www.glue.umd.edu/lsf-docs/man/gmake.html" rel="external">make</a> -s run</b>
@@ -262,7 +262,7 @@ sorted(ST)       : [0,1,3,4,8,11,18,23]
 
 ### <span id="quicksort_maven">***Maven***</span>
 
-Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (configuration file [`pom.xml`](./QuickSort/pom.xml))
+Command `mvn -q compile exec:exec` builds and executes the [Haskell] application (build file [`pom.xml`](./QuickSort/pom.xml))
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="https://maven.apache.org/ref/current/maven-embedder/cli.html" rel="external">mvn</a> -q clean compile exec:exec</b>
