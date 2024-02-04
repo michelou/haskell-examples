@@ -10,13 +10,14 @@ set _DEBUG=0
 set _EXITCODE=0
 
 @rem files README.md, RESOURCES.md, etc.
-set _LAST_MODIFIED_OLD=michelou/)/October 2023
-set _LAST_MODIFIED_NEW=michelou/)/January 2024
+set _LAST_MODIFIED_OLD=michelou/)/January 2024
+set _LAST_MODIFIED_NEW=michelou/)/February 2024
 
-set _LAST_DOWNLOAD_OLD=(\*October 2023\*)
-set _LAST_DOWNLOAD_NEW=(*January 2024*)
+set _LAST_DOWNLOAD_OLD=(\*January 2024\*)
+set _LAST_DOWNLOAD_NEW=(*February 2024*)
 
-set _EXCLUDE_DIRS=bin docs
+@rem to be transformed into -not -path "./<dirname>/*"
+set _EXCLUDE_DIRS=bin docs docs_LOCAL
 
 call :env
 if not %_EXITCODE%==0 goto end
@@ -179,13 +180,17 @@ for %%i in (%_EXCLUDE_DIRS%) do (
 )
 set __N=0
 if %_DEBUG%==1 echo %_DEBUG_LABEL% "%_FIND_CMD%" . -type f -name "*.md" %__FIND_EXCLUDES% 1>&2
-for /f "delims=" %%f in ('%_FIND_CMD% . -type f -name "*.md" %__EXCLUDES%') do (
+for /f "delims=" %%f in ('%_FIND_CMD% . -type f -name "*.md" %__FIND_EXCLUDES%') do (
     set __OLD_N=!__N!
     set "__INPUT_FILE=%%f"
-    if %_DEBUG%==1 echo %_DEBUG_LABEL% "%_GREP_CMD%" -q "%_LAST_MODIFIED_OLD%" "!__INPUT_FILE!" 1>&2
+    if %_DEBUG%==1 (echo %_DEBUG_LABEL% "%_GREP_CMD%" -q "%_LAST_MODIFIED_OLD%" "!__INPUT_FILE!" 1>&2
+    ) else if %_VERBOSE%==1 ( echo Check file "!__INPUT_FILE!" 1>&2
+    )
     call "%_GREP_CMD%" -q "%_LAST_MODIFIED_OLD%" "!__INPUT_FILE!"
     if !ERRORLEVEL!==0 (
-        if %_DEBUG%==1 echo %_DEBUG_LABEL% "%_SED_CMD%" -i "s@%_LAST_MODIFIED_OLD%@%_LAST_MODIFIED_NEW%@g" "!__INPUT_FILE!" 1>&2
+        if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_SED_CMD%" -i "s@%_LAST_MODIFIED_OLD%@%_LAST_MODIFIED_NEW%@g" "!__INPUT_FILE!" 1>&2
+        ) else if %_VERBOSE%==1 ( echo    Replace pattern "%_LAST_MODIFIED_OLD%" by "%_LAST_MODIFIED_NEW%" 1>&2
+        )
         call "%_SED_CMD%" -i "s@%_LAST_MODIFIED_OLD%@%_LAST_MODIFIED_NEW%@g" "!__INPUT_FILE!"
         call "%_UNIX2DOS_CMD%" -q "!__INPUT_FILE!"
         set /a __N+=1
