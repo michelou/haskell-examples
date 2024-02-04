@@ -41,7 +41,7 @@ C:\opt\ghc-9.6.4\                <i>(2.6 GB)</i>
 C:\opt\ghc-9.8.1\                <i>(2.6 GB)</i>
 C:\opt\Git\                      <i>(358 MB)</i>
 C:\opt\jdk-temurin-11.0.22_7\    <i>(303 MB)</i>
-C:\opt\stack-2.11.1\             <i>( 74 MB)</i>
+C:\opt\stack-2.13.1\             <i>( 74 MB)</i>
 </pre>
 
 <!--
@@ -93,7 +93,7 @@ In the next section we give a brief description of the [batch files][windows_bat
 
 We distinguish different sets of batch commands:
 
-1. [**`setenv.bat`**](setenv.bat) - This batch command makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt (see section [**Project dependencies**](#proj_deps)).
+1. [**`setenv.bat`**](setenv.bat) - This batch command makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`git.exe`**][git_cli], [**`sh.exe`**][sh_cli] and [**`stack.exe`**][stack_userguide] directly available from the command prompt (see section [**Project dependencies**](#proj_deps)).
 
    <pre style="font-size:80%;">
    <b>&gt; <a href="./setenv.bat">setenv</a> help</b>
@@ -130,7 +130,7 @@ We distinguish different sets of batch commands:
 
 ### `setenv.bat`
 
-We execute command [**`setenv`**](setenv.bat) once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`haddock.exe`**][haddock_userguide], [**`ghc.exe`**][ghc_userguide] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
+We execute command [**`setenv`**](setenv.bat) once to setup our development environment; it makes external tools such as [**`cabal.exe`**][cabal_userguide], [**`git.exe`**][git_cli], [**`sh.exe`**][sh_cli] and [**`stack.exe`**][stack_userguide] directly available from the command prompt:
 
 <pre style="font-size:80%;">
 <b>&gt; <a href="setenv.bat">setenv</a></b>
@@ -139,10 +139,15 @@ Tool versions:
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
    java 11.0.22, mvn 3.9.6, git 2.43.0.windows.1, diff 3.10
 
-<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> hlint hpack stack</b>
+<b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal git hlint hpack sh stack</b>
+C:\opt\ghc-8.10.7\bin\cabal.exe
+C:\opt\Git\bin\git.exe
+C:\opt\Git\mingw64\bin\git.exe
 <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hlint.exe
-%APPDATA%\Cabal\bin\hpack.exe
-C:\opt\stack\stack.exe
+<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\Cabal\bin\hpack.exe
+C:\opt\Git\bin\sh.exe
+C:\opt\Git\usr\bin\sh.exe
+C:\opt\stack-2.13.1\stack.exe
 </pre>
 
 Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and defined variables:
@@ -203,7 +208,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://downloads.haskell.org/ghc/9.6.1/">ghc-9.6.1-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
 <a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.22_7.zip</a>   <i>( 99 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.43.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
-<a href="https://github.com/commercialhaskell/stack/releases">stack-2.11.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
+<a href="https://github.com/commercialhaskell/stack/releases">stack-2.13.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 </dd>
 <dd>
@@ -254,8 +259,10 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [haskell_lts_relnotes]: https://downloads.haskell.org/ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html
 [haskell_latest_downloads]: https://downloads.haskell.org/ghc/latest/
 <!--
+### https://www.haskell.org/ghc/blog.html
 9.4.4 => https://www.haskell.org/ghc/blog/20221224-ghc-9.4.4-released.html
 9.6.1 => https://www.haskell.org/ghc/blog/20230310-ghc-9.6.1-released.html
+9.6.3 => https://www.haskell.org/ghc/blog/20230925-ghc-9.6.3-released.html
 9.6.4 => https://www.haskell.org/ghc/blog/20240109-ghc-9.6.4-released.html
 9.8.1 => https://www.haskell.org/ghc/blog/20231009-ghc-9.8.1-released.html
 -->
@@ -263,6 +270,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [kafka_examples]: https://github.com/michelou/kafka-examples
 [kotlin_examples]: https://github.com/michelou/kotlin-examples
 [llvm_examples]: https://github.com/michelou/llvm-examples
+[m2_examples]: https://github.com/michelou/m2-examples
 [man1_awk]: https://www.linux.org/docs/man1/awk.html
 [man1_diff]: https://www.linux.org/docs/man1/diff.html
 [man1_file]: https://www.linux.org/docs/man1/file.html
@@ -309,6 +317,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [temurin_openjdk21_relnotes]: https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026351.html
 [rust_examples]: https://github.com/michelou/rust-examples
 [scala3_examples]: https://github.com/michelou/dotty-examples
+[sh_cli]: https://man7.org/linux/man-pages/man1/sh.1p.html
 [spring_examples]: https://github.com/michelou/spring-examples
 [spark_examples]: https://github.com/michelou/spark-examples
 [stack_changelog]: https://docs.haskellstack.org/en/stable/ChangeLog/

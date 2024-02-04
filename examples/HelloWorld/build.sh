@@ -205,7 +205,7 @@ doc() {
         file="$(mixed_path $f)"
 		file="${GHC_HOME}\\doc\\html\\libraries\\base-4.14.3.0\\base.haddock"
         parent_dir="$(dirname $file)/"
-		parent_dir="C${GHC_HOME}\\doc\\html\\libraries\\base-4.14.3.0"
+		parent_dir="${GHC_HOME}\\doc\\html\\libraries\\base-4.14.3.0"
         haddock_opts="$haddock_opts --read-interface=\"$parent_dir\",\"$file\""
     done
     local source_files=
@@ -265,7 +265,7 @@ VERBOSE=false
 COLOR_START="[32m"
 COLOR_END="[0m"
 
-APP_NAME=ArithmeticExpr
+APP_NAME=HelloWorld
 EXE_FILE="$TARGET_DIR/$APP_NAME.exe"
 
 cygwin=false

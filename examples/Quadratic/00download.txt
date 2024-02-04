@@ -1,0 +1,1 @@
+Source: https://subscription.packtpub.com/book/programming/9781786461353/1/ch01lvl1sec05/working-with-pure-functions-and-user-defined-data-types

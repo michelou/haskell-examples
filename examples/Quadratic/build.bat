@@ -78,7 +78,6 @@ if not exist "%GHC_HOME%\bin\ghc.exe" (
 set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
 
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _HLINT_CMD=
 if exist "%CABAL_DIR%\bin\hlint.exe" (
@@ -163,6 +162,7 @@ if exist "%__CABAL_FILE%" (
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
 
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
@@ -230,6 +230,8 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% _TEST=%_TEST% 1>&2
     echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "JAVA_HOME=%JAVA_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "MAVEN_HOME=%MAVEN_HOME%" 1>&2
 )
 if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
@@ -250,7 +252,7 @@ echo Usage: %__BEG_O%%_BASENAME% { ^<option^> ^| ^<subcommand^> }%__END%
 echo.
 echo   %__BEG_P%Options:%__END%
 echo     %__BEG_O%-debug%__END%      print commands executed by this script
-echo     %__BEG_O%-timer%__END%      print total execution time
+echo     %__BEG_O%-timer%__END%      print total elapsed time
 echo     %__BEG_O%-verbose%__END%    print progress messages
 echo.
 echo   %__BEG_P%Subcommands:%__END%
@@ -259,7 +261,7 @@ echo     %__BEG_O%compile%__END%     generate program executable
 echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
 echo     %__BEG_O%help%__END%        print this help message
 echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
-echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%!_EXE_FILE:%_ROOT_DIR%=!%__END%"
+echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%!__EXE_FILE:%_ROOT_DIR%=!%__END%"
 echo     %__BEG_O%test%__END%        execute unit tests
 if %_VERBOSE%==0 goto :eof
 echo.
@@ -324,7 +326,7 @@ if %__N% gtr 1 ( set __N_FILES=%__N% Haskell source files
 ) else ( set __N_FILES=%__N% Haskell source file
 )
 @rem option "-hidir <dir>" redirects all generated interface files into <dir>
-set __GHC_OPTS=%_GHC_OPTS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
+set __GHC_OPTS=%_GHC_OPTIONS% -hidir "%_TARGET_GEN_DIR%" -odir "%_TARGET_GEN_DIR%" -o "%_EXE_FILE%"
 
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_GHC_CMD%" %__GHC_OPTS% %__SOURCE_FILES% 1>&2
 ) else if %_VERBOSE%==1 ( echo Compile %__N_FILES% to file "!_EXE_FILE:%_ROOT_DIR%=!" 1>&2
@@ -404,7 +406,7 @@ if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
-    echo %_ERROR_LABEL% Failed to generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+    echo %_ERROR_LABEL% Generation of HTML documentation failed 1>&2
     set _EXITCODE=1
     goto :eof
 )

@@ -151,12 +151,15 @@ compile() {
     local s=; [[ $n -gt 1 ]] && s="s"
     local n_files="$n Haskell source file$s"
 
-    if $DEBUG; then debug "$GHC_CMD $GHC_OPTS $source_files"
-    elif $VERBOSE; then echo "Compile $n_files to file \"${EXE_FILE/$ROOT_DIR/\\}\"" 1>&2
+    ## option "-hidir <dir>" redirects all generated interface files into <dir>
+    local ghc_opts="-Wall -Wmissing-import-lists -Wincomplete-uni-patterns -Werror -hidir $TARGET_GEN_DIR -odir $TARGET_GEN_DIR -o $EXE_FILE"    
+
+    if $DEBUG; then debug "$GHC_CMD $ghc_opts $source_files"
+    elif $VERBOSE; then echo "Compile $n_files to file \"${EXE_FILE/$ROOT_DIR/}\"" 1>&2
     fi
-    eval "$GHC_CMD" $GHC_OPTS $source_files
+    eval "$GHC_CMD" $ghc_opts $source_files
     if [[ $? -ne 0 ]]; then
-        error "Failed to compile $n_files to file \"${EXE_FILE/$ROOT_DIR/\\}\"" 1>&2
+        error "Failed to compile $n_files to file \"${EXE_FILE/$ROOT_DIR/}\"" 1>&2
         cleanup 1
     fi
 }
@@ -203,9 +206,9 @@ doc() {
     ## Use "*.haddock" instead of "base.haddock" to include all interface docs.
     for f in $(find "$html_libs_dir" -type f -name "base.haddock"); do
         file="$(mixed_path $f)"
-		file="${GHC_HOME}\\doc\\html\\libraries\\base-4.14.3.0\\base.haddock"
+		file="C:\\opt\\ghc-8.10.7\\doc\\html\\libraries\\base-4.14.1.0\\base.haddock"
         parent_dir="$(dirname $file)/"
-		parent_dir="C${GHC_HOME}\\doc\\html\\libraries\\base-4.14.3.0"
+		parent_dir="C:\\opt\\ghc-8.10.7\\doc\\html\\libraries\\base-4.14.1.0"
         haddock_opts="$haddock_opts --read-interface=\"$parent_dir\",\"$file\""
     done
     local source_files=
@@ -265,7 +268,7 @@ VERBOSE=false
 COLOR_START="[32m"
 COLOR_END="[0m"
 
-APP_NAME=ArithmeticExpr
+APP_NAME=Colors
 EXE_FILE="$TARGET_DIR/$APP_NAME.exe"
 
 cygwin=false
@@ -295,8 +298,6 @@ if [[ ! -x "$GHC_HOME/bin/ghc.exe" ]]; then
     cleanup 1
 fi
 GHC_CMD="$GHC_HOME/bin/ghc.exe"
-## option "-hidir <dir>" redirects all generated interface files into <dir>
-GHC_OPTS="-Wall -Werror -hidir $TARGET_GEN_DIR -odir $TARGET_GEN_DIR -o $EXE_FILE"
 
 HADDOCK_CMD="$GHC_HOME/bin/haddock.exe"
 HADDOCK_OPTS="--html --odir=$(mixed_path $TARGET_DOCS_DIR)"

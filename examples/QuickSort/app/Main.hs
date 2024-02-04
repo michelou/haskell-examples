@@ -4,8 +4,8 @@ License    : MIT License
 -}
 module Main (main) where
 
-import Control.Monad.ST
-import Data.Array.ST
+import Control.Monad.ST (runST, ST)
+import Data.Array.ST (getElems, newListArray, readArray, STArray, writeArray)
 
 -- | QuickSort function using the function `filter` from module `GHC.List`.
 --   (see https://hackage.haskell.org/package/base-4.14.0.0/docs/src/GHC.List.html) 

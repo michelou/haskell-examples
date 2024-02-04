@@ -274,7 +274,7 @@ goto :eof
 
 :clean
 call :rmdir "%_TARGET_DIR%"
-call :rmdir "%_ROOTDIR%dist-newstyle"
+call :rmdir "%_ROOT_DIR%dist-newstyle"
 goto :eof
 
 @rem input parameter: %1=directory path
