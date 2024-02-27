@@ -16,7 +16,7 @@
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.8][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.43][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.44][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 > **&#9755;** ***Haskell packages***<br/>
@@ -137,7 +137,7 @@ We execute command [**`setenv`**](setenv.bat) once to setup our development envi
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.22, mvn 3.9.6, git 2.43.0.windows.1, diff 3.10
+   java 11.0.22, mvn 3.9.6, git 2.44.0.windows.1, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal git hlint hpack sh stack</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
@@ -157,7 +157,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.13.1, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 11.0.20, mvn 3.9.6, git 2.43.0.windows.1, diff 3.10
+   java 11.0.20, mvn 3.9.6, git 2.44.0.windows.1, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -207,15 +207,16 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.6.1/">ghc-9.6.1-x86_64-unknown-mingw32.tar.xz </a>           <i>(471 MB)</i>
 <a href="https://adoptium.net/releases.html?variant=openjdk11&jvmVariant=hotspot">OpenJDK11U-jdk_x64_windows_hotspot_11.0.22_7.zip</a>   <i>( 99 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.43.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.44.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.13.1-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 </pre>
 </dd>
 <dd>
 <table>
 <tr><th>Version</th><th>LLVM</th><th>Archive</th><th>Installation</th><th>Remarks</th></tr>
-<tr><td><a href="https://downloads.haskell.org/ghc/9.6.3/docs/users_guide/9.6.3-notes.html">9.6.3</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
-<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/users_guide/9.4.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/html/users_guide/9.4.4-notes.html#included-libraries">Included libraries</a><br/>(new: <code>bin\ghc-iserv-prof*.exe</code>)</td></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.8.1/docs/users_guide/9.8.1-notes.html">9.6.3</a></td><td></td><td></td><td></td><td><a href="https://downloads.haskell.org/ghc/9.8.1/docs/users_guide/win32-dlls.html">Running GHC on Win32 systems</a></td></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.6.3/docs/users_guide/9.6.3-notes.html">9.6.3</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.6.3/docs/users_guide/win32-dlls.html">Running GHC on Win32 systems</a></td></tr>
+<tr><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/users_guide/9.4.4-notes.html">9.4.4</a></td><td>9-12</td><td>479 MB</td><td>2.78 GB</td><td><a href="https://downloads.haskell.org/ghc/9.4.4/docs/users_guide/win32-dlls.html">Running GHC on Win32 systems</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html">9.2.2</a> <sup><b>a)</b></sup></td><td>10,11</td><td>331 MB</td><td>1.85 GB</td><td><a href="https://downloads.haskell.org/ghc/9.2.2/docs/html/users_guide/9.2.2-notes.html#included-libraries">Included libraries</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html">9.0.1</a></td><td>9</td><td>236 MB</td><td>2.64 GB</td><td><a href="https://downloads.haskell.org/~ghc/9.0.2/docs/html/users_guide/9.0.1-notes.html#included-libraries">Included libraries</a></td></tr>
 <tr><td><a href="https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html">8.10.7</a></td><td>9-12</td><td>414 MB</td><td>2.80 GB</td><td><a href="https://downloads.haskell.org/~ghc/8.10.7/docs/html/users_guide/8.10.7-notes.html#included-libraries">Included libraries</a></td></tr>
@@ -249,7 +250,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.43.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.44.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples
 [graalvm_examples]: https://github.com/michelou/graalvm-examples
