@@ -1,4 +1,4 @@
-# <span id="top">Haskell REPL</span> <span style="size:25%;"><a href="README.md">↩</a></span>
+# <span id="top">Haskell REPL</span> <span style="font-size:90%;">[↩](README.md#top)</span>
 
 <table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
@@ -47,7 +47,7 @@ See online <a href="https://downloads.haskell.org/~ghc/latest/docs/html/users_gu
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/May 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/June 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
