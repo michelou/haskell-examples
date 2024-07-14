@@ -1,4 +1,4 @@
-# <span id="top">Running Cabal on Windows</span> <span style="size:25%;"><a href="README.md">↩</a></span>
+# <span id="top">Running Cabal on Windows</span> <span style="font-size:90%;">[↩](README.md#top)</span>
 
 <table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
@@ -10,11 +10,11 @@
 
 Useful Haskell packages are for instance :
 - [haskell-language-server 2.1][haskell_lsp_downloads] ([*changelog*][haskell_lsp_changelog])
-- [hlint 3.6][hlint_downloads] ([*changelog*][hlint_changelog])
+- [hlint 3.8][hlint_downloads] ([*changelog*][hlint_changelog])
 - [hpack 0.35][hpack_downloads] ([*changelog*][hpack_changelog])
-- [`hspec` 2.11][hspec_downloads] ([*changelog*][hspec_changelog])
-- [`HTF` 0.15][htf_downloads] ([*changelog*][htf_changelog])
-- [`HUnit` 1.6][hunit_downloads] ([*changelog*][hunit_changelog])
+- [hspec 2.11][hspec_downloads] ([*changelog*][hspec_changelog])
+- [HTF 0.15][htf_downloads] ([*changelog*][htf_changelog])
+- [HUnit 1.6][hunit_downloads] ([*changelog*][hunit_changelog])
 - [ormolu 0.7][ormolu_downloads] ([*changelog*][ormolu_changelog])
 
 > **:mag_right:** Do not forget to execute command [`cabal`][cabal_man] `update` before running `list` and `install` :
@@ -97,18 +97,18 @@ Resolving dependencies...
 Build profile: -w ghc-8.10.7 -O1
 In order, the following will be built (use -v for more details):
 [...]
- - hlint-3.5 (lib) (requires download & build)
- - hlint-3.5  (exe:hlint) (requires download & build)
-Downloading  hlint-3.5 
-Downloaded   hlint-3.5 
-Starting     hlint-3.5  (lib)
-Building     hlint-3.5  (lib)
-Installing   hlint-3.5  (lib)
-Completed    hlint-3.5  (lib)
-Starting     hlint-3.5  (exe:hlint)
-Building     hlint-3.5  (exe:hlint)
-Installing   hlint-3.5  (exe:hlint)
-Completed    hlint-3.5  (exe:hlint)
+ - hlint-3.8 (lib) (requires download & build)
+ - hlint-3.8  (exe:hlint) (requires download & build)
+Downloading  hlint-3.8 
+Downloaded   hlint-3.8 
+Starting     hlint-3.8  (lib)
+Building     hlint-3.8  (lib)
+Installing   hlint-3.8  (lib)
+Completed    hlint-3.8  (lib)
+Starting     hlint-3.8  (exe:hlint)
+Building     hlint-3.8  (exe:hlint)
+Installing   hlint-3.8  (exe:hlint)
+Completed    hlint-3.8  (exe:hlint)
 Warning: installdir is not defined. Set it in your cabal config file or use
 --installdir=&lt;path&gt;. Using default installdir:
 "<a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#variables-that-are-recognized-only-in-the-user-context">%APPDATA%</a>\\cabal\\bin"
@@ -364,7 +364,7 @@ hyphenation-0.8.2-bd515ef41c0e7481a693cfb43a634ffee182525d.conf
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

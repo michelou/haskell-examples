@@ -28,16 +28,16 @@ This project relies on the following external software for the **Microsoft Windo
 Optionally one may also install the following software:
 
 - [Apache Maven 3.9][apache_maven] ([requires Java 8+][apache_maven_history])  ([*release notes*][apache_maven_relnotes])
-- [ConEmu][conemu_downloads] ([*release notes*][conemu_relnotes])
+- [ConEmu 2023][conemu_downloads] ([*release notes*][conemu_relnotes])
 - [Haskell 9.10][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [Stack 2.15][stack_downloads] ([*changelog*][stack_changelog])
-- [Temurin OpenJDK 11][temurin_openjdk11] ([*release notes*][temurin_openjdk11_relnotes], for Maven)
-- [Visual Studio Code 1.90][vscode_downloads] ([*release notes*][vscode_relnotes])
+- [Temurin OpenJDK 17][temurin_openjdk17] ([*release notes*][temurin_openjdk17_relnotes], for Maven)
+- [Visual Studio Code 1.91][vscode_downloads] ([*release notes*][vscode_relnotes])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*June 2024*) <sup id="anchor_02">[2](#footnote_02)</sup>:
+For instance our development environment looks as follows (*July 2024*) <sup id="anchor_02">[2](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven\             <i>( 10 MB)</i>
@@ -144,7 +144,7 @@ We execute command [**`setenv`**](setenv.bat) once to setup our development envi
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.15.5, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 17.0.11, mvn 3.9.7, git 2.45.2, diff 3.10
+   java 17.0.11, mvn 3.9.8, git 2.45.2, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal git hlint hpack sh stack</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
@@ -164,7 +164,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.15.5, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 17.0.11, mvn 3.9.7, git 2.45.2, diff 3.10
+   java 17.0.11, mvn 3.9.8, git 2.45.2, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -210,7 +210,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 </dd>
 <dd>
 <pre style="font-size:80%;">
-<a href="https://maven.apache.org/download.cgi">apache-maven-3.9.7-bin.zip</a>                         <i>( 10 MB)</i>
+<a href="https://maven.apache.org/download.cgi">apache-maven-3.9.8-bin.zip</a>                         <i>( 10 MB)</i>
 <a href="https://www.haskell.org/cabal/download.html">cabal-install-3.8.1.0-x86_64-unknown-mingw32.zip</a>   <i>(  5 MB)</i>
 <a href="https://github.com/Maximus5/ConEmu/releases/tag/v23.07.24" rel="external">ConEmuPack.230724.7z</a>                               <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
@@ -218,7 +218,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot">OpenJDK17U-jdk_x64_windows_hotspot_17.0.11_9.zip</a>   <i>( 99 MB)</i>
 <a href="https://git-scm.com/download/win">PortableGit-2.45.2-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.15.5-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
-<a href="https://code.visualstudio.com/Download#" rel="external">VSCode-win32-x64-1.90.1.zip</a>                        <i>(131 MB)</i>
+<a href="https://code.visualstudio.com/Download#" rel="external">VSCode-win32-x64-1.91.0.zip</a>                        <i>(131 MB)</i>
 </pre>
 </dd>
 <dd>
@@ -237,7 +237,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -247,7 +247,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [apache_maven]: https://maven.apache.org/download.cgi
 [apache_maven_cli]: https://maven.apache.org/ref/current/maven-embedder/cli.html
 [apache_maven_history]: https://maven.apache.org/docs/history.html
-[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.7/release-notes.html
+[apache_maven_relnotes]: https://maven.apache.org/docs/3.9.8/release-notes.html
 [book_parconc]: https://www.oreilly.com/library/view/parallel-and-concurrent/9781449335939/
 [cabal_changelog]: https://github.com/haskell/cabal/blob/master/release-notes/Cabal-3.8.1.0.md
 [cabal_downloads]: https://downloads.haskell.org/~cabal/

@@ -1,4 +1,4 @@
-# <span id="top">Haskell Resources</span> <span style="size:25%;"><a href="README.md">↩</a></span>
+# <span id="top">Haskell Resources</span> <span style="font-size:90%;">[↩](README.md#top)</span>
 
 <table style="font-family:Helvetica,Arial;line-height:1.6;">
   <tr>
@@ -145,7 +145,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/June 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/July 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

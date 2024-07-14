@@ -476,7 +476,8 @@ if not exist "%__JAVAC_CMD%" (
 )
 set __JAVAC_VERSION=
 for /f "usebackq tokens=1,*" %%i in (`"%__JAVAC_CMD%" -version 2^>^&1`) do set __JAVAC_VERSION=%%j
-if "!__JAVAC_VERSION:~0,2!"=="17" ( set _JDK_VERSION=17
+if "!__JAVAC_VERSION:~0,2!"=="21" ( set _JDK_VERSION=21
+) else if "!__JAVAC_VERSION:~0,2!"=="17" ( set _JDK_VERSION=17
 ) else if "!__JAVAC_VERSION:~0,2!"=="14" ( set _JDK_VERSION=14
 ) else if "!__JAVAC_VERSION:~0,2!"=="11" ( set _JDK_VERSION=11
 ) else if "!__JAVAC_VERSION:~0,3!"=="1.8" ( set _JDK_VERSION=8
@@ -627,7 +628,11 @@ if %ERRORLEVEL%==0 (
 )
 where /q "%GIT_HOME%\bin:bash.exe"
 if %ERRORLEVEL%==0 (
-    for /f "tokens=1-3,4,*" %%i in ('"%GIT_HOME%\bin\bash.exe" --version ^| findstr bash') do set "__VERSIONS_LINE3=%__VERSIONS_LINE3% bash %%l"
+    for /f "tokens=1-3,4,*" %%i in ('"%GIT_HOME%\bin\bash.exe" --version ^| findstr bash') do (
+        set "__VERSION=%%l"
+        setlocal enabledelayedexpansion
+        set "__VERSIONS_LINE3=%__VERSIONS_LINE3% bash !__VERSION:-release=!"
+    )
     set __WHERE_ARGS=%__WHERE_ARGS% "%GIT_HOME%\bin:bash.exe"
 )
 echo Tool versions:
