@@ -110,7 +110,7 @@ EOS
 clean() {
     if [[ -d "$TARGET_DIR" ]]; then
         if $DEBUG; then
-            debug "Delete directory $TARGET_DIR"
+            debug "Delete directory \"$TARGET_DIR\""
         elif $VERBOSE; then
             echo "Delete directory \"${TARGET_DIR/$ROOT_DIR\//}\"" 1>&2
         fi

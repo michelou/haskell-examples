@@ -76,23 +76,22 @@ if not exist "%GHC_HOME%\bin\ghc.exe" (
     goto :eof
 )
 set "_GHC_CMD=%GHC_HOME%\bin\ghc.exe"
-
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _HLINT_CMD=
 if exist "%CABAL_DIR%\bin\hlint.exe" (
     set "_HLINT_CMD=%CABAL_DIR%\bin\hlint.exe"
+)
+@rem we use the newer PowerShell version if available
+where /q pwsh.exe
+if %ERRORLEVEL%==0 ( set _PWSH_CMD=pwsh.exe
+) else ( set _PWSH_CMD=powershell.exe
 )
 goto :eof
 
 :env_colors
 @rem ANSI colors in standard Windows 10 shell
 @rem see https://gist.github.com/mlocati/#file-win10colors-cmd
-set _RESET=[0m
-set _BOLD=[1m
-set _UNDERSCORE=[4m
-set _INVERSE=[7m
 
 @rem normal foreground colors
 set _NORMAL_FG_BLACK=[30m
@@ -130,6 +129,12 @@ set _STRONG_BG_RED=[101m
 set _STRONG_BG_GREEN=[102m
 set _STRONG_BG_YELLOW=[103m
 set _STRONG_BG_BLUE=[104m
+
+@rem we define _RESET in last position to avoid crazy console output with type command
+set _BOLD=[1m
+set _UNDERSCORE=[4m
+set _INVERSE=[7m
+set _RESET=[0m
 goto :eof
 
 @rem output parameters: _EXE_FILE, _GHC_OPTS, _HADDOCK_OPTS
@@ -156,13 +161,14 @@ if exist "%__CABAL_FILE%" (
             set "_!__NAME:-=_!=!__VALUE!"
         )
     )
-    if defined _name set _PACKAGE_NAME=!_name!
+    if defined _name set __PACKAGE_NAME=!_name!
     if defined _synopsis set __PACKAGE_SYNOPSIS=!_synopsis!
     if defined _version set __PACKAGE_VERSION=!_version!
     if defined _ghc_options set _GHC_OPTS=!_ghc_options!
 )
 set "_EXE_FILE=%_TARGET_DIR%\%_PACKAGE_NAME%.exe"
 
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 set _HADDOCK_OPTS=%_HADDOCK_OPTS% --title="%__PACKAGE_SYNOPSIS%" --package-name=%_PACKAGE_NAME% --package-version=%__PACKAGE_VERSION%
 goto :eof
 
@@ -231,7 +237,7 @@ if %_DEBUG%==1 (
     echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
     echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
 )
-if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
+if %_TIMER%==1 for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
 
 :help
@@ -345,11 +351,11 @@ set "__TARGET_FILE=%~1"
 set "__PATH=%~2"
 
 set __TARGET_TIMESTAMP=00000000000000
-for /f "usebackq" %%i in (`powershell -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+for /f "usebackq" %%i in (`call %"_PWSH_CMD%" -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
      set __TARGET_TIMESTAMP=%%i
 )
 set __SOURCE_TIMESTAMP=00000000000000
-for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop | sort LastWriteTime | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+for /f "usebackq" %%i in (`call %"_PWSH_CMD%" -c "gci -recurse -path '%__PATH%' -ea Stop | sort LastWriteTime | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
     set __SOURCE_TIMESTAMP=%%i
 )
 call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
@@ -394,7 +400,7 @@ set __HADDOCK_OPTS=%_HADDOCK_OPTS%
 @rem Use "*.haddock" instead of "base.haddock" to include all interface docs.
 for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) do (
     for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
-    set __HADDOCK_OPTS=!__HADDOCK_OPTS! --read-interface=!__PARENT_DIR!,%%f
+    set __HADDOCK_OPTS=!__HADDOCK_OPTS! "--read-interface=!__PARENT_DIR!,%%f"
 )
 set __SOURCE_FILES=
 for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
@@ -443,7 +449,7 @@ goto :eof
 set __START=%~1
 set __END=%~2
 
-for /f "delims=" %%i in ('powershell -c "$interval = New-TimeSpan -Start '%__START%' -End '%__END%'; Write-Host $interval"') do set _DURATION=%%i
+for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "$interval = New-TimeSpan -Start '%__START%' -End '%__END%'; Write-Host $interval"') do set _DURATION=%%i
 goto :eof
 
 @rem #########################################################################
@@ -451,7 +457,7 @@ goto :eof
 
 :end
 if %_TIMER%==1 (
-    for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
+    for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
     echo Total execution time: !_DURATION! 1>&2
 )

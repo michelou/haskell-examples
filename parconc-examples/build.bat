@@ -29,6 +29,10 @@ if %_CLEAN%==1 (
     call :clean
     if not !_EXITCODE!==0 goto end
 )
+if %_LINT%==1 (
+    call :lint
+    if not !_EXITCODE!==0 goto end
+)
 if %_COMPILE%==1 (
     call :compile
     if not !_EXITCODE!==0 goto end
@@ -61,7 +65,7 @@ set "_SOURCE_DIR=%_ROOT_DIR%src"
 set "_LIB_DIR=%_ROOT_DIR%lib"
 set "_TARGET_DIR=%_ROOT_DIR%target"
 set "_TARGET_GEN_DIR=%_TARGET_DIR%\gen"
-set "_DOCS_DIR=%_TARGET_DIR%\docs"
+set "_TARGET_DOCS_DIR=%_TARGET_DIR%\docs"
 
 if not exist "%GHC_HOME%\bin\ghc.exe" (
     echo %_ERROR_LABEL% GHC executable not found 1>&2
@@ -80,19 +84,21 @@ if not exist "%GHC_HOME%\bin\haddock.exe" (
     goto :eof
 )
 set "_HADDOCK_CMD=%GHC_HOME%\bin\haddock.exe"
-set _HADDOCK_OPTS=--html --odir="%_DOCS_DIR%"
+set _HADDOCK_OPTS=--html --odir="%_TARGET_DOCS_DIR%"
 
 set _TAR_CMD=tar.exe
 set _TAR_OPTS=
+
+@rem we use the newer PowerShell version if available
+where /q pwsh.exe
+if %ERRORLEVEL%==0 ( set _PWSH_CMD=pwsh.exe
+) else ( set _PWSH_CMD=powershell.exe
+)
 goto :eof
 
 :env_colors
 @rem ANSI colors in standard Windows 10 shell
 @rem see https://gist.github.com/mlocati/#file-win10colors-cmd
-set _RESET=[0m
-set _BOLD=[1m
-set _UNDERSCORE=[4m
-set _INVERSE=[7m
 
 @rem normal foreground colors
 set _NORMAL_FG_BLACK=[30m
@@ -130,6 +136,12 @@ set _STRONG_BG_RED=[101m
 set _STRONG_BG_GREEN=[102m
 set _STRONG_BG_YELLOW=[103m
 set _STRONG_BG_BLUE=[104m
+
+@rem we define _RESET in last position to avoid crazy console output with type command
+set _BOLD=[1m
+set _UNDERSCORE=[4m
+set _INVERSE=[7m
+set _RESET=[0m
 goto :eof
 
 @rem output parameters: _EXEC_DEFAULT, _EXECUTABLE_N, _HADDOCK_OPTS
@@ -211,6 +223,7 @@ set _COMPILE=0
 set _DOC=0
 set _HELP=0
 set _EXEC=%_EXEC_DEFAULT%
+set _LINT=0
 set _RUN=0
 set _TIMER=0
 set _VERBOSE=0
@@ -231,7 +244,7 @@ if "%__ARG:~0,1%"=="-" (
     ) else if "%__ARG%"=="-timer" ( set _TIMER=1
     ) else if "%__ARG%"=="-verbose" ( set _VERBOSE=1
     ) else (
-        echo %_ERROR_LABEL% Unknown option %__ARG% 1>&2
+        echo %_ERROR_LABEL% Unknown option "%__ARG%" 1>&2
         set _EXITCODE=1
         goto args_done
    )
@@ -241,9 +254,10 @@ if "%__ARG:~0,1%"=="-" (
     ) else if "%__ARG%"=="compile" ( set _COMPILE=1
     ) else if "%__ARG%"=="doc" ( set _DOC=1
     ) else if "%__ARG%"=="help" ( set _HELP=1
+    ) else if "%__ARG%"=="lint" ( set _LINT=1
     ) else if "%__ARG%"=="run" ( set _COMPILE=1& set _RUN=1
     ) else (
-        echo %_ERROR_LABEL% Unknown subcommand %__ARG% 1>&2
+        echo %_ERROR_LABEL% Unknown subcommand "%__ARG%" 1>&2
         set _EXITCODE=1
         goto args_done
     )
@@ -255,14 +269,19 @@ goto args_loop
 if %_DEBUG%==1 ( set _REDIRECT_STDOUT=1^>CON
 ) else ( set _REDIRECT_STDOUT=1^>NUL
 )
+if %_LINT%==1 if not defined _HLINT_CMD (
+    echo %_WARNING_LABEL% Hlint tool not found ^(disable subcommand 'lint'^) 1>&2
+    set _LINT=0
+)
 if %_DEBUG%==1 (
+    echo %_DEBUG_LABEL% Properties : _PACKAGE_NAME=%_PACKAGE_NAME% 1>&2
     echo %_DEBUG_LABEL% Options    : _TIMER=%_TIMER% _VERBOSE=%_VERBOSE% 1>&2
-    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _RUN=%_RUN% 1>&2
+    echo %_DEBUG_LABEL% Subcommands: _CLEAN=%_CLEAN% _COMPILE=%_COMPILE% _DOC=%_DOC% _LINT=%_LINT% _RUN=%_RUN% 1>&2
     echo %_DEBUG_LABEL% Variables  : "CABAL_DIR=%CABAL_DIR%" 1>&2
-	echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
+    echo %_DEBUG_LABEL% Variables  : "GHC_HOME=%GHC_HOME%" 1>&2
     echo %_DEBUG_LABEL% Variables  : _EXEC=%_EXEC% 1>&2
 )
-if %_TIMER%==1 for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set _TIMER_START=%%i
+if %_TIMER%==1 for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "(Get-Date)"') do set _TIMER_START=%%i
 goto :eof
 
 :help
@@ -280,17 +299,18 @@ if %_VERBOSE%==1 (
 echo Usage: %__BEG_O%%_BASENAME% { ^<option^> ^| ^<subcommand^> }%__END%
 echo.
 echo   %__BEG_P%Options:%__END%
-echo     %__BEG_O%-debug%__END%        display commands executed by this script
+echo     %__BEG_O%-debug%__END%      print commands executed by this script
 echo     %__BEG_O%-exec:^<exec^>%__END%  define Cabal executable ^(default: %__BEG_O%%_EXEC_DEFAULT%%__END%^)
-echo     %__BEG_O%-timer%__END%        display total elapsed time
-echo     %__BEG_O%-verbose%__END%      display progress messages
+echo     %__BEG_O%-timer%__END%      print total execution time
+echo     %__BEG_O%-verbose%__END%    print progress messages
 echo.
 echo   %__BEG_P%Subcommands:%__END%
-echo     %__BEG_O%clean%__END%         delete generated files
-echo     %__BEG_O%compile%__END%       generate program executable
-echo     %__BEG_O%doc%__END%           generate HTML documentation with %__BEG_N%Haddock%__END%
-echo     %__BEG_O%help%__END%          display this help message
-echo     %__BEG_O%run%__END%           execute the generated program "%__BEG_O%!__EXE_FILE:%_ROOT_DIR%=!%__END%"
+echo     %__BEG_O%clean%__END%       delete generated files
+echo     %__BEG_O%compile%__END%     generate program executable
+echo     %__BEG_O%doc%__END%         generate HTML documentation with %__BEG_N%Haddock%__END%
+echo     %__BEG_O%help%__END%        print this help message
+echo     %__BEG_O%lint%__END%        analyze Haskell source files with %__BEG_N%HLint%__END%
+echo     %__BEG_O%run%__END%         execute the generated program "%__BEG_O%!_EXE_FILE:%_ROOT_DIR%=!%__END%"
 goto :eof
 
 @rem output parameter: _EXEC
@@ -327,8 +347,28 @@ if not %ERRORLEVEL%==0 (
 )
 goto :eof
 
+:lint
+if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
+
+if %_DEBUG%==1 ( set __HLINT_OPTS=--color=auto
+) else ( set __HLINT_OPTS=--color=auto "--report=%_TARGET_DIR%\report.html"
+)
+if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" 1>&2
+) else if %_VERBOSE%==1 ( echo Analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
+)
+call "%_HLINT_CMD%" %__HLINT_OPTS% "%_SOURCE_DIR%" %_REDIRECT_STDOUT%
+if not %ERRORLEVEL%==0 (
+    echo %_ERROR_LABEL% Failed to analyze Haskell source files in directory "!_SOURCE_DIR:%_ROOT_DIR%=!" 1>&2
+    set _EXITCODE=1
+    goto :eof
+)
+goto :eof
+
 :compile
 if not exist "%_TARGET_DIR%" mkdir "%_TARGET_DIR%"
+
+call :action_required "%_EXE_FILE%" "%_SOURCE_DIR%\*.hs"
+if %_ACTION_REQUIRED%==0 goto :eof
 
 set __SOURCE_FILES=
 set __N=0
@@ -372,11 +412,11 @@ set "__TARGET_FILE=%~1"
 set "__PATH=%~2"
 
 set __TARGET_TIMESTAMP=00000000000000
-for /f "usebackq" %%i in (`powershell -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+for /f "usebackq" %%i in (`call %"_PWSH_CMD%" -c "gci -path '%__TARGET_FILE%' -ea Stop | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
      set __TARGET_TIMESTAMP=%%i
 )
 set __SOURCE_TIMESTAMP=00000000000000
-for /f "usebackq" %%i in (`powershell -c "gci -recurse -path '%__PATH%' -ea Stop | sort LastWriteTime | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
+for /f "usebackq" %%i in (`call %"_PWSH_CMD%" -c "gci -recurse -path '%__PATH%' -ea Stop | sort LastWriteTime | select -last 1 -expandProperty LastWriteTime | Get-Date -uformat %%Y%%m%%d%%H%%M%%S" 2^>NUL`) do (
     set __SOURCE_TIMESTAMP=%%i
 )
 call :newer %__SOURCE_TIMESTAMP% %__TARGET_TIMESTAMP%
@@ -413,7 +453,7 @@ goto :eof
 if not exist "%_LIB_DIR%\" mkdir "%_LIB_DIR%"
 
 @rem http://hackage.haskell.org/package/monad-par
-set __PACKAGE_NAME=monad-par-0.3.5
+set __PACKAGE_NAME=monad-par-0.3.6
 call :install_package "%__PACKAGE_NAME%" "%_LIB_DIR%"
 if not %_EXITCODE%==0 goto :eof
 
@@ -472,12 +512,8 @@ popd
 goto :eof
 
 :doc
-if not exist "%_DOCS_DIR%" mkdir "%_DOCS_DIR%"
+if not exist "%_TARGET_DOCS_DIR%" mkdir "%_TARGET_DOCS_DIR%"
 
-set __SOURCE_FILES=
-for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
-    set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
-)
 set "__HTML_LIBS_DIR=%GHC_HOME%\doc\html\libraries"
 if not exist "%__HTML_LIBS_DIR%" (
     echo %_ERROR_LABEL% GHC HTML documentation directory not found 1>&2
@@ -490,12 +526,16 @@ for /f "usebackq delims=" %%f in (`where /r "%__HTML_LIBS_DIR%" base.haddock`) d
     for %%x in (%%f) do set "__PARENT_DIR=%%~dpx"
     set __HADDOCK_OPTS=!__HADDOCK_OPTS! "--read-interface=!__PARENT_DIR!,%%f"
 )
+set __SOURCE_FILES=
+for /f "usebackq delims=" %%f in (`where /r "%_SOURCE_DIR%" *.hs`) do (
+    set __SOURCE_FILES=!__SOURCE_FILES! "%%f"
+)
 if %_DEBUG%==1 ( echo %_DEBUG_LABEL% "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES% 1>&2
-) else if %_VERBOSE%==1 ( echo Generate Haskell documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+) else if %_VERBOSE%==1 ( echo Generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
 )
 call "%_HADDOCK_CMD%" %__HADDOCK_OPTS% %__SOURCE_FILES%
 if not %ERRORLEVEL%==0 (
-    echo %_ERROR_LABEL% Failed to generate Haskell documentation into directory "!_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
+    echo %_ERROR_LABEL% Failed to generate HTML documentation into directory "!_TARGET_DOCS_DIR:%_ROOT_DIR%=!" 1>&2
     set _EXITCODE=1
     goto :eof
 )
@@ -525,7 +565,7 @@ goto :eof
 set __START=%~1
 set __END=%~2
 
-for /f "delims=" %%i in ('powershell -c "$interval = New-TimeSpan -Start '%__START%' -End '%__END%'; Write-Host $interval"') do set _DURATION=%%i
+for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "$interval = New-TimeSpan -Start '%__START%' -End '%__END%'; Write-Host $interval"') do set _DURATION=%%i
 goto :eof
 
 @rem #########################################################################
@@ -533,7 +573,7 @@ goto :eof
 
 :end
 if %_TIMER%==1 (
-    for /f "delims=" %%i in ('powershell -c "(Get-Date)"') do set __TIMER_END=%%i
+    for /f "delims=" %%i in ('call %"_PWSH_CMD%" -c "(Get-Date)"') do set __TIMER_END=%%i
     call :duration "%_TIMER_START%" "!__TIMER_END!"
     echo Total execution time: !_DURATION! 1>&2
 )

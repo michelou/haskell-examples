@@ -110,7 +110,7 @@ EOS
 clean() {
     if [[ -d "$TARGET_DIR" ]]; then
         if $DEBUG; then
-            debug "Delete directory $TARGET_DIR"
+            debug "Delete directory \"$TARGET_DIR\""
         elif $VERBOSE; then
             echo "Delete directory \"${TARGET_DIR/$ROOT_DIR\//}\"" 1>&2
         fi
@@ -246,10 +246,10 @@ EXITCODE=0
 
 ROOT_DIR="$(getHome)"
 
-SOURCE_DIR=$ROOT_DIR/app
-TARGET_DIR=$ROOT_DIR/target
-TARGET_DOCS_DIR=$TARGET_DIR/docs
-TARGET_GEN_DIR=$TARGET_DIR/gen
+SOURCE_DIR="$ROOT_DIR/app"
+TARGET_DIR="$ROOT_DIR/target"
+TARGET_DOCS_DIR="$TARGET_DIR/docs"
+TARGET_GEN_DIR="$TARGET_DIR/gen"
 
 CLEAN=false
 COMPILE=false

@@ -72,6 +72,9 @@
 - [Making the most of Cabal][blog_lau], June 6, 2020.
 -  [Kindness for Mean Girls: a discussion on type-level programming in Haskell][blog_nadeem] by Ayman Nadeem, May 2020.
 - [GHC Blog](https://serokell.io/blog/ghc) by the [Serokell team](https://serokell.io/team):
+  - [Dependent Types, Part 3](https://serokell.io/blog/ghc-dependent-types-in-haskell-3), April 2024.
+  - [Dependent Types, Part 2](https://serokell.io/blog/ghc-dependent-types-in-haskell-2), December 2023.
+  - [Dependent Types](https://serokell.io/blog/ghc-dependent-types-in-haskell), September 2023.
   - [Rust vs. Haskell](https://serokell.io/blog/rust-vs-haskell) by Jay Zelenskyi, February 2023.
   - [Introduction to Haskell Typeclasses](https://serokell.io/blog/haskell-typeclasses) by Gints Dreimanis, April 2022.
   - [Algebraic Data Types in Haskell](https://serokell.io/blog/algebraic-data-types-in-haskell) by Gints Dreimanis, March 2022.
@@ -145,7 +148,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/July 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/August 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
