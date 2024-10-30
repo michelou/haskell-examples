@@ -106,7 +106,7 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 
 ## <span id="courses">Courses</span> [**&#x25B4;**](#top)
 
-- [Functional Prograimming in Haskell](https://www.classcentral.com/classroom/youtube-functional-programming-in-haskell-59638/61cc95daddfc8) by Graham Hutton, 2023.
+- [Functional Programming in Haskell](https://www.classcentral.com/classroom/youtube-functional-programming-in-haskell-59638/61cc95daddfc8) by Graham Hutton, 2023.
 - [Haskell Beginners 2022](https://slides.com/haskellbeginners2022/) by Dimitrii Kovanikov, 2022.
 - [Advanced Programming](https://www.cis.upenn.edu/~cis552/current/) (CIS 552), by [Stéphanie Weirich](https://www.cis.upenn.edu/~sweirich/), Fall 2020.
 - [Functional and Logic Programming](https://www.cs.ubc.ca/~poole/cs312/2019/) (CPSC 312), by David Poole, Fall 2019.
@@ -145,10 +145,18 @@ April 2011.<br/><span style="font-size:80%;">(No Starch Press, ISBN 978-1-5932-7
 - [Dependent Types in Haskell][video_weirich] by Stephane Weirich, October 2017.
 - [Haskell taketh away: limiting side effects for parallel programming][video_newton], June 2017.
 - [Haskell Tutorial][video_banas] by Derek Banas, August 2015 (76 min).
-
+- [LigerLearn](https://www.youtube.com/@LigerLearn) Videos :
+  - [Pattern Matching and Records in Haskell](https://www.youtube.com/watch?v=e4_3uZXvoak), October 2024.
+  - [Exploring Algebraic Data Types in Haskell](https://www.youtube.com/watch?v=xeBA-BhFjvQ), September 2024.
+  - [Basics of Sum types in Haskell](https://www.youtube.com/watch?v=072IahwCYUk), September 2024.
+- [Tea Leaves](https://www.youtube.com/@TeaLeavesProgramming) Videos :
+  - [Haskell for Dilettantes 14 : Functors](https://www.youtube.com/watch?v=wxLnwKoxEXM), October 2024.
+  - [Haskell for Dilettantes 13 : seqOptional](https://www.youtube.com/watch?v=3_YqTbXzYTc), October 2024.
+  - [Haskell for Dilettantes 12 : More Lists](https://www.youtube.com/watch?v=PPVeaWuq0qs), October 2024.
+  - [Haskell for Dilettantes 1 : Intro](https://www.youtube.com/watch?v=nlTJU8wLo7E), July 2024.
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/November 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->

@@ -12,14 +12,14 @@
   </tr>
 </table>
 
-[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [COBOL][cobol_examples], [Dart][dart_examples], [Deno][deno_examples], [Docker][docker_examples], [Erlang][erlang_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Modula-2][m2_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples], [WiX Toolset][wix_examples] and [Zig][zig_examples] are other topics we are continuously monitoring.
+[Ada][ada_examples], [Akka][akka_examples], [C++][cpp_examples], [COBOL][cobol_examples], [Dafny][dafny_examples], [Dart][dart_examples], [Deno][deno_examples], [Docker][docker_examples], [Erlang][erlang_examples], [Flix][flix_examples], [Golang][golang_examples], [GraalVM][graalvm_examples], [Kafka][kafka_examples], [Kotlin][kotlin_examples], [LLVM][llvm_examples], [Modula-2][m2_examples], [Node.js][nodejs_examples], [Rust][rust_examples], [Scala 3][scala3_examples], [Spark][spark_examples], [Spring][spring_examples], [TruffleSqueak][trufflesqueak_examples], [WiX Toolset][wix_examples] and [Zig][zig_examples] are other topics we are continuously monitoring.
 
 ## <span id="proj_deps">Project dependencies</span>
 
 This project relies on the following external software for the **Microsoft Windows** platform:
 
 - [Cabal 3.8][cabal_downloads] <sup id="anchor_01">[1](#footnote_01)</sup> ([*changelog*][cabal_changelog])
-- [Git 2.46][git_downloads] ([*release notes*][git_relnotes])
+- [Git 2.47][git_downloads] ([*release notes*][git_relnotes])
 - [Haskell 8.10 LTS][haskell_lts_downloads] ([*release notes*][haskell_lts_relnotes])
 
 > **&#9755;** ***Haskell packages***<br/>
@@ -32,12 +32,12 @@ Optionally one may also install the following software:
 - [Haskell 9.10][haskell_latest_downloads] ([*release notes*][haskell_latest_relnotes])
 - [Stack 2.15][stack_downloads] ([*changelog*][stack_changelog])
 - [Temurin OpenJDK 17][temurin_openjdk17] ([*release notes*][temurin_openjdk17_relnotes], for Maven)
-- [Visual Studio Code 1.92][vscode_downloads] ([*release notes*][vscode_relnotes])
+- [Visual Studio Code 1.94][vscode_downloads] ([*release notes*][vscode_relnotes])
 
 > **&#9755;** ***Installation policy***<br/>
 > When possible we install software from a [Zip archive][zip_archive] rather than via a Windows installer. In our case we defined **`C:\opt\`** as the installation directory for optional software tools (*in reference to* the [`/opt/`][unix_opt] directory on Unix).
 
-For instance our development environment looks as follows (*August 2024*) <sup id="anchor_02">[2](#footnote_02)</sup>:
+For instance our development environment looks as follows (*November 2024*) <sup id="anchor_02">[2](#footnote_02)</sup>:
 
 <pre style="font-size:80%;">
 C:\opt\apache-maven\             <i>( 10 MB)</i>
@@ -46,9 +46,9 @@ C:\opt\ghc-8.10.7\               <i>(2.5 GB)</i>
 C:\opt\ghc-9.6.5\                <i>(2.6 GB)</i>
 C:\opt\ghc-9.10.1\               <i>(5.6 GB)</i>
 C:\opt\Git\                      <i>(358 MB)</i>
-C:\opt\jdk-temurin-17.0.11_9\    <i>(303 MB)</i>
+C:\opt\jdk-temurin-17.0.13_11\   <i>(304 MB)</i>
 C:\opt\stack\                    <i>( 74 MB)</i>
-C:\opt\VSCode\                   <i>(341 MB)</i>
+C:\opt\VSCode\                   <i>(371 MB)</i>
 </pre>
 
 <!--
@@ -144,7 +144,7 @@ We execute command [**`setenv`**](setenv.bat) once to setup our development envi
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.15.5, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 17.0.11, mvn 3.9.8, git 2.46.0, diff 3.10
+   java 17.0.13, mvn 3.9.9, git 2.47.0, diff 3.10
 
 <b>&gt; <a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/where_1">where</a> cabal git hlint hpack sh stack</b>
 C:\opt\ghc-8.10.7\bin\cabal.exe
@@ -164,7 +164,7 @@ Command [**`setenv -verbose`**](setenv.bat) also displays the tool paths and def
 Tool versions:
    cabal 3.8.1.0, ghc version 8.10.7, stack 2.15.5, haddock 2.24.2
    hlint v3.5, hpack 0.35.1, htfpp 0.14.0.6, ormolu 0.7.0.0
-   java 17.0.11, mvn 3.9.8, git 2.46.0, diff 3.10
+   java 17.0.13, mvn 3.9.9, git 2.47.0, diff 3.10
 Tool paths:
    <a href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-2">%APPDATA%</a>\cabal\bin\cabal.exe
    C:\opt\ghc-8.10.7\bin\ghc.exe
@@ -174,7 +174,7 @@ Tool paths:
    %APPDATA%\Cabal\bin\hpack.exe
    %APPDATA%\Cabal\bin\htfpp.exe
    %APPDATA%\Cabal\bin\ormolu.exe
-   C:\opt\jdk-temurin-17.0.11_9\bin\java.exe
+   C:\opt\jdk-temurin-17.0.13_11\bin\java.exe
    C:\opt\apache-maven\bin\mvn.cmd
    C:\opt\Git\bin\git.exe
    C:\opt\Git\mingw64\bin\git.exe
@@ -182,7 +182,7 @@ Tool paths:
 Environment variables:
    "CABAL_DIR=%APPDATA%\cabal"
    "GHC_HOME=C:\opt\ghc-8.10.7"
-   "JAVA_HOME=C:\opt\jdk-temurin-17.0.11_9"
+   "JAVA_HOME=C:\opt\jdk-temurin-17.0.13_11"
    "MAVEN_HOME=C:\opt\apache-maven"
    "STACK_HOME=C:\opt\stack"
 </pre>
@@ -215,8 +215,8 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 <a href="https://github.com/Maximus5/ConEmu/releases/tag/v23.07.24" rel="external">ConEmuPack.230724.7z</a>                               <i>(  5 MB)</i>
 <a href="https://downloads.haskell.org/ghc/8.10.7/">ghc-8.10.7-x86_64-unknown-mingw32.tar.xz </a>          <i>(414 MB)</i>
 <a href="https://downloads.haskell.org/ghc/9.6.1/">ghc-9.10.1-x86_64-unknown-mingw32.tar.xz</a>           <i>(471 MB)</i>
-<a href="https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot">OpenJDK17U-jdk_x64_windows_hotspot_17.0.11_9.zip</a>   <i>( 99 MB)</i>
-<a href="https://git-scm.com/download/win">PortableGit-2.46.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
+<a href="https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot">OpenJDK17U-jdk_x64_windows_hotspot_17.0.13_11.zip</a>   <i>( 99 MB)</i>
+<a href="https://git-scm.com/download/win">PortableGit-2.47.0-64-bit.7z.exe</a>                   <i>( 41 MB)</i>
 <a href="https://github.com/commercialhaskell/stack/releases">stack-2.15.5-windows-x86_64.zip</a>                    <i>( 15 MB)</i>
 <a href="https://code.visualstudio.com/Download#" rel="external">VSCode-win32-x64-1.92.1.zip</a>                        <i>(131 MB)</i>
 </pre>
@@ -237,7 +237,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 
 ***
 
-*[mics](https://lampwww.epfl.ch/~michelou/)/August 2024* [**&#9650;**](#top)
+*[mics](https://lampwww.epfl.ch/~michelou/)/November 2024* [**&#9650;**](#top)
 <span id="bottom">&nbsp;</span>
 
 <!-- link refs -->
@@ -256,6 +256,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [conemu_downloads]: https://github.com/Maximus5/ConEmu/releases
 [conemu_relnotes]: https://conemu.github.io/blog/2023/07/24/Build-230724.html
 [cpp_examples]: https://github.com/michelou/cpp-examples#top
+[dafny_examples]: https://github.com/michelou/dafny-examples#top
 [dart_examples]: https://github.com/michelou/dart-examples#top
 [deno_examples]: https://github.com/michelou/deno-examples#top
 [docker_examples]: https://github.com/michelou/docker-examples#top
@@ -265,7 +266,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 [ghci]: https://downloads.haskell.org/~ghc/latest/docs/html/users_guide/ghci.html
 [git_cli]: https://git-scm.com/docs/git
 [git_downloads]: https://git-scm.com/download/win
-[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.46.0.txt
+[git_relnotes]: https://raw.githubusercontent.com/git/git/master/Documentation/RelNotes/2.47.0.txt
 [github_markdown]: https://github.github.com/gfm/
 [golang_examples]: https://github.com/michelou/golang-examples#top
 [graalvm_examples]: https://github.com/michelou/graalvm-examples#top
@@ -324,6 +325,7 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 17.0.10 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-January/029089.html
 17.0.11 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-April/032197.html
 17.0.12 -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-July/035798.html
+17.0.13 -> 
 -->
 [temurin_openjdk17]: https://adoptium.net/releases.html?variant=openjdk17&jvmVariant=hotspot
 [temurin_openjdk17_bugfixes]: https://www.oracle.com/java/technologies/javase/17-0-2-bugfixes.html
@@ -334,10 +336,11 @@ In our case we downloaded the following installation files (<a href="#proj_deps"
 21.0.2  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-January/029090.html
 21.0.3  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-April/032196.html
 21.0.4  -> https://mail.openjdk.org/pipermail/jdk-updates-dev/2024-July/035862.html
+21.0.5  -> https://adoptium.net/fr/temurin/release-notes/?version=jdk-21.0.5+11
 -->
 [temurin_openjdk21]: https://adoptium.net/releases.html?variant=openjdk21&jvmVariant=hotspot
 [temurin_openjdk21_bugfixes]: https://www.oracle.com/java/technologies/javase/17-0-2-bugfixes.html
-[temurin_openjdk21_relnotes]: https://mail.openjdk.org/pipermail/jdk-updates-dev/2023-October/026351.html
+[temurin_openjdk21_relnotes]: https://adoptium.net/fr/temurin/release-notes/?version=jdk-21.0.5+11
 [rust_examples]: https://github.com/michelou/rust-examples#top
 [scala3_examples]: https://github.com/michelou/dotty-examples#top
 [sh_cli]: https://man7.org/linux/man-pages/man1/sh.1p.html
