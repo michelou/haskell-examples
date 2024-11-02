@@ -80,6 +80,8 @@
   - [Algebraic Data Types in Haskell](https://serokell.io/blog/algebraic-data-types-in-haskell) by Gints Dreimanis, March 2022.
   - [Haskell to Core: Understanding Haskell Features Through Their Desugaring](https://serokell.io/blog/haskell-to-core) by Vladislav Zaviakov, August 2020.
   - [Type Witnesses in Haskell](https://serokell.io/blog/haskell-type-level-witness) by Sandeep Chandrika, February 21, 2020.
+- [Susan's](https://www.susanpotter.net/software/) Blog posts :
+  - [A Haskell view of functional programming](https://www.susanpotter.net/software/a-haskell-tinted-view-of-functional-programming-effectful/), July 2023.
 - [Haskell for impatient Scala developer: Getting into speed][blog_msitko], February 8, 2020.
 - [No, dynamic type systems are not inherently more open](https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/), January 19, 2020.
 - [Deeper Stack Knowledge][blog_deeper_stack], October 2018.
